@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <title>哩森音乐</title>
 
+
   <link rel="icon" href="users/index/images/ico.png">
   <link rel="stylesheet" href="users/index/css/reset.css">
   <link rel="stylesheet" href="users/index/css/index.css">
-  <link rel="stylesheet" href="./tools/aos/aos.css">
-
-  <script src="./tools/jquery/jquery.min.js"></script>
-  <script src="./users/index/js/script.js"></script>
+  <link rel="stylesheet" href="tools/aos/aos.css">
+  <script src="tools/jquery/jquery.min.js"></script>
+  <script src="users/index/js/script.js"></script>
 
   
 </head>
@@ -24,6 +24,7 @@
           <ul>
             <li><a href="#" class="header-nav__cur">音乐</a></li>
             <li><a href="#">我的音乐</a></li>
+            <li><a href="#">下载客户</a></li>
             <li><a href="#">VIP</a></li>
           </ul>
         </nav>
@@ -68,7 +69,7 @@
           <a href="#" class="login">登录</a>
         </div>
       </div>
-      <ul class="header-subNav" >
+      <ul class="header-subNav">
         <li><a href="#" class="subNav-cur">首页</a></li>
         <li><a href="#">歌手</a></li>
         <li><a href="#">专辑</a></li>
@@ -79,6 +80,34 @@
     </div>
   </header>
 
+  <!-- 精彩推荐 -->
+  <div class="main" id="recommend">
+    <div class="mask"></div>
+    <div class="main-inner">
+      <!--<div class="main-title">-->
+        <!--<h2 class="title"><i></i></h2>-->
+        <!--<span class="line line-left"></span>-->
+        <!--<span class="line line-right"></span>-->
+      <!--</div>-->
+      <div class="carousel" data-aos="flip-down">
+
+        <div class="carousel-slider">
+          <a href="#" class="item item-pic1"><img src="users/index/images/cont/recommend/carousel_img1.jpg" alt="#"></a>
+          <a href="#" class="item item-pic2"><img src="users/index/images/cont/recommend/carousel_img2.jpg" alt="#"></a>
+          <a href="#" class="item item-pic3"><img src="users/index/images/cont/recommend/carousel_img3.jpg" alt="#"></a>
+          <a href="#" class="item item-pic4"><img src="users/index/images/cont/recommend/carousel_img4.jpg" alt="#"></a>
+          <a href="#" class="item item-pic5"><img src="users/index/images/cont/recommend/carousel_img5.jpg" alt="#"></a>
+          <a href="#" class="item item-pic6"><img src="users/index/images/cont/recommend/carousel_img6.jpg" alt="#"></a>
+        </div>
+      </div>
+    </div>
+    <div class="main-operate">
+      <a href="#" class="slider-prev"><i class="icon-sprite"></i></a>
+      <a href="#" class="slider-next"><i class="icon-sprite"></i></a>
+    </div>
+
+  </div>
+
   <!-- 新歌首发 -->
   <div class="main" id="newSong">
     <div class="main-inner">
@@ -87,7 +116,7 @@
         <span class="line line-left"></span>
         <span class="line line-right"></span>
       </div>
-      <a href="#" class="readAll">全部<i class="icon-sprite"></i></a>
+      <a href="#" class="readAll" data-aos="fade-right">全部<i class="icon-sprite"></i></a>
       <div class="main-tab tab-title" data-aos="fade-right">
         <a href="javascript:;" class="item item-cur">全部</a>
         <a href="javascript:;" class="item">华语</a>
@@ -95,176 +124,187 @@
         <a href="javascript:;" class="item">韩国</a>
         <a href="javascript:;" class="item">日本</a>
       </div>
-      <div class="main-slider tab-cont" data-aos="zoom-in">
-<!--        <div class="main-slider tab-cont">-->
+      <div class="main-slider tab-cont" data-aos="fade-left">
         <ul class="slider-wrapper">
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/201.jfif" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">怀揣着希望徐徐前行</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">范玮琪</a>
-            </div>
+          <li class="slider-li">
+            <ul>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img1.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">怀揣着希望徐徐前行</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">范玮琪</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img2.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">人生走在路上，愿你新花怒放</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">范玮琪</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img3.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">一封给你温软的信</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">范玮琪</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img4.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">后来，只能把你偷偷的藏在心底</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">范玮琪</a>
+                </div>
+              </li>
+            </ul>
           </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/202.jfif" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">人生走在路上，愿你新花怒放</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">范玮琪</a>
-            </div>
+          <li class="slider-li">
+            <ul>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img5.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">范玮琪</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img6.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">范玮琪</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img7.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">范玮琪</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img8.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">范玮琪</a>
+                </div>
+              </li>
+            </ul>
           </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/203.jfif" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">一封给你温软的信</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">范玮琪</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/204.jfif" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">后来，只能把你偷偷的藏在心底</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">范玮琪</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img1.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">范玮琪</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img2.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">范玮琪</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img3.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">范玮琪</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img4.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">范玮琪</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img1.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">范玮琪</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img2.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">范玮琪</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img3.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">范玮琪</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img4.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">范玮琪</a>
-            </div>
+          <li class="slider-li">
+            <ul>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img9.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">范玮琪</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img10.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">范玮琪</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img11.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">范玮琪</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img12.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">范玮琪</a>
+                </div>
+              </li>
+            </ul>
           </li>
         </ul>
         <div class="slider-btns">
@@ -280,29 +320,295 @@
     </div>
   </div>
 
-  <!-- 精彩推荐 -->
-  <div class="main" id="recommend">
+  <!-- 热门歌单 -->
+  <div class="main" id="hotSong">
     <div class="main-inner">
       <div class="main-title">
         <h2 class="title"><i></i></h2>
         <span class="line line-left"></span>
         <span class="line line-right"></span>
       </div>
-      <div class="carousel" data-aos="flip-down">
-
-        <div class="carousel-slider">
-          <a href="#" class="item item-pic1"><img src="users/index/images/cont/carousel_img1.jpg" alt="#"></a>
-          <a href="#" class="item item-pic2"><img src="users/index/images/cont/carousel_img2.jpg" alt="#"></a>
-          <a href="#" class="item item-pic3"><img src="users/index/images/cont/carousel_img3.jpg" alt="#"></a>
-          <a href="#" class="item item-pic4"><img src="users/index/images/cont/carousel_img4.jpg" alt="#"></a>
-          <a href="#" class="item item-pic5"><img src="users/index/images/cont/carousel_img5.jpg" alt="#"></a>
-          <a href="#" class="item item-pic6"><img src="users/index/images/cont/carousel_img6.jpg" alt="#"></a>
+      <div class="main-slider" data-aos="zoom-in">
+        <ul class="slider-wrapper" >
+          <li class="slider-li">
+            <ul>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img23.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title" data-aos="fade-up">
+                    <!-- <a href="#">那个静默的阳光午后</a> -->
+                    <a href="#">殿堂金钻认证：BIGBANG最热歌曲大合集</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author" data-aos="fade-up">播放量：179.7万</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img24.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title" data-aos="fade-up">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author" data-aos="fade-up">播放量：179.7万</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img25.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title" data-aos="fade-up" >
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author" data-aos="fade-up" >播放量：179.7万</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img26.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title" data-aos="fade-up">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author"  data-aos="fade-up">播放量：179.7万</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="slider-li">
+            <ul>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img5.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">播放量：179.7万</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img6.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">播放量：179.7万</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img7.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">播放量：179.7万</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img8.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">播放量：179.7万</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="slider-li">
+            <ul>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img9.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">播放量：179.7万</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img10.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">播放量：179.7万</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img11.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">播放量：179.7万</a>
+                </div>
+              </li>
+              <li>
+                <a href="#" class="img">
+                  <img src="users/index/images/cont/newSong/slider_img12.jpg" alt="#">
+                  <span class="mask"></span>
+                  <i class="icon-play"></i>
+                </a>
+                <div class="info">
+                  <div class="title">
+                    <a href="#">那个静默的阳光午后</a>
+                    <i class="icon-sprite"></i>
+                  </div>
+                  <a href="#" class="author">播放量：179.7万</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="slider-btns">
+          <span class="cur"><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
         </div>
       </div>
     </div>
     <div class="main-operate">
-      <a href="#" class="slider-prev"><i class="icon-sprite"></i></a>
-      <a href="#" class="slider-next"><i class="icon-sprite"></i></a>
+      <a href="javascript:;" class="slider-prev"><i class="icon-sprite"></i></a>
+      <a href="javascript:;" class="slider-next"><i class="icon-sprite"></i></a>
+    </div>
+  </div>
+
+
+  <!-- MV -->
+  <div class="main" id="mv">
+    <div class="main-inner">
+      <div class="main-title">
+        <h2 class="title"><i></i></h2>
+        <span class="line line-left"></span>
+        <span class="line line-right"></span>
+      </div>
+      <a href="#" class="readAll">全部<i class="icon-sprite"></i></a>
+      <div class="main-tab tab-title">
+        <a href="javascript:;" class="item item-cur">全部</a>
+        <a href="javascript:;" class="item">华语</a>
+        <a href="javascript:;" class="item">欧美</a>
+        <a href="javascript:;" class="item">港台</a>
+        <a href="javascript:;" class="item">韩国</a>
+        <a href="javascript:;" class="item">日本</a>
+      </div>
+      <ul class="mv-list tab-cont" data-aos="zoom-in-up" >
+        <li class="item" data-aos="slide-left">
+          <a href="#" class="img"><img src="users/index/images/cont/mv/mv_img1.jpg" alt="#"><i class="icon-play"></i></a>
+          <div class="info">
+            <a href="#" class="title">Let Me Love You</a>
+            <a href="#" class="author">刘惜君</a>
+            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
+          </div>
+        </li>
+        <li class="item" data-aos="slide-left">
+          <a href="#" class="img"><img src="users/index/images/cont/mv/mv_img2.jpg" alt="#"><i class="icon-play"></i></a>
+          <div class="info">
+            <a href="#" class="title">Let Me Love You</a>
+            <a href="#" class="author">刘惜君</a>
+            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
+          </div>
+        </li>
+        <li class="item" data-aos="slide-left">
+          <a href="#" class="img"><img src="users/index/images/cont/mv/mv_img3.jpg" alt="#"><i class="icon-play"></i></a>
+          <div class="info">
+            <a href="#" class="title">Let Me Love You</a>
+            <a href="#" class="author">刘惜君</a>
+            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
+          </div>
+        </li>
+        <li class="item" data-aos="slide-left">
+          <a href="#" class="img"><img src="users/index/images/cont/mv/mv_img4.jpg" alt="#"><i class="icon-play"></i></a>
+          <div class="info">
+            <a href="#" class="title">Let Me Love You</a>
+            <a href="#" class="author">刘惜君</a>
+            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
+          </div>
+        </li>
+        <li class="item" data-aos="slide-right">
+          <a href="#" class="img"><img src="users/index/images/cont/mv/mv_img5.jpg" alt="#"><i class="icon-play"></i></a>
+          <div class="info">
+            <a href="#" class="title">Let Me Love You</a>
+            <a href="#" class="author">刘惜君</a>
+            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
+          </div>
+        </li>
+        <li class="item" data-aos="slide-right">
+          <a href="#" class="img"><img src="users/index/images/cont/mv/mv_img6.jpg" alt="#"><i class="icon-play"></i></a>
+          <div class="info">
+            <a href="#" class="title">Let Me Love You</a>
+            <a href="#" class="author">刘惜君</a>
+            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
+          </div>
+        </li>
+        <li class="item" data-aos="slide-right">
+          <a href="#" class="img"><img src="users/index/images/cont/mv/mv_img7.jpg" alt="#"><i class="icon-play"></i></a>
+          <div class="info">
+            <a href="#" class="title">Let Me Love You</a>
+            <a href="#" class="author">刘惜君</a>
+            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
+          </div>
+        </li>
+        <li class="item" data-aos="slide-right">
+          <a href="#" class="img"><img src="users/index/images/cont/mv/mv_img8.jpg" alt="#"><i class="icon-play"></i></a>
+          <div class="info">
+            <a href="#" class="title">Let Me Love You</a>
+            <a href="#" class="author">刘惜君</a>
+            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -432,286 +738,6 @@
     </div>
   </div>
 
-  <!-- 热门歌单 -->
-  <div class="main" id="hotSong">
-    <div class="main-inner">
-      <div class="main-title">
-        <h2 class="title"><i></i></h2>
-        <span class="line line-left"></span>
-        <span class="line line-right"></span>
-      </div>
-      <div class="main-slider">
-        <ul class="slider-wrapper" >
-          //动画滑动
-          <li  data-aos="fade-up-right">
-            <a href="#" class="img">
-              <img src="users/index/images/cont/401.jfif" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title"  >
-                <!-- <a href="#">那个静默的阳光午后</a> -->
-                <a href="#" data-aos="fade-up" data-aos-delay="200">殿堂金钻认证：BIGBANG最热歌曲大合集</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author" data-aos="fade-up" data-aos-delay="200">播放量：179.7万</a>
-            </div>
-          </li>
-          <li data-aos="slide-down">
-            <a href="#" class="img">
-              <img src="users/index/images/cont/402.jfif" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#" data-aos="fade-up" data-aos-delay="200">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author" data-aos="fade-up" data-aos-delay="200">播放量：179.7万</a>
-            </div>
-          </li>
-          <li data-aos="slide-up">
-            <a href="#" class="img">
-              <img src="users/index/images/cont/403.jfif" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#" data-aos="fade-up" data-aos-delay="200">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author" data-aos="fade-up" data-aos-delay="200">播放量：179.7万</a>
-            </div>
-          </li>
-          <li data-aos="fade-down-left">
-            <a href="#" class="img">
-              <img src="users/index/images/cont/404.jfif" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#" data-aos="fade-up" data-aos-delay="200">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author" data-aos="fade-up" data-aos-delay="200">播放量：179.7万</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img5.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">播放量：179.7万</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img6.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">播放量：179.7万</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img7.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">播放量：179.7万</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img8.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">播放量：179.7万</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img9.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">播放量：179.7万</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img10.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">播放量：179.7万</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img11.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">播放量：179.7万</a>
-            </div>
-          </li>
-          <li>
-            <a href="#" class="img">
-              <img src="users/index/images/cont/slider_img12.jpg" alt="#">
-              <span class="mask"></span>
-              <i class="icon-play"></i>
-            </a>
-            <div class="info">
-              <div class="title">
-                <a href="#">那个静默的阳光午后</a>
-                <i class="icon-sprite"></i>
-              </div>
-              <a href="#" class="author">播放量：179.7万</a>
-            </div>
-          </li>
-        </ul>
-        <div class="slider-btns">
-          <span class="cur"><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-        </div>
-      </div>
-    </div>
-    <div class="main-operate">
-      <a href="javascript:;" class="slider-prev"><i class="icon-sprite"></i></a>
-      <a href="javascript:;" class="slider-next"><i class="icon-sprite"></i></a>
-    </div>
-  </div>
-
-
-  <!-- MV -->
-  <div class="main" id="mv">
-    <div class="main-inner">
-      <div class="main-title">
-        <h2 class="title"><i></i></h2>
-        <span class="line line-left"></span>
-        <span class="line line-right"></span>
-      </div>
-      <a href="#" class="readAll">全部<i class="icon-sprite"></i></a>
-      <div class="main-tab tab-title">
-        <a href="javascript:;" class="item item-cur">全部</a>
-        <a href="javascript:;" class="item">华语</a>
-        <a href="javascript:;" class="item">欧美</a>
-        <a href="javascript:;" class="item">港台</a>
-        <a href="javascript:;" class="item">韩国</a>
-        <a href="javascript:;" class="item">日本</a>
-      </div>
-      <ul class="mv-list tab-cont" data-aos="zoom-in-up" >
-        <li class="item" data-aos="slide-left">
-          <a href="#" class="img"><img src="users/index/images/cont/mv_img1.jpg" alt="#"><i class="icon-play"></i></a>
-          <div class="info">
-            <a href="#" class="title">Let Me Love You</a>
-            <a href="#" class="author">刘惜君</a>
-            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
-          </div>
-        </li>
-        <li class="item" data-aos="slide-left">
-          <a href="#" class="img"><img src="users/index/images/cont/mv_img2.jpg" alt="#"><i class="icon-play"></i></a>
-          <div class="info">
-            <a href="#" class="title">Let Me Love You</a>
-            <a href="#" class="author">刘惜君</a>
-            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
-          </div>
-        </li>
-        <li class="item" data-aos="slide-left">
-          <a href="#" class="img"><img src="users/index/images/cont/mv_img3.jpg" alt="#"><i class="icon-play"></i></a>
-          <div class="info">
-            <a href="#" class="title">Let Me Love You</a>
-            <a href="#" class="author">刘惜君</a>
-            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
-          </div>
-        </li>
-        <li class="item" data-aos="slide-left">
-          <a href="#" class="img"><img src="users/index/images/cont/mv_img4.jpg" alt="#"><i class="icon-play"></i></a>
-          <div class="info">
-            <a href="#" class="title">Let Me Love You</a>
-            <a href="#" class="author">刘惜君</a>
-            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
-          </div>
-        </li>
-        <li class="item" data-aos="slide-right">
-          <a href="#" class="img"><img src="users/index/images/cont/mv_img5.jpg" alt="#"><i class="icon-play"></i></a>
-          <div class="info">
-            <a href="#" class="title">Let Me Love You</a>
-            <a href="#" class="author">刘惜君</a>
-            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
-          </div>
-        </li>
-        <li class="item" data-aos="slide-right">
-          <a href="#" class="img"><img src="users/index/images/cont/mv_img6.jpg" alt="#"><i class="icon-play"></i></a>
-          <div class="info">
-            <a href="#" class="title">Let Me Love You</a>
-            <a href="#" class="author">刘惜君</a>
-            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
-          </div>
-        </li>
-        <li class="item" data-aos="slide-right">
-          <a href="#" class="img"><img src="users/index/images/cont/mv_img7.jpg" alt="#"><i class="icon-play"></i></a>
-          <div class="info">
-            <a href="#" class="title">Let Me Love You</a>
-            <a href="#" class="author">刘惜君</a>
-            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
-          </div>
-        </li>
-        <li class="item" data-aos="slide-right">
-          <a href="#" class="img"><img src="users/index/images/cont/mv_img8.jpg" alt="#"><i class="icon-play"></i></a>
-          <div class="info">
-            <a href="#" class="title">Let Me Love You</a>
-            <a href="#" class="author">刘惜君</a>
-            <span class="play-total"><i class="icon-sprite"></i>18.8万</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
 
   <!-- footer -->
   <footer class="footer">
@@ -805,17 +831,7 @@
   </ul>
 
   <script type="text/javascript" src="tools/aos/aos.js"></script>
-  <script>
-//    全局动画设置
-      AOS.init({
-          offset: 100,
-          duration: 1000,
-          easing: 'ease-in-out',
-          delay: 0,
-          mirror: true,
-//          触发事件
-          startEvent: 'DOMContentLoaded'
-      })
-  </script>
+  <script type="text/javascript" src="users/index/js/aosinit.js"></script>
+
 </body>
 </html>
