@@ -14,14 +14,15 @@
     /*text-align: center;*/
 }
 
-.contentShow a{
+.contentShow li{
+    list-style: none;
     font-size: 30px;
     margin-left: 40px;
     color: black;
     float: left;
 }
 
-.contentShow a:hover{
+.contentShow li:hover{
     color: red;
 
 }
