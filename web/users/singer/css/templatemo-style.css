@@ -1,8 +1,8 @@
 body {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 300;
-  color: #ffffff;
+  color: black;
   overflow-x: hidden;
 }
 
@@ -12,7 +12,7 @@ body {
 .tm-mb-45 { margin-bottom: 45px; }
 .tm-mb-50 { margin-bottom: 50px; }
 .tm-gallery-pad { padding: 45px 50px; }
-.tm-gallery-item { margin: 0 5px; }
+.tm-gallery-item { margin: 0 5px;}
 
 
 /* .tm-gallery-container { max-width: 1200px; } */
@@ -89,25 +89,10 @@ p {
   background-repeat: no-repeat;
 }
 
-.tm-img-container-1 {
-  /*background-image: url(../img/green-tree-red-cup.jpg);
-  background-position: top center;*/
-}
-
-.tm-img-container-2 {
-  /*background-image: url(../img/girl-01.jpg);
-  background-position: top center;
-  margin-left: 8px;*/
-}
-
-.tm-img-container-3 {
-  /*background-image: url(../img/backpack-guy.jpg);
-  background-position: top right;*/
-}
-
 .tm-img { width: 49%; }
 .tm-bg-primary { background-color: #CC9999; }
-.tm-bg-accent { background-color: black; opacity: 0.9;}
+
+/*.tm-bg-accent { background-color: black; opacity: 0.9;}*/
 
 .tm-section-3-left {
   padding: 70px 100px 80px 120px;
@@ -177,13 +162,13 @@ p {
 
 .tm-contact-link {
   font-size: 1rem;
-  color: white;
+  color: blue;
   margin-bottom: 10px;
 }
 
 .tm-contact-link:hover,
 .tm-contact-link:focus {
-  color: white;
+  color: blue;
 }
 
 .form-control {
@@ -230,7 +215,7 @@ p {
     display: block;
     min-height: 100%;
     max-width: 100%;
-    opacity: 0.9;
+    opacity: 1;
 }
 
 .grid figure figcaption {

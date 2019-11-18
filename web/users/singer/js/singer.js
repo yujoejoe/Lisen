@@ -10,28 +10,39 @@ onload=function change() {
     var japan = document.getElementById("japan");
     var es = document.getElementById("else");
 
-    song.onclick=function () {
-        songShow.style.display="block";
-        songListShow.style.display="none";
-        albumShow.style.display="none";
-        mvShow.style.display="none";
+    zg.onclick=function () {
+        china.style.display="block";
+        euramerica.style.display="none";
+        korea.style.display="none";
+        japan.style.display="none";
+        es.style.display="none";
     }
-    songList.onclick=function () {
-        songListShow.style.display="block";
-        songShow.style.display="none";
-        albumShow.style.display="none";
-        mvShow.style.display="none";
+    om.onclick=function () {
+        china.style.display="none";
+        euramerica.style.display="block";
+        korea.style.display="none";
+        japan.style.display="none";
+        es.style.display="none";
     }
-    album.onclick=function () {
-        albumShow.style.display="block";
-        mvShow.style.display="none";
-        songShow.style.display="none";
-        songListShow.style.display="none";
+    hg.onclick=function () {
+        china.style.display="none";
+        euramerica.style.display="none";
+        korea.style.display="block";
+        japan.style.display="none";
+        es.style.display="none";
     }
-    mv.onclick=function () {
-        mvShow.style.display="block";
-        songShow.style.display="none";
-        songListShow.style.display="none";
-        albumShow.style.display="none";
+    rb.onclick=function () {
+        china.style.display="none";
+        euramerica.style.display="none";
+        korea.style.display="none";
+        japan.style.display="block";
+        es.style.display="none";
+    }
+    qt.onclick=function () {
+        china.style.display="none";
+        euramerica.style.display="none";
+        korea.style.display="none";
+        japan.style.display="none";
+        es.style.display="block";
     }
 }
