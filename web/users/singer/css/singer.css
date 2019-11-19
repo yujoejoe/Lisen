@@ -12,6 +12,7 @@
     position: absolute;
     color: black;
     font-weight: normal;
+
     /*text-align: center;*/
 }
 .content .contentShow li{
@@ -20,6 +21,7 @@
     margin-left: 54px;
     color: black;
     float: left;
+    vertical-align: middle;
 }
 
 .content .contentShow li:hover{
