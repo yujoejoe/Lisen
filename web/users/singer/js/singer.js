@@ -8,7 +8,7 @@ onload=function change() {
     var euramerica = document.getElementById("euramerica");
     var korea = document.getElementById("korea");
     var japan = document.getElementById("japan");
-    var es = document.getElementById("else");
+    var es = document.getElementById("es");
 
     zg.onclick=function () {
         china.style.display="block";
