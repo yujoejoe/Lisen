@@ -4,12 +4,10 @@
     height: 200px;
     position: absolute;
     color: black;
-    text-align: center;
 }
 
 .content .contentShow{
-    margin-left: 10%;
-    width: 80%;
+    width: 100%;
     height: 100%;
     position: absolute;
     color: black;
