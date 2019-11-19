@@ -2,8 +2,9 @@
     margin-top: 20px;
     width:100%;
     height: 200px;
-    position: absolute;
+    position:relative;
     color: black;
+    text-align: center;
 }
 
 .content .contentShow{
@@ -12,15 +13,18 @@
     position: absolute;
     color: black;
     font-weight: normal;
+    text-align: center;
 
     /*text-align: center;*/
 }
 .content .contentShow li{
     list-style: none;
     font-size: 30px;
-    margin-left: 54px;
+    margin-left: 40px;
     color: black;
+    padding-left:90px;
     float: left;
+    text-align: center;
     vertical-align: middle;
 }
 
@@ -39,7 +43,8 @@
     width: 100%;
     height: 300px;
     display:none;
-    position: absolute;
+    position:relative;
+
 }
 
 
@@ -49,17 +54,21 @@
     width: 100%;
     margin-top: 100px;
     position: absolute;
+     text-align: center;
+     position: absolute;
+     right:40px;
 }
  .alphabet ul{
-    text-align: center;
+     text-align:center;
      display: table;
      margin: 0 auto;
+
 }
 
  .alphabet ul li{
      float: left;
     display: inline;
-     padding: 5px;
+     padding-left:20px;
     font-size: 25px;
     font-weight: normal;
     list-style: none;
