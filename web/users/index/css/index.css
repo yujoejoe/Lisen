@@ -359,7 +359,7 @@
 .header {}
 .header-container {
   position: relative;
-  width: 1200px;
+  width: 80%;
   height: 142px;
   margin: 0 auto;
 }
@@ -369,10 +369,10 @@
 }
 .header-top .logo {
   float: left;
-  width: 190px;
+  width: 228px;
   height: 52px;
   margin-top: 18px;
-  background: url(../images/test.png) no-repeat;
+  background: url(../images/logo.png) no-repeat;
 }
 .header-nav {
   float: left;
