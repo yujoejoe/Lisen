@@ -4,26 +4,27 @@
     height: 200px;
     position: absolute;
     color: black;
+    text-align: center;
 }
 
-.contentShow{
-    width: 100%;
+.content .contentShow{
+    margin-left: 10%;
+    width: 80%;
     height: 100%;
     position: absolute;
     color: black;
     font-weight: normal;
     /*text-align: center;*/
 }
-
-.contentShow li{
+.content .contentShow li{
     list-style: none;
     font-size: 30px;
-    margin-left: 40px;
+    margin-left: 54px;
     color: black;
     float: left;
 }
 
-.contentShow li:hover{
+.content .contentShow li:hover{
     color: red;
     cursor: pointer;
 }
@@ -39,4 +40,36 @@
     height: 300px;
     display:none;
     position: absolute;
+}
+
+
+
+
+ .alphabet{
+    width: 100%;
+    margin-top: 100px;
+    position: absolute;
+}
+ .alphabet ul{
+    text-align: center;
+     display: table;
+     margin: 0 auto;
+}
+
+ .alphabet ul li{
+     float: left;
+    display: inline;
+     padding: 5px;
+    font-size: 25px;
+    font-weight: normal;
+    list-style: none;
+    color: black;
+}
+.alphabet ul li a{
+    list-style: none;
+    color: black;
+}
+
+.alphabet ul li:hover a{
+    color: red;
 }

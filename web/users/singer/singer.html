@@ -29,6 +29,21 @@
     <link rel="stylesheet" href="css/templatemo-style.css">
 
 <!--引入-->
+
+    <!-- 导入外部样式 -->
+    <link rel="stylesheet" href="/tools/bootstrap/css/bootstrap.css">
+    <!-- 导入外部脚本 -->
+    <script src="/tools/bootstrap/js/jquery-1.11.3.min.js"></script>
+    <script src="/tools/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.carousel').carousel({
+                interval: 3000
+            });
+        });
+    </script>
+
+
     <link rel="stylesheet" href="css/singer.css">
     <script src="js/singer.js"></script>
 
@@ -109,6 +124,7 @@
     </section>
 
 
+
     <div class="content">
         <ul class="contentShow">
             <li><a id="zg">中国</a></li>
@@ -118,6 +134,40 @@
             <li><a id="qt">其它</a></li>
         </ul>
 
+<!-- 字母查找start -->
+
+        <div class="alphabet">
+            <ul>
+                <li><a href="" onclick="show()">A</a></li>
+                <li><a href="" onclick="show()">B</a></li>
+                <li><a href="" onclick="show()">C</a></li>
+                <li><a href="" onclick="show()">D</a></li>
+                <li><a href="" onclick="show()">E</a></li>
+                <li><a href="" onclick="show()">F</a></li>
+                <li><a href="" onclick="show()">G</a></li>
+                <li><a href="" onclick="show()">H</a></li>
+                <li><a href="" onclick="show()">I</a></li>
+                <li><a href="" onclick="show()">J</a></li>
+                <li><a href="" onclick="show()">K</a></li>
+                <li><a href="" onclick="show()">L</a></li>
+                <li><a href="" onclick="show()">M</a></li>
+                <li><a href="" onclick="show()">N</a></li>
+                <li><a href="" onclick="show()">O</a></li>
+                <li><a href="" onclick="show()">P</a></li>
+                <li><a href="" onclick="show()">Q</a></li>
+                <li><a href="" onclick="show()">R</a></li>
+                <li><a href="" onclick="show()">S</a></li>
+                <li><a href="" onclick="show()">T</a></li>
+                <li><a href="" onclick="show()">U</a></li>
+                <li><a href="" onclick="show()">V</a></li>
+                <li><a href="" onclick="show()">W</a></li>
+                <li><a href="" onclick="show()">X</a></li>
+                <li><a href="" onclick="show()">Y</a></li>
+                <li><a href="" onclick="show()">Z</a></li>
+            </ul>
+        </div>
+
+
 
         <div  id="china" class="ChinaShow">中国</div>
         <div  id="euramerica" class="EuramericaShow">欧美</div>
@@ -126,8 +176,6 @@
         <div  id="es" class="ElseShow">其它</div>
 
     </div>
-
-
 
 </div>
 <!-- container -->
@@ -139,7 +187,7 @@
             dots: true,
             infinite: true,
             slidesToShow: 4,
-            slidesToScroll: 2,
+            slidesToScroll: 4,
             responsive: [
                 {
                     breakpoint: 991,
