@@ -22,12 +22,17 @@
 /* ====== public ====== */
 .main {
   overflow: hidden;
-  position: relative;
+  position:relative;
+}
+.segmentation{
+  width: 100%;
+  height: 100px;
 }
 .main-inner {
   position: relative;
   width: 1200px;
   margin: 0 auto;
+
 }
 .main-title {
   position: relative;
@@ -526,7 +531,7 @@
   background-color: #ededed;
 }
 .header-subNav {
-  padding-left: 228px;
+  padding-left: 328px;
 }
 .header-subNav li {
   display: inline-block;
