@@ -92,7 +92,10 @@ p {
 .tm-img { width: 49%; }
 .tm-bg-primary { background-color: #CC9999; }
 
-/*.tm-bg-accent { background-color: black; opacity: 0.9;}*/
+
+/*颜色*/
+.tm-bg-accent { background-color: #c3e6cb;}
+
 
 .tm-section-3-left {
   padding: 70px 100px 80px 120px;

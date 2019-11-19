@@ -5,12 +5,14 @@ onload=function change() {
     var hg = document.getElementById("hg");
     var rb = document.getElementById("rb");
     var qt = document.getElementById("qt");
+
     var all = document.getElementById("all");
     var china = document.getElementById("china");
     var euramerica = document.getElementById("euramerica");
     var korea = document.getElementById("korea");
     var japan = document.getElementById("japan");
     var es = document.getElementById("es");
+
 
     qb.onclick=function () {
         all.style.display="block";
@@ -61,4 +63,9 @@ onload=function change() {
         japan.style.display="none";
         es.style.display="block";
     };
+
+    var show = document.getElementsByClassName("show");
+    show.onclick =  function show() {
+        show.style.display="block";
+    }
 };
