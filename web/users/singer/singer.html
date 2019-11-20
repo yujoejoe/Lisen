@@ -2,151 +2,117 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="img/ico.png">
+    <link rel="icon" href="../index/images/icon.png">
     <title>歌手-哩森</title>
 
-    <script>
-        // detect IE8 and above, and edge
-        if (document.documentMode || /Edge/.test(navigator.userAgent)) {
-            alert('请使用Chrome或Firefox以获得最佳浏览体验！');
-        }
-    </script>
-
-    <!--load js-->
-    <script src="js/jquery-3.2.1.slim.min.js"></script>
-    <script src="js/slick.min.js"></script>
-    <!-- load CSS -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
-    <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="css/fontawesome-all.min.css">
-    <!-- Google网络字体“ Open Sans”-->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Font awesome -->
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="css/slick-theme.css">
-    <link rel="stylesheet" href="css/templatemo-style.css">
-
-<!--引入-->
+    <link rel="stylesheet" href="../index/css/reset.css">
+    <link rel="stylesheet" href="../index/css/index.css">
+    <link rel="stylesheet" href="../../tools/aos/aos.css">
 
     <link rel="stylesheet" href="css/singer.css">
     <script src="js/singer.js"></script>
-
 
 </head>
 
 
 <body>
 
-<!-- Loader -->
-<div id="loader-wrapper">
-    <div id="loader"></div>
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-</div>
+<header class="header">
+    <div class="header-container">
+        <div class="header-top">
+            <a href="#" class="logo"></a>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="#" class="header-nav__cur">音乐</a></li>
+                    <li><a href="../loginMyMusic/loginMyMusic.html">我的音乐</a></li>
 
-<div class="container">
-
-    <!-- <div class="tm-bar-2"></div>  -->
-
-<!-- 歌手推荐轮播部分 -->
-
-    <section class="row tm-section-pb">
-        <div class="col-md-12 tm-bg-accent tm-gallery-pad tm-gallery-container mx-auto">
-            <h2 class="text-center tm-mb-45">歌手推荐</h2>
-            <div class="grid tm-gallery">
-                <figure class="effect-lexi tm-gallery-item">
-                    <img src="img/China/花粥.png" alt="Image" class="">
-                    <figcaption>
-                        <p>花粥</p>
-                    </figcaption>
-                </figure>
-                <figure class="effect-lexi tm-gallery-item">
-                    <img src="img/China/李荣浩.png" alt="Image" class="">
-                    <figcaption>
-                        <p>李荣浩</p>
-                    </figcaption>
-                </figure>
-                <figure class="effect-lexi tm-gallery-item">
-                    <img src="img/China/田馥甄.png" alt="Image" class="">
-                    <figcaption>
-                        <p>田馥甄</p>
-                    </figcaption>
-                </figure>
-                <figure class="effect-lexi tm-gallery-item">
-                    <img src="img/China/曲肖冰.png" alt="Image" class="">
-                    <figcaption>
-                        <p>曲肖冰</p>
-                    </figcaption>
-                </figure>
-                <figure class="effect-lexi tm-gallery-item">
-                    <img src="img/China/陈雪凝.png" alt="Image" class="">
-                    <figcaption>
-                        <p>陈雪凝</p>
-                    </figcaption>
-                </figure>
-                <figure class="effect-lexi tm-gallery-item">
-                    <img src="img/China/艾辰.png" alt="Image" class="">
-                    <figcaption>
-                        <p>艾辰</p>
-                    </figcaption>
-                </figure>
-                <figure class="effect-lexi tm-gallery-item">
-                    <img src="img/China/张碧晨.png" alt="Image" class="">
-                    <figcaption>
-                        <p>张碧晨</p>
-                    </figcaption>
-                </figure>
-                <figure class="effect-lexi tm-gallery-item">
-                    <img src="img/China/易烊千玺.png" alt="Image" class="">
-                    <figcaption>
-                        <p>易烊千玺</p>
-                    </figcaption>
-                </figure>
+                </ul>
+            </nav>
+            <div class="header-search">
+                <input type="text" class="text" placeholder="here...">
+                <div class="btn"><i class="icon-sprite"></i></div>
+                <div class="result">
+                    <div class="history">
+                        <span>搜索历史</span>
+                        <i class="icon-sprite"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="header-login">
+                <a href="../registered/registered.html" class="registered">注册</a>
+                <a href="../login/login.html" class="login">登录</a>
             </div>
         </div>
-    </section>
+        <ul class="header-subNav">
+            <li><a href="../../index.html">首页</a></li>
+            <li><a href="../singer/singer.html" class="subNav-cur">歌手</a></li>
+            <li><a href="#">专辑</a></li>
+            <li><a href="#rank">排行榜</a></li>
+            <li><a href="../sort/sort.html">分类歌单</a></li>
+            <li><a href="../mv/mv.html">MV</a></li>
+        </ul>
+    </div>
+</header>
 
 
+<div class="container">
 
     <div class="content">
 
         <div class="alphabet">
             <ul>
-                <li><a href="" onclick="show()" style="font-size: 20px;">全部</a></li>
-                <li><a href="" onclick="show()">A</a></li>
-                <li><a href="" onclick="show()">B</a></li>
-                <li><a href="" onclick="show()">C</a></li>
-                <li><a href="" onclick="show()">D</a></li>
-                <li><a href="" onclick="show()">E</a></li>
-                <li><a href="" onclick="show()">F</a></li>
-                <li><a href="" onclick="show()">G</a></li>
-                <li><a href="" onclick="show()">H</a></li>
-                <li><a href="" onclick="show()">I</a></li>
-                <li><a href="" onclick="show()">J</a></li>
-                <li><a href="" onclick="show()">K</a></li>
-                <li><a href="" onclick="show()">L</a></li>
-                <li><a href="" onclick="show()">M</a></li>
-                <li><a href="" onclick="show()">N</a></li>
-                <li><a href="" onclick="show()">O</a></li>
-                <li><a href="" onclick="show()">P</a></li>
-                <li><a href="" onclick="show()">Q</a></li>
-                <li><a href="" onclick="show()">R</a></li>
-                <li><a href="" onclick="show()">S</a></li>
-                <li><a href="" onclick="show()">T</a></li>
-                <li><a href="" onclick="show()">U</a></li>
-                <li><a href="" onclick="show()">V</a></li>
-                <li><a href="" onclick="show()">W</a></li>
-                <li><a href="" onclick="show()">X</a></li>
-                <li><a href="" onclick="show()">Y</a></li>
-                <li><a href="" onclick="show()">Z</a></li>
+                <li><a href="" id="0" onclick="show()" style="font-size: 20px;" class="firstShow">全部</a></li>
+                <li><a href="" id="1" onclick="show()">A</a></li>
+                <li><a href="" id="2" onclick="show()">B</a></li>
+                <li><a href="" id="3" onclick="show()">C</a></li>
+                <li><a href="" id="4" onclick="show()">D</a></li>
+                <li><a href="" id="5" onclick="show()">E</a></li>
+                <li><a href="" id="6" onclick="show()">F</a></li>
+                <li><a href="" id="7" onclick="show()">G</a></li>
+                <li><a href="" id="8" onclick="show()">H</a></li>
+                <li><a href="" id="9" onclick="show()">I</a></li>
+                <li><a href="" id="10" onclick="show()">J</a></li>
+                <li><a href="" id="11" onclick="show()">K</a></li>
+                <li><a href="" id="12" onclick="show()">L</a></li>
+                <li><a href="" id="13" onclick="show()">M</a></li>
+                <li><a href="" id="14" onclick="show()">N</a></li>
+                <li><a href="" id="15" onclick="show()">O</a></li>
+                <li><a href="" id="16" onclick="show()">P</a></li>
+                <li><a href="" id="17" onclick="show()">Q</a></li>
+                <li><a href="" id="18" onclick="show()">R</a></li>
+                <li><a href="" id="19" onclick="show()">S</a></li>
+                <li><a href="" id="20" onclick="show()">T</a></li>
+                <li><a href="" id="21" onclick="show()">U</a></li>
+                <li><a href="" id="22" onclick="show()">V</a></li>
+                <li><a href="" id="23" onclick="show()">W</a></li>
+                <li><a href="" id="24" onclick="show()">X</a></li>
+                <li><a href="" id="25" onclick="show()">Y</a></li>
+                <li><a href="" id="26" onclick="show()">Z</a></li>
             </ul>
         </div><br>
 
+        <div class="kind">
+            <ul>
+                <li><a  style="font-size: 20px;" class="firstShow">全部</a></li>
+                <li><a >流行</a></li>
+                <li><a >嘻哈</a></li>
+                <li><a >摇滚</a></li>
+                <li><a >电子</a></li>
+                <li><a >民谣</a></li>
+                <li><a >爵士</a></li>
+                <li><a >古典</a></li>
+                <li><a >蓝调</a></li>
+                <li><a >轻音乐</a></li>
+                <li><a >其它</a></li>
+            </ul>
+        </div>
+
         <div class="contentShow">
             <ul>
-                <li><a id="qb" style="font-size: 20px;">全部</a></li>
+                <li><a id="qb" style="font-size: 20px;" class="firstShow">全部</a></li>
                 <li><a id="zg">中国</a></li>
                 <li><a id="om">欧美</a></li>
                 <li><a id="hg">韩国</a></li>
@@ -157,6 +123,31 @@
 
 
         <div  id="all" class="show">
+            <figure>
+                <a href="#"><img src="img/Euramerica/AlanWalker.jpg"></a>
+                <figcaption><a href="#">Alan Walker</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Korea/EXO.jpg"></a>
+                <figcaption><a href="#">陈雪凝</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Korea/灿烈.jpg"></a>
+                <figcaption><a href="#">灿烈</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Japan/初音未来.jpg"></a>
+                <figcaption><a href="#">初音未来</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Japan/Aimer.jpg"></a>
+                <figcaption><a href="#">Aimer</a></figcaption>
+            </figure>
+
             <figure>
                 <a href="#"><img src="img/China/张碧晨.png"></a>
                 <figcaption><a href="#">张碧晨</a></figcaption>
@@ -234,10 +225,60 @@
                 <a href="#"><img src="img/China/花粥.png"></a>
                 <figcaption><a href="#">花粥</a></figcaption>
             </figure>
+
+            <figure>
+                <a href="#"><img src="img/China/张碧晨.png"></a>
+                <figcaption><a href="#">张碧晨</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/China/易烊千玺.png"></a>
+                <figcaption><a href="#">易烊千玺</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/China/陈雪凝.png"></a>
+                <figcaption><a href="#">陈雪凝</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/China/杨丞琳.png"></a>
+                <figcaption><a href="#">杨丞琳</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/China/花粥.png"></a>
+                <figcaption><a href="#">花粥</a></figcaption>
+            </figure>
         </div>
 
 
         <div  id="euramerica" class="EuramericaShow">
+            <figure>
+                <a href="#"><img src="img/Euramerica/TaylorSwift.jpg"></a>
+                <figcaption><a href="#">Taylor Swift</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Euramerica/ArianaGrande.jpg"></a>
+                <figcaption><a href="#">Ariana Grande</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Euramerica/Westlife.jpg"></a>
+                <figcaption><a href="#">Westlife</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Euramerica/英雄联盟.jpg"></a>
+                <figcaption><a href="#">英雄联盟</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Euramerica/OllyMurs.jpg"></a>
+                <figcaption><a href="#">Olly Murs</a></figcaption>
+            </figure>
+
             <figure>
                 <a href="#"><img src="img/Euramerica/TaylorSwift.jpg"></a>
                 <figcaption><a href="#">Taylor Swift</a></figcaption>
@@ -290,10 +331,60 @@
                 <a href="#"><img src="img/Korea/Kisum.jpg"></a>
                 <figcaption><a href="#">Kisum</a></figcaption>
             </figure>
+
+            <figure>
+                <a href="#"><img src="img/Korea/EXO.jpg"></a>
+                <figcaption><a href="#">EXO</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Korea/灿烈.jpg"></a>
+                <figcaption><a href="#">灿烈</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Korea/CHEN.jpg"></a>
+                <figcaption><a href="#">CHEN</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Korea/gDRAGON.jpg"></a>
+                <figcaption><a href="#">G-DRAGON</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Korea/Kisum.jpg"></a>
+                <figcaption><a href="#">Kisum</a></figcaption>
+            </figure>
         </div>
 
 
         <div  id="japan" class="JapanShow">
+            <figure>
+                <a href="#"><img src="img/Japan/初音未来.jpg"></a>
+                <figcaption><a href="#">初音未来</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Japan/Aimer.jpg"></a>
+                <figcaption><a href="#">Aimer</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Japan/LiSA.jpg"></a>
+                <figcaption><a href="#">LiSA</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Japan/出羽良彰.jpg"></a>
+                <figcaption><a href="#">出羽良彰</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Japan/majiko.jpg"></a>
+                <figcaption><a href="#">majiko</a></figcaption>
+            </figure>
+
             <figure>
                 <a href="#"><img src="img/Japan/初音未来.jpg"></a>
                 <figcaption><a href="#">初音未来</a></figcaption>
@@ -346,41 +437,131 @@
                 <a href="#"><img src="img/China/花粥.png"></a>
                 <figcaption><a href="#">花粥</a></figcaption>
             </figure>
+
+            <figure>
+                <a href="#"><img src="img/Korea/EXO.jpg"></a>
+                <figcaption><a href="#">陈雪凝</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Korea/灿烈.jpg"></a>
+                <figcaption><a href="#">灿烈</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Japan/初音未来.jpg"></a>
+                <figcaption><a href="#">初音未来</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/Japan/Aimer.jpg"></a>
+                <figcaption><a href="#">Aimer</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/China/花粥.png"></a>
+                <figcaption><a href="#">花粥</a></figcaption>
+            </figure>
         </div>
 
     </div>
 
 </div>
-<!-- container -->
 
+<!-- footer -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-info">
+            <div class="footer-info__download">
+                <h3>下载哩森音乐客户端</h3>
+                <ul class="list">
+                    <li><a href="#">
+                        <i class="footer-icon icon-pc"></i>
+                        PC版
+                    </a></li>
+                    <li><a href="#">
+                        <i class="footer-icon icon-mac"></i>
+                        Mac版
+                    </a></li>
+                    <li><a href="#">
+                        <i class="footer-icon icon-android"></i>
+                        Android版
+                    </a></li>
+                    <li><a href="#">
+                        <i class="footer-icon icon-iphone"></i>
+                        iPhone版
+                    </a></li>
+                </ul>
+            </div>
+            <div class="footer-info__product">
+                <h3>特色产品</h3>
+                <ul class="list">
+                    <li class="hasPic"><a href="#">
+                        <i class="footer-icon icon-kg"></i>
+                        全民K歌
+                    </a></li>
+                    <li class="hasPic"><a href="#">
+                        <i class="footer-icon icon-ss"></i>
+                        全民K歌
+                    </a></li>
+                    <li class="hasPic"><a href="#">
+                        <i class="footer-icon icon-qp"></i>
+                        全民K歌
+                    </a></li>
+                    <li><a href="#">KK音乐原创音乐平台</a></li>
+                    <li><a href="#">上传视频</a></li>
+                    <li><a href="#">上传视频</a></li>
+                    <li><a href="#">上传视频</a></li>
+                </ul>
+            </div>
+            <div class="footer-info__link">
+                <h3>特色产品</h3>
+                <ul class="list">
+                    <li><a href="#">CJ E&M</a></li>
+                    <li><a href="#">我们视频</a></li>
+                    <li><a href="#">手机KK空间</a></li>
+                    <li><a href="#">CJ E&M</a></li>
+                    <li><a href="#">我们视频</a></li>
+                    <li><a href="#">手机KK空间</a></li>
+                    <li><a href="#">CJ E&M</a></li>
+                    <li><a href="#">我们视频</a></li>
+                    <li><a href="#">手机KK空间</a></li>
+                    <li><a href="#">CJ E&M</a></li>
+                    <li><a href="#">我们视频</a></li>
+                    <li><a href="#">手机KK空间</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p><a href="#">关于我们</a><span>|</span><a href="#">关于我们</a><span>|</span><a href="#">关于我们</a><span>|</span><a href="#">关于我们</a><span>|</span><a href="#">关于我们</a><span>|</span><a href="#">关于我们</a><span>|</span><a href="#">关于我们</a><span>|</span><a href="#">关于我们</a></p>
+            <p>Copyright © 1998 - 2017 kk. All Rights Reserved.</p>
+            <p>我们公司 版权所有 我们网络文化经营许可证</p>
+        </div>
+    </div>
+</footer>
 
-<div class="last">
-    <br/>|
-    <a title="About LISEN" href="">关于哩森</a> |
-    <a title="服务条款" href="">服务条款</a> |
-    <a title="用户服务协议" href="">用户服务协议</a> |
-    <a title="隐私政策" href="">隐私政策</a> |
-    <a title="权利声明" href="" >权利声明</a> |
-    <a title="广告服务" href="" >广告服务</a> |
-    <a title="网站导航" href="" >网站导航</a> |
-    <a title="腾讯招聘" href="" >招聘信息</a> |
-    <a title="客服中心" href="">客服中心</a> |
+<!-- 分享到 -->
+<ul class="slider-share">
+    <li><a href="#">
+        <i class="icon-sprite icon-add"></i>
+        添加到
+        <i class="icon-sprite icon-arrow"></i>
+    </a></li>
+    <li><a href="#">
+        <i class="icon-sprite icon-share"></i>
+        分享
+        <i class="icon-sprite icon-arrow"></i>
+    </a></li>
+    <li><a href="#">
+        <i class="icon-sprite icon-download"></i>
+        下载
+    </a></li>
+</ul>
 
-    <br/>
-    Copyright © 1998 -
-    <script type="text/javascript">
-        document.write(new Date().getFullYear());
-    </script>
-    Tencent.
-    <a title="All Rights Reserved." href="">All Rights Reserved.</a>
-    <br/>
-    <a title="版权所有" href="">版权所有</a>
-    <a title="哩森网络文化经营许可证" href="">信息网络文化经营许可证</a>
 </div>
 
 
-
-<script>
+<!--<script>
 
     $(function(){
         $('.tm-gallery').slick({
@@ -414,6 +595,6 @@
         });
     });
 
-</script>
+</script>-->
 </body>
 </html>
