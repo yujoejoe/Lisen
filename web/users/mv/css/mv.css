@@ -109,6 +109,8 @@ position: relative;
     left: 0;
     top: 0;
     width: 100%;
+    transform: scale(1);
+    transition: transform .75s ease-in-out;
 }
 .item_title{
     font-size: 14px;
@@ -137,7 +139,7 @@ position: relative;
 .mv_list_hover:hover .icon-play{
     transform: scale(1) translateZ(0);
     opacity: 1;
-    transition: opacity .75s;
+    transition: all .75s ease-in-out;
 }
 .item_title:hover,
 .item_singer:hover{

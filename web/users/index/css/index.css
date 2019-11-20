@@ -155,9 +155,9 @@
   margin: -35px;
   background: url(../images/icon_play.png) no-repeat;
   opacity: 0;
-
   transform: scale(0.7);
   -webkit-transform: scale(0.7);
+  transition: all .75s ease-in-out;
 }
 /* play && mask 这里有一个就复制一个过来 */
 .slider-li>ul li:hover .mask,
@@ -168,7 +168,6 @@
 .rank-list__item:hover .icon-play,
 .mv-list .item:hover .icon-play {
   opacity: 1;
-
   transform: scale(1);
   -webkit-transform: scale(1);
 }
@@ -359,7 +358,7 @@
 .header {}
 .header-container {
   position: relative;
-  width: 80%;
+  width: 90%;
   height: 142px;
   margin: 0 auto;
 }
@@ -531,7 +530,7 @@
   background-color: #ededed;
 }
 .header-subNav {
-  padding-left: 360px;
+  margin: 0 25%;
 }
 .header-subNav li {
   display: inline-block;
@@ -539,7 +538,7 @@
 }
 .header-subNav a {
   line-height: 50px;
-  font-size: 15px;
+  font-size: 14px;
 }
 .header-subNav a.subNav-cur {
   color: #31c27c;
