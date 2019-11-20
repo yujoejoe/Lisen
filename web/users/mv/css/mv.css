@@ -137,7 +137,7 @@ position: relative;
     transition: transform .75s cubic-bezier(0, 1, 0.75, 1);
 }
 .mv_list_hover:hover .icon-play{
-    transform: scale(1) translateZ(0);
+    transform: scale(0.8) translateZ(0);
     opacity: 1;
     transition: all .75s ease-in-out;
 }
