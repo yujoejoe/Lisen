@@ -14,7 +14,7 @@ body {
   font-size: 14px;
   font-family: "Microsoft Yahei";
   color: #333;
-  background-color: #fff;
+  background-image: linear-gradient(to bottom, #f6f6f6, #fff);
 }
 ul, ol ,li{
   list-style: none;
@@ -36,3 +36,4 @@ input, button {
 img {
   vertical-align: top;
 }
+

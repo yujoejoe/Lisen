@@ -355,7 +355,9 @@
 }
 
 /* ====== header ====== */
-.header {}
+.header {
+  background-color: #fff;
+}
 .header-container {
   position: relative;
   width: 90%;
