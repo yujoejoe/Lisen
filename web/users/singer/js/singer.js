@@ -1,10 +1,10 @@
 onload=function change() {
-    var qb = document.getElementById("qb");
-    var zg = document.getElementById("zg");
-    var om = document.getElementById("om");
-    var hg = document.getElementById("hg");
-    var rb = document.getElementById("rb");
-    var qt = document.getElementById("qt");
+    var all_option = document.getElementById("all_option");
+    var china_option = document.getElementById("china_option");
+    var euramerica_option = document.getElementById("euramerica_option");
+    var korea_option = document.getElementById("korea_option");
+    var japan_option = document.getElementById("japan_option");
+    var else_option = document.getElementById("else_option");
 
     var all = document.getElementById("all");
     var china = document.getElementById("china");
@@ -13,59 +13,123 @@ onload=function change() {
     var japan = document.getElementById("japan");
     var es = document.getElementById("es");
 
-
-    qb.onclick=function () {
+    all_option.onclick=function () {
         all.style.display="block";
         china.style.display="none";
         euramerica.style.display="none";
         korea.style.display="none";
         japan.style.display="none";
         es.style.display="none";
+        if (all.style.display==="block") {
+            all_option.style.backgroundColor="#84fac1";
+            china_option.style.backgroundColor="#f6f6f6";
+            euramerica_option.style.backgroundColor="#f6f6f6";
+            korea_option.style.backgroundColor="#f6f6f6";
+            japan_option.style.backgroundColor="#f6f6f6";
+            else_option.style.backgroundColor="#f6f6f6";
+        }
     };
 
-    zg.onclick=function () {
+    china_option.onclick=function () {
         all.style.display="none";
         china.style.display="block";
         euramerica.style.display="none";
         korea.style.display="none";
         japan.style.display="none";
         es.style.display="none";
+        if (china.style.display==="block") {
+            all_option.style.backgroundColor="#f6f6f6";
+            china_option.style.backgroundColor="#84fac1";
+            euramerica_option.style.backgroundColor="#f6f6f6";
+            korea_option.style.backgroundColor="#f6f6f6";
+            japan_option.style.backgroundColor="#f6f6f6";
+            else_option.style.backgroundColor="#f6f6f6";
+        }
     };
-    om.onclick=function () {
+
+    euramerica_option.onclick=function () {
         all.style.display="none";
         china.style.display="none";
         euramerica.style.display="block";
         korea.style.display="none";
         japan.style.display="none";
         es.style.display="none";
+        if (euramerica.style.display==="block") {
+            all_option.style.backgroundColor="#f6f6f6";
+            china_option.style.backgroundColor="#f6f6f6";
+            euramerica_option.style.backgroundColor="#84fac1";
+            korea_option.style.backgroundColor="#f6f6f6";
+            japan_option.style.backgroundColor="#f6f6f6";
+            else_option.style.backgroundColor="#f6f6f6";
+        }
     };
-    hg.onclick=function () {
+
+    korea_option.onclick=function () {
         all.style.display="none";
         china.style.display="none";
         euramerica.style.display="none";
         korea.style.display="block";
         japan.style.display="none";
         es.style.display="none";
+        if (korea.style.display==="block") {
+            all_option.style.backgroundColor="#f6f6f6";
+            china_option.style.backgroundColor="#f6f6f6";
+            euramerica_option.style.backgroundColor="#f6f6f6";
+            korea_option.style.backgroundColor="#84fac1";
+            japan_option.style.backgroundColor="#f6f6f6";
+            else_option.style.backgroundColor="#f6f6f6";
+        }
     };
-    rb.onclick=function () {
+
+    japan_option.onclick=function () {
         all.style.display="none";
         china.style.display="none";
         euramerica.style.display="none";
         korea.style.display="none";
         japan.style.display="block";
         es.style.display="none";
+        if (japan.style.display==="block") {
+            all_option.style.backgroundColor="#f6f6f6";
+            china_option.style.backgroundColor="#f6f6f6";
+            euramerica_option.style.backgroundColor="#f6f6f6";
+            korea_option.style.backgroundColor="#f6f6f6";
+            japan_option.style.backgroundColor="#84fac1";
+            else_option.style.backgroundColor="#f6f6f6";
+        }
     };
-    qt.onclick=function () {
+
+    else_option.onclick=function () {
         all.style.display="none";
         china.style.display="none";
         euramerica.style.display="none";
         korea.style.display="none";
         japan.style.display="none";
         es.style.display="block";
+        if (es.style.display==="block") {
+            all_option.style.backgroundColor="#f6f6f6";
+            china_option.style.backgroundColor="#f6f6f6";
+            euramerica_option.style.backgroundColor="#f6f6f6";
+            korea_option.style.backgroundColor="#f6f6f6";
+            japan_option.style.backgroundColor="#f6f6f6";
+            else_option.style.backgroundColor="#84fac1";
+        }
     };
 
-    var show = document.getElementsByClassName("show");
-    show.onclick =  function show() {
-        show.style.display="block";
-    }
+    /*var show = document.getElementsByClassName("alphabetShow");
+    show.onclick = function show() {
+        for (var i=0; i<show.length; i++){
+            var alphabet1 = document.getElementById(""+i);
+            alphabet1.style.backgroundColor="#84fac1";
+            alphabet1.style.display="block";
+            for (var j=0; j<show.length; j++) {
+                var alphabet2 = document.getElementById(""+j);
+                if (i !== j) {
+                    alphabet2.style.backgroundColor="#f6f6f6";
+                    alphabet2.style.display="none";
+                }
+            }
+        }
+    }*/
+
+
 };
