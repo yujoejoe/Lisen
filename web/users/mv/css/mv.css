@@ -82,16 +82,27 @@ position: relative;
     padding-bottom: 20px;
     overflow: hidden;
     width: 25%;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-family: Verdana, Geneva, monospace,sans-serif;
+    font-size: 12px;
 }
-
-.mv_list_item>a{
+.mv_list_box{
+    position: relative;
+    margin-right: 10%;
+}
+.mv_list_hover{
     position: relative;
     display: block;
     overflow: hidden;
-    padding-top: 50.625%;
-    margin-right: 10%;
+    padding-top: 56.25%;
+}
+.mv_list_hover:after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-image: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.4) 80%,rgba(0,0,0,.7) 100%);
 }
 .item_img{
     position: absolute;
@@ -100,19 +111,17 @@ position: relative;
     width: 100%;
 }
 .item_title{
-    font-size: 16px;
+    font-size: 14px;
     margin-top: 15px;
     color:#3c3c3c;
 }
 .item_singer{
-    font-size: 14px;
     line-height: 20px;
     color: #8c8c8c;
     margin: 5px 0;
 }
 .item_info{
-    font-size: 12px;
-    color: #c0c0c0;
+    color: #cccccc;
 }
 .item_listen{
     margin-right: 10px;
@@ -121,9 +130,19 @@ position: relative;
     margin-right: 5px;
 }
 
-.item_img:hover{
-    transform: scale(1.1);
-    transition: transfrom .75s;
+.mv_list_hover:hover .item_img{
+    transform: scale(1.07) translateZ(0);
+    transition: transform .75s cubic-bezier(0, 1, 0.75, 1);
+}
+.mv_list_hover:hover .icon-play{
+    transform: scale(1) translateZ(0);
+    opacity: 1;
+    transition: opacity .75s;
+}
+.item_title:hover,
+.item_singer:hover{
+    color: #31c27c;
+    cursor: pointer;
 }
 
 /*====选择页面====*/
@@ -140,7 +159,7 @@ position: relative;
     line-height: 30px;
     padding: 0 20px;
     margin: 0 5px;
-    color: #d4d4d4;
+    color: #d0d0d0;
 }
 .page_index_cur,
 .page_index:hover{
