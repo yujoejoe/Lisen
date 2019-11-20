@@ -1,0 +1,149 @@
+.body{
+    background-image: linear-gradient(to bottom, #f6f6f6, #fff);
+}
+.main{
+    width: 90%;
+    margin: 0 auto;
+}
+
+/*====标签css====*/
+
+.tag_area,
+.tag_version{
+    line-height: 26px;
+    height: auto;
+    font-size: 14px;
+}
+.tag_area{
+    margin-top: 30px;
+}
+.tag_title{
+    display: inline-block;
+    width: 65px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.tag_item{
+    display: inline-block;
+    padding: 0 10px;
+    margin: 0 20px 15px 0;
+}
+.tag_item_select,
+.tag_item_select:hover{
+    background-color: #31c27c;
+    color: #fff;
+}
+
+
+/*====mv部分====*/
+.mv_head{
+position: relative;
+}
+.clear_float:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.hd_title{
+    float: left;
+    font-size: 26px;
+    line-height: 52px;
+}
+.type_switch{
+    float: right;
+    font-size: 0;
+}
+.type_item{
+    position: relative;
+    display: inline-block;
+    color: #333;
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #84fac1;
+}
+.type_item_select,
+.type_item_select:hover{
+    background-color: #31c27c;
+    color: #fff;
+}
+.type_item_left{
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-right: 0;
+}
+.type_item_right{
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-left: 0;
+}
+
+.mv_list_item{
+    float: left;
+    padding-bottom: 20px;
+    overflow: hidden;
+    width: 25%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.mv_list_item>a{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding-top: 50.625%;
+    margin-right: 10%;
+}
+.item_img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+.item_title{
+    font-size: 16px;
+    margin-top: 15px;
+    color:#3c3c3c;
+}
+.item_singer{
+    font-size: 14px;
+    line-height: 20px;
+    color: #8c8c8c;
+    margin: 5px 0;
+}
+.item_info{
+    font-size: 12px;
+    color: #c0c0c0;
+}
+.item_listen{
+    margin-right: 10px;
+}
+.item_listen_icon{
+    margin-right: 5px;
+}
+
+.item_img:hover{
+    transform: scale(1.1);
+    transition: transfrom .75s;
+}
+
+/*====选择页面====*/
+
+.mv_page{
+    width: 100%;
+    text-align: center;
+    margin: 30px auto;
+}
+.page_more,
+.page_index{
+    display: inline-block;
+    font-size: 15px;
+    line-height: 30px;
+    padding: 0 20px;
+    margin: 0 5px;
+    color: #d4d4d4;
+}
+.page_index_cur,
+.page_index:hover{
+    color: #fff;
+    background-color: #31c27c;
+}
