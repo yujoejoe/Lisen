@@ -23,13 +23,15 @@ $(function () {
   var mv = $('#mv');
   var hotSong = $('#hotSong');
 
+  // 幻灯片切换
+  newSong.slider();
+  hotSong.slider();
+
   // tab 切换
   newSong.tab();
   mv.tab();
 
-  // 幻灯片切换
-  newSong.slider();
-  hotSong.slider();
+
 
 
   // 旋转木马
@@ -107,7 +109,6 @@ $(function () {
 
     this.$slider_btn = $('.slider-btns').find('span');
 
-
     this.newSong = {
       1: ['slider_img1.jpg', 'slider_img2.jpg', 'slider_img3.jpg', 'slider_img4.jpg', 'slider_img5.jpg', 'slider_img6.jpg', 'slider_img7.jpg', 'slider_img8.jpg', 'slider_img9.jpg', 'slider_img10.jpg', 'slider_img11.jpg', 'slider_img12.jpg'],
       2: ['slider_img13.jpg', 'slider_img14.jpg', 'slider_img15.jpg', 'slider_img16.jpg', 'slider_img17.jpg', 'slider_img18.jpg', 'slider_img19.jpg', 'slider_img20.jpg', 'slider_img21.jpg', 'slider_img22.jpg', 'slider_img23.jpg', 'slider_img24.jpg'],
@@ -157,10 +158,6 @@ $(function () {
   Plugin.prototype = {
     init: function () {
       var self = this;
-
-
-
-
       this.$tab_item.click(function () {
         self.change($(this).index());
         self.$slider_wrapper.css({left: -1200});
@@ -173,6 +170,8 @@ $(function () {
 
     // 切换图片
     change: function (index) {
+
+
       var self = this;
       var img_src = 'users/index/images/cont/newSong/';
       var mv_src = 'users/index/images/cont/mv/';
@@ -181,17 +180,17 @@ $(function () {
 
       if (this.oWrapper.attr('id') === 'newSong') {
 
+        var img_length = self.newSong[1].length;
         $(this.$tab_img).each(function (i) {
-          $(self.$tab_img[i]).attr('src', img_src + self.newSong[index + 1][i]+'');
-        });
-
-        $(this.$first_img).each(function(i){
-          var src = $(self.$tab_img[self.$tab_img.length - self.$first_img.length + i]).attr('src');
-          $(self.$first_img[i]).attr('src', src);
-        });
-        $(this.$last_img).each(function(i){
-          var src = $(self.$tab_img[i]).attr('src');
-          $(self.$last_img[i]).attr('src', src);
+          if(i < 4){
+            // 让前面的复制体图片等于第三板块图片
+            $(self.$tab_img[i]).attr('src', img_src + self.newSong[index + 1][img_length-4+i]+'');
+          }else if(i > 15){
+            // 让后面的复制体图片等于第一板块图片
+            $(self.$tab_img[i]).attr('src', img_src + self.newSong[index + 1][i-img_length-4]+'');
+          }else{
+            $(self.$tab_img[i]).attr('src', img_src + self.newSong[index + 1][i-4]+'');
+          }
         });
 
       } else if (this.oWrapper.attr('id') === 'mv') {
