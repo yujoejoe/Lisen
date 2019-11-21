@@ -59,13 +59,13 @@
      position:relative;
      width:100%;
      height:500px;
-     background-color: #2aabd2;
+     /*background-color: #2aabd2;*/
  }
  .main-content   .main-contents{
      position: absolute;
      width: 1200px;
      height: 500px;
-     background-color: #e4b9b9;
+     /*background-color: #e4b9b9;*/
      left:150px ;
  }
  .main-content  .main-contents   a{
