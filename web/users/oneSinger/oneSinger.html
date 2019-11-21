@@ -87,10 +87,10 @@
 <div class="container">
     <div class="content">
 
-<!--歌手简介start-->
+        <!--歌手简介start-->
         <div class="intro">
             <div class="left_photo">
-               <img src="../singer/img/China/陈雪凝.png">
+                <img src="../singer/img/China/陈雪凝.png">
             </div>
             <div class="right_intro">
                 <h1>陈雪凝</h1>
@@ -105,9 +105,9 @@
                 </ul>
                 <div class="intro_works">
                     <p>
-                        <a id="single_option" onclick="change()"> 单曲 45 </a><span>|</span>
-                        <a id="special_option" onclick="change()"> 专辑 25 </a><span>|</span>
-                        <a id="mv_option" onclick="change()"> MV 53 </a> <span>|</span>
+                        <a id="single_option"> 单曲 45 </a><span>|</span>
+                        <a id="special_option"> 专辑 25 </a><span>|</span>
+                        <a id="mv_option"> MV 53 </a> <span>|</span>
                     </p>
                 </div>
                 <div class="action">
@@ -116,211 +116,378 @@
                 </div>
             </div>
         </div>
-<!--歌手简介end-->
+        <!--歌手简介end-->
 
-        <div class="song_list">
-            <!--单曲-->
-            <div class="single_show " id="single_show">
-                <h2>单曲 45</h2>
-                <div class="list_action">
-                    <a href="#"><button>播放全部</button></a>
-                    <a href="#"><button>添加到</button></a>
-                    <a href="#"><button>下载</button></a>
-                </div>
-                <ul style="color: dimgray; background-color: #eeeeee;">
-                    <li class="single_name">歌曲</li>
-                    <li class="single_special">专辑</li>
-                    <li class="single_time">时长</li>
+        <!--单曲-->
+        <div id="single_show" class="single_show first_show" >
+            <h2>单曲 45</h2>
+            <div class="list_action">
+                <a href="#"><button>播放全部</button></a>
+                <a href="#"><button>添加到</button></a>
+                <a href="#"><button>下载</button></a>
+            </div>
+            <ul style="color: dimgray; background-color: #eeeeee;">
+                <li class="single_name">歌曲</li>
+                <li class="single_special">专辑</li>
+                <li class="single_time">时长</li>
+            </ul>
+            <a href="#">
+                <ul>
+                    <li class="single_id">1</li>
+                    <li class="single_name">你的酒馆对我打了佯</li>
+                    <li class="single_special">你的酒馆对我打了佯</li>
+                    <li class="single_time">04:11</li>
                 </ul>
-                <a href="#">
-                    <ul>
-                        <li class="single_id">1</li>
-                        <li class="single_name">你的酒馆对我打了佯</li>
-                        <li class="single_special">你的酒馆对我打了佯</li>
-                        <li class="single_time">04:11</li>
-                    </ul>
-                </a>
-                <a href="#">
-                    <ul>
-                        <li class="single_id">2</li>
-                        <li class="single_name">绿色</li>
-                        <li class="single_special">绿色</li>
-                        <li class="single_time">04:29</li>
-                    </ul>
-                </a>
-                <a href="#">
-                    <ul>
-                        <li class="single_id">3</li>
-                        <li class="single_name">没有人心疼我</li>
-                        <li class="single_special">没有人心疼我</li>
-                        <li class="single_time">04:29</li>
-                    </ul>
-                </a>
-                <a href="#">
-                    <ul>
-                        <li class="single_id">4</li>
-                        <li class="single_name">灰姑娘</li>
-                        <li class="single_special">灰姑娘</li>
-                        <li class="single_time">04:53</li>
-                    </ul>
-                </a>
-                <a href="#">
-                    <ul>
-                        <li class="single_id">5</li>
-                        <li class="single_name">别再靠近我了</li>
-                        <li class="single_special">别再靠近我了</li>
-                        <li class="single_time">04:33</li>
-                    </ul>
-                </a>
-                <a href="#">
-                    <ul>
-                        <li class="single_id">6</li>
-                        <li class="single_name">那个傻瓜</li>
-                        <li class="single_special">那个傻瓜</li>
-                        <li class="single_time">04:27</li>
-                    </ul>
-                </a>
-                <a href="#">
-                    <ul>
-                        <li class="single_id">7</li>
-                        <li class="single_name">你的酒馆对我打了佯</li>
-                        <li class="single_special">你的酒馆对我打了佯</li>
-                        <li class="single_time">04:11</li>
-                    </ul>
-                </a>
-                <a href="#">
-                    <ul>
-                        <li class="single_id">8</li>
-                        <li class="single_name">绿色</li>
-                        <li class="single_special">绿色</li>
-                        <li class="single_time">04:29</li>
-                    </ul>
-                </a>
-                <a href="#">
-                    <ul>
-                        <li class="single_id">9</li>
-                        <li class="single_name">没有人心疼我</li>
-                        <li class="single_special">没有人心疼我</li>
-                        <li class="single_time">04:29</li>
-                    </ul>
-                </a>
-                <a href="#">
-                    <ul>
-                        <li class="single_id">10</li>
-                        <li class="single_name">灰姑娘</li>
-                        <li class="single_special">灰姑娘</li>
-                        <li class="single_time">04:53</li>
-                    </ul>
-                </a>
-                <a href="#">
-                    <ul>
-                        <li class="single_id">11</li>
-                        <li class="single_name">别再靠近我了</li>
-                        <li class="single_special">别再靠近我了</li>
-                        <li class="single_time">04:33</li>
-                    </ul>
-                </a>
-                <a href="#">
-                    <ul>
-                        <li class="single_id">12</li>
-                        <li class="single_name">那个傻瓜</li>
-                        <li class="single_special">那个傻瓜</li>
-                        <li class="single_time">04:27</li>
-                    </ul>
-                </a>
-            </div>
-
-    <!--专辑-->
-            <div class="special_show" id="special_show">
-                <h2>专辑 25</h2>
-                <div>
-                    <a href="#">
-                        <img src="">
-                    </a>
-                </div>
-            </div>
-
-    <!--MV-->
-            <div class="mv_show first_show" id="mv_show">
-                <h2>MV 53</h2>
-                <div class="content_part">
-                    <ul class="mv_list clearfix" id="id_mv_list">
-                        <li class="list_item">
-                            <div class="list_box">
-                                <a href="" class="list_hover">
-                                    <img src="img/mv/1.png" alt="" class="item_img">
-                                    <i class="icon-play"></i>
-                                </a>
-                                <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
-                                <a href="" class="item_singer">Gustavo Cerati</a>
-                                <div class="item_info">
-                            <span class="item_listen">
-                                <i class="fa fa-video-camera item_listen_icon"></i>
-                                2789
-                            </span>
-                                    <span>2019-11-20</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list_item">
-                            <div class="list_box">
-                                <a href="" class="list_hover">
-                                    <img src="img/mv/2.png" alt="" class="item_img">
-                                    <i class="icon-play"></i>
-                                </a>
-                                <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
-                                <a href="" class="item_singer">Gustavo Cerati</a>
-                                <div class="item_info">
-                            <span class="item_listen">
-                                <i class="fa fa-video-camera item_listen_icon"></i>
-                                2789
-                            </span>
-                                    <span>2019-11-20</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list_item">
-                            <div class="list_box">
-                                <a href="" class="list_hover">
-                                    <img src="img/mv/3.png" alt="" class="item_img">
-                                    <i class="icon-play"></i>
-                                </a>
-                                <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
-                                <a href="" class="item_singer">Gustavo Cerati</a>
-                                <div class="item_info">
-                            <span class="item_listen">
-                                <i class="fa fa-video-camera item_listen_icon"></i>
-                                2789
-                            </span>
-                                    <span>2019-11-20</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list_item">
-                            <div class="list_box">
-                                <a href="" class="list_hover">
-                                    <img src="img/mv/4.png" alt="" class="item_img">
-                                    <i class="icon-play"></i>
-                                </a>
-                                <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
-                                <a href="" class="item_singer">Gustavo Cerati</a>
-                                <div class="item_info">
-                            <span class="item_listen">
-                                <i class="fa fa-video-camera item_listen_icon"></i>
-                                2789
-                            </span>
-                                    <span>2019-11-20</span>
-                                </div>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-
+            </a>
+            <a href="#">
+                <ul>
+                    <li class="single_id">2</li>
+                    <li class="single_name">绿色</li>
+                    <li class="single_special">绿色</li>
+                    <li class="single_time">04:29</li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul>
+                    <li class="single_id">3</li>
+                    <li class="single_name">没有人心疼我</li>
+                    <li class="single_special">没有人心疼我</li>
+                    <li class="single_time">04:29</li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul>
+                    <li class="single_id">4</li>
+                    <li class="single_name">灰姑娘</li>
+                    <li class="single_special">灰姑娘</li>
+                    <li class="single_time">04:53</li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul>
+                    <li class="single_id">5</li>
+                    <li class="single_name">别再靠近我了</li>
+                    <li class="single_special">别再靠近我了</li>
+                    <li class="single_time">04:33</li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul>
+                    <li class="single_id">6</li>
+                    <li class="single_name">那个傻瓜</li>
+                    <li class="single_special">那个傻瓜</li>
+                    <li class="single_time">04:27</li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul>
+                    <li class="single_id">7</li>
+                    <li class="single_name">你的酒馆对我打了佯</li>
+                    <li class="single_special">你的酒馆对我打了佯</li>
+                    <li class="single_time">04:11</li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul>
+                    <li class="single_id">8</li>
+                    <li class="single_name">绿色</li>
+                    <li class="single_special">绿色</li>
+                    <li class="single_time">04:29</li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul>
+                    <li class="single_id">9</li>
+                    <li class="single_name">没有人心疼我</li>
+                    <li class="single_special">没有人心疼我</li>
+                    <li class="single_time">04:29</li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul>
+                    <li class="single_id">10</li>
+                    <li class="single_name">灰姑娘</li>
+                    <li class="single_special">灰姑娘</li>
+                    <li class="single_time">04:53</li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul>
+                    <li class="single_id">11</li>
+                    <li class="single_name">别再靠近我了</li>
+                    <li class="single_special">别再靠近我了</li>
+                    <li class="single_time">04:33</li>
+                </ul>
+            </a>
+            <a href="#">
+                <ul>
+                    <li class="single_id">12</li>
+                    <li class="single_name">那个傻瓜</li>
+                    <li class="single_special">那个傻瓜</li>
+                    <li class="single_time">04:27</li>
+                </ul>
+            </a>
         </div>
 
-<!--分页start-->
+        <!--专辑-->
+        <div  id="special_show" class="special_show ">
+            <h2>专辑 25</h2>
+            <figure>
+                <a href="#"><img src="img/special/别再靠近我了.png"></a>
+                <figcaption><a href="#">别再靠近我了</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/special/十八.png"></a>
+                <figcaption><a href="#">十八</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/special/如虹.png"></a>
+                <figcaption><a href="#">如虹</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/special/灰姑娘.png"></a>
+                <figcaption><a href="#">灰姑娘</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/special/灰姑娘.png"></a>
+                <figcaption><a href="#">灰姑娘</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/special/王昭君.png"></a>
+                <figcaption><a href="#">王昭君</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/special/如虹.png"></a>
+                <figcaption><a href="#">如虹</a></figcaption>
+            </figure>
+
+            <figure>
+                <a href="#"><img src="img/special/别再靠近我了.png"></a>
+                <figcaption><a href="#">别再靠近我了</a></figcaption>
+            </figure>
+        </div>
+
+        <!--MV-->
+        <div id="mv_show" class="mv_show ">
+            <h2>MV 53</h2>
+            <div class="content_part">
+                <ul class="mv_list clearfix" id="id_mv_list">
+                    <li class="list_item">
+                        <div class="list_box">
+                            <a href="" class="list_hover">
+                                <img src="img/mv/1.png" alt="" class="item_img">
+                                <i class="icon-play"></i>
+                            </a>
+                            <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
+                            <a href="" class="item_singer">Gustavo Cerati</a>
+                            <div class="item_info">
+                            <span class="item_listen">
+                                <i class="fa fa-video-camera item_listen_icon"></i>
+                                2789
+                            </span>
+                                <span>2019-11-20</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list_item">
+                        <div class="list_box">
+                            <a href="" class="list_hover">
+                                <img src="img/mv/2.png" alt="" class="item_img">
+                                <i class="icon-play"></i>
+                            </a>
+                            <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
+                            <a href="" class="item_singer">Gustavo Cerati</a>
+                            <div class="item_info">
+                            <span class="item_listen">
+                                <i class="fa fa-video-camera item_listen_icon"></i>
+                                2789
+                            </span>
+                                <span>2019-11-20</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list_item">
+                        <div class="list_box">
+                            <a href="" class="list_hover">
+                                <img src="img/mv/3.png" alt="" class="item_img">
+                                <i class="icon-play"></i>
+                            </a>
+                            <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
+                            <a href="" class="item_singer">Gustavo Cerati</a>
+                            <div class="item_info">
+                            <span class="item_listen">
+                                <i class="fa fa-video-camera item_listen_icon"></i>
+                                2789
+                            </span>
+                                <span>2019-11-20</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list_item">
+                        <div class="list_box">
+                            <a href="" class="list_hover">
+                                <img src="img/mv/4.png" alt="" class="item_img">
+                                <i class="icon-play"></i>
+                            </a>
+                            <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
+                            <a href="" class="item_singer">Gustavo Cerati</a>
+                            <div class="item_info">
+                            <span class="item_listen">
+                                <i class="fa fa-video-camera item_listen_icon"></i>
+                                2789
+                            </span>
+                                <span>2019-11-20</span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list_item">
+                        <div class="list_box">
+                            <a href="" class="list_hover">
+                                <img src="img/mv/1.png" alt="" class="item_img">
+                                <i class="icon-play"></i>
+                            </a>
+                            <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
+                            <a href="" class="item_singer">Gustavo Cerati</a>
+                            <div class="item_info">
+                            <span class="item_listen">
+                                <i class="fa fa-video-camera item_listen_icon"></i>
+                                2789
+                            </span>
+                                <span>2019-11-20</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list_item">
+                        <div class="list_box">
+                            <a href="" class="list_hover">
+                                <img src="img/mv/2.png" alt="" class="item_img">
+                                <i class="icon-play"></i>
+                            </a>
+                            <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
+                            <a href="" class="item_singer">Gustavo Cerati</a>
+                            <div class="item_info">
+                            <span class="item_listen">
+                                <i class="fa fa-video-camera item_listen_icon"></i>
+                                2789
+                            </span>
+                                <span>2019-11-20</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list_item">
+                        <div class="list_box">
+                            <a href="" class="list_hover">
+                                <img src="img/mv/3.png" alt="" class="item_img">
+                                <i class="icon-play"></i>
+                            </a>
+                            <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
+                            <a href="" class="item_singer">Gustavo Cerati</a>
+                            <div class="item_info">
+                            <span class="item_listen">
+                                <i class="fa fa-video-camera item_listen_icon"></i>
+                                2789
+                            </span>
+                                <span>2019-11-20</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list_item">
+                        <div class="list_box">
+                            <a href="" class="list_hover">
+                                <img src="img/mv/4.png" alt="" class="item_img">
+                                <i class="icon-play"></i>
+                            </a>
+                            <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
+                            <a href="" class="item_singer">Gustavo Cerati</a>
+                            <div class="item_info">
+                            <span class="item_listen">
+                                <i class="fa fa-video-camera item_listen_icon"></i>
+                                2789
+                            </span>
+                                <span>2019-11-20</span>
+                            </div>
+                        </div>
+                    </li><li class="list_item">
+                    <div class="list_box">
+                        <a href="" class="list_hover">
+                            <img src="img/mv/1.png" alt="" class="item_img">
+                            <i class="icon-play"></i>
+                        </a>
+                        <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
+                        <a href="" class="item_singer">Gustavo Cerati</a>
+                        <div class="item_info">
+                            <span class="item_listen">
+                                <i class="fa fa-video-camera item_listen_icon"></i>
+                                2789
+                            </span>
+                            <span>2019-11-20</span>
+                        </div>
+                    </div>
+                </li>
+                    <li class="list_item">
+                        <div class="list_box">
+                            <a href="" class="list_hover">
+                                <img src="img/mv/2.png" alt="" class="item_img">
+                                <i class="icon-play"></i>
+                            </a>
+                            <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
+                            <a href="" class="item_singer">Gustavo Cerati</a>
+                            <div class="item_info">
+                            <span class="item_listen">
+                                <i class="fa fa-video-camera item_listen_icon"></i>
+                                2789
+                            </span>
+                                <span>2019-11-20</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list_item">
+                        <div class="list_box">
+                            <a href="" class="list_hover">
+                                <img src="img/mv/3.png" alt="" class="item_img">
+                                <i class="icon-play"></i>
+                            </a>
+                            <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
+                            <a href="" class="item_singer">Gustavo Cerati</a>
+                            <div class="item_info">
+                            <span class="item_listen">
+                                <i class="fa fa-video-camera item_listen_icon"></i>
+                                2789
+                            </span>
+                                <span>2019-11-20</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list_item">
+                        <div class="list_box">
+                            <a href="" class="list_hover">
+                                <img src="img/mv/4.png" alt="" class="item_img">
+                                <i class="icon-play"></i>
+                            </a>
+                            <a href="" class="item_title">Puente (En Vivo en Monterrey)</a>
+                            <a href="" class="item_singer">Gustavo Cerati</a>
+                            <div class="item_info">
+                            <span class="item_listen">
+                                <i class="fa fa-video-camera item_listen_icon"></i>
+                                2789
+                            </span>
+                                <span>2019-11-20</span>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!--分页start-->
         <div class="page">
             <a href="" class="page_option"> < </a>
             <a href="" class="page_option page_firstShow">1</a>
@@ -330,16 +497,10 @@
             <a href="" class="page_option">5</a>
             <a href="" class="page_option"> > </a>
         </div>
-<!--分页end-->
+        <!--分页end-->
 
     </div>
 </div>
-
-
-
-
-
-
 
 
 <!-- footer -->
