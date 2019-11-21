@@ -10,8 +10,8 @@ h1{
 h2{
     font-size: 25px;
     color: black;
-    margin-left: 95px;
-    padding-bottom: 50px;
+    margin-left: 78px;
+    padding-bottom: 40px;
 }
 a{
     cursor: pointer;
@@ -207,6 +207,9 @@ a{
     height: 240px;
     border: 2px solid #c3e6cb;
 }
+figure img:hover{
+    border: 2px solid green;
+}
  figcaption{
      font-size: 17px;
     text-align: center;
@@ -222,7 +225,7 @@ a{
 
 /*分页*/
 .page{
-    top: 1110px;
+    top: 1100px;
     width: 100%;
     text-align: center;
     position: absolute;
