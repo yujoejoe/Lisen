@@ -19,7 +19,7 @@ body {
 
 	text-align: center;
 	margin: 60px 0 0 0;
-	font-family: 'Segoe UI';
+	/*font-family: "Segoe UI";*/
 	font-size: 18px;
 }
 
@@ -36,12 +36,12 @@ body {
 
 }
 
-.lowin.lowin-green {
+/*.lowin.lowin-green {
 	--color-primary: #84fac1;
 	--color-grey: rgba(132, 250, 193, .35);
 	--color-dark: rgba(132, 250, 193, 1);
 	--color-semidark: rgba(132, 250, 193, 1);
-}
+}*/
 
 /*.lowin.lowin-red {
 	--color-primary: #ff6464;
@@ -55,14 +55,14 @@ body {
 	--color-grey: rgba(108, 86, 123, .08);
 	--color-dark: rgba(108, 86, 123, .7);
 	--color-semidark: rgba(108, 86, 123, .45);
-}
+}*/
 
 .lowin.lowin-blue {
 	--color-primary: #0081C6;
 	--color-grey: rgba(0, 129, 198, .05);
 	--color-dark: rgba(0, 129, 198, .7);
 	--color-semidark: rgba(0, 129, 198, .45);
-}*/
+}
 
 .lowin a {
 	color: var(--color-primary);
