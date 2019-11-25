@@ -5,6 +5,7 @@
     <title>音乐播放</title>
     <link  rel="stylesheet"  href="css/style.css">
     <link  rel="icon"  href="images/icon.png">
+    <script  type="text/javascript"  src="js/script.js"></script>
 </head>
 <body style="background-color: rgb(130, 192, 192);">
 <div class="main">
@@ -123,21 +124,27 @@
     </div>
 </div>
 <!--进度条部分-->
+<audio src="" id="audio"></audio>
 <div class="control">
     <a class="btn_left"></a>
-    <a class="btn_mid"></a>
+    <a class="btn_mid"  id="pause"></a>
     <a class="btn_right"></a>
     <div  class="play_music">
         <div class="play_music_info">
             <a href="#">芒种-音阙诗听/赵方婧</a>
         </div>
-        <div class="play_music_time">00:00 / 04:28</div>
+        <div class="play_music_time">
+            <span id="current_time">00:00</span>
+            <span>/</span>
+            <span id="total_time">00:00</span>
+        </div>
+
 <!--        进度条-->
-        <div class="play_music_progress">
+        <div class="play_music_progress"  id="play_load">
             <div class="play_progress_inner">
-                <div class="play_progress_load" style="width: 100%;"></div>
-                <div class="play_progress_play" style="width:10%;">
-                    <div class="play_progress_dot"></div>
+                <div class="play_progress_load" style="width: 100%;" ></div>
+                <div class="play_progress_play" style="width:0%;" id="play_dot" >
+                    <div class="play_progress_dot"   id="dot"  ></div>
                 </div>
             </div>
         </div>
