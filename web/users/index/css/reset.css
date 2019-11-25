@@ -12,9 +12,8 @@ h1, h2, h3, h4, h5, h6 {
 body {
   line-height: 1;
   font-size: 14px;
-  font-family: "Microsoft Yahei";
+  font-family: Microsoft YaHei sans-serif;
   color: #333;
-  background-image: linear-gradient(to bottom, #f6f6f6, #fff);
 }
 ul, ol ,li{
   list-style: none;

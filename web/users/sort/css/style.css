@@ -1,38 +1,9 @@
-*{list-style: none; outline: none;margin: 0;border: 0; text-decoration:none}
-
-/*====头部分类====*/
-.sort_box{
-    float: left;
-    width: 19.5%;
-    height: 150px;
-    padding-left: 10px;
-    box-sizing: border-box;
-    border-right:  1px  solid  rgba(96,96,96,0.1);
-}
-.sort_box:last-child{
-    border: 0;
-}
-.sort_title{
-    font-size: 16px;
-    color: #999;
-    font-weight: 400;
-    margin: 10px auto;
-}
-.sort_list{
-    display: inline-block;
-    width: 30%;
-    margin: 5px 0;
-}
-
-.sort_list_language{
-    width: 45% !important;
-}
 
 /*====主要内容====*/
-.play_list_item{
+.song_list_item{
     width: 20% !important;
 }
-.play_list_hover{
+.song_list_box{
     padding-top: 100% !important;
 }
 
