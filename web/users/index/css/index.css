@@ -728,7 +728,8 @@
   display: inline-block;
   width: 65px;
   height: 22px;
-  background: url(../images/main_title.png) no-repeat;
+  background-image: url(../images/main_title.png);
+  background-repeat: no-repeat;
   background-position: 0 -300px;
 }
 .rank-list__item .title h3 {
