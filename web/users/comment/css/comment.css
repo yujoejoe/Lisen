@@ -18,9 +18,8 @@ a{
 
 
 .comment{
-    font-family: "Microsoft Yahei";
+    font-family: "Microsoft Yahei",sans-serif monospace;
     background-color: #fff;
-    margin-left: 30px;
     width: 65%;
 }
 .cmt_hd{

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../index/css/index.css">
     <link rel="stylesheet" href="../../tools/aos/aos.css">
     <link rel="stylesheet" href="../index/css/layout.css">
-    <link rel="stylesheet" href="../mv/css/mv.css">
+    <link rel="stylesheet" href="../common/css/com.css">
     <script src="../../tools/jquery/jquery.min.js"></script>
     <script src="../index/js/script.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
@@ -70,8 +70,8 @@
         <ul class="header-subNav">
             <li><a href="../../index.html">首页</a></li>
             <li><a href="../singer/singer.html">歌手</a></li>
-<!--            <li><a href="#">专辑</a></li>-->
-            <li><a href="#rank">排行榜</a></li>
+            <!--            <li><a href="#">专辑</a></li>-->
+            <li><a href="#">排行榜</a></li>
             <li><a href="#" class="subNav-cur">分类歌单</a></li>
             <li><a href="../mv/mv.html">MV</a></li>
         </ul>
@@ -80,82 +80,35 @@
 
 <div class="main">
     <!--  详细分类  -->
-    <div class="sort clearfix">
-        <!--语种-->
-        <div class="sort_box">
-            <h3 class="sort_title">语种</h3>
-            <ul>
-                <li class="sort_list sort_list_language"><a href="#">国语</a></li>
-                <li class="sort_list sort_list_language"><a href="#">韩语</a></li>
-                <li class="sort_list sort_list_language"><a href="#">日语</a></li>
-                <li class="sort_list sort_list_language"><a href="#">英语</a></li>
-                <li class="sort_list sort_list_language"><a href="#">法语</a></li>
-                <li class="sort_list sort_list_language"><a href="#">粤语</a></li>
-            </ul>
-        </div>
+    <div class="tags">
         <!--    流派-->
-        <div class="sort_box">
-            <h3 class="sort_title">风格</h3>
-            <ul>
-                <li class="sort_list"><a href="#">流行</a></li>
-                <li class="sort_list"><a href="#">轻音乐</a></li>
-                <li class="sort_list"><a href="#">摇滚</a></li>
-                <li class="sort_list"><a href="#">民谣</a></li>
-                <li class="sort_list"><a href="#">乡村</a></li>
-                <li class="sort_list"><a href="#">嘻哈</a></li>
-                <li class="sort_list"><a href="#">电子</a></li>
-                <li class="sort_list"><a href="#">古典</a></li>
-                <li class="sort_list"><a href="#">爵士</a></li>
-            </ul>
+        <div class="tag">
+            <h3 class="tag_title">风格</h3>
 
+            <a href="#" class="tag_item">流行</a>
+            <a href="#" class="tag_item">摇滚</a>
+            <a href="#" class="tag_item">民谣</a>
+            <a href="#" class="tag_item">乡村</a>
+            <a href="#" class="tag_item">嘻哈</a>
+            <a href="#" class="tag_item">电子</a>
+            <a href="#" class="tag_item">古典</a>
+            <a href="#" class="tag_item">爵士</a>
+            <a href="#" class="tag_item">轻音乐</a>
 
         </div>
         <!--    主题-->
-        <div class="sort_box">
-            <h3 class="sort_title">主题</h3>
-            <ul>
-                <li class="sort_list"><a href="#">情歌</a></li>
-                <li class="sort_list"><a href="#">经典</a></li>
-                <li class="sort_list"><a href="#">网络歌曲</a></li>
-                <li class="sort_list"><a href="#">影视</a></li>
-                <li class="sort_list"><a href="#">KTV热歌</a></li>
-                <li class="sort_list"><a href="#">儿歌</a></li>
-                <li class="sort_list"><a href="#">中国风</a></li>
-                <li class="sort_list"><a href="#">古风</a></li>
-                <li class="sort_list"><a href="#">DJ</a></li>
-            </ul>
+        <div class="tag">
+            <h3 class="tag_title">主题</h3>
 
-        </div>
-        <!--    心情-->
-        <div class="sort_box">
-            <h3 class="sort_title">心情</h3>
-            <ul>
-                <li class="sort_list"><a href="#">伤感</a></li>
-                <li class="sort_list"><a href="#">安静</a></li>
-                <li class="sort_list"><a href="#">快乐</a></li>
-                <li class="sort_list"><a href="#">治愈</a></li>
-                <li class="sort_list"><a href="#">励志</a></li>
-                <li class="sort_list"><a href="#">思念</a></li>
-                <li class="sort_list"><a href="#">安静</a></li>
-                <li class="sort_list"><a href="#">甜蜜</a></li>
-                <li class="sort_list"><a href="#">寂寞</a></li>
-            </ul>
-
-        </div>
-        <!--    场景-->
-        <div class="sort_box">
-            <h3 class="sort_title">场景</h3>
-            <ul>
-                <li class="sort_list"><a href="#">睡前</a></li>
-                <li class="sort_list"><a href="#">夜店</a></li>
-                <li class="sort_list"><a href="#">学习</a></li>
-                <li class="sort_list"><a href="#">运动</a></li>
-                <li class="sort_list"><a href="#">开车</a></li>
-                <li class="sort_list"><a href="#">运会</a></li>
-                <li class="sort_list"><a href="#">旅行</a></li>
-                <li class="sort_list"><a href="#">工作</a></li>
-                <li class="sort_list"><a href="#">派对</a></li>
-            </ul>
+            <a href="#" class="tag_item">情歌</a>
+            <a href="#" class="tag_item">经典</a>
+            <a href="#" class="tag_item">影视</a>
+            <a href="#" class="tag_item">儿歌</a>
+            <a href="#" class="tag_item">古风</a>
+            <a href="#" class="tag_item">DJ</a>
+            <a href="#" class="tag_item">中国风</a>
+            <a href="#" class="tag_item">KTV热歌</a>
+            <a href="#" class="tag_item">网络歌曲</a>
         </div>
     </div>
 
@@ -173,224 +126,224 @@
         <!--  歌单   -->
         <div class="content_part">
             <ul class="play_list">
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
-                <li class="list_item play_list_item">
+                <li class="list_item song_list_item">
                     <div class="list_box">
-                        <a href="#" class="list_hover play_list_hover">
+                        <a href="#" class="item_box song_list_box">
                             <img src="images/100.jpg" alt="" class="item_img">
                             <i class="icon-play"></i>
                         </a>
                         <h4 class="item_title">如何诗意的过好每一天</h4>
-                        <div class="item_singer">顾怀安</div>
-                        <span class="item_listen">播放量： 6.6万</span>
+                        <div class="item_author">顾怀安</div>
+                        <span class="item_play">播放量： 6.6万</span>
                     </div>
                 </li>
             </ul>
@@ -399,6 +352,99 @@
     </div>
 
 </div>
+
+<!-- footer -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-info">
+            <div class="footer-info__download">
+                <h3>下载哩森音乐客户端</h3>
+                <ul class="list">
+                    <li><a href="#">
+                        <i class="footer-icon icon-pc"></i>
+                        PC版
+                    </a></li>
+                    <li><a href="#">
+                        <i class="footer-icon icon-mac"></i>
+                        Mac版
+                    </a></li>
+                    <li><a href="#">
+                        <i class="footer-icon icon-android"></i>
+                        Android版
+                    </a></li>
+                    <li><a href="#">
+                        <i class="footer-icon icon-iphone"></i>
+                        iPhone版
+                    </a></li>
+                </ul>
+            </div>
+            <div class="footer-info__product">
+                <h3>特色产品</h3>
+                <ul class="list">
+                    <li class="hasPic"><a href="#">
+                        <i class="footer-icon icon-kg"></i>
+                        全民K歌
+                    </a></li>
+                    <li class="hasPic"><a href="#">
+                        <i class="footer-icon icon-ss"></i>
+                        全民K歌
+                    </a></li>
+                    <li class="hasPic"><a href="#">
+                        <i class="footer-icon icon-qp"></i>
+                        全民K歌
+                    </a></li>
+                    <li><a href="#">KK音乐原创音乐平台</a></li>
+                    <li><a href="#">上传视频</a></li>
+                    <li><a href="#">上传视频</a></li>
+                    <li><a href="#">上传视频</a></li>
+                </ul>
+            </div>
+            <div class="footer-info__link">
+                <h3>特色产品</h3>
+                <ul class="list">
+                    <li><a href="#">CJ E&M</a></li>
+                    <li><a href="#">我们视频</a></li>
+                    <li><a href="#">手机KK空间</a></li>
+                    <li><a href="#">CJ E&M</a></li>
+                    <li><a href="#">我们视频</a></li>
+                    <li><a href="#">手机KK空间</a></li>
+                    <li><a href="#">CJ E&M</a></li>
+                    <li><a href="#">我们视频</a></li>
+                    <li><a href="#">手机KK空间</a></li>
+                    <li><a href="#">CJ E&M</a></li>
+                    <li><a href="#">我们视频</a></li>
+                    <li><a href="#">手机KK空间</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p><a href="#">关于我们</a><span>|</span><a href="#">关于我们</a><span>|</span><a
+                    href="#">关于我们</a><span>|</span><a href="#">关于我们</a><span>|</span><a
+                    href="#">关于我们</a><span>|</span><a href="#">关于我们</a><span>|</span><a
+                    href="#">关于我们</a><span>|</span><a href="#">关于我们</a></p>
+            <p>Copyright © 1998 - 2017 kk. All Rights Reserved.</p>
+            <p>我们公司 版权所有 我们网络文化经营许可证</p>
+        </div>
+    </div>
+</footer>
+
+<!-- 分享到 -->
+<ul class="slider-share">
+    <li><a href="#">
+        <i class="icon-sprite icon-add"></i>
+        添加到
+        <i class="icon-sprite icon-arrow"></i>
+    </a></li>
+    <li><a href="#">
+        <i class="icon-sprite icon-share"></i>
+        分享
+        <i class="icon-sprite icon-arrow"></i>
+    </a></li>
+    <li><a href="#">
+        <i class="icon-sprite icon-download"></i>
+        下载
+    </a></li>
+</ul>
 
 </body>
 </html>

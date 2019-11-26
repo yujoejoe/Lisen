@@ -342,7 +342,7 @@
     left: 65px;
     width: 21px;
     height: 29px;
-    background-position: 0 0;
+    background-position:0 0;
     position: absolute;
     opacity: .8;
     background-image: url("../images/player.png");
@@ -393,6 +393,10 @@
     top: 0;
     right: 0;
 }
+
+
+
+
 .play_music_progress{
     padding-top: 6px;
     height: 8px;

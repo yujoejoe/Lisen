@@ -416,7 +416,7 @@
   height: 36px;
   padding-left: 14px;
   box-sizing: border-box;
-  font-family: "Microsoft Yahei";
+  font-family: "Microsoft Yahei",monospace sans-serif;
   font-size: 14px;
   vertical-align: top;
 }
@@ -539,7 +539,7 @@
   background-color: #ededed;
 }
 .header-subNav {
-  margin: 0 25%;
+  margin: 0 24%;
 }
 .header-subNav li {
   display: inline-block;
@@ -630,7 +630,7 @@
 }
 .carousel-slider .item-pic2 {
   transform: translate3d(0px,0,0) scale(0.81);
-  transform-origin: 0% 50%;
+  transform-origin: 0 50%;
 }
 .carousel-slider .item-pic3 {
   z-index: 3;
@@ -728,7 +728,8 @@
   display: inline-block;
   width: 65px;
   height: 22px;
-  background: url(../images/main_title.png) no-repeat;
+  background-image: url(../images/main_title.png);
+  background-repeat: no-repeat;
   background-position: 0 -300px;
 }
 .rank-list__item .title h3 {
@@ -1037,7 +1038,6 @@
   background-color: #ccc;
   -webkit-border-radius: 2em;
   -moz-border-radius: 2em;
-  border-radius:2em;
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: #666;
