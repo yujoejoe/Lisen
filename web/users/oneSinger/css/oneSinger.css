@@ -18,16 +18,14 @@ a{
 }
 .container{
     background-image: linear-gradient(to bottom, #f6f6f6, #fff);
-    max-width: 1430px;
+    width: 100%;
     padding-top: 30px;
-    padding-left: 120px;
-    padding-right: 120px;
     position: relative;
 }
 .content{
     margin-top: 20px;
-    margin-left: 5%;
-    width:90%;
+    margin-left: 11%;
+    width:78%;
     height: 1250px;
     position:relative;
     color: black;
