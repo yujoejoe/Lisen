@@ -100,19 +100,14 @@ a{
     margin-left: 30px;
     float: left;
 }
-.action button img{
-    margin-top: -1px;
-    margin-right: 8px;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-}
+
 .action a:first-child button{
     padding: 8px 20px;
     background-color: #31c27c;
     text-align: center;
     font-size: 16px;
     color: white;
+    border: solid 1px gray;
 }
 .action a:last-child button{
     padding: 8px 18px;
@@ -122,10 +117,6 @@ a{
 }
 .action a:last-child button:hover{
     background-color: lightgray;
-}
-.action a:last-child strong{
-    font-size: 20px;
-    color: gray;
 }
 /*简介部分end*/
 
@@ -158,13 +149,14 @@ a{
     padding: 5px 15px;
     margin-left: 15px;
     border: 1px solid gray;
-    border-radius: 5%;
+    border-radius: 1%;
 }
 .list_action button:hover{
     background-color: lightgray;
     border: 1px solid #31c27c;
     cursor: pointer;
 }
+
 .single_show ul{
     padding: 25px;
 }
@@ -244,3 +236,41 @@ figure img:hover{
     background-color: #31c27c;
 }
 /*分页end*/
+
+
+
+
+
+.icon_play1,
+.icon_attention,
+.icon_play2,
+.icon_add,
+.icon_download{
+    width: 16px;
+    height: 16px;
+    vertical-align: -2px;
+    display: inline-block;
+    margin-right: 7px;
+    background-repeat: no-repeat;
+    background-image: url("../img/pict.png");
+}
+/*播放*/
+.icon_play1{
+    background-position: -80px -220px;
+}
+/*关注*/
+.icon_attention{
+    background-position: 0 -180px;
+}
+/*播放*/
+.icon_play2{
+    background-position: -60px -220px;
+/*添加*/
+}
+.icon_add{
+    background-position: -20px 0;
+}
+/*下载*/
+.icon_download{
+    background-position: -40px -220px;
+}
