@@ -7,7 +7,9 @@
     <link  rel="icon"  href="images/icon.png">
     <script  type="text/javascript"  src="js/script.js"></script>
 </head>
+
 <body style="background-color: rgb(130, 192, 192);">
+
 <div class="main">
     <div class="logo">
 <!--        <a  href="#"><img src="images/player_logo.png"></a>-->
@@ -52,7 +54,9 @@
         <i class="list_line"></i>
 <!--        歌单-->
         <ul class="list_music">
-            <li class="list_edit"></li>
+            <li class="list_edit">
+                <input  type="checkbox"  class="list_input">
+            </li>
             <li class="list_number">1</li>
             <li class="list_name">芒种</li>
             <li class="list_author">音阙诗听/赵方婧</li>
@@ -126,12 +130,12 @@
 <!--进度条部分-->
 <audio src="" id="audio"></audio>
 <div class="control">
-    <a class="btn_left"></a>
+    <a class="btn_left" id="btn_left"></a>
     <a class="btn_mid"  id="pause"></a>
-    <a class="btn_right"></a>
+    <a class="btn_right"  id="btn_right"></a>
     <div  class="play_music">
         <div class="play_music_info">
-            <a href="#">芒种-音阙诗听/赵方婧</a>
+            <a href="#"  id="music_name">芒种-音阙诗听/赵方婧</a>
         </div>
         <div class="play_music_time">
             <span id="current_time">00:00</span>
@@ -155,11 +159,12 @@
     <a href="#" class="btn_down" title="下载"></a>
     <a href="../comment/comment.html" class="btn_comment" title="评论"></a>
     <a href="" class="btn_switch" title="纯净模式"></a>
+
     <div class="play_voice">
-        <a href="" class="btn_voice" title="关闭声音"></a>
-        <div class="play_progress_voice">
-            <div class="play_progress_play" style="width: 50%;">
-                <i class="play_progress_dot"></i>
+        <a  class="btn_voice" id="btn_voice" title="关闭声音"></a>
+        <div class="play_progress_voice" style="width: 100%" id="play_voice">
+            <div class="play_progress_play" id="progress_voice" style="width:50%;">
+                <i class="play_progress_dot"  id="voice_dot"></i>
             </div>
         </div>
     </div>
@@ -169,7 +174,7 @@
 <div class="pic">
     <div class="song_info_info">
         <a class="song_info_cover">
-            <img  src="https://y.gtimg.cn/music/photo_new/T002R800x800M000001kgcVb1p6Qao.jpg?max_age=2592000" alt="" class="song_info_pic">
+            <img  src="images/10.jpg" alt="" class="song_info_pic">
         </a>
         <div class="song_info_name">
             歌曲名：
@@ -184,14 +189,9 @@
     <div class="song_info_lyric">
         <div class="song_info_lyric_box">
             <div class="song_info_lyric_inner"     style="transition: -webkit-transform 0.1s ease-out 0s; transform:translateY(-4060.2px);">
-
             </div>
-
-
         </div>
     </div>
-
-
 </div>
 </body>
 </html>

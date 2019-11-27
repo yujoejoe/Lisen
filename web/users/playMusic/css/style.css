@@ -1,5 +1,9 @@
 *{list-style: none; outline: none;margin: 0;border: 0; text-decoration:none}
+input{
 
+
+
+}
 .main{
     position: relative;
 
@@ -280,6 +284,17 @@
     border: 1px solid rgba(225,225,225,.4) ;
     background-position: -1000px;
 }
+  .list_input{
+      opacity: 0;
+  }
+
+.list_edit:hover{
+    border-color: white;
+
+}
+
+
+
 .list  .list_name{
     width: 54%;
     float: left;
@@ -513,6 +528,7 @@
     position: relative;
     height: 2px;
     background: rgba(255,255,255,.1);
+    cursor: pointer;
 }
 
 
