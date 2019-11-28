@@ -6,11 +6,11 @@ package POJO;
 public class Singer extends Base{
     String name;
     String alias;
-    char py;
+    String py;
     String sex;
     String birthday;
-    int areaId;
-    int styleId;
+    String area;
+    String style;
     int songNum;
     String fans;
 
@@ -33,11 +33,11 @@ public class Singer extends Base{
         this.alias = alias;
     }
 
-    public char getPy() {
+    public String getPy() {
         return py;
     }
 
-    public void setPy(char py) {
+    public void setPy(String py) {
         this.py = py;
     }
 
@@ -57,20 +57,20 @@ public class Singer extends Base{
         this.birthday = birthday;
     }
 
-    public int getAreaId() {
-        return areaId;
+    public String getArea() {
+        return area;
     }
 
-    public void setAreaId(int areaId) {
-        this.areaId = areaId;
+    public void setArea(String area) {
+        this.area = area;
     }
 
-    public int getStyleId() {
-        return styleId;
+    public String getStyle() {
+        return style;
     }
 
-    public void setStyleId(int styleId) {
-        this.styleId = styleId;
+    public void setStyle(String style) {
+        this.style = style;
     }
 
     public int getSongNum() {
@@ -100,14 +100,14 @@ public class Singer extends Base{
 
     @Override
     public String toString() {
-        return "Singer ["
+        return "singer ["
                 + "name:" + name
                 + " ,alias:" + alias
                 + " ,py:" + py
                 + " ,sex:" + sex
                 + " ,birthday:" + birthday
-                + " ,areaId:" + areaId
-                + " ,styleId:" + styleId
+                + " ,area:" + area
+                + " ,style:" + style
                 + " ,songNum:" + songNum
                 + " ,fans:" + fans
                 + " , img:" + img
