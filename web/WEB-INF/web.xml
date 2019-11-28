@@ -7,25 +7,25 @@
 
 
     <servlet>
-        <description>login</description>
-        <display-name>login</display-name>
-        <servlet-name>login</servlet-name>
-        <servlet-class>MVC.controller.loginAction</servlet-class>
+        <description>loginAction</description>
+        <display-name>loginAction</display-name>
+        <servlet-name>loginAction</servlet-name>
+        <servlet-class>Controller.login.loginAction</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>login</servlet-name>
-        <url-pattern>MVC/controller/loginAction</url-pattern>
+        <servlet-name>loginAction</servlet-name>
+        <url-pattern>Controller/login/loginAction</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <description>toJson</description>
-        <display-name>toJson</display-name>
-        <servlet-name>toJson</servlet-name>
-        <servlet-class>MVC.view.toJson</servlet-class>
+        <description>ToJSON</description>
+        <display-name>ToJSON</display-name>
+        <servlet-name>ToJSON</servlet-name>
+        <servlet-class>View.ToJSON</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>toJson</servlet-name>
-        <url-pattern>MVC/view/toJson</url-pattern>
+        <servlet-name>ToJSON</servlet-name>
+        <url-pattern>View/ToJSON</url-pattern>
     </servlet-mapping>
 
 

@@ -1,4 +1,4 @@
-package MVC.controller;
+package Controller.login;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,14 +30,14 @@ public class loginAction extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=utf-8");
-        String username = request.getParameter("username");
+        String username = request.getParameter("userName");
         String password = request.getParameter("password");
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
-            String url = "jdbc:mysql://192.168.1.126:3306/lisen?useUnicode=true&characterEncoding = UTF8";
+            String url = "jdbc:mysql://192.168.1.125:3306/test?useUnicode=true&characterEncoding=utf8";
             String user = "root";
-            String pw = "admin";
+            String pw = "1234";
 
             Connection conn = DriverManager.getConnection(url,user,pw);
             String sql = "select * from user where name=? and pswd=?";

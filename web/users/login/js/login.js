@@ -1,5 +1,5 @@
     /**
-     * <summary>用户登录</summary>
+     * 用户登录
      * 登录成功后，需要重新判断登录状态
      */
     $(document).ready(function(){
@@ -7,7 +7,7 @@
             var username = $("#username").val();
             var password = $("#password").val();
             $.get(
-                "MVC/controller/loginAction",
+                "/Controller/login/loginAction",
                 {"username":username,"password":password},
                 function(result){
                     var data = JSON.parse(result);
@@ -35,7 +35,7 @@
 /*$(document).ready(function(){
     $("#a_exit").click(function(){
         $.get(
-            "MVC/controller/exitAction",
+            "/Controller/login/exitAction",
             function(result){
                 var data = JSON.parse(result);
                 if(data.success){

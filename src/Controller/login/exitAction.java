@@ -1,4 +1,4 @@
-package MVC.controller;
+package Controller.login;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

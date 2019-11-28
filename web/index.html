@@ -64,8 +64,8 @@
                 </div>
             </div>
             <div class="header-login">
-                <a href="users/registered/registered.html" class="registered">注册</a>
-                <a href="users/login/login.html" class="login">登录</a>
+                <a href="users/login/register.html" class="registered" id="btn_register">注册</a>
+                <a href="users/login/login.html" class="login" id="btn_login">登录</a>
             </div>
         </div>
         <ul class="header-subNav">
@@ -521,11 +521,10 @@
         </div>
     </div>
     <div class="main-operate">
-        <a href="javascript:;" class="slider-prev"><i class="icon-sprite"></i></a>
-        <a href="javascript:;" class="slider-next"><i class="icon-sprite"></i></a>
+        <a href="javascript:" class="slider-prev"><i class="icon-sprite"></i></a>
+        <a href="javascript:" class="slider-next"><i class="icon-sprite"></i></a>
     </div>
 </div>
-
 
 <!-- MV -->
 <div class="main" id="mv">
@@ -537,12 +536,12 @@
         </div>
         <a href="#" class="readAll">全部<i class="icon-sprite"></i></a>
         <div class="main-tab tab-title">
-            <a href="javascript:;" class="item item-cur">全部</a>
-            <a href="javascript:;" class="item">华语</a>
-            <a href="javascript:;" class="item">欧美</a>
-            <a href="javascript:;" class="item">港台</a>
-            <a href="javascript:;" class="item">韩国</a>
-            <a href="javascript:;" class="item">日本</a>
+            <a href="javascript:" class="item item-cur">全部</a>
+            <a href="javascript:" class="item">华语</a>
+            <a href="javascript:" class="item">欧美</a>
+            <a href="javascript:" class="item">港台</a>
+            <a href="javascript:" class="item">韩国</a>
+            <a href="javascript:" class="item">日本</a>
         </div>
         <ul class="mv-list tab-cont" data-aos="zoom-in-up">
             <li class="item" data-aos="fade-left">
@@ -749,7 +748,6 @@
     </div>
 </div>
 
-
 <!-- footer -->
 <footer class="footer">
     <div class="footer-inner">
@@ -845,6 +843,23 @@
 
 <script type="text/javascript" src="tools/aos/aos.js"></script>
 <script type="text/javascript" src="users/index/js/aosinit.js"></script>
+
+<script type="text/javascript">
+    /**
+     * 判断登录状态
+     */
+    $(document).ready(function(){
+        judgeLoginState();
+    });
+    function judgeLoginState(){
+        var username = session.getAttribute("username");
+        if(username!=="null"){
+            document.getElementById("btn_login").innerHTML=username;
+            document.getElementById("btn_register").innerHTML="注销";
+            window.location.reload();
+        }
+    }
+</script>
 
 </body>
 </html>
