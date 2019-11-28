@@ -170,6 +170,27 @@ onload = function change() {
 
 
 
+    var listIconPlay = document.getElementsByClassName("mod_list_iconPlay");
+
+    var i;
+    for (i = 0; i < listIconPlay.length; i++) {
+        listIconPlay[i].id = i;
+        listIconPlay[i].onclick = function () {
+            if (listIconPlay[this.id].style.backgroundPosition != "-30px 0px") {
+                listIconPlay[this.id].style.backgroundPosition = "-30px 0px";
+            }else{
+                listIconPlay[this.id].style.backgroundPosition = "0px 0px";
+
+            }
+        }
+    }
+
+
+
+
+
+
+
 }
 
 
