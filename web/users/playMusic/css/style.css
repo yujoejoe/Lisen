@@ -1,5 +1,9 @@
 *{list-style: none; outline: none;margin: 0;border: 0; text-decoration:none}
+input{
 
+
+
+}
 .main{
     position: relative;
 
@@ -224,6 +228,7 @@
     background-repeat: no-repeat;
     background-image: url("../images/pict.png");
 }
+
 .tool_box_download  .icon_down{
     width: 16px;
     height: 16px;
@@ -252,6 +257,7 @@
     line-height: 50px;
     position: relative;
 }
+
 .list_music{
     padding-left: 62px;
     background-color: transparent;
@@ -260,8 +266,15 @@
     line-height: 50px;
     position: relative;
 }
+
 .list_music:hover{
     background-color: #1b6d85;
+    cursor: pointer;
+
+}
+
+.list_music:hover .mod_list_iconPlay{
+    display: block;
     cursor: pointer;
 
 }
@@ -280,12 +293,61 @@
     border: 1px solid rgba(225,225,225,.4) ;
     background-position: -1000px;
 }
+
+  .list_number_position{
+      position: absolute;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      top: 50%;
+      line-height: 16px;
+      margin-top:-9px ;
+      text-align: center;
+  }
+
+.mod_list_menu{
+    opacity: 1;
+    pointer-events: inherit;
+    right: -10px;
+    margin-top: -18px;
+    position: absolute;
+    top: 50%;
+    overflow: hidden;
+    font-size: 0;
+    height: 36px;
+}
+
+.mod_list_iconPlay{
+    background-image: url("../images/player.png");
+    right: 20px;
+    top: 10px;
+    display: none;
+    width: 21px;
+    height: 29px;
+    background-position: 0 0;
+    position: absolute;
+    opacity: .8;
+    cursor: pointer;
+}
+.mod_list_iconPlay:hover{
+    opacity: 1;
+
+}
+  .list_input{
+      opacity: 0;
+  }
+
+.list_edit:hover{
+    border-color: white;
+}
+
 .list  .list_name{
     width: 54%;
     float: left;
     position: relative;
     white-space: normal;
 }
+
 .list  .list_author{
     width: 26%;
     color: inherit;
@@ -293,13 +355,13 @@
     padding-left: 15px;
     box-sizing: border-box;
 }
+
 .list  .list_time{
     position: absolute;
     top: 0;
     right: 38px;
     width: 50px
 }
-
 
 .list  .list_number{
     left: 40px;
@@ -311,7 +373,6 @@
     line-height: 16px;
     margin-top:-9px ;
     text-align: center;
-
 }
 
 /*进度条控制*/
@@ -513,6 +574,7 @@
     position: relative;
     height: 2px;
     background: rgba(255,255,255,.1);
+    cursor: pointer;
 }
 
 
@@ -593,8 +655,8 @@
     left: 0;
     width: 100%;
     overflow: hidden;
-    background-image:linear-gradient(to bottom,rgba(255,255,255,0) 0,rgba(255,255,255,.6) 15%,rgba(255,255,255,1) 25%,rgba(255,255,255,1) 75%,rgba(255,255,255,.6) 85%,rgba(255,255,255,0) 100%);
 }
+
 .song_info_lyric_box{
     top: 50%;
     height: 170px;
@@ -603,8 +665,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    overflow: hidden;
-    /*cursor: -webkit-grab;*/
     margin-right: -30px;
     overflow-y: auto;
 }
@@ -612,6 +672,10 @@
 .song_info_lyric_inner{
     margin-right: 30px;
     line-height: 34px;
-
 }
 
+.song_info_lyric_box  p{
+    text-align: center;
+    color:white;
+
+}

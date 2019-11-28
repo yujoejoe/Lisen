@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>注册-哩森</title>
+    <link rel="icon" href="../index/images/icon.png">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+<div class="lowin lowin-green">
+    <div class="lowin-brand">
+        <img src="../index/images/icon.png" alt="logo">
+    </div>
+    <div class="lowin-wrapper">
+        <div class="lowin-box lowin-register">
+            <div class="lowin-box-inner">
+                <form>
+                    <p>哩森音乐，乐享生活</p>
+                    <div class="lowin-group">
+                        <label>昵称</label>
+                        <input type="text" name="name" autocomplete="name" class="lowin-input" pattern="^[\u4e00-\u9fa5]{0,}$"  placeholder="只能中文" required multiple>
+                    </div>
+                    <div class="lowin-group">
+                        <label>密码</label>
+                        <input type="password" name="password" autocomplete="current-password" class="lowin-input" pattern="^[a-zA-Z]\w{5,17}$" placeholder="只能英文且区分大小写，最小长度6" required multiple >
+                    </div>
+                    <div class="lowin-group">
+                        <label>电话</label>
+                        <input type="tel" autocomplete="tel" name="tel" class="lowin-input" pattern="^\d{11}$"  required multiple>
+                    </div>
+                    <div class="lowin-group">
+                        <label>邮箱</label>
+                        <input type="email" autocomplete="email" name="email" class="lowin-input" placeholder="someone@example.com" required multiple>
+                    </div>
+                    <button class="lowin-btn">
+                        <a href="../../index.html" style="color: white">注&nbsp;册</a>
+                    </button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="lowin-footer">
+        Thank you for listening <a href="../../index.html">&nbsp;&nbsp;LISEN</a>
+    </footer>
+</div>
+
+<script src="js/login.js"></script>
+<script>
+    Auth.init({
+        login_url: '#login',
+        forgot_url: '#forgot'
+    });
+</script>
+</body>
+</html>
