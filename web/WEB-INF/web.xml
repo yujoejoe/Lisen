@@ -6,7 +6,27 @@
            version="2.5">
 
 
+    <servlet>
+        <description>login</description>
+        <display-name>login</display-name>
+        <servlet-name>login</servlet-name>
+        <servlet-class>MVC.controller.loginAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>login</servlet-name>
+        <url-pattern>MVC/controller/loginAction</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <description>toJson</description>
+        <display-name>toJson</display-name>
+        <servlet-name>toJson</servlet-name>
+        <servlet-class>MVC.view.toJson</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>toJson</servlet-name>
+        <url-pattern>MVC/view/toJson</url-pattern>
+    </servlet-mapping>
 
 
 

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>注册-哩森</title>
+    <link rel="icon" href="imgs/ico.png">
+
+	<link rel="stylesheet" href="../../tools/aos/aos.css">
+	<link href="../../tools/login/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="../../tools/login/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="../../tools/login/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+	<link href="css/templatemo_style.css" rel="stylesheet" type="text/css">
+</head>
+<body class="templatemo-bg-image-2">
+	<div class="container">
+		<div class="col-md-12">			
+			<form class="form-horizontal templatemo-contact-form-1" role="form" action="#" method="post">
+				<div class="form-group">
+					<div class="col-md-12">						
+						<h1 class="margin-bottom-15">欢迎注册哩森</h1>
+					</div>
+				</div>	
+
+		        <div class="form-group">
+		          <div class="col-md-12">		          	
+		            <label for="name" class="control-label">昵称 *</label>
+		            <div class="templatemo-input-icon-container">
+		            	<i class="fa fa-user"></i>
+		            	<input type="text" class="form-control" id="name" 
+		            	placeholder="name" required multiple>
+		            </div>		            		            		            
+		          </div>              
+		        </div>
+
+		        <div class="form-group">
+		        	<div class="col-md-12">
+		        		<label for="password" class="control-label">密码 *</label>
+		        		<div class="templatemo-input-icon-container">
+				            <i class="fa fa-lock"></i>
+				            <input type="password" class="form-control" id="password"
+				            pattern="^[a-zA-Z0-9]\w{5,17}$" placeholder="请设置由英文和数字组成的[6-18]长度密码" required multiple>
+				        </div>
+				    </div>
+				</div>
+
+		        <div class="form-group">
+		          <div class="col-md-12">
+		            <label for="email" class="control-label">邮箱 *</label>
+		            <div class="templatemo-input-icon-container">
+		            	<i class="fa fa-envelope-o"></i>
+		            	<input type="email" class="form-control" id="email" 
+		            	placeholder="someone@example.com" required multiple>
+		            </div>
+		          </div>
+		        </div>
+
+		        <div class="form-group">
+		        	<div class="col-sm-12">
+		        		<!--<label for="subject" class="control-label">Cell-phone number *</label>-->
+						<label  class="control-label">手机号码 *</label>
+		        		<div class="templatemo-input-icon-container">
+		        			<i class="fa fa-phone"></i>
+		        			<input type="text" class="form-control" id="phone" placeholder="phone"
+		        			pattern="^\d{11}$"  required multiple>
+		        		</div>
+		        	</div>
+		        </div>
+
+		        <div class="form-group">
+		        	<div class="col-sm-12">
+		        		<label class="radio-inline">
+		        		<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> 
+		        		男</label>
+		        		<label class="radio-inline">
+		        		<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+		        		女</label>
+		        	</div>
+		        </div>
+
+		        <div class="form-group">
+		          <div class="col-md-12">
+		            <div class="checkbox">
+		                <label>
+                            <input type="checkbox">
+							I agree to the
+                            <!--<a href="javascript:" data-toggle="modal" data-target="#templatemo_modal">
+								Terms of Service</a> and<a>Privacy Policy.</a>-->
+							我已阅读并同意相关<a>服务条款</a>和
+							<a href="javascript:" data-toggle="modal" data-target="#templatemo_modal">
+								隐私政策</a>
+                        </label>
+		            </div>		            
+		          </div>
+		        </div>
+
+		        <div class="form-group">
+			        <div class="col-md-12">
+			        	<input type="submit" value="&nbsp;&nbsp;&nbsp; 注&nbsp;&nbsp;册 &nbsp;&nbsp;&nbsp;" class="btn btn-info">
+			            <a href="login.html" class="pull-right">登录</a>
+			        </div>
+			    </div>
+			</form>		      
+		</div>
+	</div>
+
+
+	<!-- Modal -->
+<div class="modal fade" id="templatemo_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">隐私政策</h4>
+            </div>
+            <div class="modal-body">
+                <p>哩森严格遵守法律法规，遵循以下隐私保护原则，为您提供更加安全、可靠的服务。</p>
+                <p>为了让您有更好的体验、改善我们的服务或经您同意的其他用途，在符合相关法律法规的前提下，
+					我们可能将通过某些服务所收集的信息用于我们的其他服务。例如，将您在使用我们某项服务时的信息，
+					用于另一项服务中向您展示个性化的内容或广告、用于用户研究分析与统计等服务。</p>
+                <p>为了确保服务的安全，帮助我们更好地了解我们应用程序的运行情况，我们可能记录相关信息，
+					例如，您使用应用程序的频率、故障信息、总体使用情况、性能数据以及应用程序的来源。
+					我们不会将我们存储在分析软件中的信息与您在应用程序中提供的个人身份信息相结合。</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../tools/login/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../../tools/login/js/bootstrap.min.js"></script>
+</body>
+</html>
