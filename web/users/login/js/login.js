@@ -15,8 +15,6 @@
                         if(data.msg==="查询成功"){
                             alert("哩森音乐欢迎你");
                             window.location.href="index.html";
-                            /*document.getElementById("btn_login").innerHTML=username;
-                            window.location.reload();*/
                         }else{
                             alert("账号或密码错误!");
                         }

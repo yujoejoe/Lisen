@@ -30,7 +30,7 @@ public class loginAction extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=utf-8");
-        String username = request.getParameter("userName");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
         try{
             Class.forName("com.mysql.jdbc.Driver");
