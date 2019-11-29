@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="tools/aos/aos.css">
     <script src="tools/jquery/jquery.min.js"></script>
     <script src="users/index/js/script.js"></script>
+    <script src="users/index/js/judgeLoginState.js"></script>
 
 
 </head>
@@ -844,22 +845,6 @@
 <script type="text/javascript" src="tools/aos/aos.js"></script>
 <script type="text/javascript" src="users/index/js/aosinit.js"></script>
 
-<script type="text/javascript">
-    /**
-     * 判断登录状态
-     */
-    $(document).ready(function(){
-        judgeLoginState();
-    });
-    function judgeLoginState(){
-        var username = session.getAttribute("username");
-        if(username!=="null"){
-            document.getElementById("btn_login").innerHTML=username;
-            document.getElementById("btn_register").innerHTML="注销";
-            window.location.reload();
-        }
-    }
-</script>
 
 </body>
 </html>
