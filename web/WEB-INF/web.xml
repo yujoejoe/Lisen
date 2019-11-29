@@ -7,25 +7,51 @@
 
 
     <servlet>
-        <description>loginAction</description>
+        <description></description>
         <display-name>loginAction</display-name>
         <servlet-name>loginAction</servlet-name>
-        <servlet-class>Controller.login.loginAction</servlet-class>
+        <servlet-class>loginAction.login</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>loginAction</servlet-name>
-        <url-pattern>Controller/login/loginAction</url-pattern>
+        <url-pattern>/loginAction/login</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <description></description>
+        <display-name>exit</display-name>
+        <servlet-name>exit</servlet-name>
+        <servlet-class>loginAction.exit</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>exit</servlet-name>
+        <url-pattern>/loginAction/exit</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <description>ToJSON</description>
+        <description></description>
+        <display-name>singerGet</display-name>
+        <servlet-name>singerGet</servlet-name>
+        <servlet-class>Controller.singer.SingerGet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>singerGet</servlet-name>
+        <url-pattern>/singer/get</url-pattern>
+    </servlet-mapping>
+
+
+
+
+    <servlet>
+        <description></description>
         <display-name>ToJSON</display-name>
         <servlet-name>ToJSON</servlet-name>
-        <servlet-class>View.ToJSON</servlet-class>
+        <servlet-class>view.ToJSON</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ToJSON</servlet-name>
-        <url-pattern>View/ToJSON</url-pattern>
+        <url-pattern>/view/ToJSON</url-pattern>
     </servlet-mapping>
 
 

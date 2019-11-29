@@ -1,6 +1,7 @@
-package Controller.login;
+package loginAction;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,14 +13,18 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class loginAction extends HttpServlet {
+/**
+ *
+ */
+@WebServlet(name ="loginAction" ,urlPatterns ="/loginAction/login" )
+public class login extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public loginAction() {
+    public login() {
         super();
         // TODO Auto-generated constructor stub
     }

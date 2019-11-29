@@ -1,12 +1,13 @@
 package ServiceDAO.singer;
 
-import DBUtil.DBUtil;
+import util.DBUtil;
 import POJO.Singer;
-import DAO.SingerDAOImp;
+import DAO.singer.SingerDAOImp;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 
 /**
  * Created by user on 2019/11/28.

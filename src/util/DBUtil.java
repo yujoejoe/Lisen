@@ -1,4 +1,4 @@
-package DBUtil;
+package util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -57,6 +57,7 @@ public class DBUtil {
 
         }catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("连接失败");
         }
         return conn;
     }

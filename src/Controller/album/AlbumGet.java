@@ -1,8 +1,8 @@
-package Controller.singer;
+package Controller.album;
 
 import POJO.JsonData;
-import POJO.Singer;
-import ServiceDAO.singer.SingerServiceDAOImp;
+import POJO.Album;
+import ServiceDAO.album.AlbumServiceDAOImp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,17 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
 /**
- * Created by user on 2019/11/28.
+ *
  */
-@WebServlet(name = "SingerQuery", urlPatterns = "/singer/query")
-public class SingerQuery extends HttpServlet {
+@WebServlet(name ="AlbumGet" ,urlPatterns ="/album/get" )
+public class AlbumGet extends HttpServlet{
     private static final long serialVersion = 1L;
-    
-    private SingerServiceDAOImp singerSDI = new SingerServiceDAOImp();
-    private Singer singer = new Singer();
-    
+
+    private AlbumServiceDAOImp albumSDI = new AlbumServiceDAOImp();
+    private Album album = new Album();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
@@ -40,9 +39,9 @@ public class SingerQuery extends HttpServlet {
         String search = request.getParameter("search");
         if(search!=null && search.length()!=0){
             // 模糊查找teacher的name、sequence
-            singer.setCondition(" singer.name like %'"+search+"%'");
+            album.setCondition(" album.name like %'"+search+"%'");
         }else{
-            singer.setCondition("");
+            album.setCondition("");
         }
         // 设置分页
         String page = request.getParameter("page");     // 页数
@@ -50,17 +49,17 @@ public class SingerQuery extends HttpServlet {
         if(page!=null && page.length()!=0 && size!=null && size.length()!=0){
             int p = Integer.parseInt(page);
             int r = Integer.parseInt(size);
-            singer.setLimit(" limit " + (p-1)*r + "," + r);
+            album.setLimit(" limit " + (p-1)*r + "," + r);
         }else{
-            singer.setLimit("");
+            album.setLimit("");
         }
         // 设置排序方式
         String field = request.getParameter("field");   // 排序字段
         String order = request.getParameter("order");   // 排序方式 升序 或 降序
         if(field!=null && field.length()!=0 && order!=null && order.length()!=0){
-            singer.setOrderBy(" order by " + field + " " + order);
+            album.setOrderBy(" order by " + field + " " + order);
         }else{
-            singer.setOrderBy("");
+            album.setOrderBy("");
         }
 
         // （调）2、调用ServiceDAO方法，完成业务
@@ -69,8 +68,8 @@ public class SingerQuery extends HttpServlet {
          * 1、调用DAO层的select方法，返回查询到的记录集
          * 2、调用DAO层的count方法，返回查询到的记录数
          */
-        ArrayList<Singer> result = singerSDI.select(singer);
-        int count = singerSDI.count(singer);
+        ArrayList<Album> result = albumSDI.select(album);
+        int count = albumSDI.count(album);
 
 
         // （存）3、将数据对象存储到request中
@@ -93,7 +92,8 @@ public class SingerQuery extends HttpServlet {
         // （转）4、将业务转发给View
         RequestDispatcher rd = request.getRequestDispatcher("ToJSON");
         rd.forward(request,response);
-        
-        
+
+
     }
+
 }

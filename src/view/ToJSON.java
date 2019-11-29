@@ -1,4 +1,4 @@
-package View;
+package view;
 
 import net.sf.json.JSONObject;
 
@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 /**
  * Created by user on 2019/11/26.
  */
-@WebServlet(name = "ToJSON", urlPatterns = "/singer/ToJSON")
+//@WebServlet(name = "ToJSON", urlPatterns = "/view/ToJSON")
 public class ToJSON extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
