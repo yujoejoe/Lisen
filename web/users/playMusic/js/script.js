@@ -94,7 +94,14 @@ window.onload = function change() {
   }, false);
 
 
-//进度条
+
+
+
+
+
+ /*============ 播放进度条 ============*/
+
+
   /*==== 获取进度条的宽度 ====*/
   var rangeWidth = parseInt($(range).css('width').substring(0, $(range).css('width').length - 2));
 
@@ -141,9 +148,10 @@ window.onload = function change() {
   /*==== 计算圆离左边的距离 ====*/
   var leftDistance = parseInt(MarginLeft) + parseInt(rangeLeft) + parseInt(dotWidth) / 2;
 
+  // 改变进度条
   function changProgress(ev) {
-    console.log("ev.clientX: " + ev.clientX);
-    console.log("leftDistance； " + leftDistance);
+    // console.log("ev.clientX: " + ev.clientX);
+    // console.log("leftDistance； " + leftDistance);
     var l = ev.clientX - leftDistance;          //获取圆距左端的距离
     if (l < 0) {
       l = 0;
@@ -164,6 +172,14 @@ window.onload = function change() {
   }
 
 
+
+
+
+
+
+  /*============ 声音进度条 ============*/
+
+
   //声音开关
   var voice = document.getElementById("btn_voice");
   voice.onclick = function () {
@@ -175,7 +191,6 @@ window.onload = function change() {
       audio.muted = false;
     }
   };
-
 
   //声音控制条
   var voiceRange = document.getElementById("play_voice");
@@ -214,6 +229,7 @@ window.onload = function change() {
     return false;
   };
 
+  // 改变进度条
   function changProgressVoice(ev) {
     // console.log("声音控制条x坐标："+ev.clientX);
     var d = ev.clientX - voiceLeftDistance;          //获取圆距左端的距离
@@ -246,7 +262,13 @@ window.onload = function change() {
   }
 
 
-  /*==== 歌词滚动 ====*/
+
+
+
+
+
+  /*============ 歌词滚动 ============*/
+
   // var url = './music/音阙诗听、赵方婧 - 霜降.lrc';
 
   // var singerName = "G.E.M.邓紫棋";
@@ -256,14 +278,13 @@ window.onload = function change() {
   /*==== 添加歌词 ====*/
   function addLyric(lyric) {
 
-
     var path = music[num];
 
     var song = new Song();
 
+    // 获取歌词
     song.getLyric(path);
-    // 获取歌词容器
-
+    // 添加歌词到指定容器
     song.appendTo(lyric);
 
     /*==== 歌词高亮行数 ====*/
@@ -277,6 +298,7 @@ window.onload = function change() {
     marginBottom = parseInt(marginBottom.substring(0, marginBottom.length - 2));
     /*==== 计算p标签高度 ====*/
     var pHeight = lineHeight + marginBottom;
+
 
     /*==== 绑定滚动事件 ====*/
     audio.addEventListener('timeupdate', function () {
@@ -344,7 +366,7 @@ window.onload = function change() {
 
 };
 
-
+// 构造song对象
 function Song(ar, ti, lrc) {
   this.artist = ar;
   this.title = ti;
@@ -354,7 +376,7 @@ function Song(ar, ti, lrc) {
 
 Song.prototype = {
   constructor: Song,
-  appendTo: function (pos) {
+  appendTo: function (pos) {                              // 添加歌词到指定容器
     if (this.lyric === undefined) {
       this.isEmpty = true;
       var none = document.createElement('p');
@@ -371,7 +393,7 @@ Song.prototype = {
     }
 
   },
-  getLyric: function (/*singerName, songName*/path) {
+  getLyric: function (/*singerName, songName*/path) {       // 获取歌词
     var song = this;
     $.ajax({
       type: "get",
