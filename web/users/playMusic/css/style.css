@@ -33,6 +33,35 @@ body {
     top: 20px;
 }
 
+.logo_img,
+.logo_img_mask{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 96px;
+    height: 21px;
+}
+
+
+.logo_img{
+    background-image: url(../images/player_logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: none;      // 先隐藏logo_img，若浏览器不支持logo_img_mask，再通过js设置display:block
+}
+
+
+.logo_img_mask{
+    mask-image: url(../images/player_logo.png);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    -webkit-mask-image: url(../images/player_logo.png);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    background-color: #515151;
+}
+
 .login {
     position: absolute;
     right: 20px;
