@@ -98,6 +98,10 @@ window.onload = function change() {
   /*==== 获取进度条的宽度 ====*/
   var rangeWidth = parseInt($(range).css('width').substring(0, $(range).css('width').length - 2));
 
+
+  var mute = false;   //  默认打开声音
+
+
   setInterval(setProgress, 100);   //通过定时器设置进度的自动改变
   function setProgress() {
     current.innerHTML = format(audio.currentTime);  //设置当前时间的显示
@@ -111,9 +115,14 @@ window.onload = function change() {
 
   dot.onmousedown = function (ev) {
     document.onmousemove = function (ev) {
+      mute = true;    // 鼠标移动时静音
+      // console.log("静音");
       changProgress(ev);
     };
-    document.onmouseup = function () {      //当鼠标松开后关闭移动事件和自身事件
+    document.onmouseup = function (ev) {      //当鼠标松开后关闭移动事件和自身事件
+      mute = false;   // 鼠标松开时打开声音
+      // console.log("打开声音");
+      changProgress(ev);
       document.onmousemove = null;
       document.onmouseup = null;
     };
@@ -133,8 +142,8 @@ window.onload = function change() {
   var leftDistance = parseInt(MarginLeft) + parseInt(rangeLeft) + parseInt(dotWidth) / 2;
 
   function changProgress(ev) {
-    // console.log("ev.clientX: " + ev.clientX);
-    // console.log("leftDistance； " + leftDistance);
+    console.log("ev.clientX: " + ev.clientX);
+    console.log("leftDistance； " + leftDistance);
     var l = ev.clientX - leftDistance;          //获取圆距左端的距离
     if (l < 0) {
       l = 0;
@@ -147,9 +156,9 @@ window.onload = function change() {
 
     dot.style.left = l + "px";
     progress.style.width = l + "px";
-    // if (progress.style.width="644px"){
-    //
-    // };
+
+    audio.muted = mute;
+
     audio.currentTime = (l / rangeWidth) * audio.duration;    //设置当前时间，以改变真正的播放进度
     current.innerHTML = format(audio.currentTime);  //当前时间
   }

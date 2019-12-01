@@ -1,6 +1,7 @@
 package Controller.song;
 
 import POJO.Lyric;
+import POJO.Song;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +39,13 @@ public class GetLyric extends HttpServlet {
         source.setPath(path);
         String lyric = source.getLyric();
 
+//        Song song = new Song();
+//        path += ".mp3";
+//        song.setPath(path);
+//        String url = song.getUrl();
+
         out.print(lyric);
+
+//        out.print(url);
     }
 }
