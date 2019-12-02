@@ -197,9 +197,9 @@ window.onload = function change() {
   var voiceProgress = document.getElementById("progress_voice");
   var voiceDot = document.getElementById("voice_dot");
 
-  /*==== 获取控制条宽度 ====*/
+  /*==== 获取声音控制条宽度 ====*/
   var voiceRangeWidth = $(voiceRange).css('width');
-  voiceRangeWidth = voiceRangeWidth.substring(0, voiceRangeWidth.length - 2);
+  voiceRangeWidth = parseInt(voiceRangeWidth.substring(0, voiceRangeWidth.length - 2));
   /*==== 获取control的宽度 ====*/
   var controlWidth = $(voiceRange).parent().parent().css('width');
   controlWidth = controlWidth.substring(0, controlWidth.length - 2);
@@ -235,13 +235,14 @@ window.onload = function change() {
     var d = ev.clientX - voiceLeftDistance;          //获取圆距左端的距离
     if (d < 0) {
       d = 0;
-    } else if (d > 75) {
+    } else if (d > voiceRangeWidth) {
 
-      d = 75;
+      d = voiceRangeWidth;
     }
+    console.log("d: " + d);
     voiceDot.style.left = d + "px";
     voiceProgress.style.width = d + "px";
-    var v = (d / 75).toFixed(1);
+    var v = (d / voiceRangeWidth).toFixed(2);
     audio.volume = v;
   }
 
@@ -397,7 +398,7 @@ Song.prototype = {
     var song = this;
     $.ajax({
       type: "get",
-      url: "/GetLyric",     // 获取歌词的servlet
+      url: "/lyricGet",     // 获取歌词的servlet
       data: {"path": path},   // {"singer": singerName, "song": songName}
       async: false,       // 必须为false才能接受到有效返回值
       success: function (result) {

@@ -14,8 +14,8 @@ import java.io.PrintWriter;
 /**
  * Created by user on 2019/12/1.
  */
-@WebServlet(name = "GetLyric", urlPatterns = "/GetLyric")
-public class GetLyric extends HttpServlet {
+@WebServlet(name = "lyricGet", urlPatterns = "/lyricGet")
+public class lyricGet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
