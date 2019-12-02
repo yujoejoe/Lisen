@@ -1,7 +1,7 @@
 package Controller.album;
 
-import POJO.JsonData;
 import POJO.Album;
+import POJO.JsonData;
 import ServiceDAO.album.AlbumServiceDAOImp;
 
 import javax.servlet.RequestDispatcher;
@@ -13,11 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
 /**
  *
  */
-@WebServlet(name ="AlbumGet" ,urlPatterns ="/album/get" )
-public class AlbumGet extends HttpServlet{
+@WebServlet(name ="TestGet" ,urlPatterns ="/test/get" )
+public class TestGet extends HttpServlet{
     private static final long serialVersion = 1L;
 
     private AlbumServiceDAOImp albumSDI = new AlbumServiceDAOImp();
@@ -39,7 +40,7 @@ public class AlbumGet extends HttpServlet{
         String search = request.getParameter("search");
         if(search!=null && search.length()!=0){
             // 模糊查找teacher的name、sequence
-            album.setCondition(" album.name like '%"+search+"%'");
+            album.setCondition(" album.name like %'"+search+"%'");
         }else{
             album.setCondition("");
         }
@@ -58,8 +59,8 @@ public class AlbumGet extends HttpServlet{
         String order = request.getParameter("order");   // 排序方式 升序 或 降序
         if(field!=null && field.length()!=0 && order!=null && order.length()!=0){
             album.setOrderBy(" order by " + field + " " + order);
-            album.setOrderBy("");
         }else{
+            album.setOrderBy("");
         }
 
         // （调）2、调用ServiceDAO方法，完成业务
@@ -87,7 +88,6 @@ public class AlbumGet extends HttpServlet{
 
         // 校验数据
         System.out.println(jsonData);
-//        out.print(jsonData);
 
         // （转）4、将业务转发给View
         RequestDispatcher rd = request.getRequestDispatcher("/view/ToJSON");

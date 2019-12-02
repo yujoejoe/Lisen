@@ -40,7 +40,7 @@ public class SingerGet extends HttpServlet {
         String search = request.getParameter("search");
         if(search!=null && search.length()!=0){
             // 模糊查找teacher的name、sequence
-            singer.setCondition(" singer.name like %'"+search+"%'");
+            singer.setCondition(" singer.name like '%"+search+"%'");
         }else{
             singer.setCondition("");
         }

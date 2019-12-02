@@ -26,26 +26,30 @@ public class AlbumDAOImp implements AlbumDAO{
             String sql = "select"
                     + " album.name as name,"
                     + " singer.name as singer,"
-                    + " song.name as song,"
+//                    + " song.name as song,"
                     + " album.date as date,"
                     + " album.img as img,"
                     + " album.company as company,"
-                    + " area.name as area,"
+                    + " area.name as area"
                     +" from"
                     + " album"
                     +" inner join"
                     + " singer"
                     +" on "
-                    + " alnum.singerId = singer.id "
-                    + " inner join "
-                    + " song "
-                    + " on "
-                    + " album.songId = song.id "
+                    + " album.singerId = singer.id "
+//                    + " inner join "
+//                    + " song "
+//                    + " on "
+//                    + " album.songId = song.id "
                     +" inner join"
                     + " area"
                     +" on"
                     + " album.areaId = area.id"
                     +" where 1=1 ";
+
+//            String sql = " select album.name from album where 1=1 ";
+
+
 
 
             // 添加条件
@@ -80,13 +84,12 @@ public class AlbumDAOImp implements AlbumDAO{
 
                 tmp.setName(rs.getString("name"));
                 tmp.setSinger(rs.getString("singer"));
-                tmp.setSong(rs.getString("song"));
                 tmp.setDate(rs.getString("date"));
                 tmp.setImg(rs.getString("img"));
                 tmp.setCompany(rs.getString("company"));
                 tmp.setArea(rs.getString("area"));
                 resultList.add(tmp);
-            }
+        }
 
             return resultList;
         }catch(Exception e){
@@ -94,4 +97,33 @@ public class AlbumDAOImp implements AlbumDAO{
             return null;
         }
     }
+
+    @Override
+    public int count(Album  album) throws SQLException {
+        try{
+            // sql语句
+            String sql = "select count(*) as counts from album where 1=1";
+            // 添加条件
+            String condition = album.getCondition();
+            if(condition != null && !condition.equals("")){
+                sql += " and" + condition;
+            }
+
+            pst = conn.prepareStatement(sql);
+
+            // 控制台输出sql语句，检验正确性
+            System.out.println("album COUNT: "+sql);
+
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+
+            int counts = Integer.parseInt(rs.getString("counts"));
+
+            return counts;
+        }catch(Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
 }

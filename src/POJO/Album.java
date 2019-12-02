@@ -7,7 +7,7 @@ public class Album extends Base{
 
     String name;
     String singer;
-    String song;
+//    String song;
     String date;
     String img;
     String company;
@@ -29,13 +29,13 @@ public class Album extends Base{
         this.singer = singer;
     }
 
-    public String getSong() {
-        return song;
-    }
-
-    public void setSong(String song) {
-        this.song = song;
-    }
+//    public String getSong() {
+//        return song;
+//    }
+//
+//    public void setSong(String song) {
+//        this.song = song;
+//    }
 
     public String getDate() {
         return date;
@@ -71,14 +71,15 @@ public class Album extends Base{
 
 
 
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "album ["
+                + "name:" + name
+                + " ,singer:" + singer
+                + " ,date:" + date
+                + " ,img:" + img
+                + " ,company:" + company
+                + " ,area:" + area
+                + "]";
+    }
 }

@@ -51,7 +51,6 @@ public class DBUtil {
         try {
             conn = DriverManager.getConnection(url,userName,password);
             conn.setAutoCommit(false);//注意：为防止事务自动提交，我们习惯在这里将事务的提交方式改为手动提交
-
             System.out.println("DBUtil: 连接数据库成功！");
 
 
