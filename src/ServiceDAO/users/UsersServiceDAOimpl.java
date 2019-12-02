@@ -2,7 +2,6 @@ package ServiceDAO.users;
 
 import DAO.users.UsersDAOimpl;
 import POJO.Users;
-import org.apache.catalina.User;
 import util.DBUtil;
 
 import java.sql.Connection;
