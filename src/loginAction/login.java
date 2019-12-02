@@ -8,15 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 /**
  *
  */
-@WebServlet(name ="loginAction" ,urlPatterns ="/loginAction/login" )
+//@WebServlet(name ="loginAction" ,urlPatterns ="/loginAction/login" )
 public class login extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -46,10 +43,12 @@ public class login extends HttpServlet {
             Connection conn = DriverManager.getConnection(url,user,pw);
             //2、根据用户名与密码查找用户
             String sql = "select * from user where name=? and pswd=?";
+            //预编译
             PreparedStatement pst = conn.prepareStatement(sql);
+            //设置值
             pst.setString(1,username);
             pst.setString(2,password);
-
+            //执行sql语句
             ResultSet rs = pst.executeQuery();
             String str = "";
             if(rs.next()){
@@ -68,6 +67,17 @@ public class login extends HttpServlet {
             e.printStackTrace();
             out.print("{\"success\":false,\"msg\":\"查询失败\"}");
         }
+            /*Users users=null;
+            if (rs.next()){
+                users = new Users();
+                //从数据库中获取值设置到实体类的setter方法中
+                users.setId(rs.getInt("id"));
+                users.setName(rs.getString("name"));
+                users.setPswd(rs.getString("pswd"));
+                users.setPhone(rs.getString("phone"));
+                users.setSex(rs.getString("sex"));
+                users.setEmail(rs.getString("email"));
+            }*/
     }
 
     /**
