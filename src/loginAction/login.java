@@ -35,16 +35,16 @@ public class login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=utf-8");
+        //1、获取登录页面输入的用户名与密码
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         try{
             Class.forName("com.mysql.jdbc.Driver");
-
             String url = "jdbc:mysql://192.168.1.125:3306/test?useUnicode=true&characterEncoding=utf8";
             String user = "root";
             String pw = "1234";
-
             Connection conn = DriverManager.getConnection(url,user,pw);
+            //2、根据用户名与密码查找用户
             String sql = "select * from user where name=? and pswd=?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1,username);
@@ -58,7 +58,7 @@ public class login extends HttpServlet {
                 se.setAttribute("phone", rs.getString("phone"));
                 se.setAttribute("sex", rs.getString("sex"));
                 se.setAttribute("email", rs.getString("email"));
-                str ="{\"success\":true,\"msg\":\"查询成功\",\"rows\":[{\"sequence\":\""+se.getAttribute("sequence")+"\",\"userName\":\""+se.getAttribute("userName")+"\",\"role\":\""+se.getAttribute("role")+"\",\"imgURL\":\""+se.getAttribute("imgURL")+"\"}]}";
+                str ="{\"success\":true,\"msg\":\"查询成功\",\"rows\":[{\"name\":\""+se.getAttribute("name")+"\",\"phone\":\""+se.getAttribute("phone")+"\",\"sex\":\""+se.getAttribute("sex")+"\",\"email\":\""+se.getAttribute("email")+"\"}]}";
             }else{
                 str = "{\"success\":true,\"msg\":\"账号或密码错误\"}";
             }

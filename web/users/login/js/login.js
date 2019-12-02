@@ -7,7 +7,7 @@
             var username = $("#username").val();
             var password = $("#password").val();
             $.get(
-                "/Controller/login/loginAction",
+                "/loginAction/login",
                 {"username":username,"password":password},
                 function(result){
                     var data = JSON.parse(result);
@@ -33,7 +33,7 @@
 /*$(document).ready(function(){
     $("#a_exit").click(function(){
         $.get(
-            "/Controller/login/exitAction",
+            "loginAction/exit",
             function(result){
                 var data = JSON.parse(result);
                 if(data.success){
