@@ -2,7 +2,7 @@ package Controller.users;
 
 import POJO.JsonData;
 import POJO.Users;
-import ServiceDAO.users.UsersServiceDAOimpl;
+import ServiceDAO.users.UsersServiceDAOImp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name ="usersGet" ,urlPatterns ="/usersGet/get" )
-public class usersGet extends HttpServlet {
+@WebServlet(name ="UsersGet" ,urlPatterns ="/UsersGet/get" )
+public class UsersGet extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  UsersServiceDAOimpl usersSD = new UsersServiceDAOimpl();
+  UsersServiceDAOImp usersSD = new UsersServiceDAOImp();
   Users users = new Users();
 
-  public usersGet() {
+  public UsersGet() {
     super();
   }
 
