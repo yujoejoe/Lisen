@@ -12,6 +12,15 @@ public class Album extends Base{
     String img;
     String company;
     String area;
+    String genre;
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
     public String getName() {
         return name;
@@ -80,6 +89,7 @@ public class Album extends Base{
                 + " ,img:" + img
                 + " ,company:" + company
                 + " ,area:" + area
+                + " ,genre:" + genre
                 + "]";
     }
 }
