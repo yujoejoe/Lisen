@@ -11,11 +11,11 @@ import java.util.ArrayList;
 /**
  * Created by user on 2019/12/2.
  */
-public class UsersDAOimpl implements UsersDAO {
+public class UsersDAOImp implements UsersDAO {
   private Connection conn = null;
   private PreparedStatement pst = null;
 
-  public UsersDAOimpl(Connection conn) {
+  public UsersDAOImp(Connection conn) {
     super();
     this.conn = conn;
   }

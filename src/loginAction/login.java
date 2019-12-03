@@ -1,5 +1,7 @@
 package loginAction;
 
+import util.DBUtil;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -33,17 +34,15 @@ public class login extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
+
         response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();
         //1、获取登录页面输入的用户名与密码
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         try{
-            Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://192.168.1.125:3306/test?useUnicode=true&characterEncoding=utf8";
-            String user = "root";
-            String pw = "1234";
-            Connection conn = DriverManager.getConnection(url,user,pw);
+
+            Connection conn = DBUtil.getConnection();
             //2、根据用户名与密码查找用户
             String sql = "select * from user where name=? and pswd=?";
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -58,8 +57,10 @@ public class login extends HttpServlet {
                 se.setAttribute("phone", rs.getString("phone"));
                 se.setAttribute("sex", rs.getString("sex"));
                 se.setAttribute("email", rs.getString("email"));
+                System.out.println(str);
                 str ="{\"success\":true,\"msg\":\"查询成功\",\"rows\":[{\"name\":\""+se.getAttribute("name")+"\",\"phone\":\""+se.getAttribute("phone")+"\",\"sex\":\""+se.getAttribute("sex")+"\",\"email\":\""+se.getAttribute("email")+"\"}]}";
             }else{
+                System.out.println(str);
                 str = "{\"success\":true,\"msg\":\"账号或密码错误\"}";
             }
             out.print(str);

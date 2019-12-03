@@ -1,6 +1,6 @@
 package ServiceDAO.users;
 
-import DAO.users.UsersDAOimpl;
+import DAO.users.UsersDAOImp;
 import POJO.Users;
 import util.DBUtil;
 
@@ -8,13 +8,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class UsersServiceDAOimpl implements UsersServiceDAO{
+public class UsersServiceDAOImp implements UsersServiceDAO{
   /**
    * 账号验证业务
    */
   public ArrayList<Users> checkUser(Users users) {
     Connection conn = DBUtil.getConnection();
-    UsersDAOimpl UserD = new UsersDAOimpl(conn);
+    UsersDAOImp UserD = new UsersDAOImp(conn);
     try{
       ArrayList<Users> UserList = new ArrayList<Users>();
       UserList = UserD.select(users);//返回记录集
@@ -40,7 +40,7 @@ public class UsersServiceDAOimpl implements UsersServiceDAO{
    */
   public ArrayList<Users> select(Users users) {
     Connection conn = DBUtil.getConnection();
-    UsersDAOimpl studentD = new UsersDAOimpl(conn);
+    UsersDAOImp studentD = new UsersDAOImp(conn);
     try{
       ArrayList<Users> usersList = new ArrayList<Users>();
       usersList = studentD.select(users);//返回记录集
@@ -66,7 +66,7 @@ public class UsersServiceDAOimpl implements UsersServiceDAO{
    */
   public int count(Users users) {
     Connection conn = DBUtil.getConnection();
-    UsersDAOimpl usersD = new UsersDAOimpl(conn);
+    UsersDAOImp usersD = new UsersDAOImp(conn);
     int cnt;
     try{
       cnt = usersD.count(users);//返回记录集
@@ -92,7 +92,7 @@ public class UsersServiceDAOimpl implements UsersServiceDAO{
    */
   public int insert(Users users){
 	Connection conn = DBUtil.getConnection();
-	UsersDAOimpl UserD = new UsersDAOimpl(conn);
+	UsersDAOImp UserD = new UsersDAOImp(conn);
     try{
       int i = UserD.insert(users);
       conn.commit();
@@ -117,7 +117,7 @@ public class UsersServiceDAOimpl implements UsersServiceDAO{
    */
   public int updatePassword(Users users){
 	Connection conn = DBUtil.getConnection();
-	UsersDAOimpl UserD = new UsersDAOimpl(conn);
+	UsersDAOImp UserD = new UsersDAOImp(conn);
     try{
       int i = UserD.updatePart(users);
       conn.commit();
@@ -142,7 +142,7 @@ public class UsersServiceDAOimpl implements UsersServiceDAO{
    */
   public int delete(Users users){
 	Connection conn = DBUtil.getConnection();
-	UsersDAOimpl UserD = new UsersDAOimpl(conn);
+	UsersDAOImp UserD = new UsersDAOImp(conn);
     try{
       int i = UserD.delete(users);
       conn.commit();
