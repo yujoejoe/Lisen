@@ -1,8 +1,9 @@
 package Controller.album;
 
-import POJO.Album;
+import POJO.AlbumS;
 import POJO.JsonData;
-import ServiceDAO.album.AlbumServiceDAOImp;
+import ServiceDAO.album.AlbumSServiceDAOImp;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,12 +18,12 @@ import java.util.ArrayList;
 /**
  *
  */
-@WebServlet(name ="TestGet" ,urlPatterns ="/test/get" )
-public class TestGet extends HttpServlet{
+@WebServlet(name ="AlbumSongGet" ,urlPatterns ="/album/song/get" )
+public class AlbumSongGet extends HttpServlet{
     private static final long serialVersion = 1L;
 
-    private AlbumServiceDAOImp albumSDI = new AlbumServiceDAOImp();
-    private Album album = new Album();
+    private AlbumSServiceDAOImp albumSDI = new AlbumSServiceDAOImp();
+    private AlbumS albums = new AlbumS();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -40,9 +41,10 @@ public class TestGet extends HttpServlet{
         String search = request.getParameter("search");
         if(search!=null && search.length()!=0){
             // 模糊查找teacher的name、sequence
-            album.setCondition(" album.name like %'"+search+"%'");
+//            albums.setCondition(" album.name like '%"+search+"%'");
+            albums.setCondition(" album ="+search);
         }else{
-            album.setCondition("");
+            albums.setCondition("");
         }
         // 设置分页
         String page = request.getParameter("page");     // 页数
@@ -50,17 +52,17 @@ public class TestGet extends HttpServlet{
         if(page!=null && page.length()!=0 && size!=null && size.length()!=0){
             int p = Integer.parseInt(page);
             int r = Integer.parseInt(size);
-            album.setLimit(" limit " + (p-1)*r + "," + r);
+            albums.setLimit(" limit " + (p-1)*r + "," + r);
         }else{
-            album.setLimit("");
+            albums.setLimit("");
         }
         // 设置排序方式
         String field = request.getParameter("field");   // 排序字段
         String order = request.getParameter("order");   // 排序方式 升序 或 降序
         if(field!=null && field.length()!=0 && order!=null && order.length()!=0){
-            album.setOrderBy(" order by " + field + " " + order);
+            albums.setOrderBy(" order by " + field + " " + order);
         }else{
-            album.setOrderBy("");
+            albums.setOrderBy("");
         }
 
         // （调）2、调用ServiceDAO方法，完成业务
@@ -69,8 +71,8 @@ public class TestGet extends HttpServlet{
          * 1、调用DAO层的select方法，返回查询到的记录集
          * 2、调用DAO层的count方法，返回查询到的记录数
          */
-        ArrayList<Album> result = albumSDI.select(album);
-        int count = albumSDI.count(album);
+        ArrayList<AlbumS> result = albumSDI.select(albums);
+        int count = albumSDI.count(albums);
 
 
         // （存）3、将数据对象存储到request中
