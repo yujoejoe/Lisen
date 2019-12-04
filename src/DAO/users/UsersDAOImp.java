@@ -19,7 +19,7 @@ public class UsersDAOImp implements UsersDAO {
     super();
     this.conn = conn;
   }
-  
+
   /**
    * 用于登录的查询验证
    */
@@ -56,7 +56,27 @@ public class UsersDAOImp implements UsersDAO {
       return null;
     }
   }
-  
+
+  /**
+   * 插入/注册
+   */
+  public int insert(Users users) throws SQLException {
+    try{
+      String sql = "insert into user(name,pswd,phone,sex,email) values(?,?,?,?,?) ";
+      pst = conn.prepareStatement(sql);
+      pst.setString(1, users.getName());
+      pst.setString(2, users.getPswd());
+      pst.setString(3, users.getPhone());
+      pst.setString(4, users.getSex());
+      pst.setString(5, users.getEmail());
+      int i = pst.executeUpdate();
+      return i;
+    }catch(Exception e){
+      e.printStackTrace();
+      return -1;
+    }
+  }
+
   /**
    * 统计记录
    */
@@ -82,26 +102,6 @@ public class UsersDAOImp implements UsersDAO {
     }
   }
 
-  /**
-   * 插入记录
-   */  
-  public int insert(Users users) throws SQLException {
-    try{
-      String sql = "insert into user(name,pswd,phone,sex,email) values(?,?,?,?,?) ";
-      pst = conn.prepareStatement(sql);
-      pst.setString(1, users.getName());
-      pst.setString(2, users.getPswd());
-      pst.setString(3, users.getPhone());
-      pst.setString(4, users.getSex());
-      pst.setString(5, users.getEmail());
-      int i = pst.executeUpdate();
-      return i;
-    }catch(Exception e){
-      e.printStackTrace();
-      return -1;
-    }
-  }
-  
   /**
    * 更新记录
    */
