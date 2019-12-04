@@ -3,9 +3,9 @@ package POJO;
 /**
  * Created by user on 2019/12/3.
  */
-public class Area {
-    int id;
-    String name;
+public class Area extends Base{
+    private int id;
+    private String name;
 
     public int getId() {
         return id;
@@ -25,6 +25,6 @@ public class Area {
 
     @Override
     public String toString() {
-        return '\'' + name + '\'';
+        return "\"" + name + "\"";
     }
 }

@@ -105,6 +105,7 @@ body{
     display: block;
     overflow: hidden;
     padding-top: 56.25%;
+    cursor: pointer;
 }
 
 .item_box:after {
@@ -124,6 +125,7 @@ body{
     width: 100%;
     transform: scale(1);
     transition: all .75s ease-in-out;
+    cursor: pointer;
 }
 
 .item_title {
