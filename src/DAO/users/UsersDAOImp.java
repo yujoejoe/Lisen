@@ -20,6 +20,10 @@ public class UsersDAOImp implements UsersDAO {
     this.conn = conn;
   }
 
+  public UsersDAOImp() {
+    super();
+  }
+
   /**
    * 用于登录的查询验证
    */
