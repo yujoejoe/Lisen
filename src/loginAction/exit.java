@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name ="exitAction" ,urlPatterns ="/exitAction/exit" )
+@WebServlet(name ="exitAction" ,urlPatterns ="/loginAction/exit" )
 public class exit extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

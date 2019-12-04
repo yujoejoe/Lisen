@@ -88,7 +88,7 @@ public class UsersServiceDAOImp implements UsersServiceDAO{
   }
   
   /**
-   * 添加/注册业务
+   * 添加业务
    */
   public int insert(Users users){
 	Connection conn = DBUtil.getConnection();

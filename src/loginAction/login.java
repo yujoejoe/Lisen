@@ -14,9 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-/**
- *
- */
+
 @WebServlet(name ="loginAction" ,urlPatterns ="/loginAction/login" )
 public class login extends HttpServlet {
 
