@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 
 @WebServlet(name ="register" ,urlPatterns ="/loginAction/register" )
 public class register extends HttpServlet {
@@ -36,11 +37,11 @@ public class register extends HttpServlet {
         PrintWriter out = response.getWriter();
         //1、获取注册页面输入信息
         String name = request.getParameter("name");
-        String pswd = request.getParameter("password");
+        String pswd = request.getParameter("pswd");
         String phone = request.getParameter("phone");
-        String sex = request.getParameter("optionsRadios");
+        String sex = request.getParameter("sex");
         String email = request.getParameter("email");
-        System.out.println(name + pswd + phone + sex + email);
+        System.out.println(" 用户名："+name+" 密码："+pswd+" 电话："+phone+" 性别："+sex+" 邮箱："+email);
         try {
             Connection conn = DBUtil.getConnection();
             //2、查询是否为已注册用户
@@ -48,28 +49,76 @@ public class register extends HttpServlet {
             PreparedStatement pstc = conn.prepareStatement(sqlc);
             pstc.setString(1,name);
             //跟数据库user表产生交互，并获得其中的数据，获得该数据的结果集
-            ResultSet rs = pstc.executeQuery();
+            ResultSet rs1 = pstc.executeQuery();
             String str = "";
-            if(rs.next()){
-                HttpSession se = request.getSession();
-                se.setAttribute("name", rs.getString("name"));
-                se.setAttribute("phone", rs.getString("phone"));
+            if(rs1.next()){
+                HttpSession se1 = request.getSession();
+                se1.setAttribute("name", rs1.getString("name"));
+                str = "{\"success\":true,\"msg\":\"用户已存在\"}";
+            }
+            else {
                 //3、根据信息插入用户
-                String sql = "insert into user(`name`,pswd,phone,sex,email) values(?,?,?,?,?)";
+                HttpSession se = request.getSession();
+                //String sql = "insert into user(`name`,pswd,phone,sex,email) values(?,?,?,?,?)";
+                String sql = "insert into user (`name`,pswd,phone,sex,email) value('"
+                           +name
+                           +"','"
+                           +pswd
+                           +"','"
+                           +phone
+                           +"','"
+                           +sex
+                           +"','"
+                           +email
+                           +"')";
+                System.out.println(sql);
                 PreparedStatement pst = conn.prepareStatement(sql);
-                pst.setString(1, name);
-                pst.setString(2, pswd);
-                pst.setString(3, phone);
-                pst.setString(4, sex);
-                pst.setString(5, email);
-                if (rs.next()) {
-                    se.setAttribute("email", rs.getString("email"));
+                /*跟数据库user表产生交互，并获得其中的数据，获得该数据的结果集*/
+                int rs = pst.executeUpdate();
+                conn.commit();
+                if (rs==1) {
+
                     System.out.println(str);
-                    str = "{\"success\":true,\"msg\":\"注册成功\",\"rows\":[{\"name\":\"" + se.getAttribute("name") + "\",\"phone\":\"" + se.getAttribute("phone") + "\",\"email\":\"" + se.getAttribute("email") + "\"}]}";
+                    str = "{\"success\":false,\"msg\":\"注册成功\",\"rows\":[{\"name\":\"" + se.getAttribute("name") + "\",\"password\":\"" + se.getAttribute("password") + "\"}]}";
                 } else {
                     System.out.println(str);
-                    str = "{\"success\":true,\"msg\":\"信息错误\"}";
+                    str = "{\"success\":false,\"msg\":\"数据库没有数据\"}";
                 }
+
+
+
+//                ResultSet rs = pst.executeUpdate();
+
+//                boolean rs = pst.execute(sql);
+
+               /* if (rs) {
+                    //获取结果
+//                    rs2 = pst.getResultSet();
+                    //ResultSetMetaData是用于分析结果集的元数据接口
+                  *//*  ResultSetMetaData rsmd = rs2.getMetaData();
+                    int columnCount = rsmd.getColumnCount();
+                    //迭代输出ResultSet对象
+                    while (rs2.next())
+                    {   //依次输出每列的值
+                        for (int i = 0 ; i < columnCount ; i++ )
+                        {
+                            System.out.print(rs2.getString(i + 1) + "/t");
+                        }
+                        System.out.print("/n");
+                    }*//*
+
+
+                 *//*se.setAttribute("name", rs.getString("name"));
+                    se.setAttribute("pswd", rs.getString("pswd"));*//*
+                    System.out.println(str);
+                    str = "{\"success\":false,\"msg\":\"注册成功\"}]}";
+//                    str = "{\"success\":false,\"msg\":\"注册成功\",\"rows\":[{\"name\":\"" + se.getAttribute("name") + "\",\"password\":\"" + se.getAttribute("password") + "\"}]}";
+                }else {
+                    System.out.println(str);
+                    str = "{\"success\":false,\"msg\":\"数据库没有数据\"}";
+                }*/
+
+
             }
             out.print(str);
         } catch (Exception e) {

@@ -46,17 +46,18 @@ public class login extends HttpServlet {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1,username);
             pst.setString(2,password);
-
+            //跟数据库user表产生交互，并获得其中的数据，获得该数据的结果集
             ResultSet rs = pst.executeQuery();
             String str = "";
             if(rs.next()){
                 HttpSession se = request.getSession();
                 se.setAttribute("name", rs.getString("name"));
-                se.setAttribute("phone", rs.getString("phone"));
+                se.setAttribute("pswd", rs.getString("pswd"));
+                /*se.setAttribute("phone", rs.getString("phone"));
                 se.setAttribute("sex", rs.getString("sex"));
-                se.setAttribute("email", rs.getString("email"));
+                se.setAttribute("email", rs.getString("email"));*/
                 System.out.println(str);
-                str ="{\"success\":true,\"msg\":\"查询成功\",\"rows\":[{\"name\":\""+se.getAttribute("name")+"\",\"phone\":\""+se.getAttribute("phone")+"\",\"sex\":\""+se.getAttribute("sex")+"\",\"email\":\""+se.getAttribute("email")+"\"}]}";
+                str ="{\"success\":true,\"msg\":\"查询成功\",\"rows\":[{\"name\":\""+se.getAttribute("name")+"\",\"pswd\":\""+se.getAttribute("pswd")+"\"}]}";
             }else{
                 System.out.println(str);
                 str = "{\"success\":true,\"msg\":\"账号或密码错误\"}";
