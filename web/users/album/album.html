@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../index/images/icon.png">
+<!--    <link rel="icon" href="../index/images/icon.png">-->
     <title>Album-singerName-哩森</title>
 
     <link rel="stylesheet" href="../index/css/reset.css">
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../tools/aos/aos.css">
     <script src="../../tools/jquery/jquery.min.js"></script>
 <!--    <script src="../../users/index/js/judgeLoginState.js"></script>-->
+<!--    <link rel="icon" href="images/icon.png">-->
     <link rel="stylesheet" href="css/album.css">
     <script rel="script"   src="js/script.js"></script>
 </head>
@@ -99,7 +100,7 @@
                     <li class="txt_album_company">唱片公司：</li>
                 </ul>
                 <div class="action">
-                    <a href="../playMusic/playMusic.html">
+                    <a id="play_all">
                         <button><i  class="icon_play"></i>播放全部</button>
                     </a>
                     <a href="#">
@@ -110,80 +111,87 @@
                     </a>
                     <a href="#">
                         <button><i  class="icon_share"></i>分享</button>
+<!--                        <form>-->
+<!--                        <input  type="text"  id="test"  style="width: 80px;height: 40px; border:solid  1px">-->
+<!--                        <input type="button" value="登录" id="txt_login"/>-->
+<!--                        </form>-->
                     </a>
                 </div>
             </div>
         </div>
+
+
+
         <!--歌手简介end-->
 
         <div class="album_show" >
             <ul style="color: dimgray; background-color: #eeeeee;">
-                <li class="album_name">歌曲</li>
-                <li class="album_singer">歌手</li>
-                <li class="album_time">时长</li>
+                <li class="album_name_head">歌曲</li>
+                <li class="album_singer_head">歌手</li>
+                <li class="album_time_head">时长</li>
             </ul>
-            <a href="#">
+            <a class="show_hide">
                 <ul>
                     <li class="album_id">1</li>
-                    <li class="album_name">木偶人</li>
-                    <li class="album_singer">薛之谦</li>
+                    <li class="album_name"></li>
+                    <li class="album_singer"></li>
                     <li class="album_time">04:46</li>
                 </ul>
             </a>
-            <a href="#">
-                <ul>
+            <a >
+                <ul class="show_hide">
                     <li class="album_id">2</li>
-                    <li class="album_name">慢半拍</li>
-                    <li class="album_singer">薛之谦</li>
+                    <li class="album_name" ></li>
+                    <li class="album_singer"></li>
                     <li class="album_time">04:01</li>
                 </ul>
             </a>
-            <a href="#">
-                <ul>
+            <a >
+                <ul class="show_hide">
                     <li class="album_id">3</li>
-                    <li class="album_name">这么久没见</li>
-                    <li class="album_singer">薛之谦</li>
-                    <li class="album_time">04:55</li>
+                    <li class="album_name"></li>
+                    <li class="album_singer"></li>
+                    <li class="album_time"></li>
                 </ul>
             </a>
-            <a href="#">
-                <ul>
+            <a >
+                <ul class="show_hide">
                     <li class="album_id">4</li>
-                    <li class="album_name">笑场</li>
-                    <li class="album_singer">薛之谦</li>
-                    <li class="album_time">04:43</li>
+                    <li class="album_name"></li>
+                    <li class="album_singer"></li>
+                    <li class="album_time"></li>
                 </ul>
             </a>
-            <a href="#">
+            <a class="show_hide">
                 <ul>
                     <li class="album_id">5</li>
-                    <li class="album_name">病态</li>
-                    <li class="album_singer">薛之谦</li>
-                    <li class="album_time">04:39</li>
+                    <li class="album_name"></li>
+                    <li class="album_singer"></li>
+                    <li class="album_time"></li>
                 </ul>
             </a>
-            <a href="#">
+            <a class="show_hide">
                 <ul>
                     <li class="album_id">6</li>
-                    <li class="album_name">......</li>
-                    <li class="album_singer">薛之谦</li>
-                    <li class="album_time">......</li>
+                    <li class="album_name"></li>
+                    <li class="album_singer"></li>
+                    <li class="album_time"></li>
                 </ul>
             </a>
-            <a href="#">
+            <a class="show_hide">
                 <ul>
                     <li class="album_id">7</li>
-                    <li class="album_name">......</li>
-                    <li class="album_singer">薛之谦</li>
-                    <li class="album_time">......</li>
+                    <li class="album_name"></li>
+                    <li class="album_singer"></li>
+                    <li class="album_time"></li>
                 </ul>
             </a>
-            <a href="#">
+            <a class="show_hide">
                 <ul>
                     <li class="album_id">8</li>
-                    <li class="album_name">......</li>
-                    <li class="album_singer">薛之谦</li>
-                    <li class="album_time">......</li>
+                    <li class="album_name"></li>
+                    <li class="album_singer"></li>
+                    <li class="album_time"></li>
                 </ul>
             </a>
         </div>
