@@ -13,7 +13,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 
 @WebServlet(name ="register" ,urlPatterns ="/loginAction/register" )
 public class register extends HttpServlet {
@@ -74,8 +73,9 @@ public class register extends HttpServlet {
                 PreparedStatement pst = conn.prepareStatement(sql);
                 /*跟数据库user表产生交互，并获得其中的数据，获得该数据的结果集*/
                 int rs = pst.executeUpdate();
-                conn.commit(); //提交
+                conn.commit();
                 if (rs==1) {
+
                     System.out.println(str);
                     str = "{\"success\":false,\"msg\":\"注册成功\",\"rows\":[{\"name\":\"" + se.getAttribute("name") + "\",\"password\":\"" + se.getAttribute("password") + "\"}]}";
                 } else {
