@@ -121,7 +121,7 @@ MV.prototype = {
 	var data;
 	$.ajax({
 	  type: "get",
-	  url: "/infoGet",
+	  url: "/mvGet",
 	  data: {"area": this.area, "version": this.version, "page": this.page},
 	  async: false,
 	  success: function (result) {
