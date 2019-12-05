@@ -72,10 +72,10 @@
 		        <div class="form-group">
 		        	<div class="col-sm-12">
 		        		<label class="radio-inline">
-		        		<input type="radio" name="optionsRadios" id="optionsRadios1" value="男">
+		        		<input type="radio" name="sex" id="optionsRadios1" value="男">
 		        		男</label>
 		        		<label class="radio-inline">
-		        		<input type="radio" name="optionsRadios" id="optionsRadios2" value="女">
+		        		<input type="radio" name="sex" id="optionsRadios2" value="女">
 		        		女</label>
 		        	</div>
 		        </div>
@@ -130,6 +130,7 @@
 
 <script type="text/javascript" src="../../tools/login/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="../../tools/login/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
     /**
      * 用户注册
@@ -140,7 +141,7 @@
             var pswd = $("#password").val();
             var email = $("#email").val();
             var phone = $("#phone").val();
-            var sex = $("input[name='optionsRadios']:checked").val();
+            var sex = $("input[name='sex']:checked").val();
             $.get(
                 "/loginAction/register",
                 {
@@ -168,5 +169,6 @@
         });
     });
 </script>
+
 </body>
 </html>
