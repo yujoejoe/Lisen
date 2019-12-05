@@ -40,7 +40,7 @@ function GetQueryString(name)
 }
 
 // 调用方法
-alert(decodeURI(GetQueryString("search")));
+// alert(decodeURI(GetQueryString("search")));
 
 var  search =decodeURI(GetQueryString("search"));
 function AlbumData() {

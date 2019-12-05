@@ -106,9 +106,9 @@ window.onload = function change() {
     }
 
 // 调用方法
-    alert(decodeURI(GetQueryString("song")));
-    alert(decodeURI(GetQueryString("singer")));
-    alert(decodeURI(GetQueryString("album")));
+//     alert(decodeURI(GetQueryString("song")));
+//     alert(decodeURI(GetQueryString("singer")));
+//     alert(decodeURI(GetQueryString("album")));
 console.log(decodeURI(GetQueryString("song")));
 console.log(decodeURI(GetQueryString("singer")));
     var  song =decodeURI(GetQueryString("song"));
@@ -120,8 +120,6 @@ console.log(decodeURI(GetQueryString("singer")));
         $(".list_name")[0].append(song);
     }
 
-
-
     $(document).ready(function () {
         var  search =decodeURI(GetQueryString("album"));
         $.get(
@@ -130,6 +128,15 @@ console.log(decodeURI(GetQueryString("singer")));
             function (result) {
                 var data = JSON.parse(result);
                 console.log(data);
+                if(result!=null){
+                    for (var j = 0; j <result.length ; j++) {
+                        $(".list_name")[j].append(data.result[j].song);
+                        $(".list_author")[j].append(data.result[j].singer);
+                        $($(".list_music")[j]).show();
+                    }
+
+                }
+
             }
         );
 
