@@ -17,6 +17,7 @@ MV.prototype = {
   constructor: MV,
   init: function () {
 	var self = this;
+	var data = this.getData();
 
 	// 获取mv顶部标签容器
 	var tags = document.getElementById('tags');
@@ -55,54 +56,41 @@ MV.prototype = {
 	// console.log("areaTag" + areaTag);
 	// console.log("versionTag" + versionTag);
 
-	$.ajax({
-	  type: "get",
-	  url: "/infoGet",
-	  data: {"area": this.area, "version": this.version, "page": this.page},
-	  async: false,
-	  success: function (result) {
 
-		// console.log(result);
+	if (data.success === false) {
+	  console.log("failure");
+	  self.content = null;
+	  return;
+	}
 
-		var data = JSON.parse(result);
-
-		console.log(data);
-		// success:
-		// area:
-		// version:
-		// content: artist, title, play, date, img    对象数组
-		if (data.success === false) {
-		  console.log("failure");
-		  self.content = null;
-		  return;
-		}
-
-		if (self.isEmpty) {
-		  for (var i = 0; i < data.area.length; ++i) {
-			var aTag = document.createElement('a');
-			aTag.className = "tag_item";
-			aTag.setAttribute('href', "javascript:;");
-			aTag.innerHTML = data.area[i];
-			areaTag.appendChild(aTag);
-		  }
-
-		  for (var i = 0; i < data.version.length; ++i) {
-			var aTag = document.createElement('a');
-			aTag.className = "tag_item";
-			aTag.setAttribute('href', "javascript:;");
-			aTag.innerHTML = data.version[i];
-			versionTag.appendChild(aTag);
-		  }
-		  // 把标签放入tags容器
-		  tags.appendChild(areaTag);
-		  tags.appendChild(versionTag);
-		  self.isEmpty = false;
-		}
-
-
-		self.resetList(data);
+	if (self.isEmpty) {
+	  for (var i = 0; i < data.area.length; ++i) {
+		var aTag = document.createElement('a');
+		aTag.className = "tag_item";
+		aTag.setAttribute('href', "javascript:;");
+		aTag.innerHTML = data.area[i];
+		areaTag.appendChild(aTag);
 	  }
-	});
+
+	  for (var i = 0; i < data.version.length; ++i) {
+		var aTag = document.createElement('a');
+		aTag.className = "tag_item";
+		aTag.setAttribute('href', "javascript:;");
+		aTag.innerHTML = data.version[i];
+		versionTag.appendChild(aTag);
+	  }
+	  // 把标签放入tags容器
+	  tags.appendChild(areaTag);
+	  tags.appendChild(versionTag);
+	  self.isEmpty = false;
+	}
+
+	var page = document.createElement('div');
+	page.className = "page";
+
+
+	self.resetList(data);
+
   },
   appendTo: function (pos) {
 	var self = this;
@@ -170,6 +158,8 @@ MV.prototype = {
 	}
   },
   resetList: function (data) {
+    console.log(data);
+
 	if (data.result.length === 0) {
 	  return;
 	}
@@ -183,6 +173,22 @@ MV.prototype = {
 		"url": data.result[j].url
 	  });
 	}
+  },
+  getData: function(){
+    var data;
+	$.ajax({
+	  type: "get",
+	  url: "/infoGet",
+	  data: {"area": this.area, "version": this.version, "page": this.page},
+	  async: false,
+	  success: function (result) {
+
+		// console.log(result);
+
+		data = JSON.parse(result);
+	  }
+	});
+	return data;
   }
 };
 
@@ -228,10 +234,10 @@ window.onload = function () {
 		var data = JSON.parse(result);
 		if (data.success === false) {
 		  console.log("failure");
-		  mv.content = null;
-		  return;
+		  mv.content.length = 0;
+		}else{
+		  mv.resetList(data);
 		}
-		mv.resetList(data);
 	  }
 	});
   }

@@ -27,6 +27,7 @@ public class mvDAOImp implements mvDAO{
     @Override
     public ArrayList<MV> select(MV mv) throws SQLException {
         String sql = "select"
+                    + " mv.id as id,"
                     + " mv.title as title,"
                     + " singer.name as singer,"
                     + " mv.play as play,"
@@ -44,7 +45,7 @@ public class mvDAOImp implements mvDAO{
                     +" inner join"
                     + " area"
                     +" on"
-                    + " mv.areaId = area.id"
+                    + " singer.areaId = area.id"
                     +" inner join"
                     + " version"
                     +" on"
@@ -54,7 +55,7 @@ public class mvDAOImp implements mvDAO{
         // 添加条件
         String condition = mv.getCondition();
         if(condition!=null && !condition.equals("")){
-            sql += " and" + condition;
+            sql += condition;
         }
         // 排序
         String orderBy = mv.getOrderBy();
@@ -65,7 +66,6 @@ public class mvDAOImp implements mvDAO{
         String limit = mv.getLimit();
         if(limit != null && !limit.equals("")){
             sql += limit;
-            System.out.println("limit is : " + limit);
         }
 
         // 控制台输出sql语句，检验正确性
@@ -75,6 +75,11 @@ public class mvDAOImp implements mvDAO{
         pst = conn.prepareStatement(sql);
         // 执行查询语句并返回结果集
         ResultSet rs = pst.executeQuery();
+        // 创建视图
+        String view = "create view if not exists result as " + sql;
+        System.out.println("View: " + view);
+        pst = conn.prepareStatement(view);
+        pst.execute();
 
         ArrayList<MV> resultList = new ArrayList<>();
         while(rs.next()){
@@ -163,12 +168,12 @@ public class mvDAOImp implements mvDAO{
     public int count(MV mv) throws SQLException {
         try{
             // sql语句
-            String sql = "select count(*) as counts from mv where 1=1";
+            String sql = "select count(id) as counts from result where 1=1";
             // 添加条件
-            String condition = mv.getCondition();
-            if(condition != null && !condition.equals("")){
-                sql += " and" + condition;
-            }
+//            String condition = mv.getCondition();
+//            if(condition != null && !condition.equals("")){
+//                sql += condition;
+//            }
 
             pst = conn.prepareStatement(sql);
 
@@ -179,6 +184,12 @@ public class mvDAOImp implements mvDAO{
             rs.next();
 
             int counts = Integer.parseInt(rs.getString("counts"));
+
+            // 删除视图
+            String deleteView = "drop view if exists result";
+
+            pst = conn.prepareStatement(deleteView);
+            pst.execute();
 
             return counts;
         }catch(Exception e){
