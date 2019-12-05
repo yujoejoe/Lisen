@@ -250,7 +250,7 @@ figure img:hover{
     display: inline-block;
     margin-right: 7px;
     background-repeat: no-repeat;
-    background-image: url("../img/pict.png");
+    background-image: url("../images/pict.png");
 }
 /*播放*/
 .icon_play1{

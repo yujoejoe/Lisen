@@ -26,3 +26,26 @@ onload=function change() {
     };
 
 };
+
+$(document).ready(function () {
+    $(".txt_name").click(function () {
+        // console.log("aaa");
+        var value = $(this).html();
+        console.log(value);
+        var search = encodeURI(encodeURI(value));
+
+        window.location.href="../album/album.html?search="+search;
+    })
+});
+
+
+$(document).ready(function () {
+    $(".txt_name_pic").click(function () {
+        // console.log("aaa");
+        var value = $(this).attr("src");
+        console.log(value);
+        var search = encodeURI(encodeURI(value));
+
+        window.location.href="../album/album.html?search="+search;
+    })
+});

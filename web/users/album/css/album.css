@@ -48,7 +48,7 @@ a{
     top: 0;
     width: 250px;
     height: 250px;
-    background-image: url(../img/album_background.png);
+    background-image: url(../images/album_background.png);
     background-size: 41px 250px;
     background-repeat: no-repeat;
 }
@@ -104,7 +104,7 @@ a{
     display: inline-block;
     margin-right: 7px;
     background-repeat: no-repeat;
-    background-image: url("../img/pict.png");
+    background-image: url("../images/pict.png");
 }
 /*头像*/
 .icon_head{
@@ -186,3 +186,32 @@ a{
     position: absolute;
     color: gray;
 }
+
+.album_name_head{
+    left:10%;
+    width: 50%;
+    position: absolute;
+}
+.album_singer_head{
+    left:65%;
+    width: 25%;
+    position: absolute;
+}
+.album_time_head{
+    left:90%;
+    width: 10%;
+    position: absolute;
+    color: gray;
+}
+
+
+
+
+
+.show_hide{
+    display: none;
+
+}
+/*.txt_album_genre{*/
+/*    display: none;*/
+/*}*/

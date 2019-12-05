@@ -96,6 +96,56 @@ window.onload = function change() {
 
 
 
+/*接受url传来的参数*/
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null) return  unescape(r[2]); return null;
+    }
+
+// 调用方法
+//     alert(decodeURI(GetQueryString("song")));
+//     alert(decodeURI(GetQueryString("singer")));
+//     alert(decodeURI(GetQueryString("album")));
+console.log(decodeURI(GetQueryString("song")));
+console.log(decodeURI(GetQueryString("singer")));
+    var  song =decodeURI(GetQueryString("song"));
+    var  singer =decodeURI(GetQueryString("singer"));
+
+    if(singer!="null") {
+        $(".list_author")[0].append(singer);
+        $($(".list_music")[0]).show();
+        $(".list_name")[0].append(song);
+    }
+
+    $(document).ready(function () {
+        var  search =decodeURI(GetQueryString("album"));
+        $.get(
+            "/album/song/get",
+            {"search":search},
+            function (result) {
+                var data = JSON.parse(result);
+                console.log(data);
+                if(result!=null){
+                    for (var j = 0; j <result.length ; j++) {
+                        $(".list_name")[j].append(data.result[j].song);
+                        $(".list_author")[j].append(data.result[j].singer);
+                        $($(".list_music")[j]).show();
+                    }
+
+                }
+
+            }
+        );
+
+
+
+
+});
+
+
 
 
 

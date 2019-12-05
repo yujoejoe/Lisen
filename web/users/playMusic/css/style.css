@@ -230,6 +230,7 @@ body {
     height: 50px;
     line-height: 50px;
     position: relative;
+    display: none;
 }
 
 .list_music:hover {
@@ -329,6 +330,30 @@ body {
     right: 38px;
     width: 50px
 }
+
+
+.list .list_name_head {
+    width: 54%;
+    float: left;
+    position: relative;
+    white-space: normal;
+}
+
+.list .list_authors_head {
+    width: 26%;
+    color: inherit;
+    float: left;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+
+.list .list_time_head {
+    position: absolute;
+    top: 0;
+    right: 38px;
+    width: 50px
+}
+
 
 .list .list_number {
     left: 40px;
