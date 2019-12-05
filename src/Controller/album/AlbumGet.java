@@ -39,7 +39,7 @@ public class AlbumGet extends HttpServlet{
         String search = request.getParameter("search");
         if(search!=null && search.length()!=0){
             // 模糊查找teacher的name、sequence
-            album.setCondition(" album.name like '%"+search+"%'");
+            album.setCondition(" album.name like '%"+search+"%'  or album.img='"+search+"'");
         }else{
             album.setCondition("");
         }
@@ -86,8 +86,8 @@ public class AlbumGet extends HttpServlet{
         request.setAttribute("jsonData",jsonData);
 
         // 校验数据
-        System.out.println(jsonData);
-//        out.print(jsonData);
+//        System.out.println(jsonData);
+
 
         // （转）4、将业务转发给View
         RequestDispatcher rd = request.getRequestDispatcher("/view/ToJSON");

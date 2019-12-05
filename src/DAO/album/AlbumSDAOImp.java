@@ -33,10 +33,10 @@ public class AlbumSDAOImp  implements  AlbumSDAO{
                         + " singer"
                         + " on "
                         + " song.singerId = singer.id "
-//                    + " inner join "
-//                    + " song "
-//                    + " on "
-//                    + " album.songId = song.albumId "
+                    + " inner join "
+                    + " album "
+                    + " on "
+                    + " song.albumId = album.id"
 //                        + " inner join"
 //                        + " area"
 //                        + " on"
@@ -92,7 +92,7 @@ public class AlbumSDAOImp  implements  AlbumSDAO{
     public int count(AlbumS albums) throws SQLException {
         try{
             // sql语句
-            String sql = "select count(*) as counts from song where 1=1";
+            String sql = "select count(*) as counts from song  INNER JOIN album on song.albumId = album.id  where 1=1";
             // 添加条件
             String condition = albums.getCondition();
             if(condition != null && !condition.equals("")){

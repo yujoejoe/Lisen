@@ -42,7 +42,7 @@ public class AlbumSongGet extends HttpServlet{
         if(search!=null && search.length()!=0){
             // 模糊查找teacher的name、sequence
 //            albums.setCondition(" album.name like '%"+search+"%'");
-            albums.setCondition(" album ="+search);
+            albums.setCondition(" album.name ='"+search+"' or album.img='"+search+"'");
         }else{
             albums.setCondition("");
         }

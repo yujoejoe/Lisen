@@ -22,7 +22,13 @@ public class AlbumS extends Base {
     public void setSinger(String singer) {
         this.singer = singer;
     }
-
+    @Override
+    public String toString() {
+        return "album ["
+                + "song:" + song
+                + " ,singer:" + singer
+                + "]";
+    }
 
 
 }

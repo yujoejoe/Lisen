@@ -59,7 +59,6 @@ public class register extends HttpServlet {
             else {
                 //3、根据信息插入用户
                 HttpSession se = request.getSession();
-                //String sql = "insert into user(`name`,pswd,phone,sex,email) values(?,?,?,?,?)";
                 String sql = "insert into user (`name`,pswd,phone,sex,email) value('"
                            +name
                            +"','"
@@ -75,50 +74,14 @@ public class register extends HttpServlet {
                 PreparedStatement pst = conn.prepareStatement(sql);
                 /*跟数据库user表产生交互，并获得其中的数据，获得该数据的结果集*/
                 int rs = pst.executeUpdate();
-                conn.commit();
+                conn.commit(); //提交
                 if (rs==1) {
-
                     System.out.println(str);
                     str = "{\"success\":false,\"msg\":\"注册成功\",\"rows\":[{\"name\":\"" + se.getAttribute("name") + "\",\"password\":\"" + se.getAttribute("password") + "\"}]}";
                 } else {
                     System.out.println(str);
                     str = "{\"success\":false,\"msg\":\"数据库没有数据\"}";
                 }
-
-
-
-//                ResultSet rs = pst.executeUpdate();
-
-//                boolean rs = pst.execute(sql);
-
-               /* if (rs) {
-                    //获取结果
-//                    rs2 = pst.getResultSet();
-                    //ResultSetMetaData是用于分析结果集的元数据接口
-                  *//*  ResultSetMetaData rsmd = rs2.getMetaData();
-                    int columnCount = rsmd.getColumnCount();
-                    //迭代输出ResultSet对象
-                    while (rs2.next())
-                    {   //依次输出每列的值
-                        for (int i = 0 ; i < columnCount ; i++ )
-                        {
-                            System.out.print(rs2.getString(i + 1) + "/t");
-                        }
-                        System.out.print("/n");
-                    }*//*
-
-
-                 *//*se.setAttribute("name", rs.getString("name"));
-                    se.setAttribute("pswd", rs.getString("pswd"));*//*
-                    System.out.println(str);
-                    str = "{\"success\":false,\"msg\":\"注册成功\"}]}";
-//                    str = "{\"success\":false,\"msg\":\"注册成功\",\"rows\":[{\"name\":\"" + se.getAttribute("name") + "\",\"password\":\"" + se.getAttribute("password") + "\"}]}";
-                }else {
-                    System.out.println(str);
-                    str = "{\"success\":false,\"msg\":\"数据库没有数据\"}";
-                }*/
-
-
             }
             out.print(str);
         } catch (Exception e) {
