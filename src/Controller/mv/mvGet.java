@@ -41,6 +41,7 @@ public class mvGet extends HttpServlet {
         String area = request.getParameter("area");
         String version = request.getParameter("version");
         String page = request.getParameter("page");
+        String order = request.getParameter("order");
 
         ArrayList<Area> areaList = new ArrayList<>();
         ArrayList<Version> versionList = new ArrayList<>();
@@ -114,6 +115,13 @@ public class mvGet extends HttpServlet {
         }else{
             mv.setLimit("");
         }
+
+        if(order != null && order.equals("0")){
+            mv.setOrderBy(" order by mv.date desc");
+        }else if(order != null && order.equals("1")){
+            mv.setOrderBy(" order by mv.play desc");
+        }
+
 
         ArrayList<MV> result = mvSDI.select(mv);
         boolean success = result.size() != 0;

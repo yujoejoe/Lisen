@@ -11,6 +11,7 @@ function MV() {
   this.page = 0;
   this.content = [];
   this.counts = 1;
+  this.order = 0;
   this.isEmpty = true;
 }
 
@@ -122,7 +123,7 @@ MV.prototype = {
 	$.ajax({
 	  type: "get",
 	  url: "/mvGet",
-	  data: {"area": this.area, "version": this.version, "page": this.page},
+	  data: {"area": this.area, "version": this.version, "page": this.page, "order": this.order},
 	  async: false,
 	  success: function (result) {
 		// console.log(result);
@@ -246,6 +247,32 @@ window.onload = function () {
 
   var areaTags = document.getElementById('tags').firstChild.children;
   var versionTags = document.getElementById('tags').lastChild.children;
+
+  var newest = document.getElementById("newest");
+  var hottest = document.getElementById("hottest");
+
+  newest.onclick = function () {
+    this.classList.add("selected");
+	hottest.classList.remove("selected");
+	mv.order = 0;
+	// 1、先清除mv的内容
+	mv.clear();
+	// 2、重新获取数据重置mv的内容
+	mv.reset(mv.getData());
+	// 3、把mv的内容添加到容器
+	mv.appendTo(mvList);
+  };
+  hottest.onclick = function () {
+	this.classList.add("selected");
+	newest.classList.remove("selected");
+	mv.order = 1;
+	// 1、先清除mv的内容
+	mv.clear();
+	// 2、重新获取数据重置mv的内容
+	mv.reset(mv.getData());
+	// 3、把mv的内容添加到容器
+	mv.appendTo(mvList);
+  };
 
   bindEvent(areaTags, "area");
   bindEvent(versionTags, "version");
