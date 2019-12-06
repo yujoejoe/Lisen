@@ -52,11 +52,12 @@ public class DBUtil {
             conn = DriverManager.getConnection(url,userName,password);
             conn.setAutoCommit(false);//注意：为防止事务自动提交，我们习惯在这里将事务的提交方式改为手动提交
             System.out.println("DBUtil: 连接数据库成功！");
-
+//            System.out.println("connectID: " + conn.toString());
 
         }catch (SQLException e) {
             e.printStackTrace();
             System.out.println("连接失败");
+            return null;
         }
         return conn;
     }
@@ -68,9 +69,11 @@ public class DBUtil {
         if (conn != null) {
             try {//关闭连接
                 conn.close();
+                System.out.println("关闭连接");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            conn = null;
         }
     }
 }

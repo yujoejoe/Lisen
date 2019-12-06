@@ -30,23 +30,23 @@ public class mvDAOImp implements mvDAO{
                     + " mv.id as id,"
                     + " mv.title as title,"
                     + " singer.name as singer,"
+                    + " area.name as area,"
+                    + " version.name as version,"
                     + " mv.play as play,"
                     + " mv.date as date,"
                     + " mv.img as img,"
-                    + " mv.url as url,"
-                    + " area.name as area,"
-                    + " version.name as version"
+                    + " mv.url as url"
                     +" from"
                     + " mv"
-                    +" inner join"
+                    +" left join"
                     + " singer"
                     +" on"
                     + " mv.singerId = singer.id"
-                    +" inner join"
+                    +" left join"
                     + " area"
                     +" on"
                     + " singer.areaId = area.id"
-                    +" inner join"
+                    +" left join"
                     + " version"
                     +" on"
                     + " mv.versionId = version.id"
@@ -64,7 +64,7 @@ public class mvDAOImp implements mvDAO{
         }
         // 分页
         String limit = mv.getLimit();
-        if(limit != null && limit.equals("")){
+        if(limit != null && !limit.equals("")){
             sql += limit;
         }
 
@@ -75,11 +75,7 @@ public class mvDAOImp implements mvDAO{
         pst = conn.prepareStatement(sql);
         // 执行查询语句并返回结果集
         ResultSet rs = pst.executeQuery();
-        // 创建视图
-        String view = "create view if not exists result as " + sql;
-        System.out.println("View: " + view);
-        pst = conn.prepareStatement(view);
-        pst.execute();
+
 
         ArrayList<MV> resultList = new ArrayList<>();
         while(rs.next()){
@@ -92,6 +88,7 @@ public class mvDAOImp implements mvDAO{
             tmp.setImg(rs.getString("img"));
             tmp.setUrl(rs.getString("url"));
             tmp.setPlay(rs.getInt("play"));
+            tmp.setId(rs.getInt("id"));
             resultList.add(tmp);
         }
         return resultList;
@@ -168,7 +165,7 @@ public class mvDAOImp implements mvDAO{
     public int count(MV mv) throws SQLException {
         try{
             // sql语句
-            String sql = "select count(id) as counts from result where 1=1";
+            String sql = "select count(id) as counts from mv where 1=1";
             // 添加条件
 //            String condition = mv.getCondition();
 //            if(condition != null && !condition.equals("")){
@@ -183,15 +180,7 @@ public class mvDAOImp implements mvDAO{
             ResultSet rs = pst.executeQuery();
             rs.next();
 
-            int counts = Integer.parseInt(rs.getString("counts"));
-
-            // 删除视图
-            String deleteView = "drop view if exists result";
-
-            pst = conn.prepareStatement(deleteView);
-            pst.execute();
-
-            return counts;
+            return Integer.parseInt(rs.getString("counts"));
         }catch(Exception e){
             e.printStackTrace();
             return -1;

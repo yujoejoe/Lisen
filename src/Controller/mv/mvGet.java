@@ -1,7 +1,6 @@
 package Controller.mv;
 
 import POJO.Area;
-import POJO.JsonData;
 import POJO.MV;
 import POJO.Version;
 import ServiceDAO.mv.mvServiceDAOImp;
@@ -36,7 +35,7 @@ public class mvGet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
 
-        Connection conn = DBUtil.getConnection();
+
         String area = request.getParameter("area");
         String version = request.getParameter("version");
         String page = request.getParameter("page");
@@ -56,6 +55,7 @@ public class mvGet extends HttpServlet {
 
 
         if(area.equals("全部")) {
+            Connection conn = DBUtil.getConnection();
             try {
                 String sql = "select area.name from area";
                 Statement smt = conn.createStatement();
@@ -70,10 +70,15 @@ public class mvGet extends HttpServlet {
 //                System.out.println(areaList);
             } catch (SQLException sqe) {
                 sqe.printStackTrace();
+            }finally {
+                if(conn != null){
+                    DBUtil.closeConnection(conn);
+                }
             }
         }
 
         if(version.equals("全部")){
+            Connection conn = DBUtil.getConnection();
             try {
                 String sql = "select version.name from version";
                 Statement smt = conn.createStatement();
@@ -88,6 +93,10 @@ public class mvGet extends HttpServlet {
 //                System.out.println(versionList);
             } catch (SQLException sqe) {
                 sqe.printStackTrace();
+            }finally {
+                if(conn != null){
+                    DBUtil.closeConnection(conn);
+                }
             }
         }
 
@@ -106,9 +115,10 @@ public class mvGet extends HttpServlet {
         System.out.println("condition:" + mv.getCondition());
 
 
+        // 分页
         if(page!=null && !page.equals("0")){
             int p = Integer.parseInt(page);
-            int size = 12;
+            int size = 8;
             mv.setLimit(" limit " + (p - 1) * size + "," + size);
             System.out.println("limit: " + mv.getLimit());
         }else{
@@ -123,8 +133,9 @@ public class mvGet extends HttpServlet {
 
 
         ArrayList<MV> result = mvSDI.select(mv);
+
         boolean success = result.size() != 0;
-        int counts = mvSDI.count(mv);
+        int counts = result.size();
 
         String msg = "{"+ "\"success\":" + success + ", "
                         + "\"area\":" + areaList + ", "

@@ -7,12 +7,16 @@
     <link rel="icon" href="../index/images/icon.png">
     <link rel="stylesheet" href="../index/css/reset.css">
     <link rel="stylesheet" href="../index/css/index.css">
+    <link rel="stylesheet" href="../index/css/layout.css">
     <link rel="stylesheet" href="../comment/css/comment.css">
+    <link rel="stylesheet" href="./css/mv.css">
     <link rel="stylesheet" href="./css/play.css">
     <link rel="stylesheet" href="../common/css/com.css">
     <link rel="stylesheet" href="../../tools/font-awesome/css/font-awesome.min.css">
     <script src="../../tools/jquery/jquery.min.js"></script>
     <script src="../login/js/judgeLoginState.js"></script>
+
+    <script src="./js/play.js"></script>
 
 </head>
 <body>
@@ -23,7 +27,7 @@
             <nav class="header-nav">
                 <ul>
                     <li><a href="#" class="header-nav__cur">音乐</a></li>
-                    <li><a href="/users/loginMyMusic/loginMyMusic.html">我的音乐</a></li>
+                    <li><a href="../loginMyMusic/loginMyMusic.html">我的音乐</a></li>
 
                 </ul>
             </nav>
@@ -73,16 +77,16 @@
             <!--            <li><a href="#">专辑</a></li>-->
             <li><a href="#">排行榜</a></li>
             <li><a href="../sort/sort.html">分类歌单</a></li>
-            <li><a href="#" class="subNav-cur">MV</a></li>
+            <li><a href="./mv.html" class="subNav-cur">MV</a></li>
         </ul>
     </div>
 </header>
 
 <div class="mv_part">
     <div class="mv_inner">
-        <div class="mv_play">
-            <video controls preload="metadata" controlsList="nofullscreen"
-                   src="http://192.168.1.125:8080/music/mv/video/Against the Current - Red (翻唱版).mp4"></video>
+        <div class="mv_play" id="mvPlay">
+            <!--<video controls preload="metadata" controlsList="nofullscreen"-->
+                   <!--src="http://192.168.1.125:8080/music/mv/video/Against the Current - Red (翻唱版).mp4"></video>-->
         </div>
         <div class="mv_tip">
             <h2 class="mv_title">Against the Current - Red (翻唱版)</h2>
@@ -458,6 +462,10 @@
         下载
     </a></li>
 </ul>
+
+<div class="loading">
+    <div class="center"></div>
+</div>
 
 </body>
 </html>

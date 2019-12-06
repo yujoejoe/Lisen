@@ -178,8 +178,8 @@ body{
 
 /*==== hover事件 ====*/
 
-.tag_item_select,
-.tag_item_select:hover {
+.selected,
+.selected:hover {
     background-color: #31c27c;
     color: #fff;
 }
@@ -201,7 +201,7 @@ body{
     cursor: pointer;
 }
 
-.page_index_cur,
+
 .page_index:hover {
     color: #fff;
     background-color: #31c27c;

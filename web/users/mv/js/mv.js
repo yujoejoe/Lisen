@@ -44,6 +44,10 @@ MV.prototype = {
 	  var itemBox = document.createElement('a');
 	  itemBox.className = "item_box";
 	  itemBox.setAttribute('href',"./mv_play.html");
+	  // 绑定点击事件设置cookie
+	  itemBox.setAttribute('data-id', self.content[i].id);
+	  itemBox.onclick = setCookie;
+
 	  //1.1.1.1、 创建图片
 	  var itemImg = document.createElement('img');
 	  itemImg.className = "item_img";
@@ -114,7 +118,8 @@ MV.prototype = {
 		"play": (data.result[j].play / 10000).toFixed(1) + 'w',
 		"title": data.result[j].title,
 		"singer": data.result[j].singer,
-		"url": data.result[j].url
+		"url": data.result[j].url,
+		"id": data.result[j].id
 	  });
 	}
 
@@ -199,11 +204,9 @@ MV.prototype = {
 	var pageBox = document.getElementById('pageBox');
 	clearChild(pageBox);
 	var size = Math.ceil(this.counts / this.size);
-	console.log(size);
+	console.log("pages: " + size);
 
-	if(size <= 1){
-		pageBox.style.display = "none";
-	} else {
+	if(size > 1){
 	  pageBox.style.display = "block";
 	  // 上一页
 	  var prev = document.createElement('span');
@@ -232,12 +235,19 @@ MV.prototype = {
 		  page.innerHTML = i;
 		  pageBox.appendChild(page);
 		}
+		// 更多
 		var more = document.createElement('span');
 		more.classList.add("page_more");
-		pageBox
-
+		more.innerHTML = "...";
+		pageBox.appendChild(more);
+		// 最大页数
+		var pageMax = document.createElement('span');
+		pageMax.classList.add("page_index");
+		pageMax.innerHTML = size;
+		pageBox.appendChild(pageMax);
 	  }
 
+	  // 下一页
 	  var next = document.createElement('span');
 	  next.classList.add("page_index");
 	  next.innerHTML = ">";
@@ -275,11 +285,11 @@ window.onload = function () {
 
   var areaTags = document.getElementById('tags').firstChild.children;
   var versionTags = document.getElementById('tags').lastChild.children;
-  var pageBox = document.getElementById('pageBox');
-  if(pageBox.hasChildNodes()){
-  	var pages = pageBox.children;
-  	bindEvent(pages, "page");
-  }
+  // var pageBox = document.getElementById('pageBox');
+  // if(pageBox.hasChildNodes()){
+  // 	var pages = pageBox.children;
+  // 	bindEvent(pages, "page");
+  // }
 
   var newest = document.getElementById("newest");
   var hottest = document.getElementById("hottest");
@@ -352,6 +362,11 @@ function clearChild(parent) {
   while (parent !== null && parent.hasChildNodes()) {
 	parent.removeChild(parent.firstChild);
   }
+}
+
+function setCookie(){
+	document.cookie = "mv_id=" + this.getAttribute('data-id') + ";path=/";
+	console.log(document.cookie);
 }
 
 

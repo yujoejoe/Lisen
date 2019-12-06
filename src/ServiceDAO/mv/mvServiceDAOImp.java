@@ -18,7 +18,8 @@ public class mvServiceDAOImp implements mvServiceDAO {
         mvDAOImp mvDI = new mvDAOImp(conn);
 
         try {
-            ArrayList<MV> resultList = mvDI.select(mv);
+            ArrayList<MV> resultList = new ArrayList<>();
+            resultList = mvDI.select(mv);
             conn.commit();
 
             return resultList;
