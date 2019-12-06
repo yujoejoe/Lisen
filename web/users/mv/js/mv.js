@@ -13,6 +13,7 @@ function MV() {
   this.counts = 1;
   this.order = 0;
   this.isEmpty = true;
+  this.size = 8;		// 每页显示的数量
 }
 
 MV.prototype = {
@@ -24,7 +25,6 @@ MV.prototype = {
 	this.reset(data);
 	this.addTag(data);
 	this.addPage(data);
-
 
   },
   appendTo: function (pos) {
@@ -105,7 +105,7 @@ MV.prototype = {
 	  return;
 	}
 
-	var size = data.result.length > 12 ? 12 : data.result.length;
+	var size = data.result.length > this.size ? this.size : data.result.length;
 
 	for (var j = 0; j < size; ++j) {
 	  this.content.push({
@@ -117,6 +117,7 @@ MV.prototype = {
 		"url": data.result[j].url
 	  });
 	}
+
   },
   getData: function () {
 	var data;
@@ -195,26 +196,53 @@ MV.prototype = {
 	}
   },
   addPage: function(data){
-	var main = document.getElementsByClassName('main')[0];
-	console.log(main);
-	var pageBox = document.createElement('div');
-	pageBox.className = "page";
-	var size = parseInt(this.counts / 12);
+	var pageBox = document.getElementById('pageBox');
+	clearChild(pageBox);
+	var size = Math.ceil(this.counts / this.size);
 	console.log(size);
-	if(size <= 1){
 
-	} else if(size < 4 ) {
-	  for (var i = 0; i < size; ++i) {
-		var page = "<a href=\"javascript:;\" class=\"page_index";
-		if(i === 0) {
-		  page += " selected\">" + i + 1 + "</a>";
+	if(size <= 1){
+		pageBox.style.display = "none";
+	} else {
+	  pageBox.style.display = "block";
+	  // 上一页
+	  var prev = document.createElement('span');
+	  prev.classList.add("page_index");
+	  prev.innerHTML = "<";
+	  prev.style.display = "none";
+	  pageBox.appendChild(prev);
+
+	  if(size < 3){
+		for (var i = 1; i <= size; ++i) {
+		  var page = document.createElement('span');
+		  page.classList.add("page_index");
+		  if(i === 1){
+			page.classList.add("selected");
+		  }
+		  page.innerHTML = i;
+		  pageBox.appendChild(page);
 		}
-		else{
-		  page += "\">" + i + 1 + "</a>";
+	  }else {
+		for (var i = 1; i <= 3; ++i) {
+		  var page = document.createElement('span');
+		  page.classList.add("page_index");
+		  if (i === 1) {
+			page.classList.add("selected");
+		  }
+		  page.innerHTML = i;
+		  pageBox.appendChild(page);
 		}
+		var more = document.createElement('span');
+		more.classList.add("page_more");
+		pageBox
+
 	  }
-	  pageBox.innerHTML = page;
-	  main.appendChild(pageBox);
+
+	  var next = document.createElement('span');
+	  next.classList.add("page_index");
+	  next.innerHTML = ">";
+	  next.style.display = "inline-block";
+	  pageBox.appendChild(next);
 	}
 
   },
@@ -247,6 +275,11 @@ window.onload = function () {
 
   var areaTags = document.getElementById('tags').firstChild.children;
   var versionTags = document.getElementById('tags').lastChild.children;
+  var pageBox = document.getElementById('pageBox');
+  if(pageBox.hasChildNodes()){
+  	var pages = pageBox.children;
+  	bindEvent(pages, "page");
+  }
 
   var newest = document.getElementById("newest");
   var hottest = document.getElementById("hottest");
@@ -255,23 +288,15 @@ window.onload = function () {
     this.classList.add("selected");
 	hottest.classList.remove("selected");
 	mv.order = 0;
-	// 1、先清除mv的内容
-	mv.clear();
-	// 2、重新获取数据重置mv的内容
-	mv.reset(mv.getData());
-	// 3、把mv的内容添加到容器
-	mv.appendTo(mvList);
+	mv.page = 0;
+	query(mv, true);
   };
   hottest.onclick = function () {
 	this.classList.add("selected");
 	newest.classList.remove("selected");
 	mv.order = 1;
-	// 1、先清除mv的内容
-	mv.clear();
-	// 2、重新获取数据重置mv的内容
-	mv.reset(mv.getData());
-	// 3、把mv的内容添加到容器
-	mv.appendTo(mvList);
+	mv.page = 0;
+	query(mv, true);
   };
 
   bindEvent(areaTags, "area");
@@ -282,6 +307,7 @@ window.onload = function () {
 
   function bindEvent(ele, type) {
 	var index = 1;
+	var flag = true;
 	for (var i = 1; i < ele.length; ++i) {
 	  ele[i].id = i;
 	  ele[i].onclick = function () {
@@ -291,19 +317,33 @@ window.onload = function () {
 
 		if (type === "area") {
 		  mv.area = this.innerText;
+		  mv.page = 0;
 		} else if (type === "version") {
 		  mv.version = this.innerText;
+		  mv.page = 0;
 		} else if (type === "page") {
 		  mv.page = this.innerText;
+		  flag = false;
 		}
-		// 1、先清除mv的内容
-		mv.clear();
-		// 2、重新获取数据重置mv的内容
-		mv.reset(mv.getData());
-		// 3、把mv的内容添加到容器
-		mv.appendTo(mvList);
-
+		query(mv, flag);
 	  }
+	}
+  }
+
+  function query(mv, flag){
+	if(mv.constructor !== MV){
+	  return;
+	}
+	// 1、先清除mv的内容
+	mv.clear();
+	// 2、重新获取数据重置mv的内容
+	var data = mv.getData();
+	mv.reset(data);
+	// 3、把mv的内容添加到容器
+	mv.appendTo(mvList);
+	// 4、添加分页
+	if(flag){
+	  mv.addPage(data);
 	}
   }
 };
