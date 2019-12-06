@@ -4,10 +4,7 @@ import util.DBUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -39,34 +36,32 @@ public class login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         try{
-
             Connection conn = DBUtil.getConnection();
             //2、根据用户名与密码查找用户
-            String sql = "select * from user where name=? and pswd=?";
+            String sql = "select * from user where name='"+username+"' and pswd='"+password+"'";
+            System.out.println(sql);
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1,username);
-            pst.setString(2,password);
             //跟数据库user表产生交互，并获得其中的数据，获得该数据的结果集
             ResultSet rs = pst.executeQuery();
             String str = "";
             if(rs.next()){
-                HttpSession se = request.getSession();
-                se.setAttribute("name", rs.getString("name"));
-                se.setAttribute("pswd", rs.getString("pswd"));
-                /*se.setAttribute("phone", rs.getString("phone"));
-                se.setAttribute("sex", rs.getString("sex"));
-                se.setAttribute("email", rs.getString("email"));*/
+                str ="{\"success\":true,\"msg\":\"查询成功\",\"rows\":[{\"name\":\""+username+"\",\"pswd\":\""+password+"\"}]}";
                 System.out.println(str);
-                str ="{\"success\":true,\"msg\":\"查询成功\",\"rows\":[{\"name\":\""+se.getAttribute("name")+"\",\"pswd\":\""+se.getAttribute("pswd")+"\"}]}";
-            }else{
+
+
+                Cookie cookie = new Cookie("username",username);
+                response.addCookie(cookie);
+
+
+            }/*else{
                 System.out.println(str);
                 str = "{\"success\":true,\"msg\":\"账号或密码错误\"}";
-            }
+            }*/
             out.print(str);
         }
         catch(Exception e){
             e.printStackTrace();
-            out.print("{\"success\":false,\"msg\":\"查询失败\"}");
+//            out.print("{\"success\":false,\"msg\":\"查询失败\"}");
         }
     }
 
