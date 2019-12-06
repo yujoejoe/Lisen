@@ -20,9 +20,9 @@ public class UsersDAOImp implements UsersDAO {
     this.conn = conn;
   }
 
-  public UsersDAOImp() {
+ /* public UsersDAOImp() {
     super();
-  }
+  }*/
 
   /**
    * 用于登录的查询验证
@@ -46,7 +46,7 @@ public class UsersDAOImp implements UsersDAO {
           Users temp = new Users();
           temp.setId(rs.getInt("id"));
           temp.setName(rs.getString("name"));
-          temp.setPswd(rs.getString("psed"));
+          temp.setPswd(rs.getString("pswd"));
           temp.setPhone(rs.getString("phone"));
           temp.setSex(rs.getString("sex"));
           temp.setEmail(rs.getString("email"));

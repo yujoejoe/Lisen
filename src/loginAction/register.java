@@ -77,7 +77,7 @@ public class register extends HttpServlet {
                 if (rs==1) {
 
                     System.out.println(str);
-                    str = "{\"success\":false,\"msg\":\"注册成功\",\"rows\":[{\"name\":\"" + se.getAttribute("name") + "\",\"password\":\"" + se.getAttribute("password") + "\"}]}";
+                    str = "{\"success\":false,\"msg\":\"注册成功\",\"rows\":[{\"name\":\"" + se.getAttribute("name") + "\",\"pswd\":\"" + se.getAttribute("pswd") + "\"}]}";
                 } else {
                     System.out.println(str);
                     str = "{\"success\":false,\"msg\":\"数据库没有数据\"}";

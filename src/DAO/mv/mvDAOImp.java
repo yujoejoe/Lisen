@@ -64,7 +64,7 @@ public class mvDAOImp implements mvDAO{
         }
         // 分页
         String limit = mv.getLimit();
-        if(limit != null && !limit.equals("")){
+        if(limit != null && limit.equals("")){
             sql += limit;
         }
 
