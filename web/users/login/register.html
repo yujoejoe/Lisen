@@ -83,7 +83,7 @@
 		          <div class="col-md-12">
 		            <div class="checkbox">
 		                <label>
-                            <input type="checkbox">
+                            <input type="checkbox" id="agree">
 							我已阅读并同意相关<a>服务条款</a>和
 							<a href="javascript:" data-toggle="modal" data-target="#templatemo_modal">
 								隐私政策</a>
@@ -134,35 +134,38 @@
      */
     $(document).ready(function(){
         $("#btn_register").click(function(){
-            var name = $("#name").val();
-            var pswd = $("#pswd").val();
-            var email = $("#email").val();
-            var phone = $("#phone").val();
-            var sex = $("input[name='sex']:checked").val();
-            $.get(
-                "/loginAction/register",
-                {
-                    "name":name,
-                    "pswd":pswd,
-                    "email":email,
-                    "sex":sex,
-                    "phone":phone
-                },
-                function(result){
-                    var data = JSON.parse(result);
-                    if(data.success){
-                        alert("此用户已存在！")
-                    }else {
-                        if(data.msg==="注册成功"){
-                            alert("成功注册哩森");
-                            window.location.href="/index.html";
+            if ($("#agree").is(':checked')) {
+                var name = $("#name").val();
+                var pswd = $("#pswd").val();
+                var email = $("#email").val();
+                var phone = $("#phone").val();
+                var sex = $("input[name='sex']:checked").val();
+                $.get(
+                    "/loginAction/register",
+                    {
+                        "name":name,
+                        "pswd":pswd,
+                        "email":email,
+                        "sex":sex,
+                        "phone":phone
+                    },
+                    function(result){
+                        var data = JSON.parse(result);
+                        if(data.success){
+                            alert("此用户已存在！")
                         }else {
-                            alert("注册失败")
+                            if(data.msg==="注册成功"){
+                                alert("成功注册哩森");
+                                window.location.href="/index.html";
+                            }else {
+                                alert("注册失败")
+                            }
                         }
                     }
-                }
-            );
-
+                );
+			}else {
+                alert("请勾选同意有关服务条款")
+			}
         });
     });
 </script>
