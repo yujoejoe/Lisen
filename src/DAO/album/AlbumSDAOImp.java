@@ -102,7 +102,7 @@ public class AlbumSDAOImp  implements  AlbumSDAO{
             pst = conn.prepareStatement(sql);
 
             // 控制台输出sql语句，检验正确性
-            System.out.println("albums COUNT: "+sql);
+//            System.out.println("albums COUNT: "+sql);
 
             ResultSet rs = pst.executeQuery();
             rs.next();

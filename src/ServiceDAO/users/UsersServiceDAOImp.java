@@ -1,5 +1,6 @@
 package ServiceDAO.users;
 
+import DAO.users.UsersDAO;
 import DAO.users.UsersDAOImp;
 import POJO.Users;
 import util.DBUtil;
@@ -113,7 +114,7 @@ public class UsersServiceDAOImp implements UsersServiceDAO{
   }
 
   /**
-   * 更新业务(密码、昵称等)
+   * 更新业务(密码、相片、昵称等)
    */
   public int updatePassword(Users users){
 	Connection conn = DBUtil.getConnection();

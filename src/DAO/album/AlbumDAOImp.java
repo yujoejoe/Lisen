@@ -30,7 +30,7 @@ public class AlbumDAOImp implements AlbumDAO{
                     + " album.date as date,"
                     + " album.img as img,"
                     + " album.company as company,"
-                    + " area.name as area,"
+                    + " language.name as language,"
                     + " album.genre as genre"
                     +" from"
                     + " album"
@@ -43,9 +43,9 @@ public class AlbumDAOImp implements AlbumDAO{
 //                    + " on "
 //                    + " album.songId = song.albumId "
                     +" inner join"
-                    + " area"
+                    + " language"
                     +" on"
-                    + " album.areaId = area.id"
+                    + " album.languageId = language.id"
                     +" where 1=1 ";
 
 //            String sql = " select album.name from album where 1=1 ";
@@ -88,7 +88,7 @@ public class AlbumDAOImp implements AlbumDAO{
                 tmp.setDate(rs.getString("date"));
                 tmp.setImg(rs.getString("img"));
                 tmp.setCompany(rs.getString("company"));
-                tmp.setArea(rs.getString("area"));
+                tmp.setLanguage(rs.getString("language"));
                 tmp.setGenre(rs.getString("genre"));
                 resultList.add(tmp);
         }

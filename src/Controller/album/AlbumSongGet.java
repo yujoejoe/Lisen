@@ -89,7 +89,7 @@ public class AlbumSongGet extends HttpServlet{
         request.setAttribute("jsonData",jsonData);
 
         // 校验数据
-        System.out.println(jsonData);
+//        System.out.println(jsonData);
 
         // （转）4、将业务转发给View
         RequestDispatcher rd = request.getRequestDispatcher("/view/ToJSON");
