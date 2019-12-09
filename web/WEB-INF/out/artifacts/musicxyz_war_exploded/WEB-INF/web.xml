@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+           version="2.5">
+
+
+    <!--<servlet>-->
+        <!--<description></description>-->
+        <!--<display-name>loginAction</display-name>-->
+        <!--<servlet-name>loginAction</servlet-name>-->
+        <!--<servlet-class>loginAction.login</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>loginAction</servlet-name>-->
+        <!--<url-pattern>/loginAction/login</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <!--<servlet>-->
+        <!--<description></description>-->
+        <!--<display-name>loginAction</display-name>-->
+        <!--<servlet-name>loginAction</servlet-name>-->
+        <!--<servlet-class>loginAction.register</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>loginAction</servlet-name>-->
+        <!--<url-pattern>/loginAction/register</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+
+    <!--<servlet>-->
+        <!--<description></description>-->
+        <!--<display-name>exit</display-name>-->
+        <!--<servlet-name>exit</servlet-name>-->
+        <!--<servlet-class>loginAction.exit</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>exit</servlet-name>-->
+        <!--<url-pattern>/loginAction/exit</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <servlet>
+        <description></description>
+        <display-name>singerGet</display-name>
+        <servlet-name>singerGet</servlet-name>
+        <servlet-class>Controller.singer.SingerGet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>singerGet</servlet-name>
+        <url-pattern>/singer/get</url-pattern>
+    </servlet-mapping>
+
+
+
+
+    <servlet>
+        <description></description>
+        <display-name>ToJSON</display-name>
+        <servlet-name>ToJSON</servlet-name>
+        <servlet-class>view.ToJSON</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ToJSON</servlet-name>
+        <url-pattern>/view/ToJSON</url-pattern>
+    </servlet-mapping>
+
+
+
+</web-app>
