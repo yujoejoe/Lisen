@@ -53,12 +53,12 @@ function AlbumData() {
         function (result) {
 
             var data = JSON.parse(result);
-            // console.log(data);
+            console.log(data);
             $(".txt_album_img")[0].src = data.result[0].img;
             $(".txt_album_name")[0].append(data.result[0].name);
             $(".txt_album_singer")[0].append(data.result[0].singer);
             $(".txt_album_genre")[0].append(data.result[0].genre);
-            $(".txt_album_area")[0].append(data.result[0].area);
+            $(".txt_album_area")[0].append(data.result[0].language);
             $(".txt_album_date")[0].append(data.result[0].date);
             $(".txt_album_company")[0].append(data.result[0].company);
             // $($(".txt_album_genre")).show();
@@ -77,7 +77,7 @@ $(document).ready(function () {
             var  date = JSON.parse(result);
             console.log(date);
             if(result.length!=null){
-                for (var i = 0; i <=result.length; i++) {
+                for (var i = 0; i <=date.result.length; i++) {
                     $(".album_singer")[i].innerHTML=date.result[i].singer;
                     $(".album_name")[i].innerHTML = date.result[i].song;
                     $($(".show_hide")[i]).show();

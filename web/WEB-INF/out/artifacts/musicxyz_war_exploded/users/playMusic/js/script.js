@@ -26,21 +26,102 @@ window.onload = function change() {
   }
 
 
-  audio.setAttribute("src", "music/音阙诗听、赵方婧 - 霜降.mp3");
+    /*接受url传来的参数*/
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null) return  unescape(r[2]); return null;
+    }
+
+// 调用方法
+//     alert(decodeURI(GetQueryString("song")));
+//     alert(decodeURI(GetQueryString("singer")));
+//     alert(decodeURI(GetQueryString("album")));
+    console.log(decodeURI(GetQueryString("song")));
+    console.log(decodeURI(GetQueryString("singer")));
+    var  song =decodeURI(GetQueryString("song"));
+    var  singer =decodeURI(GetQueryString("singer"));
+
+// //单曲播放
+//     if(singer!="null") {
+//         $(".list_author")[0].append(singer);
+//         $($(".list_music")[0]).show();
+//         $(".list_name")[0].append(song);
+//         audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/"+singer+"/"+song+".mp3");
+//
+//         audio.play();
+//         if (audio.played) {
+//             pause.style.backgroundPosition = "-30px  0px";
+//         }
+//     }
+
+    //获取总时间
+    var total = document.getElementById("total_time");
+    audio.addEventListener("canplay", function () {
+        total.innerHTML = format(audio.duration);
+    });
+
+    var name = document.getElementById("music_name");
+    var music = new Array();           //存放获取的歌曲
+    var song_singer = new Array();     //存放 歌曲 - 歌手
+    var num = 0;
+
+    //单曲播放
+    if (singer != "null") {
+        $(".list_author")[0].append(singer);
+        $($(".list_music")[0]).show();
+        $(".list_name")[0].append(song);
+        audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + singer + "/" + song + ".mp3");
+
+        audio.play();
+        name.innerHTML = $($(".list_name")[0]).html()+" - "+$($(".list_author")[0]).html()
+        if (audio.played) {
+            pause.style.backgroundPosition = "-30px  0px";
+        }
+    }
 
 
-  var total = document.getElementById("total_time");
-  audio.addEventListener("canplay", function () {
-    total.innerHTML = format(audio.duration);       //获取总时间
-  });
+//专辑列表播放
+    $(document).ready(function () {
+        var search = decodeURI(GetQueryString("album"));
+        // var music = new Array();
+        $.get(
+            "/album/song/get",
+            {"search": search},
+            function (result) {
+                var data = JSON.parse(result);
+                console.log(data);
 
+                if (result != null) {
+                    for (var j = 0; j < data.result.length; j++) {
+                        $(".list_name")[j].append(data.result[j].song);
+                        $(".list_author")[j].append(data.result[j].singer);
+                        $($(".list_music")[j]).show();
+                    }
+                    audio.setAttribute("src","http://192.168.1.125:8080/music/song/music/"+data.result[0].singer+"/"+data.result[0].song+".mp3");
+                    audio.play();
+                    pause.style.backgroundPosition = "-30px  0px";
+                    for (var i = 0; i <data.result.length; i++) {
+                        var urlSinger = $($(".list_author")[i]).html();
+                        var urlSong = $($(".list_name")[i]).html();
+                        music[i] = urlSinger+"/"+urlSong;
+                        song_singer[i]= urlSong+" - "+urlSinger;
+                        console.log(music[i]);
+                    }
+                    name.innerHTML= song_singer[0];
+                }
 
-  var name = document.getElementById("music_name");
+            }
+        );
+    });
 
-  var music = new Array();
-  music = ["音阙诗听、赵方婧 - 霜降", "G.E.M.邓紫棋 - 画 (Live Piano Session II)", "冷雪儿 - 浪子回头", "慵狐、熙兮兮兮 - 出山", "磯村由紀子 - 風の住む街"];
-  var num = 0;
-  name.innerHTML = music[num];
+    // var name = document.getElementById("music_name");
+    // var music = new Array();
+    // music = ["音阙诗听、赵方婧 - 霜降", "G.E.M.邓紫棋 - 画 (Live Piano Session II)", "冷雪儿 - 浪子回头", "慵狐、熙兮兮兮 - 出山", "磯村由紀子 - 風の住む街"];
+    // var num = 0;
+    // name.innerHTML =song+" - "+singer;
 
   /*==== 添加歌词 ====*/
   addLyric(lyric);
@@ -48,8 +129,8 @@ window.onload = function change() {
   //上一曲
   left.onclick = function () {
     num = (num + music.length - 1) % music.length;
-    audio.src = "music/" + music[num] + ".mp3";
-    name.innerHTML = music[num];
+    audio.src = "http://192.168.1.125:8080/music/song/music/" + music[num] + ".mp3";
+    name.innerHTML = song_singer[num];
     pause.style.backgroundPosition = "-30px 0px";
     audio.play();
 
@@ -62,8 +143,8 @@ window.onload = function change() {
   //下一曲
   right.onclick = function () {
     num = (num + 1) % music.length;
-    audio.src = "music/" + music[num] + ".mp3";
-    name.innerHTML = music[num];
+    audio.src = "http://192.168.1.125:8080/music/song/music/" + music[num] + ".mp3";
+    name.innerHTML = song_singer[num];
     pause.style.backgroundPosition = "-30px 0px";
     audio.play();
 
@@ -81,7 +162,6 @@ window.onload = function change() {
       pause.style.backgroundPosition = "-30px 0px";
     } else {
       audio.pause();
-
       pause.style.backgroundPosition = "0px 0px";
     }
   };
@@ -96,60 +176,12 @@ window.onload = function change() {
 
 
 
-/*接受url传来的参数*/
-
-    function GetQueryString(name)
-    {
-        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if(r!=null) return  unescape(r[2]); return null;
-    }
-
-// 调用方法
-//     alert(decodeURI(GetQueryString("song")));
-//     alert(decodeURI(GetQueryString("singer")));
-//     alert(decodeURI(GetQueryString("album")));
-console.log(decodeURI(GetQueryString("song")));
-console.log(decodeURI(GetQueryString("singer")));
-    var  song =decodeURI(GetQueryString("song"));
-    var  singer =decodeURI(GetQueryString("singer"));
-
-    if(singer!="null") {
-        $(".list_author")[0].append(singer);
-        $($(".list_music")[0]).show();
-        $(".list_name")[0].append(song);
-    }
-
-    $(document).ready(function () {
-        var  search =decodeURI(GetQueryString("album"));
-        $.get(
-            "/album/song/get",
-            {"search":search},
-            function (result) {
-                var data = JSON.parse(result);
-                console.log(data);
-                if(result!=null){
-                    for (var j = 0; j <result.length ; j++) {
-                        $(".list_name")[j].append(data.result[j].song);
-                        $(".list_author")[j].append(data.result[j].singer);
-                        $($(".list_music")[j]).show();
-                    }
-
-                }
-
-            }
-        );
-
-
-
-
-});
 
 
 
 
 
- /*============ 播放进度条 ============*/
+/*============ 播放进度条 ============*/
 
 
   /*==== 获取进度条的宽度 ====*/
@@ -360,7 +392,7 @@ console.log(decodeURI(GetQueryString("singer")));
       scroll(curTime);
     });
 
-
+//
     /*==== 歌词滚动 ====*/
     function scroll(time) {
       if (song.isEmpty) {
@@ -407,7 +439,7 @@ console.log(decodeURI(GetQueryString("singer")));
     }
 
   }
-
+//
 
   /*==== 清除歌词 ====*/
   function clearLyric(lyric) {
@@ -452,7 +484,7 @@ Song.prototype = {
       data: {"path": path},   // {"singer": singerName, "song": songName}
       async: false,       // 必须为false才能接受到有效返回值
       success: function (result) {
-        // console.log(result);
+        console.log(result);
         if (result === "null") {
           console.log("%c 获取歌词失败！", "color: #fff;background: #f00; padding:5px 0;");
           return;
@@ -460,15 +492,15 @@ Song.prototype = {
         console.log("%c 获取歌词成功！", "color: #0f0;background: #eee; padding:5px 0;");
         // 分割换行符，获取每行歌词和时间
         var data = result.split('\n\n');
-
-        // 获取歌手名和歌曲名
+//
+//         // 获取歌手名和歌曲名
         var artist = data[0].substring(data[0].indexOf(':') + 1, data[0].indexOf(']'));
         var title = data[1].substring(data[1].indexOf(':') + 1, data[1].indexOf(']'));
 
         song.artist = artist;
         song.title = title;
         var lyric = [];
-        // 获取歌词和时间,data最后一行是空行
+//         // 获取歌词和时间,data最后一行是空行
         for (var i = 2; i < data.length - 1; ++i) {
           var time = data[i].substring(data[i].indexOf('[') + 1, data[i].indexOf(']'));
           var t = parseInt(time.split(':')[0]) * 60 + parseFloat(time.split(':')[1]);

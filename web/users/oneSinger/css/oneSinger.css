@@ -161,7 +161,7 @@ a{
 .single_show ul li{
     line-height: 0;
 }
-.single_show a:nth-child(odd){
+.single_show a:nth-child(even){
     background-color: #eeeeee;
 }
 .single_id{
@@ -185,6 +185,25 @@ a{
     position: absolute;
     color: gray;
 }
+
+.single_names{
+    left:10%;
+    width: 45%;
+    position: absolute;
+}
+.single_specials{
+    left:55%;
+    width: 35%;
+    position: absolute;
+}
+.single_times{
+    left:90%;
+    width: 10%;
+    position: absolute;
+    color: gray;
+}
+
+
 /*专辑*/
  figure{
     float: left;

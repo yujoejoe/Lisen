@@ -396,7 +396,7 @@ body {
     left: 65px;
     width: 21px;
     height: 29px;
-    background-position: 0 0;
+    background-position:0px 0px;
     position: absolute;
     opacity: .8;
     background-image: url("../images/player.png");
