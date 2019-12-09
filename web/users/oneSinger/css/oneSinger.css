@@ -204,6 +204,11 @@ a{
 }
 
 
+.show_hide{
+    display: none;
+
+}
+
 /*专辑*/
  figure{
     float: left;

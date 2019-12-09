@@ -143,17 +143,18 @@ body{
     border: solid 3px red;
 }
 
-.content figcaption{
+.content .txt_name{
+    cursor: pointer;
     text-align: center;
     margin-top: 20px;
 }
 
-.content figcaption a{
+.content .txt_name a{
     color: black;
     text-decoration:none;
 }
 
-.content figcaption:hover a{
+.content .txt_name:hover a{
     color: red;
 }
 
@@ -179,3 +180,7 @@ body{
     background-color: #31c27c;
 }
 
+/*.txt_name{*/
+/*    !*cursor: pointer;*!*/
+
+/*}*/

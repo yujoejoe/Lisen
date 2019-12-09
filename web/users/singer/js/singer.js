@@ -133,3 +133,32 @@ onload=function change() {
 
 
 };
+
+$(document).ready(function () {
+    //歌手名传参
+    $(".txt_name").click(function () {
+        // console.log("aaa");
+       var value = $(this).html();
+        console.log(value);
+        var search = encodeURI(encodeURI(value));
+        window.location.href="../oneSinger/oneSinger.html?search="+search;
+    });
+
+    //歌手图片传参
+    $(".txt_img").click(function () {
+        // // console.log("aaa");
+        //  value = $(this).attr("src");
+        var value = $(this).next("a").html();
+        console.log(value);
+        var search = encodeURI(encodeURI(value));
+        window.location.href="../oneSinger/oneSinger.html?search="+search;
+
+
+    })
+});
+
+
+
+
+
+

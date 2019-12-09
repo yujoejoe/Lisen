@@ -70,7 +70,7 @@ public class AlbumDAOImp implements AlbumDAO{
             }
 
             // 控制台输出sql语句，检验正确性
-//            System.out.println("Album SELECT: " +sql);
+            System.out.println("Album SELECT: " +sql);
 
             // 创建prepareStatement对象
             pst = conn.prepareStatement(sql);
@@ -104,7 +104,7 @@ public class AlbumDAOImp implements AlbumDAO{
     public int count(Album  album) throws SQLException {
         try{
             // sql语句
-            String sql = "select count(*) as counts from album where 1=1";
+            String sql = "select count(*) as counts from album inner join singer  on  album.singerId = singer.id  where 1=1";
             // 添加条件
             String condition = album.getCondition();
             if(condition != null && !condition.equals("")){

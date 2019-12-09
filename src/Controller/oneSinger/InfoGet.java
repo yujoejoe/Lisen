@@ -42,7 +42,7 @@ public class InfoGet extends HttpServlet {
         String search = request.getParameter("search");
         if(search!=null && search.length()!=0){
             // 模糊查找teacher的name、sequence
-            singer.setCondition(" album.name like '%"+search+"%'  or album.img='"+search+"'");
+            singer.setCondition(" singer.name like '%"+search+"%'  or singer.img='"+search+"'");
         }else{
             singer.setCondition("");
         }
@@ -71,7 +71,6 @@ public class InfoGet extends HttpServlet {
          * 1、调用DAO层的select方法，返回查询到的记录集
          * 2、调用DAO层的count方法，返回查询到的记录数
          */
-        Album album = null;
         ArrayList<Singer> result = singerSDI.select(singer);
         int count = singerSDI.count(singer);
 

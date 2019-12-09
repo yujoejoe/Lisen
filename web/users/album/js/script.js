@@ -95,7 +95,6 @@ $(document).ready(function () {
         console.log(singers);
         var song = encodeURI(encodeURI(songs));
         var singer = encodeURI(encodeURI(singers));
-
         window.location.href = "../playMusic/playMusic.html?song=" + song + "&singer=" + singer;
     })
 
