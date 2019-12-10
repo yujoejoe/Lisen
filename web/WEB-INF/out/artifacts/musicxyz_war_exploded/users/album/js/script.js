@@ -84,9 +84,9 @@ $(document).ready(function () {
                 }
             }
         }
-    )
+    );
 
-
+//单曲播放
     $(".show_hide").click(function () {
         // console.log("aaa");
         var songs = $(this).find("li").eq(1).html();
@@ -96,8 +96,9 @@ $(document).ready(function () {
         var song = encodeURI(encodeURI(songs));
         var singer = encodeURI(encodeURI(singers));
         window.location.href = "../playMusic/playMusic.html?song=" + song + "&singer=" + singer;
-    })
+    });
 
+//全部播放
     $("#play_all").click(function () {
         var  search = $(".txt_album_name").html();
         console.log(search);
