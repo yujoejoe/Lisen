@@ -208,6 +208,10 @@ a{
     display: none;
 
 }
+.show_hides{
+    display: none;
+
+}
 
 /*专辑*/
  figure{
@@ -224,16 +228,16 @@ a{
 figure img:hover{
     border: 2px solid green;
 }
- figcaption{
+.txt_name{
      font-size: 17px;
     text-align: center;
     margin-top: 15px;
 }
- figcaption a{
+.txt_name a{
     color: black;
     text-decoration:none;
 }
- figcaption:hover a{
+.txt_name:hover a{
     color: #31c27c;
 }
 

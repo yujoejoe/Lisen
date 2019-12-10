@@ -153,12 +153,51 @@ $(document).ready(function () {
         var search = encodeURI(encodeURI(value));
         window.location.href="../oneSinger/oneSinger.html?search="+search;
 
-
     })
 });
 
+//全部歌手获取
+$(document).ready(function () {
+    $.get(
+        "/info/get",
+        // {"page":6,"size":3},
+        function (result) {
+            var data = JSON.parse(result);
+            console.log(data);
+            $(".page_firstShow").css("background-color","#31c27c");
+            if (result != null && data.result.length < 16) {
+                for (var i = 0; i < data.result.length; i++) {
+                    $(".txt_singer_img")[i].src = data.result[i].img;
+                    $(".txt_name")[i].innerHTML = data.result[i].name;
+                    $($(".show_hide")[i]).show();
+                }
+
+            } else if (result != null && data.result.length > 15) {
+
+                console.log("aaa");
+                for (var j= 0; j < 15; j++) {
+                    $(".txt_singer_img")[j].src = data.result[j].img;
+                    $(".txt_name")[j].innerHTML = data.result[j].name;
+                    $($(".show_hide")[j]).show();
+                }
+                $($(".page_option")[2]).click(function () {
+
+                    $(this).css("background-color","#31c27c");
+                    $(".page_firstShow").css("background-color","");
+                        for (var k=0; k <data.result.length ; k++) {
+                        $(".txt_singer_img")[k].src = data.result[k+15].img;
+                        $(".txt_name")[k].innerHTML= data.result[k+15].name;
+                        $($(".show_hide")[k]).show();
+                    }
+                })
+
+            }
+        }
+    );
 
 
+
+});
 
 
 

@@ -63,25 +63,48 @@ $(document).ready(function () {
 
 
     function AlbumDataS() {
+        //信息部分
         var  infoGet = decodeURI(GetQueryString("search"));
-
         $.get(
             "/info/get",
             {"search": infoGet},
             function (result) {
                 var data = JSON.parse(result);
                 console.log(data);
+                $("#fans").append(data.result[0].fans);
                 $(".txt_one_img")[0].src= data.result[0].img;
                 $(".txt_one_name")[0].append(data.result[0].name);
                 $(".txt_one_alias")[0].append(data.result[0].alias);
                 $(".txt_one_area")[0].append(data.result[0].area);
                 $(".txt_one_birthPlace")[0].append(data.result[0].birthPlace);
                 $(".txt_one_birthday")[0].append(data.result[0].birthday);
+
             }
         );
+//全部播放
+        $("#play_all").click(function () {
+            var  search = $(".txt_one_name").html();
+            console.log(search);
+            var oneSinger = encodeURI(encodeURI(search));
+            window.location.href = "../playMusic/playMusic.html?oneSinger="+oneSinger;
+
+        });
 
 
+//单曲播放
+        $(".show_hide").click(function () {
+            // console.log("aaa");
+            var songs = $(this).find("li").eq(1).html();
+            var singers = $(".txt_one_name").html();
+            console.log(songs);
+            console.log(singers);
+            var song = encodeURI(encodeURI(songs));
+            var singer = encodeURI(encodeURI(singers));
+            window.location.href = "../playMusic/playMusic.html?song=" + song + "&singer=" + singer;
+        });
 
+
+//单曲列表
         var singleGet = decodeURI(GetQueryString("search"));
         $.get(
             "/single/get",
@@ -101,7 +124,7 @@ $(document).ready(function () {
             }
         );
 
-
+//专辑列表
         $.get(
             "/album/get",
             {search:singleGet},
@@ -109,11 +132,22 @@ $(document).ready(function () {
                 var data = JSON.parse(result);
                 console.log(data);
                 $("#special_option").append(data.count);
+                $("#txt_album_name").append(data.count);
+                if(result!=null){
+                    for (var j = 0; j <data.result.length; j++) {
+
+                        $(".txt_name_pic")[j].src = data.result[j].img;
+                        console.log("aa");
+                        $(".txt_name")[j].append(data.result[j].name);
+                        $($(".show_hides")[j]).show();
+                    }
+                }
             }
+        );
 
 
 
-        )
+
 
 
     }

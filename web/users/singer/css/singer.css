@@ -172,9 +172,12 @@ body{
     line-height: 30px;
     padding: 0 20px;
     margin: 0 5px;
-    color: #d0d0d0;
+    color: #c0c0c0;
 }
-.page_firstShow,
+.page_firstShow{
+    /*background-color: #31c27c;*/
+
+}
 .page_option:hover{
     color: #fff;
     background-color: #31c27c;
@@ -184,3 +187,9 @@ body{
 /*    !*cursor: pointer;*!*/
 
 /*}*/
+
+.show_hide{
+    display: none;
+
+
+}
