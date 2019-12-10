@@ -1,24 +1,23 @@
 package ServiceDAO.users;
 
-import DAO.users.UsersDAO;
-import DAO.users.UsersDAOImp;
-import POJO.Users;
+import DAO.user.UserDAOImp;
+import POJO.User;
 import util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class UsersServiceDAOImp implements UsersServiceDAO{
+public class UserServiceDAOImp implements UserServiceDAO {
   /**
    * 账号验证业务
    */
-  public ArrayList<Users> checkUser(Users users) {
+  public ArrayList<User> checkUser(User user) {
     Connection conn = DBUtil.getConnection();
-    UsersDAOImp UserD = new UsersDAOImp(conn);
+    UserDAOImp UserD = new UserDAOImp(conn);
     try{
-      ArrayList<Users> UserList = new ArrayList<Users>();
-      UserList = UserD.select(users);//返回记录集
+      ArrayList<User> UserList = new ArrayList<User>();
+      UserList = UserD.select(user);//返回记录集
       conn.commit();
       return UserList;
     }catch(Exception e){
@@ -39,14 +38,14 @@ public class UsersServiceDAOImp implements UsersServiceDAO{
   /**
    * 查询业务
    */
-  public ArrayList<Users> select(Users users) {
+  public ArrayList<User> select(User user) {
     Connection conn = DBUtil.getConnection();
-    UsersDAOImp studentD = new UsersDAOImp(conn);
+    UserDAOImp studentD = new UserDAOImp(conn);
     try{
-      ArrayList<Users> usersList = new ArrayList<Users>();
-      usersList = studentD.select(users);//返回记录集
+      ArrayList<User> userList = new ArrayList<User>();
+      userList = studentD.select(user);//返回记录集
       conn.commit();
-      return usersList;
+      return userList;
     }catch(Exception e){
       try {
         conn.rollback();
@@ -65,12 +64,12 @@ public class UsersServiceDAOImp implements UsersServiceDAO{
   /**
    * 统计业务
    */
-  public int count(Users users) {
+  public int count(User user) {
     Connection conn = DBUtil.getConnection();
-    UsersDAOImp usersD = new UsersDAOImp(conn);
+    UserDAOImp usersD = new UserDAOImp(conn);
     int cnt;
     try{
-      cnt = usersD.count(users);//返回记录集
+      cnt = usersD.count(user);//返回记录集
       conn.commit();
       return cnt;
     }catch(Exception e){
@@ -91,11 +90,11 @@ public class UsersServiceDAOImp implements UsersServiceDAO{
   /**
    * 添加业务
    */
-  public int insert(Users users){
+  public int insert(User user){
 	Connection conn = DBUtil.getConnection();
-	UsersDAOImp UserD = new UsersDAOImp(conn);
+	UserDAOImp UserD = new UserDAOImp(conn);
     try{
-      int i = UserD.insert(users);
+      int i = UserD.insert(user);
       conn.commit();
       return i;
     }catch(Exception e){
@@ -116,11 +115,11 @@ public class UsersServiceDAOImp implements UsersServiceDAO{
   /**
    * 更新业务(密码、相片、昵称等)
    */
-  public int updatePassword(Users users){
+  public int updatePassword(User user){
 	Connection conn = DBUtil.getConnection();
-	UsersDAOImp UserD = new UsersDAOImp(conn);
+	UserDAOImp UserD = new UserDAOImp(conn);
     try{
-      int i = UserD.updatePart(users);
+      int i = UserD.updatePart(user);
       conn.commit();
       return i;
     }catch(Exception e){
@@ -141,11 +140,11 @@ public class UsersServiceDAOImp implements UsersServiceDAO{
   /**
    * 删除业务
    */
-  public int delete(Users users){
+  public int delete(User user){
 	Connection conn = DBUtil.getConnection();
-	UsersDAOImp UserD = new UsersDAOImp(conn);
+	UserDAOImp UserD = new UserDAOImp(conn);
     try{
-      int i = UserD.delete(users);
+      int i = UserD.delete(user);
       conn.commit();
       return i;
     }catch(Exception e){

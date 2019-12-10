@@ -1,6 +1,6 @@
-package DAO.users;
+package DAO.user;
 
-import POJO.Users;
+import POJO.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,42 +11,51 @@ import java.util.ArrayList;
 /**
  * Created by user on 2019/12/2.
  */
-public class UsersDAOImp implements UsersDAO {
+public class UserDAOImp implements UserDAO {
   private Connection conn = null;
   private PreparedStatement pst = null;
 
-  public UsersDAOImp(Connection conn) {
+  public UserDAOImp(Connection conn) {
     super();
     this.conn = conn;
   }
 
-  public UsersDAOImp() {
+  public UserDAOImp() {
     super();
   }
 
   /**
    * 用于登录的查询验证
    */
-  public ArrayList<Users> select(Users users) throws SQLException {
+  public ArrayList<User> select(User user) throws SQLException {
     try{
-      String sql = "select "
-                 + "  id,name,pswd,phone,sex,email "
-                 + "from user "
+      String sql = "select"
+                 + "  user.id as id,"
+                 + "  user.name as name,"
+                 + "  user.pswd as pswd,"
+                 + "  user.phone as phone,"
+                 + "  user.sex as sex,"
+                 + "  user.email as email "
+                 + "from"
+                 + "  user "
                  + "where 1=1 ";
       //查询
-      String condition = users.getCondition();
+      String condition = user.getCondition();
       if(condition != null && ! condition.equals("")){
         sql += " and " + condition;
       }
+
+      System.out.println("user SELECT: " + sql);
+
       pst = conn.prepareStatement(sql);
       ResultSet rs = pst.executeQuery();
-      ArrayList<Users> UserList = new ArrayList<Users>();
+      ArrayList<User> UserList = new ArrayList<User>();
       if(rs.next()){
         for(int i=0;i<=rs.getRow();i++){
-          Users temp = new Users();
+          User temp = new User();
           temp.setId(rs.getInt("id"));
           temp.setName(rs.getString("name"));
-          temp.setPswd(rs.getString("psed"));
+          temp.setPswd(rs.getString("pswd"));
           temp.setPhone(rs.getString("phone"));
           temp.setSex(rs.getString("sex"));
           temp.setEmail(rs.getString("email"));
@@ -64,19 +73,20 @@ public class UsersDAOImp implements UsersDAO {
   /**
    * 插入/注册
    */
-  public int insert(Users users) throws SQLException {
+  public int insert(User user) throws SQLException {
     try{
       String sql = "insert into user(name,pswd,phone,sex,email) values(?,?,?,?,?) ";
       pst = conn.prepareStatement(sql);
-      pst.setString(1, users.getName());
-      pst.setString(2, users.getPswd());
-      pst.setString(3, users.getPhone());
-      pst.setString(4, users.getSex());
-      pst.setString(5, users.getEmail());
-      int i = pst.executeUpdate();
-      return i;
+      pst.setString(1, user.getName());
+      pst.setString(2, user.getPswd());
+      pst.setString(3, user.getPhone());
+      pst.setString(4, user.getSex());
+      pst.setString(5, user.getEmail());
+
+      return pst.executeUpdate();
     }catch(Exception e){
       e.printStackTrace();
+      System.out.println("UserDAOImp Insert 异常！");
       return -1;
     }
   }
@@ -84,14 +94,14 @@ public class UsersDAOImp implements UsersDAO {
   /**
    * 统计记录
    */
-  public int count(Users users) throws SQLException {
+  public int count(User user) throws SQLException {
     try{
       String sql = "select count(*) as cnt from user where 1=1";
-      String condition = users.getCondition();
+      String condition = user.getCondition();
       if(condition!=null && !condition.equals("")){
         sql += " and " + condition;
       }
-      String limit = users.getLimit();
+      String limit = user.getLimit();
       if(limit!=null && !limit.equals("")){
         sql += limit;
       }
@@ -109,16 +119,16 @@ public class UsersDAOImp implements UsersDAO {
   /**
    * 更新记录
    */
-  public int update(Users users) throws SQLException {
+  public int update(User user) throws SQLException {
     try{
       String sql = "update user set name=?,pswd=?,phone=?,sex=?,email=? where id=?";
       pst = conn.prepareStatement(sql);
-      pst.setString(1, users.getName());
-      pst.setString(2, users.getPswd());
-      pst.setString(3, users.getPhone());
-      pst.setString(4, users.getSex());
-      pst.setString(5, users.getEmail());
-      pst.setInt(6, users.getId());
+      pst.setString(1, user.getName());
+      pst.setString(2, user.getPswd());
+      pst.setString(3, user.getPhone());
+      pst.setString(4, user.getSex());
+      pst.setString(5, user.getEmail());
+      pst.setInt(6, user.getId());
       int i = pst.executeUpdate();
       return i;
     }catch(Exception e){
@@ -130,27 +140,27 @@ public class UsersDAOImp implements UsersDAO {
   /**
    * 更新部分记录
    */
-  public int updatePart(Users users) throws SQLException {
+  public int updatePart(User user) throws SQLException {
     try{
       int cnt = 0;
       String sql = "update user set ";
-      if(users.getName() != null && !users.getName().equals("")){
-        sql += " nickName = '" + users.getName() + "',";
+      if(user.getName() != null && !user.getName().equals("")){
+        sql += " nickName = '" + user.getName() + "',";
         cnt ++;
       }
-      if(users.getPswd() != null && !users.getPswd().equals("")){
-        sql += " pswd = '" + users.getPswd() + "',";
+      if(user.getPswd() != null && !user.getPswd().equals("")){
+        sql += " pswd = '" + user.getPswd() + "',";
         cnt ++;
       }
-      if(users.getSex() != null && !users.getSex().equals("")){
-        sql += " sex = '" + users.getSex() + "',";
+      if(user.getSex() != null && !user.getSex().equals("")){
+        sql += " sex = '" + user.getSex() + "',";
         cnt ++;
       }
       if(cnt > 0){
         sql = sql.substring(0,sql.length()-1);//去掉最后一个逗号
         sql += " where 1=1 ";//开始拼接条件
-        if(users.getId()+"" != ""){
-          sql += " and id = "+users.getId();
+        if(user.getId()+"" != ""){
+          sql += " and id = "+ user.getId();
         }
       }
       pst = conn.prepareStatement(sql);
@@ -165,11 +175,11 @@ public class UsersDAOImp implements UsersDAO {
   /**
    * 删除记录
    */
-  public int delete(Users users) throws SQLException {
+  public int delete(User user) throws SQLException {
     try{
       String sql = "delete from user where id=?";
       pst = conn.prepareStatement(sql);
-      pst.setInt(1, users.getId());
+      pst.setInt(1, user.getId());
       int i = pst.executeUpdate();
       return i;
     }catch(Exception e){

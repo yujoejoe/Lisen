@@ -545,6 +545,11 @@
   display: block;
   width: 64px;
   height: 64px;
+  margin: 13px 0;
+  border-radius: 50%;
+}
+.had-login img{
+  width: 100%;
 }
 
 

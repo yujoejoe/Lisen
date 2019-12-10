@@ -1,8 +1,8 @@
 package Controller.users;
 
 import POJO.JsonData;
-import POJO.Users;
-import ServiceDAO.users.UsersServiceDAOImp;
+import POJO.User;
+import ServiceDAO.users.UserServiceDAOImp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,8 +16,8 @@ import java.util.ArrayList;
 @WebServlet(name ="UsersGet" ,urlPatterns ="/UsersGet/get" )
 public class UsersGet extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  UsersServiceDAOImp usersSD = new UsersServiceDAOImp();
-  Users users = new Users();
+  UserServiceDAOImp usersSD = new UserServiceDAOImp();
+  User user = new User();
 
   public UsersGet() {
     super();
@@ -34,9 +34,9 @@ public class UsersGet extends HttpServlet {
     //查询条件
     String search = request.getParameter("search");
     if (search != null && search.length() > 0){
-      users.setCondition(" user.name like '%"+search+"%'");
+      user.setCondition(" user.name like '%"+search+"%'");
     }else{
-      users.setCondition("");
+      user.setCondition("");
     }
     //分页条件
     String page = request.getParameter("page");//开始
@@ -44,17 +44,17 @@ public class UsersGet extends HttpServlet {
     if (page != null && page.length() > 0 && size != null && size.length() > 0){
       int p = Integer.parseInt(page);
       int s = Integer.parseInt(size);
-      users.setLimit(" limit "+(p-1)*s+","+s);
+      user.setLimit(" limit "+(p-1)*s+","+s);
     }else{
-      users.setLimit("");
+      user.setLimit("");
     }
     //排序条件
     String sort = request.getParameter("sort");//排序字段
     String order = request.getParameter("order");//排序方式
     if (sort != null && sort.length() > 0){
-      users.setOrderBy(" order by "+sort+" "+order);
+      user.setOrderBy(" order by "+sort+" "+order);
     }else{
-      users.setOrderBy("");
+      user.setOrderBy("");
     }
     //2.(调)调用ServiceDAO的方法，完成对应业务
     /**
@@ -62,8 +62,8 @@ public class UsersGet extends HttpServlet {
      * 1、调用DAO层的select方法，返回查询到的记录集
      * 2、调用DAO层的count方法，返回查询到的记录数
      */
-    ArrayList<Users> rows = usersSD.select(users);
-    int total = usersSD.count(users);
+    ArrayList<User> rows = usersSD.select(user);
+    int total = usersSD.count(user);
     //3.(存)将数据对象存储到request作用范围变量
     boolean success;//操作成功与否
     String msg;//返回的结果信息
