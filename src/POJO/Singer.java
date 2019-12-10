@@ -13,8 +13,17 @@ public class Singer extends Base{
     String style;
     int songNum;
     String fans;
-
     String img;
+
+    public String getBirthPlace() {
+        return birthPlace;
+    }
+
+    public void setBirthPlace(String birthPlace) {
+        this.birthPlace = birthPlace;
+    }
+
+    String birthPlace;
 
 
     public String getName() {
@@ -111,6 +120,7 @@ public class Singer extends Base{
                 + " ,songNum:" + songNum
                 + " ,fans:" + fans
                 + " , img:" + img
+                + " , birthPlace:" + birthPlace
                 + "]";
 
     }

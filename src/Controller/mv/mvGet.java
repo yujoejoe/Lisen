@@ -1,9 +1,11 @@
 package Controller.mv;
 
 import POJO.Area;
+import POJO.JsonData;
 import POJO.MV;
 import POJO.Version;
 import ServiceDAO.mv.mvServiceDAOImp;
+import net.sf.json.JSONObject;
 import util.DBUtil;
 
 import javax.servlet.RequestDispatcher;
@@ -35,11 +37,10 @@ public class mvGet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
 
-
+        Connection conn = DBUtil.getConnection();
         String area = request.getParameter("area");
         String version = request.getParameter("version");
         String page = request.getParameter("page");
-        String order = request.getParameter("order");
 
         ArrayList<Area> areaList = new ArrayList<>();
         ArrayList<Version> versionList = new ArrayList<>();
@@ -55,7 +56,6 @@ public class mvGet extends HttpServlet {
 
 
         if(area.equals("全部")) {
-            Connection conn = DBUtil.getConnection();
             try {
                 String sql = "select area.name from area";
                 Statement smt = conn.createStatement();
@@ -70,15 +70,10 @@ public class mvGet extends HttpServlet {
 //                System.out.println(areaList);
             } catch (SQLException sqe) {
                 sqe.printStackTrace();
-            }finally {
-                if(conn != null){
-                    DBUtil.closeConnection(conn);
-                }
             }
         }
 
         if(version.equals("全部")){
-            Connection conn = DBUtil.getConnection();
             try {
                 String sql = "select version.name from version";
                 Statement smt = conn.createStatement();
@@ -93,10 +88,6 @@ public class mvGet extends HttpServlet {
 //                System.out.println(versionList);
             } catch (SQLException sqe) {
                 sqe.printStackTrace();
-            }finally {
-                if(conn != null){
-                    DBUtil.closeConnection(conn);
-                }
             }
         }
 
@@ -115,27 +106,18 @@ public class mvGet extends HttpServlet {
         System.out.println("condition:" + mv.getCondition());
 
 
-        // 分页
         if(page!=null && !page.equals("0")){
             int p = Integer.parseInt(page);
-            int size = 8;
+            int size = 12;
             mv.setLimit(" limit " + (p - 1) * size + "," + size);
             System.out.println("limit: " + mv.getLimit());
         }else{
             mv.setLimit("");
         }
 
-        if(order != null && order.equals("0")){
-            mv.setOrderBy(" order by mv.date desc");
-        }else if(order != null && order.equals("1")){
-            mv.setOrderBy(" order by mv.play desc");
-        }
-
-
         ArrayList<MV> result = mvSDI.select(mv);
-
         boolean success = result.size() != 0;
-        int counts = result.size();
+        int counts = mvSDI.count(mv);
 
         String msg = "{"+ "\"success\":" + success + ", "
                         + "\"area\":" + areaList + ", "

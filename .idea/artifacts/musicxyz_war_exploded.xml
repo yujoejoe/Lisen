@@ -1,6 +1,9 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="musicxyz:war exploded">
-    <output-path>$PROJECT_DIR$/web/WEB-INF/classes/artifacts/musicxyz_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/web/WEB-INF/out/artifacts/musicxyz_war_exploded</output-path>
+    <properties id="ant-preprocessing">
+      <options enabled="true" />
+    </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">

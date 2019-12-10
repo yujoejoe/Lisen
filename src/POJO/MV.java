@@ -98,7 +98,6 @@ public class MV extends Base{
                 ", \"title\": \"" + title + '\"' +
                 ", \"singer\": \"" + singer + '\"' +
                 ", \"version\": \"" + version + '\"' +
-                ", \"id\": " + id +
                 '}';
     }
 }

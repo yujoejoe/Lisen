@@ -11,7 +11,7 @@ public class Album extends Base{
     String date;
     String img;
     String company;
-    String area;
+    String language;
     String genre;
 
     public String getGenre() {
@@ -70,12 +70,12 @@ public class Album extends Base{
         this.company = company;
     }
 
-    public String getArea() {
-        return area;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setArea(String area) {
-        this.area = area;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
 
@@ -88,7 +88,7 @@ public class Album extends Base{
                 + " ,date:" + date
                 + " ,img:" + img
                 + " ,company:" + company
-                + " ,area:" + area
+                + " ,language:" + language
                 + " ,genre:" + genre
                 + "]";
     }
