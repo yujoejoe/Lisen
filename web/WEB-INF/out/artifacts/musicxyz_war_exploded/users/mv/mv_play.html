@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="./css/play.css">
     <link rel="stylesheet" href="../common/css/com.css">
     <link rel="stylesheet" href="../../tools/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="./css/play.css">
+
     <script src="../../tools/jquery/jquery.min.js"></script>
     <script src="../login/js/judgeLoginState.js"></script>
 
@@ -85,12 +88,38 @@
 <div class="mv_part">
     <div class="mv_inner">
         <div class="mv_play" id="mvPlay">
-            <!--<video controls preload="metadata" controlsList="nofullscreen"-->
-                   <!--src="http://192.168.1.125:8080/music/mv/video/Against the Current - Red (翻唱版).mp4"></video>-->
+            <video src=""></video>
+            <div class="v_control">
+                <div class="progress">
+                    <div class="progress_bg"></div>
+                    <div class="progress_inner"></div>
+                    <div class="v_dot"></div>
+                </div>
+                <div class="v_play">
+                    <i class="fa fa-play" id="icoPlay"></i>
+                    <span>播放</span>
+                </div>
+                <div class="v_time">
+                    <span class="time_left">00:00</span>
+                    /
+                    <span class="time_duration">00:00</span>
+                </div>
+                <div class="play_tools">
+                    <div class="vol_progress">
+                        <div class="vol_progress_bg"></div>
+                        <div class="vol_progress_inner"></div>
+                    </div>
+                    <i class="fa fa-volume-up" aria-hidden="true" id="icoVolume"></i>
+                    <i class="fa fa-arrows-alt" aria-hidden="true" id="icoFullscreen"></i>
+                </div>
+            </div>
+            <div class="barrage">
+                暂无视频
+            </div>
         </div>
         <div class="mv_tip">
-            <h2 class="mv_title">Against the Current - Red (翻唱版)</h2>
-            <span class="mv_listen">播放量8.6w</span>
+            <h2 class="mv_title"></h2>
+            <span class="mv_listen"></span>
             <div class="mv_btn">
                 <i class="fa fa-commenting"></i>
                 <i class="fa fa-heart"></i>

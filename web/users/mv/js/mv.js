@@ -383,7 +383,7 @@ function clearChild(parent) {
 }
 
 function setCookie(){
-	document.cookie = "mv_id=" + this.getAttribute('data-id') + ";path=/";
+	document.cookie = "mId=" + this.getAttribute('data-id') + ";path=/";
 	console.log(document.cookie);
 }
 

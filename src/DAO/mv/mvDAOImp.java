@@ -92,6 +92,7 @@ public class mvDAOImp implements mvDAO{
             tmp.setImg(rs.getString("img"));
             tmp.setUrl(rs.getString("url"));
             tmp.setPlay(rs.getInt("play"));
+            tmp.setId(rs.getInt("id"));
             resultList.add(tmp);
         }
         return resultList;

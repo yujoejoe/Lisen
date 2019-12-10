@@ -17,9 +17,10 @@ function loading() {
 
 
 function MVP() {
-  this.mId = document.cookie.split(";")[1].split("=")[1];
-  this.videoInfo = [];
-  this.cmts = [];
+  console.log(document.cookie);
+  this.mId = document.cookie.split("=")[1];                     // 前提是只有一个cookie, 如：mId=3
+  this.videoInfo = [];											// 接受后台发送的视频信息
+  this.cmts = [];												// 接受发送的评论信息
   this.video = document.querySelector("#mvPlay video");			// 视频
   this.playBtn = document.querySelector("#icoPlay");			// 播放按钮
   this.vPro = document.querySelector(".progress_inner");		// 视频进度条
@@ -66,7 +67,7 @@ MVP.prototype = {
 
 	// 播放量
 	var str = this.videoInfo[0].play > 10000 ? ((this.videoInfo[0].play / 10000).toFixed(1)) : this.videoInfo[0].play;
-	mv_listen.innerHTML = "播放量" + str + "万";
+	mv_listen.innerHTML = "播放量：" + str + "万";
 
 	// 视频简介
 	var mv_singer = document.querySelector(".mv_singer");

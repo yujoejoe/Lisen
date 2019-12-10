@@ -6,12 +6,12 @@ document.onreadystatechange = loading;
 
 
 function MV() {
-  this.area = "全部";
-  this.version = "全部";
-  this.page = 0;
-  this.content = [];
-  this.counts = 1;
-  this.order = 0;
+  this.area = "全部";	// 区域默认为“全部”
+  this.version = "全部";// 版本默认为“全部”
+  this.page = 0;		// 0 表示获取数据库中的全部记录
+  this.content = [];	// 从数据库获取到的内容
+  this.counts = 1;		// 数据库中总记录数
+  this.order = 0;		// 排序方式（默认为0）： 0 按时间排序  1 按播放量排序
   this.isEmpty = true;
   this.size = 8;		// 每页显示的数量
 }
@@ -97,7 +97,7 @@ MV.prototype = {
 	  pos.appendChild(liItem);
 	}
   },
-  reset: function (data) {
+  reset: function (data) {					// 重置MV的各个属性
 	console.log(data);
 
 	if(data.success === false){
@@ -124,7 +124,7 @@ MV.prototype = {
 	}
 
   },
-  getData: function () {
+  getData: function () {				// 从数据库获取数据
 	var data;
 	$.ajax({
 	  type: "get",
@@ -201,10 +201,11 @@ MV.prototype = {
 	}
   },
   addPage: function(data){
+    var self = this;
 	var pageBox = document.getElementById('pageBox');
 	clearChild(pageBox);
 	var size = Math.ceil(this.counts / this.size);
-	console.log("pages: " + size);
+	// console.log("pages: " + size);
 
 	if(size > 1){
 	  pageBox.style.display = "block";
@@ -217,7 +218,7 @@ MV.prototype = {
 
 	  if(size < 3){
 		for (var i = 1; i <= size; ++i) {
-		  var page = document.createElement('span');
+		  var page = document.createElement('a');
 		  page.classList.add("page_index");
 		  if(i === 1){
 			page.classList.add("selected");
@@ -227,7 +228,7 @@ MV.prototype = {
 		}
 	  }else {
 		for (var i = 1; i <= 3; ++i) {
-		  var page = document.createElement('span');
+		  var page = document.createElement('a');
 		  page.classList.add("page_index");
 		  if (i === 1) {
 			page.classList.add("selected");
@@ -236,12 +237,12 @@ MV.prototype = {
 		  pageBox.appendChild(page);
 		}
 		// 更多
-		var more = document.createElement('span');
+		var more = document.createElement('a');
 		more.classList.add("page_more");
 		more.innerHTML = "...";
 		pageBox.appendChild(more);
 		// 最大页数
-		var pageMax = document.createElement('span');
+		var pageMax = document.createElement('a');
 		pageMax.classList.add("page_index");
 		pageMax.innerHTML = size;
 		pageBox.appendChild(pageMax);
@@ -253,6 +254,22 @@ MV.prototype = {
 	  next.innerHTML = ">";
 	  next.style.display = "inline-block";
 	  pageBox.appendChild(next);
+	}
+
+	var pages = document.querySelectorAll('#pageBox a');
+	console.log("pages: " + pages);
+	var index = 0;
+	for(var k = 0; k < pages.length; ++k){
+	  pages[k].index = k;
+	  pages[k].onclick = function(){
+	    pages[index].classList.remove("selected");
+	    pages[this.index].classList.add("selected");
+	    self.page = this.innerHTML;
+	    self.clear();
+	    self.reset(self.getData());
+	    self.appendTo(mvList);
+	    index = this.index;
+	  }
 	}
 
   },
@@ -273,13 +290,14 @@ function loading() {
   }
 }
 
+var mvList = document.getElementById('mv_list');
 
 window.onload = function () {
 
   var mv = new MV();
   mv.init();
   // console.log(mv);
-  var mvList = document.getElementById('mv_list');
+  // console.log(mvList);
   mv.appendTo(mvList);
 
 
@@ -365,10 +383,9 @@ function clearChild(parent) {
 }
 
 function setCookie(){
-	document.cookie = "mv_id=" + this.getAttribute('data-id') + ";path=/";
+	document.cookie = "mId=" + this.getAttribute('data-id') + ";path=/";
 	console.log(document.cookie);
 }
-
 
 
 

@@ -173,6 +173,12 @@ body{
     margin: 0 5px;
     color: #d0d0d0;
 }
+.page_more{
+    pointer-events: none;
+}
+.page_index{
+    cursor: pointer;
+}
 
 
 
