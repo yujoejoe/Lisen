@@ -18,6 +18,18 @@ $(function () {
     $search_result.hide();
   });
 
+  // 登陆状态
+  var profile = $('.had-login');    // 头像
+  // 发送请求获取数据
+  $.ajax({
+    type: "get",
+    url: "",
+    data: {},
+    success: function(){
+    }
+  });
+
+
 
   var newSong = $('#newSong');
   var mv = $('#mv');
@@ -173,8 +185,8 @@ $(function () {
 
 
       var self = this;
-      var img_src = 'users/index/images/cont/newSong/';
-      var mv_src = 'users/index/images/cont/mv/';
+      var img_src = 'user/index/images/cont/newSong/';
+      var mv_src = 'user/index/images/cont/mv/';
       this.$tab_item.removeClass('item-cur');
       this.$tab_item.eq(index).addClass("item-cur");
 
@@ -372,3 +384,5 @@ $(function () {
   };
 
 })(jQuery, window, document);
+
+
