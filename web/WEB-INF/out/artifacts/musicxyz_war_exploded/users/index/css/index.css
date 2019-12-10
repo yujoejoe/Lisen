@@ -499,45 +499,56 @@
   background-position: -20px -60px;
 }
 .header-login {
+  position: relative;
   float: right;
-  margin-top: 24px;
+  height: inherit;
   font-size: 0;
 }
-.header-login a {
-  display: inline-block;
+
+.not-login{
+  margin: 24px 0;
+  display: none;
 }
-/*.header-login a.login,*/
-.header-login a.login,
-.header-login a.registered {
+
+.login,
+.registered {
+  display: inline-block;
   height: 40px;
+  width: 80px;
   line-height: 40px;
   text-align: center;
   font-size: 14px;
   border-radius: 4px;
 }
-/*.header-login a.login {*/
-/*  width: 80px;*/
-/*  margin: 0 10px;*/
-/*}*/
-.header-login a.registered{
-  width: 80px;
-  margin: 0 10px;
+.registered{
   color: #fff;
+  margin-right: 5px;
   background-color: #31c27c;
+  border: 1px solid #31c27c;
 }
-.header-login a.login {
-  width: 60px;
-  height: 38px;
+.login {
   border: 1px solid #c9c9c9;
   background-color: #fff;
+  margin-left: 5px;
   color: #333;
 }
-.header-login a.registered:hover {
+.registered:hover {
+  color: #fff;
   background-color: #2caf6f;
 }
-.header-login a.login:hover {
+.login:hover {
+  color: #333;
   background-color: #ededed;
 }
+
+.had-login{
+  display: block;
+  width: 64px;
+  height: 64px;
+}
+
+
+
 .header-subNav {
   margin: 0 24%;
 }

@@ -22,8 +22,10 @@ function MVP() {
   this.videoInfo = [];											// 接受后台发送的视频信息
   this.cmts = [];												// 接受发送的评论信息
   this.video = document.querySelector("#mvPlay video");			// 视频
+  this.duration = 0;											// 视频总时长
   this.playBtn = document.querySelector("#icoPlay");			// 播放按钮
-  this.vPro = document.querySelector(".progress_inner");		// 视频进度条
+  this.vPro = document.querySelector(".progress");		        // 视频进度条
+  this.vProInner = document.querySelector(".progress .progress_inner");
   this.vDot = document.querySelector(".v_dot");					// 视频小圆点
   this.volPro = document.querySelector(".vol_progress");		// 声音进度条
   this.volumeBtn = document.querySelector("#icoVolume");	    // 声音按钮
@@ -84,9 +86,10 @@ MVP.prototype = {
 	// 视频总时间文本容器
 	var timeDuration = document.querySelector('.v_time .time_duration');
 
-	// 获取总时长
+	// 获取视频总时长
 	this.video.addEventListener('canplay', function () {
-	  var duration = this.duration;     // duration 以秒计时
+	  self.duration = this.duration;
+	  var duration = self.duration;     		// duration 以秒计时
 	  var M = parseInt(duration / 60) % 60;
 	  M = M < 10 ? ('0' + M) : M;
 	  var S = parseInt(duration % 60);
@@ -107,16 +110,16 @@ MVP.prototype = {
 	  timeLeft.innerHTML = m + ":" + s;
 
 	  // 进度条
-	  var duration = this.duration;
-	  var proWidth = $($(self.vPro).parent()).css('width');			// 进度条宽度
+	  var proWidth = $($(self.vPro)).css('width');			// 进度条总宽度
 	  proWidth = parseInt(proWidth.match(/\d+/)[0]);
-	  $(self.vPro).css('width', curT / duration * proWidth + 'px');
+	  var curWidth = curT / self.duration * proWidth;		// 当前宽度
+	  $(self.vProInner).css('width', curWidth + 'px');
 
 	  // 小圆点
 	  var dotWidth = $(self.vDot).css('width').match(/\d+/)[0];
 	  dotWidth = parseInt(dotWidth);
-	  $(self.vDot).css('left', (curT / duration * proWidth - dotWidth / 2) + 'px');
-	})
+	  $(self.vDot).css('left', (curWidth - dotWidth / 2) + 'px');	// 小圆点left值等于进度条当前宽度 - 半径
+	});
   },
   event: function(){						// 绑定各种点击事件
     var self = this;
@@ -135,12 +138,50 @@ MVP.prototype = {
 	  }
 	};
 
+	// 全屏按钮
+	this.fullscreenBtn.onclick = function(){
+
+	};
+
+
+	// 点击播放进度条
+	this.vPro.onmousedown = videoEvent;
+	// this.vDot.onmousedown = function (e) {
+	//   console.log("emmm...");
+	//   document.onmousemove = function (e) {
+	// 	videoEvent(e);
+	//   };
+	//   document.onmouseup = function () {
+	// 	this.onmousemove = null;
+	// 	this.onmouseup = null;
+	//   };
+	//   return false;
+	// };
+
+
 	this.volumeBtn.onmouseover = function(){
 	  $(self.volPro).css('display', 'block');
 	};
 	this.volPro.onmouseout = function(){
 	  $(this).css('display', 'none');
+	};
+
+
+	function videoEvent(e){
+	  var videoWidth = $('.mv_inner').css('width').match(/\d+/)[0];
+	  videoWidth = parseInt(videoWidth);
+	  var marginLeft = (document.body.clientWidth - videoWidth) / 2;		// 获取左外边距
+	  // 修改进度条宽度
+	  var curWidth = e.clientX - marginLeft;			// 当前宽度
+	  $(self.vProInner).css('width', curWidth+'px');
+	  // 修改小圆点left值
+	  var dotWidth = $(self.vDot).css('width').match(/\d+/)[0];
+	  dotWidth = parseInt(dotWidth);
+	  $(self.vDot).css('left', (curWidth - dotWidth / 2) + 'px');
+	  // 修改当前播放时间
+	  self.video.currentTime = self.duration * (curWidth / videoWidth);
 	}
+
   }
 };
 

@@ -87,7 +87,7 @@ body{
     width: 0;
     height: inherit;
     background: #31c27c;
-    transition: all .3s ease-in-out;
+    transition: all .1s ease-out;
 }
 .v_dot{
     display: none;
@@ -98,7 +98,8 @@ body{
     position: absolute;
     left: 0;
     top: -4px;
-    transition: all  .3s ease-in-out;
+    /*z-index: 3;*/
+    transition: all  .1s ease-out;
 }
 .progress:hover .v_dot{
     display: block;
@@ -206,11 +207,17 @@ body{
 }
 .mv_title{
     display: inline-block;
+    float: left;
+    width: 300px;
     font-size: 24px;
     font-weight: 400;
     color: #fff;
+    overflow: hidden;
+    white-space: nowrap;            /* overflow + white-space + text-overflow 才有用 */
+    text-overflow: ellipsis;
 }
 .mv_listen{
+    display: inline-block;
     margin-left: 10px;
     font-size: 14px;
     color:#b9b9b9;

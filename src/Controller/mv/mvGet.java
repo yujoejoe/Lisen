@@ -37,16 +37,13 @@ public class mvGet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
 
-        Connection conn = DBUtil.getConnection();
+
         String area = request.getParameter("area");
         String version = request.getParameter("version");
         String page = request.getParameter("page");
+        String order = request.getParameter("order");
 
-        ArrayList<Area> areaList = new ArrayList<>();
-        ArrayList<Version> versionList = new ArrayList<>();
 
-        MV mv = new MV();
-        mvServiceDAOImp mvSDI = new mvServiceDAOImp();
 
         if(area == null || version == null || page ==null){
             System.out.println("参数为空!");
@@ -54,8 +51,12 @@ public class mvGet extends HttpServlet {
         }
 
 
+        ArrayList<Area> areaList = new ArrayList<>();
+        ArrayList<Version> versionList = new ArrayList<>();
 
+        // 获取area表所有数据
         if(area.equals("全部")) {
+            Connection conn = DBUtil.getConnection();
             try {
                 String sql = "select area.name from area";
                 Statement smt = conn.createStatement();
@@ -66,14 +67,19 @@ public class mvGet extends HttpServlet {
                    tmp.setName(rs.getString("name"));
                    areaList.add(tmp);
                 }
-
 //                System.out.println(areaList);
             } catch (SQLException sqe) {
                 sqe.printStackTrace();
+            }finally {
+                if(conn != null){
+                    DBUtil.closeConnection(conn);
+                }
             }
         }
 
+        // 获取version表所有数据
         if(version.equals("全部")){
+            Connection conn = DBUtil.getConnection();
             try {
                 String sql = "select version.name from version";
                 Statement smt = conn.createStatement();
@@ -84,13 +90,21 @@ public class mvGet extends HttpServlet {
                     tmp.setName(rs.getString("name"));
                    versionList.add(tmp);
                 }
-
 //                System.out.println(versionList);
             } catch (SQLException sqe) {
                 sqe.printStackTrace();
+            }finally{
+                if(conn != null){
+                    DBUtil.closeConnection(conn);
+                }
             }
         }
 
+        // 获取mv表数据
+        MV mv = new MV();
+        mvServiceDAOImp mvSDI = new mvServiceDAOImp();
+
+        // 添加条件
         String condition = "";
         if(area.length() != 0 && !area.equals("全部")){
 
@@ -100,15 +114,26 @@ public class mvGet extends HttpServlet {
         if(version.length() != 0 && !version.equals("全部")){
             condition += " and version.name = '" + version + "'";
         }
-
         mv.setCondition(condition);
+//        System.out.println("condition:" + mv.getCondition());
 
-        System.out.println("condition:" + mv.getCondition());
+        // 设置排序方式
+        if(order != null){
+            String field = "";
+            if(order.equals("0")){
+                field = "mv.date";
+            }else if(order.equals("1")){
+                field = "mv.play";
+            }
+            mv.setOrderBy(" order by " + field + " desc");
+        }else{
+            mv.setOrderBy("");
+        }
 
-
+        // 设置分页
         if(page!=null && !page.equals("0")){
             int p = Integer.parseInt(page);
-            int size = 12;
+            int size = 8;
             mv.setLimit(" limit " + (p - 1) * size + "," + size);
             System.out.println("limit: " + mv.getLimit());
         }else{
@@ -117,7 +142,7 @@ public class mvGet extends HttpServlet {
 
         ArrayList<MV> result = mvSDI.select(mv);
         boolean success = result.size() != 0;
-        int counts = mvSDI.count(mv);
+        int counts = result.size();
 
         String msg = "{"+ "\"success\":" + success + ", "
                         + "\"area\":" + areaList + ", "
