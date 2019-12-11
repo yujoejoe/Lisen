@@ -537,6 +537,9 @@ function Song(ar, ti, lrc) {
 Song.prototype = {
   constructor: Song,
   appendTo: function (pos) {                              // 添加歌词到指定容器
+    while(pos.hasChildNodes()){
+      pos.removeChild(pos.firstChild);
+    }
     if (this.lyric === undefined) {
       this.isEmpty = true;
       var none = document.createElement('p');
