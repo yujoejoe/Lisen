@@ -64,7 +64,8 @@ public class login extends HttpServlet {
             user.setCondition(condition);
             // 查询记录
             result = userSDI.select(user);
-            if(result == null){
+            System.out.println(result);
+            if(result == null || result.size() == 0){
                 success = false;
                 msg = "账号或密码错误！";
             }else{

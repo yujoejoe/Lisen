@@ -53,7 +53,7 @@ public class UserGet extends HttpServlet {
     }
 
     JsonData JsonData = new JsonData(success,msg);
-    request.setAttribute("JsonData", JsonData);
+    request.setAttribute("jsonData", JsonData);
     //4.(转)将业务转发到View
     //利用JsonData将记录数total与记录集studentList拼接成“{"success":true,"msg":"查询成功","total":50,"rows":[{},{}...{}]}”格式
     RequestDispatcher rd = request.getRequestDispatcher("/view/ToJSON");

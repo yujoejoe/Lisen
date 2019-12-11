@@ -19,11 +19,11 @@ $(function () {
   });
 
   // 登陆状态
-  var profile = $('.had-login');    // 头像
+  var profile = $('.logged');    // 头像
   var notLog = $('.not-login');
   // 发送请求获取数据
   $.ajax({
-    type: "get",
+    type: "post",
     url: "userGet",
     data: {},
     success: function(result){

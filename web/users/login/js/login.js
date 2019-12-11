@@ -11,12 +11,10 @@ $(document).ready(function(){
             function(result){
                 var data = JSON.parse(result);
                 if(data.success === true){
-                    if(data.msg==="查询成功"){
-                        alert("哩森音乐欢迎你");
-                        window.location.href="/index.html";
-                    }else{
-                        alert("账号或密码错误!");
-                    }
+				  alert(data.msg);
+				  window.location.href="/index.html";
+                }else{
+                  alert(data.msg)
                 }
             }
         );

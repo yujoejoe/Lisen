@@ -546,6 +546,7 @@
   width: 64px;
   height: 64px;
   margin: 13px 0;
+  overflow: hidden;
   border-radius: 50%;
 }
 .logged img{
