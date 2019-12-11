@@ -39,66 +39,70 @@ public class mvGet extends HttpServlet {
 
 
         String area = request.getParameter("area");
-        String version = request.getParameter("version");
         String page = request.getParameter("page");
+        String song = request.getParameter("song");
+        String title = request.getParameter("title");
         String order = request.getParameter("order");
+        String singer = request.getParameter("singer");
+        String version = request.getParameter("version");
 
 
 
-        if(area == null || version == null || page ==null){
-            System.out.println("参数为空!");
-            return;
-        }
-
-
-        ArrayList<Area> areaList = new ArrayList<>();
-        ArrayList<Version> versionList = new ArrayList<>();
-
-        // 获取area表所有数据
-        if(area.equals("全部")) {
-            Connection conn = DBUtil.getConnection();
-            try {
-                String sql = "select area.name from area";
-                Statement smt = conn.createStatement();
-                ResultSet rs = smt.executeQuery(sql);
-
-                while(rs.next()){
-                   Area tmp = new Area();
-                   tmp.setName(rs.getString("name"));
-                   areaList.add(tmp);
-                }
-//                System.out.println(areaList);
-            } catch (SQLException sqe) {
-                sqe.printStackTrace();
-            }finally {
-                if(conn != null){
-                    DBUtil.closeConnection(conn);
-                }
-            }
-        }
-
-        // 获取version表所有数据
-        if(version.equals("全部")){
-            Connection conn = DBUtil.getConnection();
-            try {
-                String sql = "select version.name from version";
-                Statement smt = conn.createStatement();
-                ResultSet rs = smt.executeQuery(sql);
-
-                while(rs.next()){
-                    Version tmp = new Version();
-                    tmp.setName(rs.getString("name"));
-                   versionList.add(tmp);
-                }
-//                System.out.println(versionList);
-            } catch (SQLException sqe) {
-                sqe.printStackTrace();
-            }finally{
-                if(conn != null){
-                    DBUtil.closeConnection(conn);
-                }
-            }
-        }
+//        if(area == null || version == null || page ==null){
+//            out.print("参数为空!");
+//            System.out.println("参数为空!");
+//            return;
+//        }
+//
+//
+//        ArrayList<Area> areaList = new ArrayList<>();
+//        ArrayList<Version> versionList = new ArrayList<>();
+//
+//        // 获取area表所有数据
+//        if(area.equals("全部")) {
+//            Connection conn = DBUtil.getConnection();
+//            try {
+//                String sql = "select area.name from area";
+//                Statement smt = conn.createStatement();
+//                ResultSet rs = smt.executeQuery(sql);
+//
+//                while(rs.next()){
+//                   Area tmp = new Area();
+//                   tmp.setName(rs.getString("name"));
+//                   areaList.add(tmp);
+//                }
+////                System.out.println(areaList);
+//            } catch (SQLException sqe) {
+//                sqe.printStackTrace();
+//            }finally {
+//                if(conn != null){
+//                    DBUtil.closeConnection(conn);
+//                }
+//            }
+//        }
+//
+//        // 获取version表所有数据
+//        if(version.equals("全部")){
+//            Connection conn = DBUtil.getConnection();
+//            try {
+//                String sql = "select version.name from version";
+//                Statement smt = conn.createStatement();
+//                ResultSet rs = smt.executeQuery(sql);
+//
+//                while(rs.next()){
+//                    Version tmp = new Version();
+//                    tmp.setName(rs.getString("name"));
+//                   versionList.add(tmp);
+//                }
+////                System.out.println(versionList);
+//            } catch (SQLException sqe) {
+//                sqe.printStackTrace();
+//            }finally{
+//                if(conn != null){
+//                    DBUtil.closeConnection(conn);
+//                }
+//            }
+//        }
 
         // 获取mv表数据
         MV mv = new MV();
@@ -106,51 +110,64 @@ public class mvGet extends HttpServlet {
 
         // 添加条件
         String condition = "";
-        if(area.length() != 0 && !area.equals("全部")){
-
+        if(area != null && !area.equals("")){
             condition += " and area.name = '" + area + "'";
-//            System.out.println("area: " + mv.getCondition());
         }
-        if(version.length() != 0 && !version.equals("全部")){
+        if(version != null && !version.equals("")){
             condition += " and version.name = '" + version + "'";
+        }
+        if(title != null && !title.equals("")){
+            condition += " and mv.title like'%" + title + "%'";
+        }
+        if(singer != null && !singer.equals("")){
+            condition += " and singer.name like'%" + singer + "%'";
+        }
+        if(song != null && !song.equals("")){
+            condition += " and song.name = '" + song + "'";
         }
         mv.setCondition(condition);
 //        System.out.println("condition:" + mv.getCondition());
 
-        // 设置排序方式
+
+        // 设置排序方式 默认按时间降序排序
         if(order != null){
-            String field = "";
-            if(order.equals("0")){
-                field = "mv.date";
-            }else if(order.equals("1")){
-                field = "mv.play";
-            }
+            String field = order.equals("0") ? "mv.date" : "mv.play";
             mv.setOrderBy(" order by " + field + " desc");
         }else{
             mv.setOrderBy("");
         }
 
-        // 设置分页
+
+        // 设置分页  默认每页8条记录
         if(page!=null && !page.equals("0")){
             int p = Integer.parseInt(page);
             int size = 8;
             mv.setLimit(" limit " + (p - 1) * size + "," + size);
-            System.out.println("limit: " + mv.getLimit());
+//            System.out.println("limit: " + mv.getLimit());
         }else{
             mv.setLimit("");
         }
 
+
+        // 查询结果
         ArrayList<MV> result = mvSDI.select(mv);
         boolean success = result.size() != 0;
         int counts = result.size();
+        String msg = success ? "查询成功！" : "查询失败！";
 
-        String msg = "{"+ "\"success\":" + success + ", "
-                        + "\"area\":" + areaList + ", "
-                        + "\"version\":" + versionList + ", "
-                        + "\"result\":" + result + ", "
-                        + "\"counts\":" + counts +
-                    "}";
+        // 业务转发
+        /**
+         * 返回的json格式：
+         * success: true | false 查询成功与否
+         * msg: 提示信息
+         * counts: 记录数  (可选参数)
+         * result: 结果集(对象数组) (可选参数)
+         */
+        JsonData JsonData = new JsonData(success,msg, counts, result);
+        request.setAttribute("jsonData", JsonData);
+        //4.(转)将业务转发到View
+        RequestDispatcher rd = request.getRequestDispatcher("/view/ToJSON");
+        rd.forward(request, response);
 
-        out.print(msg);
     }
 }

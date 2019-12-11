@@ -29,9 +29,9 @@ public class ToJSON extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
 
+        // 格式转换
         Object jsonData = request.getAttribute("jsonData");
         JSONObject json = JSONObject.fromObject(jsonData);
-//
         out.print(json);
 
     }

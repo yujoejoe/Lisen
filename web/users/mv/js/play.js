@@ -139,9 +139,9 @@ MVP.prototype = {
 	};
 
 	// 全屏按钮
-	this.fullscreenBtn.onclick = function(){
-
-	};
+	// this.fullscreenBtn.onclick = function(){
+	//
+	// };
 
 
 	// 点击播放进度条

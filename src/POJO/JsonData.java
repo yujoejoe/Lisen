@@ -13,7 +13,7 @@ public class JsonData implements Serializable{
     // 成员变量
     boolean success;
     String msg;
-    long count;     // 记录数
+    long counts;     // 记录数
     private List result = new ArrayList();      // 存放结果集
 
     // 构造函数
@@ -29,7 +29,7 @@ public class JsonData implements Serializable{
         super();
         this.success = success;
         this.msg = msg;
-        this.count = count;
+        this.counts = count;
         this.result.addAll(result);
     }
 
@@ -49,12 +49,12 @@ public class JsonData implements Serializable{
         this.msg = msg;
     }
 
-    public long getCount() {
-        return count;
+    public long getCounts() {
+        return counts;
     }
 
-    public void setCount(long count) {
-        this.count = count;
+    public void setCounts(long counts) {
+        this.counts = counts;
     }
 
     public List getResult() {
@@ -67,6 +67,6 @@ public class JsonData implements Serializable{
 
     @Override
     public String toString() {
-        return "JsonData { success: "+success+", "+"msg: "+msg+", "+"count: "+count+", "+"result: "+result+" }";
+        return "JsonData { success: "+success+", "+"msg: "+msg+", "+"counts: "+counts+", "+"result: "+result+" }";
     }
 }

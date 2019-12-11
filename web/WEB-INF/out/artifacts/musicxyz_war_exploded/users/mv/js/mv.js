@@ -6,8 +6,8 @@ document.onreadystatechange = loading;
 
 
 function MV() {
-  this.area = "全部";	// 区域默认为“全部”
-  this.version = "全部";// 版本默认为“全部”
+  this.area = null;		// 区域默认为“全部”
+  this.version = null;	// 版本默认为“全部”
   this.page = 0;		// 0 表示获取数据库中的全部记录
   this.content = [];	// 从数据库获取到的内容
   this.counts = 1;		// 数据库中总记录数
@@ -19,11 +19,11 @@ function MV() {
 MV.prototype = {
   constructor: MV,
   init: function () {
-	var data = this.getData();
+	var data = this.getMV();
 
 	// 添加标签
 	this.reset(data);
-	this.addTag(data);
+	// this.addTag(data);
 	this.addPage(data);
 
   },
@@ -124,7 +124,7 @@ MV.prototype = {
 	}
 
   },
-  getData: function () {				// 从数据库获取数据
+  getMV: function () {				// 从数据库获取数据
 	var data;
 	$.ajax({
 	  type: "get",
@@ -133,7 +133,6 @@ MV.prototype = {
 	  async: false,
 	  success: function (result) {
 		// console.log(result);
-
 		data = JSON.parse(result);
 	  }
 	});
@@ -257,7 +256,7 @@ MV.prototype = {
 	}
 
 	var pages = document.querySelectorAll('#pageBox a');
-	console.log("pages: " + pages);
+	// console.log("pages: " + pages);
 	var index = 0;
 	for(var k = 0; k < pages.length; ++k){
 	  pages[k].index = k;
@@ -266,7 +265,7 @@ MV.prototype = {
 	    pages[this.index].classList.add("selected");
 	    self.page = this.innerHTML;
 	    self.clear();
-	    self.reset(self.getData());
+	    self.reset(self.getMV());
 	    self.appendTo(mvList);
 	    index = this.index;
 	  }
@@ -299,7 +298,7 @@ window.onload = function () {
   // console.log(mv);
   // console.log(mvList);
   mv.appendTo(mvList);
-
+console.log(mv);
 
   var areaTags = document.getElementById('tags').firstChild.children;
   var versionTags = document.getElementById('tags').lastChild.children;
@@ -365,7 +364,7 @@ window.onload = function () {
 	// 1、先清除mv的内容
 	mv.clear();
 	// 2、重新获取数据重置mv的内容
-	var data = mv.getData();
+	var data = mv.getMV();
 	mv.reset(data);
 	// 3、把mv的内容添加到容器
 	mv.appendTo(mvList);

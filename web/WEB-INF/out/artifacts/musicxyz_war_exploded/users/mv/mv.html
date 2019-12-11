@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <title>MV - 哩森音乐</title>
 
-    <link rel="icon" href="../index/images/icon.png">
-    <link rel="stylesheet" href="../index/css/reset.css">
-    <link rel="stylesheet" href="../index/css/index.css">
-    <link rel="stylesheet" href="../../tools/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../index/css/layout.css">
+    <!-----------------------------页面公用的js和css---------------------------->
+
+    <link rel="icon" href="/users/index/images/icon.png">
+    <link rel="stylesheet" href="/users/index/css/reset.css">
+    <link rel="stylesheet" href="/users/index/css/index.css">
+    <link rel="stylesheet" href="/users/index/css/layout.css">
+    <link rel="stylesheet" href="/tools/font-awesome/css/font-awesome.min.css">
+    <script src="/tools/jquery/jquery.min.js"></script>
+    <script src="/users/index/js/state.js"></script>
+
+    <!--------------------------当前页面自己用的js和css-------------------------->
+
     <link rel="stylesheet" href="../common/css/com.css">
-    <script src="../../tools/jquery/jquery.min.js"></script>
-    <!--<script src="..usersers/index/js/judgeLoginState.js"></script>-->
-
-
     <link rel="stylesheet" href="./css/mv.css">
+
 </head>
 <body>
 
@@ -25,8 +29,7 @@
             <nav class="header-nav">
                 <ul>
                     <li><a href="#" class="header-nav__cur">音乐</a></li>
-                    <li><a href="../loginMyMusic/loginMyMusic.html">我的音乐</a></li>
-
+                    <li><a href="/users/loginMyMusic/loginMyMusic.html">我的音乐</a></li>
                 </ul>
             </nav>
             <div class="header-search">
@@ -65,17 +68,21 @@
                 </div>
             </div>
             <div class="header-login">
-                <a href="../../user/login/register.html" class="registered" id="btn_register">注册</a>
-                <a href="../../user/login/login.html" class="login" id="btn_login">登录</a>
+                <div class="not-login">
+                    <a href="/users/login/register.html" class="registered" id="btn_register">注册</a>
+                    <a href="/users/login/login.html" class="login" id="btn_login">登录</a>
+                </div>
+                <a href="/users/myMusic/myMusic.html" class="logged">
+                    <img src="/users/index/images/default.jpg" alt="">
+                </a>
             </div>
         </div>
         <ul class="header-subNav">
-            <li><a href="../../index.html">首页</a></li>
-            <li><a href="../singer/singer.html">歌手</a></li>
-            <!--            <li><a href="#">专辑</a></li>-->
-            <li><a href="#">排行榜</a></li>
-            <li><a href="../sort/sort.html">分类歌单</a></li>
-            <li><a href="#" class="subNav-cur">MV</a></li>
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/users/singer/singer.html">歌手</a></li>
+            <li><a href="#rank">排行榜</a></li>
+            <li><a href="/users/sort/sort.html">分类歌单</a></li>
+            <li><a href="/users/mv/mv.html" class="subNav-cur">MV</a></li>
         </ul>
     </div>
 </header>
