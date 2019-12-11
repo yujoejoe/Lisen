@@ -1,7 +1,11 @@
 package loginAction;
 
+import POJO.JsonData;
+import POJO.User;
+import ServiceDAO.users.UserServiceDAOImp;
 import util.DBUtil;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,9 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 
 @WebServlet(name ="loginAction" ,urlPatterns ="/loginAction/login" )
@@ -38,36 +44,44 @@ public class login extends HttpServlet {
         //1、获取登录页面输入的用户名与密码
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        try{
 
-            Connection conn = DBUtil.getConnection();
-            //2、根据用户名与密码查找用户
-            String sql = "select * from user where name=? and pswd=?";
-            PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1,username);
-            pst.setString(2,password);
-            //跟数据库user表产生交互，并获得其中的数据，获得该数据的结果集
-            ResultSet rs = pst.executeQuery();
-            String str = "";
-            if(rs.next()){
-                HttpSession se = request.getSession();
-                se.setAttribute("name", rs.getString("name"));
-                se.setAttribute("pswd", rs.getString("pswd"));
-                /*se.setAttribute("phone", rs.getString("phone"));
-                se.setAttribute("sex", rs.getString("sex"));
-                se.setAttribute("email", rs.getString("email"));*/
-                System.out.println(str);
-                str ="{\"success\":true,\"msg\":\"查询成功\",\"rows\":[{\"name\":\""+se.getAttribute("name")+"\",\"pswd\":\""+se.getAttribute("pswd")+"\"}]}";
+        UserServiceDAOImp userSDI = new UserServiceDAOImp();
+        ArrayList<User> result = null;
+        boolean success = false;
+        User user = new User();
+        String msg = "";
+
+        if(username == null ||username.equals("")){
+            success = false;
+            msg = "用户名不能为空！ ";
+        }else if(password == null || password.equals("")){
+            success = false;
+            msg = "密码不能为空！";
+        }else{
+            // 添加条件
+            String condition = "";
+            condition = " user.name = '" + username + "'" + " and user.pswd = '" + password + "'";
+            user.setCondition(condition);
+            // 查询记录
+            result = userSDI.select(user);
+            if(result == null){
+                success = false;
+                msg = "账号或密码错误！";
             }else{
-                System.out.println(str);
-                str = "{\"success\":true,\"msg\":\"账号或密码错误\"}";
+                success = true;
+                msg = "登录成功！";
+                // 保存user信息
+                user = result.get(0);
+                HttpSession session = request.getSession(true);
+                session.setAttribute("user", user);
             }
-            out.print(str);
         }
-        catch(Exception e){
-            e.printStackTrace();
-            out.print("{\"success\":false,\"msg\":\"查询失败\"}");
-        }
+
+        // 业务转发
+        JsonData jsonData = new JsonData(success, msg);
+        request.setAttribute("jsonData", jsonData);
+        RequestDispatcher rd = request.getRequestDispatcher("/view/ToJSON");
+        rd.forward(request,response);
     }
 
     /**

@@ -507,7 +507,7 @@
 
 .not-login{
   margin: 24px 0;
-  display: none;
+  display: block;
 }
 
 .login,
@@ -541,14 +541,14 @@
   background-color: #ededed;
 }
 
-.had-login{
-  display: block;
+.logged{
+  display: none;
   width: 64px;
   height: 64px;
   margin: 13px 0;
   border-radius: 50%;
 }
-.had-login img{
+.logged img{
   width: 100%;
 }
 

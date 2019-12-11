@@ -10,7 +10,7 @@ $(document).ready(function(){
             {"username":username,"password":password},
             function(result){
                 var data = JSON.parse(result);
-                if(data.success){
+                if(data.success === true){
                     if(data.msg==="查询成功"){
                         alert("哩森音乐欢迎你");
                         window.location.href="/index.html";

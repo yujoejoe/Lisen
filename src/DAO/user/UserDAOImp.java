@@ -35,7 +35,7 @@ public class UserDAOImp implements UserDAO {
                  + "  user.pswd as pswd,"
                  + "  user.phone as phone,"
                  + "  user.sex as sex,"
-                 + "  user.email as email "
+                 + "  user.email as email,"
                  + "  user.img as img "
                  + "from"
                  + "  user "
