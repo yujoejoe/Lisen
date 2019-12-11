@@ -18,7 +18,7 @@ function loading() {
 
 function MVP() {
   console.log(document.cookie);
-  this.mId = document.cookie.split("=")[1];                     // 前提是只有一个cookie, 如：mId=3
+  this.mId = document.cookie.split("=")[1];                   // 前提是只有一个cookie, 如：mId=3
   this.videoInfo = [];											// 接受后台发送的视频信息
   this.cmts = [];												// 接受发送的评论信息
   this.video = document.querySelector("#mvPlay video");			// 视频

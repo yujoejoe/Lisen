@@ -36,7 +36,6 @@ $(document).ready(function () {
         var value = $(this).html();
         console.log(value);
         var search = encodeURI(encodeURI(value));
-
         window.location.href="../album/album.html?search="+search;
     });
 

@@ -69,9 +69,15 @@ public class User extends Base{
   }
 
   public String toString() {
-    return "User [id=" + id + ", name=" + name + ", pswd=" + pswd
-        + ", phone=" + phone + ", sex=" + sex + ", email=" + email + ", condition=" + condition
-        + ", limit=" + limit + ", orderBy=" + orderBy + "]";
+    return "User [id=" + id + "," +
+            " name=" + name + ", " +
+            "pswd=" + pswd + "," +
+            " phone=" + phone + ", " +
+            "sex=" + sex + ", " +
+            "email=" + email + ", " +
+            "condition=" + condition + "," +
+            " limit=" + limit + ", " +
+            "orderBy=" + orderBy + "]";
   }
 
 }
