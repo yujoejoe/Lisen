@@ -36,6 +36,7 @@ public class UserDAOImp implements UserDAO {
                  + "  user.phone as phone,"
                  + "  user.sex as sex,"
                  + "  user.email as email "
+                 + "  user.img as img "
                  + "from"
                  + "  user "
                  + "where 1=1 ";
@@ -54,10 +55,11 @@ public class UserDAOImp implements UserDAO {
         for(int i=0;i<=rs.getRow();i++){
           User temp = new User();
           temp.setId(rs.getInt("id"));
+          temp.setSex(rs.getString("sex"));
+          temp.setImg(rs.getString("img"));
           temp.setName(rs.getString("name"));
           temp.setPswd(rs.getString("pswd"));
           temp.setPhone(rs.getString("phone"));
-          temp.setSex(rs.getString("sex"));
           temp.setEmail(rs.getString("email"));
           UserList.add(temp);
           rs.next();
@@ -75,13 +77,14 @@ public class UserDAOImp implements UserDAO {
    */
   public int insert(User user) throws SQLException {
     try{
-      String sql = "insert into user(name,pswd,phone,sex,email) values(?,?,?,?,?) ";
+      String sql = "insert into user(name,pswd,phone,sex,email,img) values(?,?,?,?,?,?) ";
       pst = conn.prepareStatement(sql);
       pst.setString(1, user.getName());
       pst.setString(2, user.getPswd());
       pst.setString(3, user.getPhone());
       pst.setString(4, user.getSex());
       pst.setString(5, user.getEmail());
+      pst.setString(6, user.getImg());
 
       return pst.executeUpdate();
     }catch(Exception e){
@@ -96,7 +99,7 @@ public class UserDAOImp implements UserDAO {
    */
   public int count(User user) throws SQLException {
     try{
-      String sql = "select count(*) as cnt from user where 1=1";
+      String sql = "select count(id) as cnt from user where 1=1";
       String condition = user.getCondition();
       if(condition!=null && !condition.equals("")){
         sql += " and " + condition;

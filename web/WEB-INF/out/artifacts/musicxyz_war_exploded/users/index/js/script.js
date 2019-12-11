@@ -23,9 +23,9 @@ $(function () {
   // 发送请求获取数据
   $.ajax({
     type: "get",
-    url: "",
+    url: "userGet",
     data: {},
-    success: function(){
+    success: function(result){
     }
   });
 

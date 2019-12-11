@@ -10,6 +10,15 @@ public class User extends Base{
   private String phone;
   private String sex;
   private String email;
+  private String img;
+
+  public String getImg() {
+    return img;
+  }
+
+  public void setImg(String img) {
+    this.img = img;
+  }
 
   public int getId() {
     return id;
