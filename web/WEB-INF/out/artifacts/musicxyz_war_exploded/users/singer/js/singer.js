@@ -1,18 +1,18 @@
 onload=function change() {
     var all_option = document.getElementById("all_option");
-    var china_option = document.getElementById("china_option");
-    var euramerica_option = document.getElementById("euramerica_option");
-    var korea_option = document.getElementById("korea_option");
-    var japan_option = document.getElementById("japan_option");
-    var else_option = document.getElementById("else_option");
-
+//     var china_option = document.getElementById("china_option");
+//     var euramerica_option = document.getElementById("euramerica_option");
+//     var korea_option = document.getElementById("korea_option");
+//     var japan_option = document.getElementById("japan_option");
+//     var else_option = document.getElementById("else_option");
+//
     var all = document.getElementById("all");
-    var china = document.getElementById("china");
-    var euramerica = document.getElementById("euramerica");
-    var korea = document.getElementById("korea");
-    var japan = document.getElementById("japan");
-    var es = document.getElementById("es");
-
+//     var china = document.getElementById("china");
+//     var euramerica = document.getElementById("euramerica");
+//     var korea = document.getElementById("korea");
+//     var japan = document.getElementById("japan");
+//     var es = document.getElementById("es");
+//
     all_option.onclick=function () {
         all.style.display="block";
         china.style.display="none";
@@ -29,91 +29,91 @@ onload=function change() {
             else_option.style.backgroundColor="#f6f6f6";
         }
     };
-
-    china_option.onclick=function () {
-        all.style.display="none";
-        china.style.display="block";
-        euramerica.style.display="none";
-        korea.style.display="none";
-        japan.style.display="none";
-        es.style.display="none";
-        if (china.style.display==="block") {
-            all_option.style.backgroundColor="#f6f6f6";
-            china_option.style.backgroundColor="#84fac1";
-            euramerica_option.style.backgroundColor="#f6f6f6";
-            korea_option.style.backgroundColor="#f6f6f6";
-            japan_option.style.backgroundColor="#f6f6f6";
-            else_option.style.backgroundColor="#f6f6f6";
-        }
-    };
-
-    euramerica_option.onclick=function () {
-        all.style.display="none";
-        china.style.display="none";
-        euramerica.style.display="block";
-        korea.style.display="none";
-        japan.style.display="none";
-        es.style.display="none";
-        if (euramerica.style.display==="block") {
-            all_option.style.backgroundColor="#f6f6f6";
-            china_option.style.backgroundColor="#f6f6f6";
-            euramerica_option.style.backgroundColor="#84fac1";
-            korea_option.style.backgroundColor="#f6f6f6";
-            japan_option.style.backgroundColor="#f6f6f6";
-            else_option.style.backgroundColor="#f6f6f6";
-        }
-    };
-
-    korea_option.onclick=function () {
-        all.style.display="none";
-        china.style.display="none";
-        euramerica.style.display="none";
-        korea.style.display="block";
-        japan.style.display="none";
-        es.style.display="none";
-        if (korea.style.display==="block") {
-            all_option.style.backgroundColor="#f6f6f6";
-            china_option.style.backgroundColor="#f6f6f6";
-            euramerica_option.style.backgroundColor="#f6f6f6";
-            korea_option.style.backgroundColor="#84fac1";
-            japan_option.style.backgroundColor="#f6f6f6";
-            else_option.style.backgroundColor="#f6f6f6";
-        }
-    };
-
-    japan_option.onclick=function () {
-        all.style.display="none";
-        china.style.display="none";
-        euramerica.style.display="none";
-        korea.style.display="none";
-        japan.style.display="block";
-        es.style.display="none";
-        if (japan.style.display==="block") {
-            all_option.style.backgroundColor="#f6f6f6";
-            china_option.style.backgroundColor="#f6f6f6";
-            euramerica_option.style.backgroundColor="#f6f6f6";
-            korea_option.style.backgroundColor="#f6f6f6";
-            japan_option.style.backgroundColor="#84fac1";
-            else_option.style.backgroundColor="#f6f6f6";
-        }
-    };
-
-    else_option.onclick=function () {
-        all.style.display="none";
-        china.style.display="none";
-        euramerica.style.display="none";
-        korea.style.display="none";
-        japan.style.display="none";
-        es.style.display="block";
-        if (es.style.display==="block") {
-            all_option.style.backgroundColor="#f6f6f6";
-            china_option.style.backgroundColor="#f6f6f6";
-            euramerica_option.style.backgroundColor="#f6f6f6";
-            korea_option.style.backgroundColor="#f6f6f6";
-            japan_option.style.backgroundColor="#f6f6f6";
-            else_option.style.backgroundColor="#84fac1";
-        }
-    };
+//
+//     china_option.onclick=function () {
+//         all.style.display="none";
+//         china.style.display="block";
+//         euramerica.style.display="none";
+//         korea.style.display="none";
+//         japan.style.display="none";
+//         es.style.display="none";
+//         if (china.style.display==="block") {
+//             all_option.style.backgroundColor="#f6f6f6";
+//             china_option.style.backgroundColor="#84fac1";
+//             euramerica_option.style.backgroundColor="#f6f6f6";
+//             korea_option.style.backgroundColor="#f6f6f6";
+//             japan_option.style.backgroundColor="#f6f6f6";
+//             else_option.style.backgroundColor="#f6f6f6";
+//         }
+//     };
+//
+//     euramerica_option.onclick=function () {
+//         all.style.display="none";
+//         china.style.display="none";
+//         euramerica.style.display="block";
+//         korea.style.display="none";
+//         japan.style.display="none";
+//         es.style.display="none";
+//         if (euramerica.style.display==="block") {
+//             all_option.style.backgroundColor="#f6f6f6";
+//             china_option.style.backgroundColor="#f6f6f6";
+//             euramerica_option.style.backgroundColor="#84fac1";
+//             korea_option.style.backgroundColor="#f6f6f6";
+//             japan_option.style.backgroundColor="#f6f6f6";
+//             else_option.style.backgroundColor="#f6f6f6";
+//         }
+//     };
+//
+//     korea_option.onclick=function () {
+//         all.style.display="none";
+//         china.style.display="none";
+//         euramerica.style.display="none";
+//         korea.style.display="block";
+//         japan.style.display="none";
+//         es.style.display="none";
+//         if (korea.style.display==="block") {
+//             all_option.style.backgroundColor="#f6f6f6";
+//             china_option.style.backgroundColor="#f6f6f6";
+//             euramerica_option.style.backgroundColor="#f6f6f6";
+//             korea_option.style.backgroundColor="#84fac1";
+//             japan_option.style.backgroundColor="#f6f6f6";
+//             else_option.style.backgroundColor="#f6f6f6";
+//         }
+//     };
+//
+//     japan_option.onclick=function () {
+//         all.style.display="none";
+//         china.style.display="none";
+//         euramerica.style.display="none";
+//         korea.style.display="none";
+//         japan.style.display="block";
+//         es.style.display="none";
+//         if (japan.style.display==="block") {
+//             all_option.style.backgroundColor="#f6f6f6";
+//             china_option.style.backgroundColor="#f6f6f6";
+//             euramerica_option.style.backgroundColor="#f6f6f6";
+//             korea_option.style.backgroundColor="#f6f6f6";
+//             japan_option.style.backgroundColor="#84fac1";
+//             else_option.style.backgroundColor="#f6f6f6";
+//         }
+//     };
+//
+//     else_option.onclick=function () {
+//         all.style.display="none";
+//         china.style.display="none";
+//         euramerica.style.display="none";
+//         korea.style.display="none";
+//         japan.style.display="none";
+//         es.style.display="block";
+//         if (es.style.display==="block") {
+//             all_option.style.backgroundColor="#f6f6f6";
+//             china_option.style.backgroundColor="#f6f6f6";
+//             euramerica_option.style.backgroundColor="#f6f6f6";
+//             korea_option.style.backgroundColor="#f6f6f6";
+//             japan_option.style.backgroundColor="#f6f6f6";
+//             else_option.style.backgroundColor="#84fac1";
+//         }
+//     };
 
     /*var show = document.getElementsByClassName("alphabetShow");
     show.onclick = function show() {
@@ -194,10 +194,34 @@ $(document).ready(function () {
             }
         }
     );
+});
 
+
+$(document).ready(function () {
+
+    $(".nation").click(function () {
+        var  search = $(this).html();
+        console.log(search);
+        $.get(
+            "/info/get",
+            {"search":search},
+            function (result) {
+                var  data = JSON.parse(result);
+                console.log(data);
+                if(result!=null){
+                    $(".show_hide").hide();
+                    for (var i = 0; i <data.result.length; i++) {
+                        $(".txt_singer_img")[i].src = data.result[i].img;
+                        $(".txt_name")[i].innerHTML = data.result[i].name;
+                        $($(".show_hide")[i]).show();
+                    }
+                }
+            }
+        )
+
+    })
 
 
 });
-
 
 

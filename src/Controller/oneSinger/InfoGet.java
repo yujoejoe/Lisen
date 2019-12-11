@@ -42,7 +42,7 @@ public class InfoGet extends HttpServlet {
         String search = request.getParameter("search");
         if(search!=null && search.length()!=0){
             // 模糊查找teacher的name、sequence
-            singer.setCondition(" singer.name like '%"+search+"%'  or singer.img='"+search+"'");
+            singer.setCondition(" singer.name like '%"+search+"%'  or singer.img='"+search+"' or  area.name='"+search+"' ");
         }else{
             singer.setCondition("");
         }

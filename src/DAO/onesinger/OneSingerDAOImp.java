@@ -98,7 +98,7 @@ public class OneSingerDAOImp implements OneSingerDAO {
     public int count(Singer singer) throws SQLException {
         try{
             // sql语句
-            String sql = "select count(*) as counts from singer where 1=1";
+            String sql = "select count(*) as counts from singer inner join  area  on singer.areaId = area.id where 1=1";
             // 添加条件
             String condition = singer.getCondition();
             if(condition != null && !condition.equals("")){

@@ -30,7 +30,7 @@ public class lyricGet extends HttpServlet {
 
 //        String singer = request.getParameter("singer");
 //        String song = request.getParameter("song");
-//        String path = singer + " - " + song + ".lrc";       // 歌词文件路径为：歌手名 - 歌曲名.lrc
+//        String path = singer + "/" + song + ".lrc";       // 歌词文件路径为：歌手名 - 歌曲名.lrc
 
         String path = request.getParameter("path");
         path += ".lrc";

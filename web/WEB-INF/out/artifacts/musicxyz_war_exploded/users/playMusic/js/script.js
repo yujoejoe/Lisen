@@ -108,7 +108,10 @@ window.onload = function change() {
                     }
                     audio.setAttribute("src","http://192.168.1.125:8080/music/song/music/"+data.result[0].singer+"/"+data.result[0].song+".mp3");
                     $("#song_info_name").html(data.result[0].singer);           //歌词滚动歌手
-                    $("#song_info_singer").html(data.result[0].song);           //歌词滚动歌名
+                    $("#song_info_singer").html(data.result[0].song);
+                    /*==== 添加歌词 ====*/
+
+                    //歌词滚动歌名
                     audio.play();
                     pause.style.backgroundPosition = "-30px  0px";
                     for (var i = 0; i <data.result.length; i++) {
@@ -122,7 +125,7 @@ window.onload = function change() {
                     }
                     name.innerHTML= song_singer[0];
                 }
-
+                addLyric(lyric);
             }
         );
 
@@ -147,6 +150,8 @@ window.onload = function change() {
                     $("#song_info_name").html(oneSinger);
                     $("#song_info_singer").html(data.result[0].song);
                     audio.play();
+                    // /*==== 添加歌词 ====*/
+                    // addLyric(lyric);
                     pause.style.backgroundPosition = "-30px  0px";
                     for (var i = 0; i <data.result.length; i++) {
                         var urlSinger = oneSinger;
@@ -161,6 +166,7 @@ window.onload = function change() {
                     name.innerHTML= song_singer[0];
 
                 }
+                addLyric(lyric);
             }
 
         );
@@ -177,7 +183,7 @@ window.onload = function change() {
         //
         // )
 
-
+        addLyric(lyric);
 
     });
 
@@ -187,8 +193,8 @@ window.onload = function change() {
     // var num = 0;
     // name.innerHTML =song+" - "+singer;
 
-  /*==== 添加歌词 ====*/
-  addLyric(lyric);
+  // /*==== 添加歌词 ====*/
+  // addLyric(lyric);
 
   //上一曲
   left.onclick = function () {
@@ -423,14 +429,16 @@ window.onload = function change() {
 
   // var url = './music/音阙诗听、赵方婧 - 霜降.lrc';
 
-  // var singerName = "G.E.M.邓紫棋";
-  // var songName = "画 (Live Piano Session II)";
+  var singerName = "G.E.M.邓紫棋";
+  var songName = "画 (Live Piano Session II)";
 
 
   /*==== 添加歌词 ====*/
   function addLyric(lyric) {
 
     var path = music[num];
+    console.log(music[num]);
+    console.log(path);
 
     var song = new Song();
 
@@ -545,12 +553,12 @@ Song.prototype = {
     }
 
   },
-  getLyric: function (/*singerName, songName*/path) {       // 获取歌词
+  getLyric: function (path) {       // 获取歌词
     var song = this;
     $.ajax({
       type: "get",
       url: "/lyricGet",     // 获取歌词的servlet
-      data: {"path": path},   // {"singer": singerName, "song": songName}
+      data: {"path":path},   // {"singer": singerName, "song": songName}
       async: false,       // 必须为false才能接受到有效返回值
       success: function (result) {
         console.log(result);
