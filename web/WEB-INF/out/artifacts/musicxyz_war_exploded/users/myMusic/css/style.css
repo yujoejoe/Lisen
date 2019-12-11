@@ -5,7 +5,7 @@
     height: 380px;
     margin-left: 0;
     margin-right: 0;
-    background-image: url("102.jpg");
+    background-image: url("../images/102.jpg");
     background-repeat:no-repeat;
     /*background-color: #e4b9b9;*/
     position: relative;
@@ -21,12 +21,12 @@
 }
 .content  .userName{
     position: absolute;
-    width:100px;
+    width:300px;
     height:40px;
     line-height:30px;
     /*background-color: #2caf6f;*/
     text-align: center;
-    left: 700px;
+    left: 600px;
     top: 190px;
     color: white;
     font-size: 30px;
@@ -92,7 +92,7 @@
     position: absolute;
     width: 1200px;
     height: 400px;
-    background-color:rebeccapurple;
+    /*background-color:rebeccapurple;*/
     left:150px ;
     top: 100px;
     display:none;
@@ -129,12 +129,78 @@
     /*z-index: -100;*/
     display: none;
 }
+/*.mod_single{*/
+/*    padding-bottom: 40px;*/
+/*    font-size: 14px;*/
+/*    overflow: hidden;*/
+/*}*/
 
+.single{
+    width: 1000px;
+    position:absolute;
+    top: 100px;
+    /*background-color: red;*/
 
+}
+.single_header{
+    /*position: absolute;*/
+    padding-left: 20px;
+    height: 50px;
+    line-height: 50px;
+    background-color: rgba(0,0,0,.01);
+    color: #999;
+    padding-right: 30px;
+    top:200px;
+    width: 1000px;
+}
 
+.single_song{
+    width: 56%;
+    float: left;
+    position: relative;
+    white-space: normal;
+}
 
+.single_singer{
+    float: left;
+    padding-left: 15px;
+    box-sizing: border-box;
+    width: 30%;
 
+}
 
+.single_duration{
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 38px;*/
+    width: 14%;
+    float: right;
 
+}
+.single_songs{
+    width: 56%;
+    float: left;
+    position: relative;
+    white-space: normal;
+}
 
+.single_singers{
+    float: left;
+    padding-left: 15px;
+    box-sizing: border-box;
+    width: 30%;
 
+}
+
+.single_durations{
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 38px;*/
+    width: 14%;
+    float: right;
+
+}
+
+.single ul:nth-child(even){
+    background-color: #eeeeee;
+}

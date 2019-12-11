@@ -36,6 +36,19 @@ public class UserGet extends HttpServlet {
     response.setContentType("text/html; charset=utf8");
     PrintWriter out = response.getWriter();
 
+
+      // （参）1、获取参数值保存到POJO对象中
+      // 设置查询条件
+      String search = request.getParameter("search");
+      if(search!=null && search.length()!=0){
+          // 模糊查找teacher的name、sequence
+          user.setCondition(" user.name like '%"+search+"%'");
+      }else{
+          user.setCondition("");
+      }
+
+
+      ArrayList<User> result = usersSD.select(user);
     // 返回到前端的数据
     boolean success = false;
     String msg = "";
@@ -52,7 +65,7 @@ public class UserGet extends HttpServlet {
       msg = "用户已登录！";
     }
 
-    JsonData JsonData = new JsonData(success, msg);
+    JsonData JsonData = new JsonData(success, msg,result);
     request.setAttribute("jsonData", JsonData);
     //4.(转)将业务转发到View
     RequestDispatcher rd = request.getRequestDispatcher("/view/ToJSON");

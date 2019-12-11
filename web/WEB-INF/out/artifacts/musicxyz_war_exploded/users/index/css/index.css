@@ -543,9 +543,9 @@
 
 .logged{
   display: none;
-  width: 64px;
-  height: 64px;
-  margin: 13px 0;
+  width: 40px;
+  height: 40px;
+  margin: 25px 0;
   overflow: hidden;
   border-radius: 50%;
 }
