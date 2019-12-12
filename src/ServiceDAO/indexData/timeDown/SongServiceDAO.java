@@ -1,6 +1,6 @@
-package ServiceDAO.song;
+package ServiceDAO.indexData.timeDown;
 
-import POJO.Song;
+import POJO.indexData.Song;
 
 import java.util.ArrayList;
 

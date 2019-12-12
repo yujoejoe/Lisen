@@ -1,6 +1,7 @@
-package DAO.song;
+package DAO.indexData.Japan;
 
-import POJO.Song;
+import DAO.indexData.Japan.JapanDAO;
+import POJO.indexData.Japan;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,25 +9,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SongDAOImp implements SongDAO {
+public class JapanDAOImp implements JapanDAO {
     private Connection conn = null;
     private PreparedStatement pst = null;
 
-    public SongDAOImp(Connection conn) {
+    public JapanDAOImp(Connection conn) {
         super();
         this.conn = conn;
     }
 
         @Override
-        public ArrayList<Song> select (Song song) throws SQLException {
+        public ArrayList<Japan> select (Japan Japan) throws SQLException {
             try {
                 String sql = "select distinct"
                         + " song.name as song,"
                         + " singer.name as singer,"
                         + " album.img as img,"
-                        + " song.date as date,"
-                        + " song.albumId as albumId,"
-                        + " song.singerId as singerId"
+                        + " song.date as date"
                         + " from"
                         + " song"
                         + " inner join"
@@ -37,30 +36,30 @@ public class SongDAOImp implements SongDAO {
                         + " album "
                         + " on "
                         + " song.albumId = album.id"
+                        + " WHERE singer.areaId=4 OR singer.areaId=3"
                         + " ORDER BY date DESC;";
-                        /*+ " where 1=1 ;";*/
 
 
                 // 添加条件
-                String condition = song.getCondition();
+                String condition = Japan.getCondition();
                 if (condition != null && !condition.equals("")) {
                     sql += " and" + condition;
                 }
 
                 // 排序
-                String orderBy = song.getOrderBy();
+                String orderBy = Japan.getOrderBy();
                 if (orderBy != null && !orderBy.equals("")) {
                     sql += orderBy;
                 }
 
                 // 分页
-                String limit = song.getLimit();
+                String limit = Japan.getLimit();
                 if (limit != null && limit.equals("")) {
                     sql += limit;
                 }
 
                 // 控制台输出sql语句，检验正确性
-                System.out.println("Song SELECT: " + sql);
+                System.out.println("Japan SELECT: " + sql);
 
                 // 创建prepareStatement对象
                 pst = conn.prepareStatement(sql);
@@ -69,15 +68,13 @@ public class SongDAOImp implements SongDAO {
                 ResultSet rs = pst.executeQuery();
 
                 // 创建ArrayList对象存储每条记录
-                ArrayList<Song> resultList = new ArrayList<Song>();
+                ArrayList<Japan> resultList = new ArrayList<Japan>();
 
                 while (rs.next()) {
-                    Song tmp = new Song();
+                    Japan tmp = new Japan();
                     tmp.setImg(rs.getString("img"));
                     tmp.setName(rs.getString("song"));
                     tmp.setSinger(rs.getString("singer"));
-                    tmp.setAlbumId(rs.getInt("albumId"));
-                    tmp.setSingerId(rs.getInt("singerId"));
                     tmp.setDate(rs.getString("date"));
                     resultList.add(tmp);
                 }
@@ -90,15 +87,15 @@ public class SongDAOImp implements SongDAO {
         }
 
     @Override
-    public int count(Song song) throws SQLException {
+    public int count(Japan Japan) throws SQLException {
         try{
             // sql语句
             String sql = "select count(*) as counts from song  " +
                     "INNER JOIN album ON song.albumId = album.id  " +
                     "INNER JOIN singer ON song.singerId = singer.id " +
-                    "where 1=1";
+                    "where singer.areaId=4 OR singer.areaId=3";
             // 添加条件
-            String condition = song.getCondition();
+            String condition = Japan.getCondition();
             if(condition != null && !condition.equals("")){
                 sql += " and" + condition;
             }
@@ -106,7 +103,7 @@ public class SongDAOImp implements SongDAO {
             pst = conn.prepareStatement(sql);
 
             // 控制台输出sql语句，检验正确性
-//            System.out.println("song COUNT: "+sql);
+//            System.out.println("timeDown COUNT: "+sql);
 
             ResultSet rs = pst.executeQuery();
             rs.next();

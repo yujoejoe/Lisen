@@ -17,6 +17,7 @@
 
     <link rel="stylesheet" href="tools/aos/aos.css">
     <script src="users/index/js/script.js"></script>
+    <script type="text/javascript" src="users/index/js/indexData.js"></script>
 
 </head>
 <body>
@@ -91,20 +92,13 @@
     <div class="mask"></div>
     <div class="main-inner">
         <div class="carousel" data-aos="flip-down">
-
             <div class="carousel-slider">
-                <a href="#" class="item item-pic1"><img src="users/index/images/cont/recommend/carousel_img1.jpg"
-                                                        alt="#"></a>
-                <a href="#" class="item item-pic2"><img src="users/index/images/cont/recommend/carousel_img2.jpg"
-                                                        alt="#"></a>
-                <a href="#" class="item item-pic3"><img src="users/index/images/cont/recommend/carousel_img3.jpg"
-                                                        alt="#"></a>
-                <a href="#" class="item item-pic4"><img src="users/index/images/cont/recommend/carousel_img4.jpg"
-                                                        alt="#"></a>
-                <a href="#" class="item item-pic5"><img src="users/index/images/cont/recommend/carousel_img5.jpg"
-                                                        alt="#"></a>
-                <a href="#" class="item item-pic6"><img src="users/index/images/cont/recommend/carousel_img6.jpg"
-                                                        alt="#"></a>
+                <a href="#" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
+                <a href="#" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
+                <a href="#" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
+                <a href="#" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
+                <a href="#" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
+                <a href="#" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
             </div>
         </div>
     </div>
@@ -125,14 +119,12 @@
             <span class="line line-left"></span>
             <span class="line line-right"></span>
         </div>
-        <!--<a href="#" class="readAll" data-aos="fade-right">全部<i class="icon-sprite"></i></a>
         <div class="main-tab tab-title" data-aos="fade-right">
-            <a href="javascript:;" class="item item-cur">全部</a>
-            <a href="javascript:;" class="item">华语</a>
-            <a href="javascript:;" class="item">欧美</a>
-            <a href="javascript:;" class="item">韩国</a>
-            <a href="javascript:;" class="item">日本</a>
-        </div>-->
+            <a href="javascript:" class="item item-cur">全部</a>
+            <a href="javascript:" class="item">华语</a>
+            <a href="javascript:" class="item">欧美</a>
+            <a href="javascript:" class="item">日韩</a>
+        </div>
         <div class="main-slider tab-cont" data-aos="fade-left">
             <ul class="slider-wrapper">
                 <li class="slider-li">
@@ -336,8 +328,8 @@
         </div>
     </div>
     <div class="main-operate">
-        <a href="javascript:;" class="slider-prev"><i class="icon-sprite"></i></a>
-        <a href="javascript:;" class="slider-next"><i class="icon-sprite"></i></a>
+        <a href="javascript:" class="slider-prev"><i class="icon-sprite"></i></a>
+        <a href="javascript:" class="slider-next"><i class="icon-sprite"></i></a>
     </div>
 </div>
 
@@ -559,8 +551,7 @@
             <a href="javascript:" class="item">华语</a>
             <a href="javascript:" class="item">欧美</a>
             <a href="javascript:" class="item">港台</a>
-            <a href="javascript:" class="item">韩国</a>
-            <a href="javascript:" class="item">日本</a>
+            <a href="javascript:" class="item">日韩</a>
         </div>
         <ul class="mv-list tab-cont" data-aos="zoom-in-up">
             <li class="item" data-aos="fade-left">
@@ -720,29 +711,29 @@
                     <i class="icon-play"></i>
                     <div class="title">
                         <i></i>
-                        <h3>流行指数</h3>
+                        <h3>日韩</h3>
                     </div>
                     <i class="line"></i>
                     <ul class="song-list" data-aos="fade-up">
                         <li class="song-list__item">
-                            <a href="#" class="PopularityIndex_songName"><span>1</span> </a>  <!--排行榜流行指数歌名-->
-                            <span class="PopularityIndex_singerName"></span>     <!--排行榜流行指数歌手名-->
+                            <a href="#" class="JapanKorea_songName"><span>1</span> </a>  <!--排行榜日韩歌名-->
+                            <span class="JapanKorea_singerName"></span>     <!--排行榜日韩歌手名-->
                         </li>
                         <li class="song-list__item">
-                            <a href="#" class="PopularityIndex_songName"><span>2</span> </a>  <!--排行榜流行指数歌名-->
-                            <span class="PopularityIndex_singerName"></span>     <!--排行榜流行指数歌手名-->
+                            <a href="#" class="JapanKorea_songName"><span>2</span> </a>  <!--排行榜日韩歌名-->
+                            <span class="JapanKorea_singerName"></span>     <!--排行榜日韩歌手名-->
                         </li>
                         <li class="song-list__item">
-                            <a href="#" class="PopularityIndex_songName"><span>3</span> </a>  <!--排行榜流行指数歌名-->
-                            <span class="PopularityIndex_singerName"></span>     <!--排行榜流行指数歌手名-->
+                            <a href="#" class="JapanKorea_songName"><span>3</span> </a>  <!--排行榜日韩歌名-->
+                            <span class="JapanKorea_singerName"></span>     <!--排行榜日韩歌手名-->
                         </li>
                         <li class="song-list__item">
-                            <a href="#" class="PopularityIndex_songName"><span>4</span> </a>  <!--排行榜流行指数歌名-->
-                            <span class="PopularityIndex_singerName"></span>     <!--排行榜流行指数歌手名-->
+                            <a href="#" class="JapanKorea_songName"><span>4</span> </a>  <!--排行榜日韩歌名-->
+                            <span class="JapanKorea_singerName"></span>     <!--排行榜日韩歌手名-->
                         </li>
                         <li class="song-list__item">
-                            <a href="#" class="PopularityIndex_songName"><span>5</span> </a>  <!--排行榜流行指数歌名-->
-                            <span class="PopularityIndex_singerName"></span>     <!--排行榜流行指数歌手名-->
+                            <a href="#" class="JapanKorea_songName"><span>5</span> </a>  <!--排行榜日韩歌名-->
+                            <span class="JapanKorea_singerName"></span>     <!--排行榜日韩歌手名-->
                         </li>
                     </ul>
                 </li>
@@ -757,24 +748,24 @@
                     <i class="line"></i>
                     <ul class="song-list" data-aos="fade-down" data-aos-delay="200">
                         <li class="song-list__item">
-                            <a href="#" class="PopularityIndex_songName"><span>1</span> </a>  <!--排行榜流行指数歌名-->
-                            <span class="PopularityIndex_singerName"></span>     <!--排行榜流行指数歌手名-->
+                            <a href="#" class="EuropeAmerica_songName"><span>1</span> </a>  <!--排行榜欧美歌曲歌名-->
+                            <span class="EuropeAmerica_singerName"></span>     <!--排行榜欧美歌曲歌手名-->
                         </li>
                         <li class="song-list__item">
-                            <a href="#" class="PopularityIndex_songName"><span>2</span> </a>  <!--排行榜流行指数歌名-->
-                            <span class="PopularityIndex_singerName"></span>     <!--排行榜流行指数歌手名-->
+                            <a href="#" class="EuropeAmerica_songName"><span>2</span> </a>  <!--排行榜欧美歌曲歌名-->
+                            <span class="EuropeAmerica_singerName"></span>     <!--排行榜欧美歌曲歌手名-->
                         </li>
                         <li class="song-list__item">
-                            <a href="#" class="PopularityIndex_songName"><span>3</span> </a>  <!--排行榜流行指数歌名-->
-                            <span class="PopularityIndex_singerName"></span>     <!--排行榜流行指数歌手名-->
+                            <a href="#" class="EuropeAmerica_songName"><span>3</span> </a>  <!--排行榜欧美歌曲歌名-->
+                            <span class="EuropeAmerica_singerName"></span>     <!--排行榜欧美歌曲歌手名-->
                         </li>
                         <li class="song-list__item">
-                            <a href="#" class="PopularityIndex_songName"><span>4</span> </a>  <!--排行榜流行指数歌名-->
-                            <span class="PopularityIndex_singerName"></span>     <!--排行榜流行指数歌手名-->
+                            <a href="#" class="EuropeAmerica_songName"><span>4</span> </a>  <!--排行榜欧美歌曲歌名-->
+                            <span class="EuropeAmerica_singerName"></span>     <!--排行榜欧美歌曲歌手名-->
                         </li>
                         <li class="song-list__item">
-                            <a href="#" class="PopularityIndex_songName"><span>5</span> </a>  <!--排行榜流行指数歌名-->
-                            <span class="PopularityIndex_singerName"></span>     <!--排行榜流行指数歌手名-->
+                            <a href="#" class="EuropeAmerica_songName"><span>5</span> </a>  <!--排行榜欧美歌曲歌名-->
+                            <span class="EuropeAmerica_singerName"></span>     <!--排行榜欧美歌曲歌手名-->
                         </li>
                     </ul>
                 </li>
@@ -877,8 +868,6 @@
 
 <script type="text/javascript" src="tools/aos/aos.js"></script>
 <script type="text/javascript" src="users/index/js/aosinit.js"></script>
-
-<script type="text/javascript" src="users/index/js/indexData.js"></script>
 
 </body>
 </html>

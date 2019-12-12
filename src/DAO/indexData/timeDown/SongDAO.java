@@ -1,6 +1,6 @@
-package DAO.song;
+package DAO.indexData.timeDown;
 
-import POJO.Song;
+import POJO.indexData.Song;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

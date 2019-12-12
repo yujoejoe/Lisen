@@ -1,8 +1,8 @@
-package Controller.song;
+package Controller.indexData;
 
-import POJO.Song;
 import POJO.JsonData;
-import ServiceDAO.song.SongServiceDAOImp;
+import POJO.indexData.Japan;
+import ServiceDAO.indexData.Japan.JapanServiceDAOImp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,14 +15,14 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
- * Created by user on 2019/12/11
+ * Created by user on 2019/12/12
  */
-@WebServlet(name ="SongGet" ,urlPatterns ="/song/get" )
-public class SongGet extends HttpServlet{
+@WebServlet(name ="Japan" ,urlPatterns ="/Japan/get" )
+public class JapanGet extends HttpServlet{
     private static final long serialVersion = 1L;
 
-    private SongServiceDAOImp songDI = new SongServiceDAOImp();
-    private Song song = new Song();
+    private JapanServiceDAOImp JapanDI = new JapanServiceDAOImp();
+    private Japan Japan = new Japan();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -34,33 +34,13 @@ public class SongGet extends HttpServlet{
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
 
-
-        // （参）1、获取参数值保存到POJO对象中
-        // 设置查询条件
-        /*String search = request.getParameter("search");
-        if(search!=null && search.length()!=0){
-            song.setCondition(" song.name ='"+search+"' or song.date='"+search+"'");
-        }else{
-            song.setCondition("");
-        }
-        // 设置分页
-        String page = request.getParameter("page");     // 页数
-        String size = request.getParameter("size");     // 每页显示的数据大小
-        if(page!=null && page.length()!=0 && size!=null && size.length()!=0){
-            int p = Integer.parseInt(page);
-            int r = Integer.parseInt(size);
-            song.setLimit(" limit " + (p-1)*r + "," + r);
-        }else{
-            song.setLimit("");
-        }*/
-
         // 设置排序方式
         String field = request.getParameter("field");   // 排序字段
         String order = request.getParameter("order");   // 排序方式 升序 或 降序
         if(field!=null && field.length()!=0 && order!=null && order.length()!=0){
-            song.setOrderBy(" order by " + field + " " + order);
+            Japan.setOrderBy(" order by " + field + " " + order);
         }else{
-            song.setOrderBy("");
+            Japan.setOrderBy("");
         }
 
         // （调）2、调用ServiceDAO方法，完成业务
@@ -69,8 +49,8 @@ public class SongGet extends HttpServlet{
          * 1、调用DAO层的select方法，返回查询到的记录集
          * 2、调用DAO层的count方法，返回查询到的记录数
          */
-        ArrayList<Song> result = songDI.select(song);
-        int count = songDI.count(song);
+        ArrayList<Japan> result = JapanDI.select(Japan);
+        int count = JapanDI.count(Japan);
 
         // （存）3、将数据对象存储到request中
         boolean success;    // 操作成功与否

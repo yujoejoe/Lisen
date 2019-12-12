@@ -1,23 +1,23 @@
-package ServiceDAO.song;
+package ServiceDAO.indexData.Japan;
 
-import DAO.song.SongDAOImp;
-import POJO.Song;
+import DAO.indexData.Japan.JapanDAOImp;
+import POJO.indexData.Japan;
 import util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SongServiceDAOImp implements SongServiceDAO {
+public class JapanServiceDAOImp implements JapanServiceDAO {
 
     @Override
-    public ArrayList<Song> select(Song song) {
+    public ArrayList<Japan> select(Japan Japan) {
         Connection conn = DBUtil.getConnection();
-        SongDAOImp songDI = new SongDAOImp(conn);
+        JapanDAOImp JapanDI = new JapanDAOImp(conn);
 
         try {
-            ArrayList<Song> resultLists = new ArrayList<>();
-            resultLists = songDI.select(song);
+            ArrayList<Japan> resultLists = new ArrayList<>();
+            resultLists = JapanDI.select(Japan);
             conn.commit();
 
             return resultLists;
@@ -39,12 +39,12 @@ public class SongServiceDAOImp implements SongServiceDAO {
     }
 
     @Override
-    public int count(Song song) {
+    public int count(Japan Japan) {
         Connection conn = DBUtil.getConnection();
-        SongDAOImp songDI = new SongDAOImp(conn);
+        JapanDAOImp JapanDI = new JapanDAOImp(conn);
 
         try{
-            int cnt = songDI.count(song);
+            int cnt = JapanDI.count(Japan);
             conn.commit();
 
             return cnt;
@@ -66,22 +66,22 @@ public class SongServiceDAOImp implements SongServiceDAO {
     }
 
     @Override
-    public ArrayList<Song> selectRan(Song song) {
+    public ArrayList<Japan> selectRan(Japan Japan) {
         return null;
     }
 
     @Override
-    public int insert(Song song) {
+    public int insert(Japan Japan) {
         return 0;
     }
 
     @Override
-    public int delete(Song song) {
+    public int delete(Japan Japan) {
         return 0;
     }
 
     @Override
-    public int update(Song song) {
+    public int update(Japan Japan) {
         return 0;
     }
 

@@ -2,7 +2,7 @@
 
 onload=function change() {
     var song = document.getElementById("a");
-    var songShow = document.getElementById("song")
+    var songShow = document.getElementById("timeDown")
     var songList = document.getElementById("b");
     var songListShow = document.getElementById("song_list");
     var album = document.getElementById("c");

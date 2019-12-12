@@ -1,9 +1,8 @@
-package Controller.album;
+package Controller.indexData;
 
-import POJO.AlbumS;
+import POJO.indexData.Song;
 import POJO.JsonData;
-import ServiceDAO.album.AlbumSServiceDAOImp;
-
+import ServiceDAO.indexData.timeDown.SongServiceDAOImp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,14 +15,14 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
- *
+ * Created by user on 2019/12/11
  */
-@WebServlet(name ="AlbumSongGet" ,urlPatterns ="/album/timeDown/get" )
-public class AlbumSongGet extends HttpServlet{
+@WebServlet(name ="timeDown" ,urlPatterns ="/timeDown/get" )
+public class SongGet extends HttpServlet{
     private static final long serialVersion = 1L;
 
-    private AlbumSServiceDAOImp albumSDI = new AlbumSServiceDAOImp();
-    private AlbumS albums = new AlbumS();
+    private SongServiceDAOImp songDI = new SongServiceDAOImp();
+    private Song song = new Song();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -38,12 +37,11 @@ public class AlbumSongGet extends HttpServlet{
 
         // （参）1、获取参数值保存到POJO对象中
         // 设置查询条件
-        String search = request.getParameter("search");
+        /*String search = request.getParameter("search");
         if(search!=null && search.length()!=0){
-//            albums.setCondition(" album.name like '%"+search+"%'");
-            albums.setCondition(" album.name ='"+search+"' or album.img='"+search+"'");
+            timeDown.setCondition(" timeDown.name ='"+search+"' or timeDown.date='"+search+"'");
         }else{
-            albums.setCondition("");
+            timeDown.setCondition("");
         }
         // 设置分页
         String page = request.getParameter("page");     // 页数
@@ -51,17 +49,18 @@ public class AlbumSongGet extends HttpServlet{
         if(page!=null && page.length()!=0 && size!=null && size.length()!=0){
             int p = Integer.parseInt(page);
             int r = Integer.parseInt(size);
-            albums.setLimit(" limit " + (p-1)*r + "," + r);
+            timeDown.setLimit(" limit " + (p-1)*r + "," + r);
         }else{
-            albums.setLimit("");
-        }
+            timeDown.setLimit("");
+        }*/
+
         // 设置排序方式
         String field = request.getParameter("field");   // 排序字段
         String order = request.getParameter("order");   // 排序方式 升序 或 降序
         if(field!=null && field.length()!=0 && order!=null && order.length()!=0){
-            albums.setOrderBy(" order by " + field + " " + order);
+            song.setOrderBy(" order by " + field + " " + order);
         }else{
-            albums.setOrderBy("");
+            song.setOrderBy("");
         }
 
         // （调）2、调用ServiceDAO方法，完成业务
@@ -70,9 +69,8 @@ public class AlbumSongGet extends HttpServlet{
          * 1、调用DAO层的select方法，返回查询到的记录集
          * 2、调用DAO层的count方法，返回查询到的记录数
          */
-        ArrayList<AlbumS> result = albumSDI.select(albums);
-        int count = albumSDI.count(albums);
-
+        ArrayList<Song> result = songDI.select(song);
+        int count = songDI.count(song);
 
         // （存）3、将数据对象存储到request中
         boolean success;    // 操作成功与否

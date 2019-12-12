@@ -1,4 +1,6 @@
-package POJO;
+package POJO.indexData;
+
+import POJO.Base;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -6,21 +8,13 @@ import java.net.URLEncoder;
 /**
  * Created by user on 2019/12/1.
  */
-public class Song extends Base{
+public class Song extends Base {
 
-    int singerId;
-    int albumId;
     String name;
     String date;
-
     String img;
     String singer;
 
-    public int getSingerId() { return singerId; }
-    public void setSingerId(int singerId) { this.singerId = singerId; }
-
-    public int getAlbumId() { return albumId; }
-    public void setAlbumId(int albumId) { this.albumId = albumId; }
 
     public String getName() {
         return name;
@@ -58,8 +52,6 @@ public class Song extends Base{
                 + " ,singer:" + singer
                 + " ,img:" + img
                 + " ,date:" + date
-                + " ,albumId:" + albumId
-                + " ,singerId:" + singerId
                 + "]";
     }
 }
