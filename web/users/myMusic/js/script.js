@@ -4,7 +4,7 @@ onload=function change() {
     var song = document.getElementById("a");
     var songShow = document.getElementById("song")
     var songList = document.getElementById("b");
-    var songListShow = document.getElementById("songList");
+    var songListShow = document.getElementById("song_list");
     var album = document.getElementById("c");
     var albumShow = document.getElementById("album");
     var mv = document.getElementById("d");
@@ -47,7 +47,7 @@ $(document).ready(function () {
     }
 
 // 调用方法
-    alert(decodeURI(GetQueryString("user")));
+//     alert(decodeURI(GetQueryString("user")));
     var  search  = decodeURI(GetQueryString("user"));
     $.get(
         "/userGet",
@@ -62,11 +62,6 @@ $(document).ready(function () {
 
         }
     );
-
-
-
-
-
 });
 
 

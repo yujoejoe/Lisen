@@ -51,7 +51,6 @@ var  search  = decodeURI(GetQueryString("search"));
                 var users = data.result[0].name;
                 console.log(users);
                var  user =  encodeURI(encodeURI(users));
-
                 window.location.href = "/users/myMusic/myMusic.html?user="+user;
             })
         }
