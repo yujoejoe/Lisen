@@ -33,6 +33,14 @@ public class JsonData implements Serializable{
         this.result.addAll(result);
     }
 
+    public JsonData(boolean success, String msg, ArrayList<User> result) {
+        super();
+        this.success = success;
+        this.msg = msg;
+        this.result.addAll(result);
+
+    }
+
     public boolean isSuccess() {
         return success;
     }

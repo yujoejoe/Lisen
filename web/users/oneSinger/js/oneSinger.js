@@ -36,7 +36,6 @@ $(document).ready(function () {
         var value = $(this).html();
         console.log(value);
         var search = encodeURI(encodeURI(value));
-
         window.location.href="../album/album.html?search="+search;
     });
 
@@ -112,8 +111,8 @@ $(document).ready(function () {
             function (result) {
                 var data = JSON.parse(result);
                 console.log(data);
-                $("#single_option").append(data.count);   //单曲数目
-                $("#singleNum").append(data.count);       //单曲数目
+                $("#single_option").append(data.counts);   //单曲数目
+                $("#singleNum").append(data.counts);       //单曲数目
 
                 for (var i = 0; i <data.result.length; i++) {
                     $(".single_name")[i].append(data.result[i].song);
@@ -131,8 +130,8 @@ $(document).ready(function () {
             function (result) {
                 var data = JSON.parse(result);
                 console.log(data);
-                $("#special_option").append(data.count);
-                $("#txt_album_name").append(data.count);
+                $("#special_option").append(data.counts);
+                $("#txt_album_name").append(data.counts);
                 if(result!=null){
                     for (var j = 0; j <data.result.length; j++) {
 

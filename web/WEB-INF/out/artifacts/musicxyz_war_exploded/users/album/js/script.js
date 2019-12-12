@@ -51,7 +51,6 @@ function AlbumData() {
         "/album/get",
         {"search": search},
         function (result) {
-
             var data = JSON.parse(result);
             console.log(data);
             $(".txt_album_img")[0].src = data.result[0].img;

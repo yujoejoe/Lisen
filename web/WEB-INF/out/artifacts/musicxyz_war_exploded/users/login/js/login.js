@@ -12,7 +12,8 @@ $(document).ready(function(){
                 var data = JSON.parse(result);
                 if(data.success === true){
 				  alert(data.msg);
-				  window.location.href="/index.html";
+                    var usernameS = encodeURI(encodeURI(username));
+				  window.location.href="/index.html?search="+usernameS;
                 }else{
                   alert(data.msg)
                 }
