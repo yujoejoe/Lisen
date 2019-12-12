@@ -99,7 +99,7 @@ $(document).ready(function () {
             console.log(singers);
             var song = encodeURI(encodeURI(songs));
             var singer = encodeURI(encodeURI(singers));
-            window.location.href = "../playMusic/playMusic.html?song=" + song + "&singer=" + singer;
+            window.location.href = "../playMusic/playMusic.html?timeDown=" + song + "&singer=" + singer;
         });
 
 

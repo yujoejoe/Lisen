@@ -40,7 +40,7 @@ public class mvGet extends HttpServlet {
 
         String area = request.getParameter("area");
         String page = request.getParameter("page");
-        String song = request.getParameter("song");
+        String song = request.getParameter("timeDown");
         String title = request.getParameter("title");
         String order = request.getParameter("order");
         String singer = request.getParameter("singer");
@@ -65,7 +65,7 @@ public class mvGet extends HttpServlet {
             condition += " and singer.name like'%" + singer + "%'";
         }
         if(song != null && !song.equals("")){
-            condition += " and song.name = '" + song + "'";
+            condition += " and timeDown.name = '" + song + "'";
         }
         mv.setCondition(condition);
 //        System.out.println("condition:" + mv.getCondition());
