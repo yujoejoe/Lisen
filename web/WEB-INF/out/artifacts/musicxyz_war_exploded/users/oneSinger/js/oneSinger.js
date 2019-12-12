@@ -58,7 +58,7 @@ $(document).ready(function () {
     }
 
 // 调用方法
-    alert(decodeURI(GetQueryString("search")));
+//     alert(decodeURI(GetQueryString("search")));
 
 
     function AlbumDataS() {

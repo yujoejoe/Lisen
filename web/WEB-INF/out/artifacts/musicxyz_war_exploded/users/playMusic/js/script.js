@@ -131,7 +131,7 @@ window.onload = function change() {
 
         console.log(decodeURI(GetQueryString("oneSinger")));
         var  oneSinger =decodeURI(GetQueryString("oneSinger"));
-        alert(decodeURI(GetQueryString("oneSinger")));
+        // alert(decodeURI(GetQueryString("oneSinger")));
         //单曲列表播放
         $.get(
             "/single/get",

@@ -85,7 +85,7 @@ public class Collection extends Base {
 
     @Override
     public String toString() {
-        return "single ["
+        return "collection ["
                 + "song:" + song
                 + " ,singer:" + singer
                 + " ,duration:" + duration

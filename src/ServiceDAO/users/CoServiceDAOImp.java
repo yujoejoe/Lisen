@@ -1,26 +1,29 @@
-package ServiceDAO.singer;
+package ServiceDAO.users;
+
+
+import DAO.user.CollectionDAOImp;
+import POJO.Collection;
+
 
 import util.DBUtil;
-import POJO.Singer;
-import DAO.singer.SingerDAOImp;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 /**
- * Created by user on 2019/11/28.
+ *
  */
-public class SingerServiceDAOImp implements SingerServiceDAO{
+public class CoServiceDAOImp  implements CoServiceDAO{
+
 
     @Override
-    public ArrayList<Singer> select(Singer singer) {
+    public ArrayList<Collection> select(Collection collection) {
         Connection conn = DBUtil.getConnection();
-        SingerDAOImp singerDI = new SingerDAOImp(conn);
+        CollectionDAOImp collectionDI = new CollectionDAOImp(conn);
 
         try{
-            ArrayList<Singer> resultLists = singerDI.select(singer);
+            ArrayList<Collection> resultLists = collectionDI.select(collection);
             conn.commit();
 
             return resultLists;
@@ -41,33 +44,15 @@ public class SingerServiceDAOImp implements SingerServiceDAO{
         }
     }
 
-    @Override
-    public ArrayList<Singer> selectRan(Singer singer) {
-        return null;
-    }
+
 
     @Override
-    public int insert(Singer singer) {
-        return 0;
-    }
-
-    @Override
-    public int delete(Singer singer) {
-        return 0;
-    }
-
-    @Override
-    public int update(Singer singer) {
-        return 0;
-    }
-
-    @Override
-    public int count(Singer singer) {
+    public int count(Collection collection) {
         Connection conn = DBUtil.getConnection();
-        SingerDAOImp singerDI = new SingerDAOImp(conn);
+        CollectionDAOImp  collectionDI = new CollectionDAOImp(conn);
 
         try{
-            int cnt = singerDI.count(singer);
+            int cnt = collectionDI.count(collection);
             conn.commit();
 
             return cnt;
@@ -86,5 +71,15 @@ public class SingerServiceDAOImp implements SingerServiceDAO{
                 DBUtil.closeConnection(conn);
             }
         }
+    }
+
+    @Override
+    public int insert(Collection collection) {
+        return 0;
+    }
+
+    @Override
+    public int delete(Collection collection) {
+        return 0;
     }
 }
