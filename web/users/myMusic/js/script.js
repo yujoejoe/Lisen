@@ -59,9 +59,12 @@ $(document).ready(function () {
                 $(".img")[0].src = data.result[0].img;
                 $(".userName")[0].append(data.result[0].name)
             }
-
         }
     );
+
+
+
+
 });
 
 

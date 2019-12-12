@@ -34,7 +34,7 @@ $(document).ready((function(){
     }
 
 // 调用方法
-    alert(decodeURI(GetQueryString("search")));
+//     alert(decodeURI(GetQueryString("search")));
 var  search  = decodeURI(GetQueryString("search"));
     $.get(
         "/userGet",
@@ -42,9 +42,11 @@ var  search  = decodeURI(GetQueryString("search"));
         function (result) {
             var data = JSON.parse(result);
             console.log(data);
-            if (result!=null){
+            if (result != null) {
                 // $(".login_img")[0].src = data.result[0].img;
-                $("#login_img").attr("src",data.result[0].img);
+                if (data.result[0].img !== "") {
+                    $("#login_img").attr("src", data.result[0].img);
+                }
             }
 
             $(".logged").click(function () {
