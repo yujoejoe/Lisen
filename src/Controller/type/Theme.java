@@ -16,10 +16,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * Created by user on 2019/12/11.
+ * Created by user on 2019/12/12.
  */
-@WebServlet(name = "Version", urlPatterns = "/Version")
-public class Version extends HttpServlet {
+@WebServlet(name = "Theme", urlPatterns = "/Theme")
+public class Theme extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -34,12 +34,12 @@ public class Version extends HttpServlet {
 
         Connection conn = DBUtil.getConnection();
         try{
-            String sql = "select version.name  as version from version";
+            String sql = "select theme.name  as theme from theme";
             Statement smt = conn.createStatement();
             ResultSet rs = smt.executeQuery(sql);
             ArrayList<String> result = new ArrayList<>();
             while(rs.next()){
-                result.add(rs.getString("version"));
+                result.add(rs.getString("theme"));
             }
             // 返回参数
             String msg = result.size() != 0 ? "查询成功！" : "查询失败！";

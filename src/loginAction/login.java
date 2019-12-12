@@ -73,6 +73,7 @@ public class login extends HttpServlet {
                 msg = "登录成功！";
                 // 保存user信息
                 user = result.get(0);
+                user.setCondition(" user.name = '" + user.getName() + "'");
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", user);
             }
