@@ -20,7 +20,7 @@ public class SongDAOImp implements SongDAO {
         @Override
         public ArrayList<Song> select (Song song) throws SQLException {
             try {
-                String sql = "select"
+                String sql = "select distinct"
                         + " song.name as song,"
                         + " singer.name as singer,"
                         + " album.img as img,"
@@ -37,7 +37,8 @@ public class SongDAOImp implements SongDAO {
                         + " album "
                         + " on "
                         + " song.albumId = album.id"
-                        + " where 1=1 ";
+                        + " ORDER BY date DESC;";
+                        /*+ " where 1=1 ;";*/
 
 
                 // 添加条件
@@ -45,11 +46,13 @@ public class SongDAOImp implements SongDAO {
                 if (condition != null && !condition.equals("")) {
                     sql += " and" + condition;
                 }
+
                 // 排序
                 String orderBy = song.getOrderBy();
                 if (orderBy != null && !orderBy.equals("")) {
                     sql += orderBy;
                 }
+
                 // 分页
                 String limit = song.getLimit();
                 if (limit != null && limit.equals("")) {
@@ -61,6 +64,7 @@ public class SongDAOImp implements SongDAO {
 
                 // 创建prepareStatement对象
                 pst = conn.prepareStatement(sql);
+
                 // 执行查询语句并返回结果集
                 ResultSet rs = pst.executeQuery();
 
