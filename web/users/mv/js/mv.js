@@ -12,7 +12,7 @@ function MV() {
   this.isEmpty = true;
   this.version = null;	// 版本默认为“全部”
   this.mvList = document.getElementById('mv_list');
-  this.tags = document.querySelector("#labels");
+  this.tags = document.querySelector(".tags");
 }
 
 MV.prototype = {
@@ -78,24 +78,22 @@ MV.prototype = {
   reset: function (data) {					// 重置MV的各个属性
 	console.log(data);
 
-	if (data.success === false) {
+	if (data.success === false || data.result.length === 0) {
 	  return;
 	}
 	this.counts = data.counts;
 
-	if (data.result.length === 0) {
-	  return;
-	}
-
 	var size = data.result.length > this.size ? this.size : data.result.length;
 
 	for (var j = 0; j < size; ++j) {
+	  var play = parseInt(data.result[j].play);
+	  play = play >= 10000 ? ((play/10000).toFixed(1) + '万') : play;
 	  this.content.push({
 		"img": data.result[j].img,
 		"date": data.result[j].date,
-		"play": (data.result[j].play / 10000).toFixed(1) + 'w',
+		"play": play,
 		"title": data.result[j].title,
-		"singer": data.result[j].singer,
+		"author": data.result[j].singer,
 		"url": data.result[j].url,
 		"id": data.result[j].id
 	  });
@@ -199,7 +197,7 @@ MV.prototype = {
 	  //1.1.3、 创建歌手
 	  var itemAuthor = document.createElement('a');
 	  itemAuthor.className = "item_author";
-	  itemAuthor.innerHTML = self.content[i].singer;
+	  itemAuthor.innerHTML = self.content[i].author;
 	  //1.1.4、 创建播放信息
 	  var itemInfo = document.createElement('div');
 	  itemInfo.className = "item_info";

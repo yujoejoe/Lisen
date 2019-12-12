@@ -15,10 +15,8 @@ function loading() {
   }
 }
 
-
 function MVP() {
-  console.log(document.cookie);
-  this.mId = document.cookie.split("=")[1];                   // 前提是只有一个cookie, 如：mId=3
+  this.mId = getCookie("mId");
   this.videoInfo = [];											// 接受后台发送的视频信息
   this.cmts = [];												// 接受发送的评论信息
   this.video = document.querySelector("#mvPlay video");			// 视频
@@ -31,6 +29,29 @@ function MVP() {
   this.volumeBtn = document.querySelector("#icoVolume");	    // 声音按钮
   this.fullscreenBtn = document.querySelector("#icofullscreen");// 全屏按钮
   this.isPlay = false;
+}
+
+function getCookie(key){
+  var cookies = document.cookie.replace(/\s*/g, "").split(";");
+  console.log(cookies);
+  var obj = [];
+  var value;
+  for(var i = 0; i < cookies.length; ++i){
+    var o = {
+      "key": cookies[i].split("=")[0],
+	  "value": cookies[i].split("=")[1]
+	};
+	obj.push(o);
+  }
+  console.log(obj);
+
+  for(var j = 0; j < obj.length; ++j){
+    if(obj[j].key === key){
+      value = obj[j].value;
+      break;
+	}
+  }
+  return value;
 }
 
 MVP.prototype = {
