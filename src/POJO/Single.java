@@ -32,7 +32,7 @@ public class Single extends Base {
     @Override
     public String toString() {
         return "single ["
-                + "timeDown:" + song
+                + "song:" + song
                 + " ,album:" + album
                 + " ,duration:" + duration
                 + "]";

@@ -64,7 +64,7 @@ public class SingleDAOImp implements SingleDAO {
             }
 
             // 控制台输出sql语句，检验正确性
-//            System.out.println("Album SELECT: " +sql);
+            System.out.println("Album SELECT: " +sql);
 
             // 创建prepareStatement对象
             pst = conn.prepareStatement(sql);
@@ -77,7 +77,7 @@ public class SingleDAOImp implements SingleDAO {
             while(rs.next()){
                 Single tmp = new Single();
 
-                tmp.setSong(rs.getString("timeDown"));
+                tmp.setSong(rs.getString("song"));
                 tmp.setAlbum(rs.getString("album"));
                 tmp.setDuration(rs.getString("duration"));
                 resultList.add(tmp);
