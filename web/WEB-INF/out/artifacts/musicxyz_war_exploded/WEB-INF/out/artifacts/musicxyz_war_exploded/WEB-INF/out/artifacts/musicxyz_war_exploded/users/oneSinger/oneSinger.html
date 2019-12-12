@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--    <link rel="icon" href="../index/images/icon.png">-->
+    <title>singerName-哩森</title>
+    <link rel="stylesheet" href="../index/css/reset.css">
+    <link rel="stylesheet" href="../index/css/layout.css">
+    <link rel="stylesheet" href="../index/css/index.css">
+    <link rel="stylesheet" href="../../tools/aos/aos.css">
+    <script src="../../tools/jquery/jquery.min.js"></script>
+    <script src="../login/js/judgeLoginState.js"></script>
+    <link rel="icon" href="images/icon.png">
+    <link rel="stylesheet" href="css/oneSinger.css">
+    <script src="js/oneSinger.js"></script>
+
+</head>
+<body>
+
+<header class="header">
+    <div class="header-container">
+        <div class="header-top">
+            <a href="#" class="logo"></a>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="#" class="header-nav__cur">音乐</a></li>
+                    <li><a href="../loginMyMusic/loginMyMusic.html">我的音乐</a></li>
+
+                </ul>
+            </nav>
+            <div class="header-search">
+                <input type="text" class="text" placeholder="here...">
+                <div class="btn"><i class="icon-sprite"></i></div>
+                <div class="result">
+                    <div class="history">
+                        <a href="#" class="result-item">
+                            <span class="rank">1</span>
+                            <span class="title">一生与你擦肩而过</span>
+                            <span class="num">65.2万</span>
+                        </a>
+                        <a href="#" class="result-item">
+                            <span class="rank">2</span>
+                            <span class="title">我们的歌</span>
+                            <span class="num">50.3万</span>
+                        </a>
+                        <a href="#" class="result-item">
+                            <span class="rank">3</span>
+                            <span class="title">世间美好与你环环相扣</span>
+                            <span class="num">35.7万</span>
+                        </a>
+                        <a href="#" class="result-item">
+                            <span class="rank">4</span>
+                            <span class="title">这一生关于你的风景</span>
+                            <span class="num">24.6万</span>
+                        </a>
+                        <a href="#" class="result-item">
+                            <span class="rank">5</span>
+                            <span class="title">没有理由</span>
+                            <span class="num">20.7万</span>
+                        </a>
+                        <span>搜索历史</span>
+                        <i class="icon-sprite"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="header-login">
+                <a href="../../users/login/register.html" class="registered" id="btn_register">注册</a>
+                <a href="../../users/login/login.html" class="login" id="btn_login">登录</a>
+            </div>
+        </div>
+        <ul class="header-subNav">
+            <li><a href="../../index.html">首页</a></li>
+            <li><a href="../singer/singer.html" class="subNav-cur">歌手</a></li>
+            <!--            <li><a href="#">专辑</a></li>-->
+            <li><a href="#">排行榜</a></li>
+            <li><a href="../sort/sort.html">分类歌单</a></li>
+            <li><a href="../mv/mv.html">MV</a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="container">
+    <div class="content">
+
+        <!--歌手简介start-->
+        <div class="intro">
+            <div class="left_photo">
+                <img src=""  class="txt_one_img">
+            </div>
+            <div class="right_intro">
+                <h1 class="txt_one_name"></h1>
+                <ul>
+<!--                    <li>外文名：SherlyChan</li>-->
+                    <li class="txt_one_alias">别名：</li>
+                    <li class="txt_one_area">国籍：</li>
+<!--                    <li>民族：汉族</li>-->
+                    <li  class="txt_one_birthPlace">出生地：</li>
+                    <li class="txt_one_birthday">出生日期：</li>
+                    <li><a href="#">【更多】</a></li>
+                </ul>
+                <div class="intro_works">
+                    <p>
+                        <a id="single_option"> 单曲  </a><span>|</span>
+                        <a id="special_option"> 专辑  </a><span>|</span>
+                        <a id="mv_option"> MV 53 </a> <span>|</span>
+                    </p>
+                </div>
+                <div class="action">
+                    <a>
+                        <button   id="play_all"><i  class="icon_play1"></i>播放全部</button>
+                    </a>
+                    <a>
+                        <button  id="fans"><i  class="icon_attention"></i> 关注 </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--歌手简介end-->
+
+        <!--单曲-->
+        <div id="single_show" class="single_show first_show" >
+            <h2 id="singleNum">单曲 </h2>
+<!--            <div class="list_action">-->
+<!--                <a href="#"><button><i  class="icon_play2"></i>播放全部</button></a>-->
+<!--                <a href="#"><button><i  class="icon_add"></i>添加到</button></a>-->
+<!--                <a href="#"><button><i  class="icon_download"></i>下载</button></a>-->
+<!--            </div>-->
+            <ul style="color: dimgray; background-color: #eeeeee;">
+                <li class="single_names">歌曲</li>
+                <li class="single_specials">专辑</li>
+                <li class="single_times">时长</li>
+            </ul>
+            <a href="#" class="show_hide">
+                <ul>
+                    <li class="single_id">1</li>
+                    <li class="single_name"></li>
+                    <li class="single_special"></li>
+                    <li class="single_time"></li>
+                </ul>
+            </a>
+            <a href="#" class="show_hide">
+                <ul>
+                    <li class="single_id">2</li>
+                    <li class="single_name"></li>
+                    <li class="single_special"></li>
+                    <li class="single_time"></li>
+                </ul>
+            </a>
+            <a href="#" class="show_hide">
+                <ul>
+                    <li class="single_id">3</li>
+                    <li class="single_name"></li>
+                    <li class="single_special"></li>
+                    <li class="single_time"></li>
+                </ul>
+            </a>
+            <a href="#" class="show_hide">
+                <ul>
+                    <li class="single_id">4</li>
+                    <li class="single_name"></li>
+                    <li class="single_special"></li>
+                    <li class="single_time"></li>
+                </ul>
+            </a>
+            <a href="#" class="show_hide">
+                <ul>
+                    <li class="single_id">5</li>
+                    <li class="single_name"></li>
+                    <li class="single_special"></li>
+                    <li class="single_time"></li>
+                </ul>
+            </a>
+            <a href="#" class="show_hide">
+                <ul>
+                    <li class="single_id">6</li>
+                    <li class="single_name"></li>
+                    <li class="single_special"></li>
+                    <li class="single_time"></li>
+                </ul>
+            </a>
+            <a href="#" class="show_hide">
+                <ul>
+                    <li class="single_id">7</li>
+                    <li class="single_name"></li>
+                    <li class="single_special"></li>
+                    <li class="single_time"></li>
+                </ul>
+            </a>
+            <a href="#" class="show_hide">
+                <ul>
+                    <li class="single_id">8</li>
+                    <li class="single_name"></li>
+                    <li class="single_special"></li>
+                    <li class="single_time"></li>
+                </ul>
+            </a>
+            <a href="#" class="show_hide">
+                <ul>
+                    <li class="single_id">9</li>
+                    <li class="single_name"></li>
+                    <li class="single_special"></li>
+                    <li class="single_time"></li>
+                </ul>
+            </a>
+            <a href="#" class="show_hide">
+                <ul>
+                    <li class="single_id">10</li>
+                    <li class="single_name"></li>
+                    <li class="single_special"></li>
+                    <li class="single_time"></li>
+                </ul>
+            </a>
+            <a href="#" class="show_hide">
+                <ul>
+                    <li class="single_id">11</li>
+                    <li class="single_name"></li>
+                    <li class="single_special"></li>
+                    <li class="single_time"></li>
+                </ul>
+            </a>
+            <a href="#" class="show_hide">
+                <ul>
+                    <li class="single_id">12</li>
+                    <li class="single_name"></li>
+                    <li class="single_special"></li>
+                    <li class="single_time"></li>
+                </ul>
+            </a>
+        </div>
+
+        <!--专辑-->
+        <div  id="special_show" class="special_show ">
+            <h2 id="txt_album_name">专辑 </h2>
+            <figure class="show_hides">
+                <a class="txt_album_pic"><img src="" class="txt_name_pic"></a>
+                <a class="txt_name"></a>
+            </figure>
+
+            <figure class="show_hides">
+                <a  class="txt_album_pic"><img src="" class="txt_name_pic"></a>
+                <a  class="txt_name"></a>
+            </figure>
+
+            <figure  class="show_hides">
+                <a class="txt_album_pic"><img src=""  class="txt_name_pic"></a>
+                <a class="txt_name"></a>
+            </figure>
+
+            <figure  class="show_hides">
+                <a class="txt_album_pic"><img src=""  class="txt_name_pic"></a>
+                <a class="txt_name"></a>
+            </figure>
+
+            <figure  class="show_hides">
+                <a  class="txt_album_pic"><img src=""  class="txt_name_pic"></a>
+                <a  class="txt_name" ></a>
+            </figure>
+
+            <figure  class="show_hides">
+                <a class="txt_album_pic"><img src=""  class="txt_name_pic"></a>
+                <a class="txt_name"></a>
+            </figure>
+
+            <figure  class="show_hides">
+                <a class="txt_album_pic"><img src=""  class="txt_name_pic"></a>
+                <a class="txt_name"></a>
+            </figure>
+
+            <figure  class="show_hides">
+                <a class="txt_album_pic"><img src=""  class="txt_name_pic"></a>
+                <a class="txt_name"></a>
+            </figure>
+        </div>
+
+
+        <div id="mv_show" class="mv_show ">
+            <h2>MV 53</h2>
+        </div>
+
+        <!--分页start-->
+        <div class="page">
+            <a href="" class="page_option"> < </a>
+            <a href="" class="page_option page_firstShow">1</a>
+            <a href="" class="page_option">2</a>
+            <a href="" class="page_option">3</a>
+            <span class="more">...</span>
+            <a href="" class="page_option">5</a>
+            <a href="" class="page_option"> > </a>
+        </div>
+        <!--分页end-->
+
+    </div>
+</div>
+
+<!-- footer -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-info">
+            <div class="footer-info__download">
+                <h3>下载哩森音乐客户端</h3>
+                <ul class="list">
+                    <li><a href="#">
+                        <i class="footer-icon icon-pc"></i>
+                        PC版
+                    </a></li>
+                    <li><a href="#">
+                        <i class="footer-icon icon-mac"></i>
+                        Mac版
+                    </a></li>
+                    <li><a href="#">
+                        <i class="footer-icon icon-android"></i>
+                        Android版
+                    </a></li>
+                    <li><a href="#">
+                        <i class="footer-icon icon-iphone"></i>
+                        iPhone版
+                    </a></li>
+                </ul>
+            </div>
+            <div class="footer-info__product">
+                <h3>特色产品</h3>
+                <ul class="list">
+                    <li class="hasPic"><a href="#">
+                        <i class="footer-icon icon-kg"></i>
+                        全民K歌
+                    </a></li>
+                    <li class="hasPic"><a href="#">
+                        <i class="footer-icon icon-ss"></i>
+                        全民K歌
+                    </a></li>
+                    <li class="hasPic"><a href="#">
+                        <i class="footer-icon icon-qp"></i>
+                        全民K歌
+                    </a></li>
+                    <li><a href="#">KK音乐原创音乐平台</a></li>
+                    <li><a href="#">上传视频</a></li>
+                    <li><a href="#">上传视频</a></li>
+                    <li><a href="#">上传视频</a></li>
+                </ul>
+            </div>
+            <div class="footer-info__link">
+                <h3>特色产品</h3>
+                <ul class="list">
+                    <li><a href="#">CJ E&M</a></li>
+                    <li><a href="#">我们视频</a></li>
+                    <li><a href="#">手机KK空间</a></li>
+                    <li><a href="#">CJ E&M</a></li>
+                    <li><a href="#">我们视频</a></li>
+                    <li><a href="#">手机KK空间</a></li>
+                    <li><a href="#">CJ E&M</a></li>
+                    <li><a href="#">我们视频</a></li>
+                    <li><a href="#">手机KK空间</a></li>
+                    <li><a href="#">CJ E&M</a></li>
+                    <li><a href="#">我们视频</a></li>
+                    <li><a href="#">手机KK空间</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>
+                <a href="#">关于我们</a><span>|</span>
+                <a href="#">关于我们</a><span>|</span>
+                <a href="#">关于我们</a><span>|</span>
+                <a href="#">关于我们</a><span>|</span>
+                <a href="#">关于我们</a><span>|</span>
+                <a href="#">关于我们</a><span>|</span>
+                <a href="#">关于我们</a><span>|</span>
+                <a href="#">关于我们</a>
+            </p>
+            <p>Copyright © 1998 - 2017 kk. All Rights Reserved.</p>
+            <p>我们公司 版权所有 我们网络文化经营许可证</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

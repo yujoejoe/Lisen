@@ -1,0 +1,217 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-weight: normal;
+}
+h1{
+    font-size: 40px;
+}
+a{
+    cursor: pointer;
+}
+.container{
+    background-image: linear-gradient(to bottom, #f6f6f6, #fff);
+    width: 100%;
+    padding-top: 30px;
+    position: relative;
+}
+.content{
+    margin-top: 20px;
+    margin-left: 15%;
+    width:70%;
+    height: 860px;
+    position:relative;
+    color: black;
+}
+
+.intro{
+    width: 100%;
+    height: 250px;
+    position: absolute;
+}
+
+/*照片start*/
+.intro .left_photo{
+    width: 250px;
+    height: 250px;
+    position: absolute;
+}
+.intro .left_photo img{
+    width: 250px;
+    height: 250px;
+}
+.intro .left_photo:after{
+    content: "";
+    position: absolute;
+    left: 250px;
+    top: 0;
+    width: 250px;
+    height: 250px;
+    background-image: url(../images/album_background.png);
+    background-size: 41px 250px;
+    background-repeat: no-repeat;
+}
+/*照片end*/
+
+/*简介部分*/
+.intro .right_intro{
+    left: 380px;
+    margin-top:5px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.intro .right_intro ul li{
+    margin-top: 18px;
+}
+.intro .right_intro .left_ul{
+    margin-top: 18px;
+    width: 17%;
+    height: 100%;
+    position: absolute;
+}
+.intro .right_intro .right_ul{
+    margin-top: 50px;
+    left: 17%;
+    width: 20%;
+    height: 100%;
+    position: absolute;
+}
+.intro .right_intro .action{
+    top: 200px;
+    width: 100%;
+    position: absolute;
+}
+.intro .right_intro .action a{
+    text-align: center;
+    margin-left: 15px;
+    float: left;
+}
+.intro .right_intro .action a:first-child{
+    margin-left: 0;
+}
+
+
+.icon_head,
+.icon_play,
+.icon_collect,
+.icon_discuss,
+.icon_share{
+    width: 16px;
+    height: 16px;
+    vertical-align: -2px;
+    display: inline-block;
+    margin-right: 7px;
+    background-repeat: no-repeat;
+    background-image: url("../images/pict.png");
+}
+/*头像*/
+.icon_head{
+    background-position: -20px -240px;
+}
+/*播放*/
+.icon_play{
+    background-position: -80px -220px;
+}
+/*收藏*/
+.icon_collect{
+    background-position: -60px -300px;
+}
+/*评论*/
+.icon_discuss{
+    background-position: -140px -120px;
+}
+/*分享*/
+.icon_share{
+    background-position: -100px -180px;
+}
+
+
+
+
+
+.action a button{
+    padding: 8px 18px;
+    border: solid 1px gray;
+    text-align: center;
+    font-size: 16px;
+}
+.action a:first-child button{
+    padding: 8px 20px;
+    background-color: #31c27c;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+.action a button:hover{
+    background-color: lightgray;
+}
+.action a:first-child button:hover{
+    background-color: #31c27c;
+}
+.album_show{
+    margin-top: 300px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.album_show ul{
+    padding: 25px;
+}
+.album_show ul li{
+    line-height: 0;
+}
+.album_show a:nth-child(odd){
+    background-color: #eeeeee;
+}
+.album_id{
+    width: 10%;
+    position: absolute;
+    color: gray;
+}
+.album_name{
+    left:10%;
+    width: 50%;
+    position: absolute;
+}
+.album_singer{
+    left:65%;
+    width: 25%;
+    position: absolute;
+}
+.album_time{
+    left:90%;
+    width: 10%;
+    position: absolute;
+    color: gray;
+}
+
+.album_name_head{
+    left:10%;
+    width: 50%;
+    position: absolute;
+}
+.album_singer_head{
+    left:65%;
+    width: 25%;
+    position: absolute;
+}
+.album_time_head{
+    left:90%;
+    width: 10%;
+    position: absolute;
+    color: gray;
+}
+
+
+
+
+
+.show_hide{
+    display: none;
+
+}
+/*.txt_album_genre{*/
+/*    display: none;*/
+/*}*/
