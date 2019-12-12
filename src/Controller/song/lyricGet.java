@@ -1,7 +1,6 @@
 package Controller.song;
 
 import POJO.Lyric;
-import POJO.Song;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,8 +28,8 @@ public class lyricGet extends HttpServlet {
         Lyric source = new Lyric();
 
 //        String singer = request.getParameter("singer");
-//        String song = request.getParameter("song");
-//        String path = singer + "/" + song + ".lrc";       // 歌词文件路径为：歌手名 - 歌曲名.lrc
+//        String timeDown = request.getParameter("timeDown");
+//        String path = singer + "/" + timeDown + ".lrc";       // 歌词文件路径为：歌手名 - 歌曲名.lrc
 
         String path = request.getParameter("path");
         path += ".lrc";
@@ -39,10 +38,10 @@ public class lyricGet extends HttpServlet {
         source.setPath(path);
         String lyric = source.getLyric();
 
-//        Song song = new Song();
+//        Song timeDown = new Song();
 //        path += ".mp3";
-//        song.setPath(path);
-//        String url = song.getUrl();
+//        timeDown.setPath(path);
+//        String url = timeDown.getUrl();
 
         out.print(lyric);
 

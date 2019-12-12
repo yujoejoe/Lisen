@@ -10,7 +10,7 @@ import java.net.URLEncoder;
  * Created by user on 2019/12/1.
  */
 public class Lyric {
-    private static final String prefix = "http://192.168.1.125:8080/music/song/lyric/";
+    private static final String prefix = "http://192.168.1.125:8080/music/timeDown/lyric/";
 
     private String path = null;
 

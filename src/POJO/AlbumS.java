@@ -25,7 +25,7 @@ public class AlbumS extends Base {
     @Override
     public String toString() {
         return "album ["
-                + "song:" + song
+                + "timeDown:" + song
                 + " ,singer:" + singer
                 + "]";
     }

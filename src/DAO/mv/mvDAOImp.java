@@ -162,11 +162,6 @@ public class mvDAOImp implements mvDAO{
         try{
             // sql语句
             String sql = "select count(id) as counts from mv where 1=1";
-            // 添加条件
-//            String condition = mv.getCondition();
-//            if(condition != null && !condition.equals("")){
-//                sql += condition;
-//            }
 
             pst = conn.prepareStatement(sql);
 

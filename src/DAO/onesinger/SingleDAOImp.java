@@ -77,7 +77,7 @@ public class SingleDAOImp implements SingleDAO {
             while(rs.next()){
                 Single tmp = new Single();
 
-                tmp.setSong(rs.getString("song"));
+                tmp.setSong(rs.getString("timeDown"));
                 tmp.setAlbum(rs.getString("album"));
                 tmp.setDuration(rs.getString("duration"));
                 resultList.add(tmp);

@@ -40,69 +40,11 @@ public class mvGet extends HttpServlet {
 
         String area = request.getParameter("area");
         String page = request.getParameter("page");
-        String song = request.getParameter("song");
+        String song = request.getParameter("timeDown");
         String title = request.getParameter("title");
         String order = request.getParameter("order");
         String singer = request.getParameter("singer");
         String version = request.getParameter("version");
-
-
-
-//        if(area == null || version == null || page ==null){
-//            out.print("参数为空!");
-//            System.out.println("参数为空!");
-//            return;
-//        }
-//
-//
-//        ArrayList<Area> areaList = new ArrayList<>();
-//        ArrayList<Version> versionList = new ArrayList<>();
-//
-//        // 获取area表所有数据
-//        if(area.equals("全部")) {
-//            Connection conn = DBUtil.getConnection();
-//            try {
-//                String sql = "select area.name from area";
-//                Statement smt = conn.createStatement();
-//                ResultSet rs = smt.executeQuery(sql);
-//
-//                while(rs.next()){
-//                   Area tmp = new Area();
-//                   tmp.setName(rs.getString("name"));
-//                   areaList.add(tmp);
-//                }
-////                System.out.println(areaList);
-//            } catch (SQLException sqe) {
-//                sqe.printStackTrace();
-//            }finally {
-//                if(conn != null){
-//                    DBUtil.closeConnection(conn);
-//                }
-//            }
-//        }
-//
-//        // 获取version表所有数据
-//        if(version.equals("全部")){
-//            Connection conn = DBUtil.getConnection();
-//            try {
-//                String sql = "select version.name from version";
-//                Statement smt = conn.createStatement();
-//                ResultSet rs = smt.executeQuery(sql);
-//
-//                while(rs.next()){
-//                    Version tmp = new Version();
-//                    tmp.setName(rs.getString("name"));
-//                   versionList.add(tmp);
-//                }
-////                System.out.println(versionList);
-//            } catch (SQLException sqe) {
-//                sqe.printStackTrace();
-//            }finally{
-//                if(conn != null){
-//                    DBUtil.closeConnection(conn);
-//                }
-//            }
-//        }
 
         // 获取mv表数据
         MV mv = new MV();
@@ -123,7 +65,7 @@ public class mvGet extends HttpServlet {
             condition += " and singer.name like'%" + singer + "%'";
         }
         if(song != null && !song.equals("")){
-            condition += " and song.name = '" + song + "'";
+            condition += " and timeDown.name = '" + song + "'";
         }
         mv.setCondition(condition);
 //        System.out.println("condition:" + mv.getCondition());
