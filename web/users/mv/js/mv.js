@@ -332,6 +332,7 @@ MV.prototype = {
 			  } else if (type === "version") {
 				self.version = this.innerText === "全部" ? "" : this.innerText;
 			  }
+			  self.page = 0;
 			  self.clear();
 			  self.reset(self.getMV());
 			  self.addPage();
