@@ -2,9 +2,6 @@
  * Created by user on 2019/11/19.
  */
 
-document.onreadystatechange = loading;
-
-
 function MV() {
   this.page = 0;		// 0 表示获取数据库中的全部记录
   this.size = 8;		// 每页显示的数量
@@ -344,20 +341,16 @@ MV.prototype = {
   }
 };
 
-
-// 页面加载事件
-function loading() {
-  var load = document.querySelector('.loading');
-
-  if (document.readyState === "complete") {
-	load.style.display = "none";
-  } else {
-	load.style.display = "block";
+function clearChild(parent) {
+  while (parent !== null && parent.hasChildNodes()) {
+	parent.removeChild(parent.firstChild);
   }
 }
 
-
-
+function setCookie() {
+  document.cookie = "mId=" + this.getAttribute('data-id') + ";path=/";
+  console.log(document.cookie);
+}
 
 
 $(document).ready(function () {
@@ -404,18 +397,6 @@ $(document).ready(function () {
 
   }
 });
-
-function clearChild(parent) {
-  while (parent !== null && parent.hasChildNodes()) {
-	parent.removeChild(parent.firstChild);
-  }
-}
-
-function setCookie() {
-  document.cookie = "mId=" + this.getAttribute('data-id') + ";path=/";
-  console.log(document.cookie);
-}
-
 
 
 
