@@ -1,6 +1,6 @@
 package DAO.indexData.timeDown;
 
-import POJO.indexData.Song;
+import POJO.indexData.timeDown;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +17,7 @@ public class SongDAOImp implements SongDAO {
     }
 
         @Override
-        public ArrayList<Song> select (Song song) throws SQLException {
+        public ArrayList<timeDown> select (timeDown song) throws SQLException {
             try {
                 String sql = "select distinct"
                         + " song.name as song,"
@@ -34,8 +34,8 @@ public class SongDAOImp implements SongDAO {
                         + " album "
                         + " on "
                         + " song.albumId = album.id"
-                        + " ORDER BY date DESC;";
-                        /*+ " where 1=1 ;";*/
+                        + " ORDER BY date DESC"
+                        + " LIMIT 20;";
 
 
                 // 添加条件
@@ -56,8 +56,8 @@ public class SongDAOImp implements SongDAO {
                     sql += limit;
                 }
 
-                // 控制台输出sql语句，检验正确性
-                System.out.println("Song SELECT: " + sql);
+                /*// 控制台输出sql语句，检验正确性
+                System.out.println("timeDown SELECT: " + sql);*/
 
                 // 创建prepareStatement对象
                 pst = conn.prepareStatement(sql);
@@ -66,10 +66,10 @@ public class SongDAOImp implements SongDAO {
                 ResultSet rs = pst.executeQuery();
 
                 // 创建ArrayList对象存储每条记录
-                ArrayList<Song> resultList = new ArrayList<Song>();
+                ArrayList<timeDown> resultList = new ArrayList<timeDown>();
 
                 while (rs.next()) {
-                    Song tmp = new Song();
+                    timeDown tmp = new timeDown();
                     tmp.setImg(rs.getString("img"));
                     tmp.setName(rs.getString("song"));
                     tmp.setSinger(rs.getString("singer"));
@@ -85,7 +85,7 @@ public class SongDAOImp implements SongDAO {
         }
 
     @Override
-    public int count(Song song) throws SQLException {
+    public int count(timeDown song) throws SQLException {
         try{
             // sql语句
             String sql = "select count(*) as counts from song  " +

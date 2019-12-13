@@ -37,7 +37,8 @@ public class JapanDAOImp implements JapanDAO {
                         + " on "
                         + " song.albumId = album.id"
                         + " WHERE singer.areaId=4 OR singer.areaId=3"
-                        + " ORDER BY date DESC;";
+                        + " ORDER BY date DESC"
+                        + " LIMIT 20;";
 
 
                 // 添加条件
@@ -58,8 +59,8 @@ public class JapanDAOImp implements JapanDAO {
                     sql += limit;
                 }
 
-                // 控制台输出sql语句，检验正确性
-                System.out.println("Japan SELECT: " + sql);
+                /*// 控制台输出sql语句，检验正确性
+                System.out.println("Japan SELECT: " + sql);*/
 
                 // 创建prepareStatement对象
                 pst = conn.prepareStatement(sql);

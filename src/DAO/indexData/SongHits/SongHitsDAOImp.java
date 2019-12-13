@@ -1,29 +1,30 @@
-package DAO.indexData.EuropeAmerica;
+package DAO.indexData.SongHits;
 
-import POJO.indexData.EuropeAmerica;
+import POJO.indexData.SongHits;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class EuropeAmericaDAOImp implements EuropeAmericaDAO {
+public class SongHitsDAOImp implements SongHitsDAO {
     private Connection conn = null;
     private PreparedStatement pst = null;
 
-    public EuropeAmericaDAOImp(Connection conn) {
+    public SongHitsDAOImp(Connection conn) {
         super();
         this.conn = conn;
     }
 
         @Override
-        public ArrayList<EuropeAmerica> select (EuropeAmerica EuropeAmerica) throws SQLException {
+        public ArrayList<SongHits> select (SongHits SongHits) throws SQLException {
             try {
                 String sql = "select distinct"
                         + " song.name as song,"
                         + " singer.name as singer,"
-                        + " album.img as img,"
-                        + " song.date as date"
+                        + " song.hits as hits,"
+                        + " album.img as img"
                         + " from"
                         + " song"
                         + " inner join"
@@ -34,31 +35,30 @@ public class EuropeAmericaDAOImp implements EuropeAmericaDAO {
                         + " album "
                         + " on "
                         + " song.albumId = album.id"
-                        + " WHERE singer.areaId=2"
-                        + " ORDER BY date DESC"
+                        + " ORDER BY hits DESC"
                         + " LIMIT 20;";
 
 
                 // 添加条件
-                String condition = EuropeAmerica.getCondition();
+                String condition = SongHits.getCondition();
                 if (condition != null && !condition.equals("")) {
                     sql += " and" + condition;
                 }
 
                 // 排序
-                String orderBy = EuropeAmerica.getOrderBy();
+                String orderBy = SongHits.getOrderBy();
                 if (orderBy != null && !orderBy.equals("")) {
                     sql += orderBy;
                 }
 
                 // 分页
-                String limit = EuropeAmerica.getLimit();
+                String limit = SongHits.getLimit();
                 if (limit != null && limit.equals("")) {
                     sql += limit;
                 }
 
                 /*// 控制台输出sql语句，检验正确性
-                System.out.println("EuropeAmerica SELECT: " + sql);*/
+                System.out.println("SongHits SELECT: " + sql);*/
 
                 // 创建prepareStatement对象
                 pst = conn.prepareStatement(sql);
@@ -67,14 +67,14 @@ public class EuropeAmericaDAOImp implements EuropeAmericaDAO {
                 ResultSet rs = pst.executeQuery();
 
                 // 创建ArrayList对象存储每条记录
-                ArrayList<EuropeAmerica> resultList = new ArrayList<EuropeAmerica>();
+                ArrayList<SongHits> resultList = new ArrayList<SongHits>();
 
                 while (rs.next()) {
-                    EuropeAmerica tmp = new EuropeAmerica();
+                    SongHits tmp = new SongHits();
                     tmp.setImg(rs.getString("img"));
                     tmp.setName(rs.getString("song"));
                     tmp.setSinger(rs.getString("singer"));
-                    tmp.setDate(rs.getString("date"));
+                    tmp.setHits(rs.getString("hits"));
                     resultList.add(tmp);
                 }
 
@@ -86,20 +86,22 @@ public class EuropeAmericaDAOImp implements EuropeAmericaDAO {
         }
 
     @Override
-    public int count(EuropeAmerica EuropeAmerica) throws SQLException {
+    public int count(SongHits SongHits) throws SQLException {
         try{
             // sql语句
             String sql = "select count(*) as counts from song  " +
                     "INNER JOIN album ON song.albumId = album.id  " +
-                    "INNER JOIN singer ON song.singerId = singer.id " +
-                    "where singer.areaId=2";
+                    "INNER JOIN singer ON song.singerId = singer.id " ;
             // 添加条件
-            String condition = EuropeAmerica.getCondition();
+            String condition = SongHits.getCondition();
             if(condition != null && !condition.equals("")){
                 sql += " and" + condition;
             }
 
             pst = conn.prepareStatement(sql);
+
+            // 控制台输出sql语句，检验正确性
+//            System.out.println("timeDown COUNT: "+sql);
 
             ResultSet rs = pst.executeQuery();
             rs.next();

@@ -1,8 +1,8 @@
 package Controller.indexData;
 
-import POJO.indexData.Song;
+import POJO.indexData.timeDown;
 import POJO.JsonData;
-import ServiceDAO.indexData.timeDown.SongServiceDAOImp;
+import ServiceDAO.indexData.timeDown.timeDownServiceDAOImp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,11 +18,11 @@ import java.util.ArrayList;
  * Created by user on 2019/12/11
  */
 @WebServlet(name ="timeDown" ,urlPatterns ="/timeDown/get" )
-public class SongGet extends HttpServlet{
+public class timeDownGet extends HttpServlet{
     private static final long serialVersion = 1L;
 
-    private SongServiceDAOImp songDI = new SongServiceDAOImp();
-    private Song song = new Song();
+    private timeDownServiceDAOImp songDI = new timeDownServiceDAOImp();
+    private timeDown song = new timeDown();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -69,7 +69,7 @@ public class SongGet extends HttpServlet{
          * 1、调用DAO层的select方法，返回查询到的记录集
          * 2、调用DAO层的count方法，返回查询到的记录数
          */
-        ArrayList<Song> result = songDI.select(song);
+        ArrayList<timeDown> result = songDI.select(song);
         int count = songDI.count(song);
 
         // （存）3、将数据对象存储到request中

@@ -594,7 +594,7 @@
 #recommend {
   width: 100%;
   height: 610px;
-  background: url(../images/cont/recommend/carousel_img3.jpg) no-repeat center;
+  background: url(../images/cont/newSong/newSong_bg.jpg) no-repeat center;
   -webkit-background-size: cover;
   background-size: cover;
   opacity: .75;
@@ -625,7 +625,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 320px;
+  height: 350px;
   margin-bottom: 50px;
 }
 .carousel-slider .item {
@@ -633,7 +633,7 @@
   z-index: 1;
   left: 0;
   top: 0;
-  width: 800px;
+  width: 820px;
   opacity: 0;
 
   transition: all 400ms ease-in-out;
@@ -732,7 +732,8 @@
   top: 187px;
   margin-top: 0;
 }
-.rank-list__item:hover .icon-play {}
+.rank-list__item:hover .icon-play {cursor: pointer}
+
 .rank-list__item .title {
   position: absolute;
   top: 80px;

@@ -1,8 +1,8 @@
 package Controller.indexData;
 
 import POJO.JsonData;
-import POJO.indexData.EuropeAmerica;
-import ServiceDAO.indexData.EuropeAmerica.EuropeAmericaServiceDAOImp;
+import POJO.indexData.SongHits;
+import ServiceDAO.indexData.SongHits.SongHitsServiceDAOImp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,14 +15,14 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
- * Created by user on 2019/12/11
+ * Created by user on 2019/12/12
  */
-@WebServlet(name ="EuropeAmerica" ,urlPatterns ="/EuropeAmerica/get" )
-public class EuropeAmericaGet extends HttpServlet{
+@WebServlet(name ="SongHits" ,urlPatterns ="/SongHits/get" )
+public class SongHitsGet extends HttpServlet{
     private static final long serialVersion = 1L;
 
-    private EuropeAmericaServiceDAOImp EuropeAmericaDI = new EuropeAmericaServiceDAOImp();
-    private EuropeAmerica EuropeAmerica = new EuropeAmerica();
+    private SongHitsServiceDAOImp SongHitsDI = new SongHitsServiceDAOImp();
+    private SongHits SongHits = new SongHits();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -38,9 +38,9 @@ public class EuropeAmericaGet extends HttpServlet{
         String field = request.getParameter("field");   // 排序字段
         String order = request.getParameter("order");   // 排序方式 升序 或 降序
         if(field!=null && field.length()!=0 && order!=null && order.length()!=0){
-            EuropeAmerica.setOrderBy(" order by " + field + " " + order);
+            SongHits.setOrderBy(" order by " + field + " " + order);
         }else{
-            EuropeAmerica.setOrderBy("");
+            SongHits.setOrderBy("");
         }
 
         // （调）2、调用ServiceDAO方法，完成业务
@@ -49,8 +49,8 @@ public class EuropeAmericaGet extends HttpServlet{
          * 1、调用DAO层的select方法，返回查询到的记录集
          * 2、调用DAO层的count方法，返回查询到的记录数
          */
-        ArrayList<EuropeAmerica> result = EuropeAmericaDI.select(EuropeAmerica);
-        int count = EuropeAmericaDI.count(EuropeAmerica);
+        ArrayList<SongHits> result = SongHitsDI.select(SongHits);
+        int count = SongHitsDI.count(SongHits);
 
         // （存）3、将数据对象存储到request中
         boolean success;    // 操作成功与否
