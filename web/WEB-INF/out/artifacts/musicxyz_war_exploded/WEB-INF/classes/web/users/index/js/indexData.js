@@ -14,7 +14,7 @@ $(document).ready(function () {
                     $(".hotSongList_name")[i].append(data.result[i+5].title);
                     $(".hotSongList_playNum")[i].append(data.result[i+5].play);
                 }
-                //热门歌单部分   暂时放了mv图片\名字\播放量 需改！需改！需改！需改！需改！需改！需改！需改！
+                //精彩推荐部分   暂时放了mv图片 需改！需改！需改！需改！需改！需改！需改！需改！
                 for (var k = 0; k < 6; k++) {
                     $(".recommend_img")[k].src=data.result[k].img;
                 }
@@ -39,10 +39,23 @@ $(document).ready(function () {
                     $(".newSongs_name")[j].append(data.result[j].name);
                     $(".newSongs_singerName")[j].append(data.result[j].singer);
                 }
-                //排行榜部分
-                for (var i = 0; i < 10; i++) {
-                    $(".PopularityIndex_songName")[i].append(data.result[i].name);
-                    $(".PopularityIndex_singerName")[i].append(data.result[i].singer);
+                //排行榜新歌部分
+                for (var i = 0; i < 5; i++) {
+                    $(".NewSong_songName")[i].append(data.result[i].name);
+                    $(".NewSong_singerName")[i].append(data.result[i].singer);
+                }
+            }
+        );
+
+        //排行榜热歌部分
+        $.get(
+            "/SongHits/get",
+            function (result) {
+                var data = JSON.parse(result);
+                console.log(data);
+                for (var j = 0; j < 5; j++) {
+                    $(".HotSong_songName")[j].append(data.result[j].name);
+                    $(".HotSong_singerName")[j].append(data.result[j].singer);
                 }
             }
         );

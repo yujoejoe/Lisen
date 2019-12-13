@@ -58,8 +58,8 @@ public class JapanDAOImp implements JapanDAO {
                     sql += limit;
                 }
 
-                // 控制台输出sql语句，检验正确性
-                System.out.println("Japan SELECT: " + sql);
+                /*// 控制台输出sql语句，检验正确性
+                System.out.println("Japan SELECT: " + sql);*/
 
                 // 创建prepareStatement对象
                 pst = conn.prepareStatement(sql);

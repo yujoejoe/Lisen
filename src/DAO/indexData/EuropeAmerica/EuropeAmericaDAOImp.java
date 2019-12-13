@@ -56,8 +56,8 @@ public class EuropeAmericaDAOImp implements EuropeAmericaDAO {
                     sql += limit;
                 }
 
-                // 控制台输出sql语句，检验正确性
-                System.out.println("EuropeAmerica SELECT: " + sql);
+                /*// 控制台输出sql语句，检验正确性
+                System.out.println("EuropeAmerica SELECT: " + sql);*/
 
                 // 创建prepareStatement对象
                 pst = conn.prepareStatement(sql);
@@ -99,9 +99,6 @@ public class EuropeAmericaDAOImp implements EuropeAmericaDAO {
             }
 
             pst = conn.prepareStatement(sql);
-
-            // 控制台输出sql语句，检验正确性
-//            System.out.println("timeDown COUNT: "+sql);
 
             ResultSet rs = pst.executeQuery();
             rs.next();

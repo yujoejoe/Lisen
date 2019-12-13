@@ -1,23 +1,23 @@
-package ServiceDAO.indexData.timeDown;
+package ServiceDAO.indexData.SongHits;
 
-import DAO.indexData.timeDown.SongDAOImp;
-import POJO.indexData.Song;
+import DAO.indexData.SongHits.SongHitsDAOImp;
+import POJO.indexData.SongHits;
 import util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SongServiceDAOImp implements SongServiceDAO {
+public class SongHitsServiceDAOImp implements SongHitsServiceDAO {
 
     @Override
-    public ArrayList<Song> select(Song song) {
+    public ArrayList<SongHits> select(SongHits SongHits) {
         Connection conn = DBUtil.getConnection();
-        SongDAOImp songDI = new SongDAOImp(conn);
+        SongHitsDAOImp SongHitsDI = new SongHitsDAOImp(conn);
 
         try {
-            ArrayList<Song> resultLists = new ArrayList<>();
-            resultLists = songDI.select(song);
+            ArrayList<SongHits> resultLists = new ArrayList<>();
+            resultLists = SongHitsDI.select(SongHits);
             conn.commit();
 
             return resultLists;
@@ -39,12 +39,12 @@ public class SongServiceDAOImp implements SongServiceDAO {
     }
 
     @Override
-    public int count(Song song) {
+    public int count(SongHits SongHits) {
         Connection conn = DBUtil.getConnection();
-        SongDAOImp songDI = new SongDAOImp(conn);
+        SongHitsDAOImp SongHitsDI = new SongHitsDAOImp(conn);
 
         try{
-            int cnt = songDI.count(song);
+            int cnt = SongHitsDI.count(SongHits);
             conn.commit();
 
             return cnt;
@@ -66,22 +66,22 @@ public class SongServiceDAOImp implements SongServiceDAO {
     }
 
     @Override
-    public ArrayList<Song> selectRan(Song song) {
+    public ArrayList<SongHits> selectRan(SongHits SongHits) {
         return null;
     }
 
     @Override
-    public int insert(Song song) {
+    public int insert(SongHits SongHits) {
         return 0;
     }
 
     @Override
-    public int delete(Song song) {
+    public int delete(SongHits SongHits) {
         return 0;
     }
 
     @Override
-    public int update(Song song) {
+    public int update(SongHits SongHits) {
         return 0;
     }
 

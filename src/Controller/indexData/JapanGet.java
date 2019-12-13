@@ -65,9 +65,6 @@ public class JapanGet extends HttpServlet{
         JsonData jsonData = new JsonData(success,msg,count,result);
         request.setAttribute("jsonData",jsonData);
 
-        // 校验数据
-//        System.out.println(jsonData);
-
         // （转）4、将业务转发给View
         RequestDispatcher rd = request.getRequestDispatcher("/view/ToJSON");
         rd.forward(request,response);
