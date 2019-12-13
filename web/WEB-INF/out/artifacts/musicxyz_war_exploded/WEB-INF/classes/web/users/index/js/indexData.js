@@ -86,6 +86,22 @@ $(document).ready(function () {
             }
         );
 
+
+
+        //页面对接start
+
+        //排行榜新歌播放
+        $("#play_NewSong").click(function () {
+            /*var  singer = $(".NewSong_singerName").html();
+            var  song = $(".NewSong_songName").html();*/
+            var  singer = $(".NewSong_singerName").html();
+            var  song = $(".NewSong_songName").html();
+            console.log(singer);
+            var singer = encodeURI(encodeURI(singer));
+            var song = encodeURI(encodeURI(song));
+            window.location.href = "../users/playMusic/playMusic.html?song=" + song + "&singer=" + singer;
+        });
+
     }
 
 });
