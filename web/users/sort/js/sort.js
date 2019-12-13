@@ -139,7 +139,7 @@ Sort.prototype = {
 	  //1.1.1、 创建图片容器
 	  var itemBox = document.createElement('a');
 	  itemBox.classList.add("item_box","song_item_box");
-	  itemBox.setAttribute('href', "./playvideo.html");				// 点击跳转目标页面
+	  itemBox.setAttribute('href', "./playlist.html");				// 点击跳转目标页面
 	  // 绑定点击事件设置cookie
 	  itemBox.setAttribute('data-id', self.content[i].id);			// 此处设置cookie，目标页面读取cookie
 	  itemBox.onclick = setCookie;

@@ -175,7 +175,7 @@ MV.prototype = {
 	  //1.1.1、 创建图片容器
 	  var itemBox = document.createElement('a');
 	  itemBox.className = "item_box";
-	  itemBox.setAttribute('href', "./mv_play.html");
+	  itemBox.setAttribute('href', "./playvideo.html");
 	  // 绑定点击事件设置cookie
 	  itemBox.setAttribute('data-id', self.content[i].id);
 	  itemBox.onclick = setCookie;

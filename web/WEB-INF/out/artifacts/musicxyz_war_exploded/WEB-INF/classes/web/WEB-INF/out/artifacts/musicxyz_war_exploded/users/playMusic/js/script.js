@@ -36,20 +36,20 @@ window.onload = function change() {
     }
 
 // 调用方法
-//     alert(decodeURI(GetQueryString("song")));
+//     alert(decodeURI(GetQueryString("timeDown")));
 //     alert(decodeURI(GetQueryString("singer")));
 //     alert(decodeURI(GetQueryString("album")));
-    console.log(decodeURI(GetQueryString("song")));
+    console.log(decodeURI(GetQueryString("timeDown")));
     console.log(decodeURI(GetQueryString("singer")));
-    var  song =decodeURI(GetQueryString("song"));
+    var  song =decodeURI(GetQueryString("timeDown"));
     var  singer =decodeURI(GetQueryString("singer"));
 
 // //单曲播放
 //     if(singer!="null") {
 //         $(".list_author")[0].append(singer);
 //         $($(".list_music")[0]).show();
-//         $(".list_name")[0].append(song);
-//         audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/"+singer+"/"+song+".mp3");
+//         $(".list_name")[0].append(timeDown);
+//         audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/"+singer+"/"+timeDown+".mp3");
 //
 //         audio.play();
 //         if (audio.played) {
@@ -77,7 +77,7 @@ window.onload = function change() {
         $(".list_author")[0].append(singer);
         $($(".list_music")[0]).show();
         $(".list_name")[0].append(song);
-        audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + singer + "/" + song + ".mp3");
+        audio.setAttribute("src", "http://192.168.1.125:8080/music/timeDown/music/" + singer + "/" + song + ".mp3");
 
         audio.play();
         name.innerHTML = $($(".list_name")[0]).html()+" - "+$($(".list_author")[0]).html()
@@ -94,7 +94,7 @@ window.onload = function change() {
 
         //专辑播放列表
         $.get(
-            "/album/song/get",
+            "/album/timeDown/get",
             {"search": search},
             function (result) {
                 var data = JSON.parse(result);
@@ -106,7 +106,7 @@ window.onload = function change() {
                         $(".list_author")[j].append(data.result[j].singer);
                         $($(".list_music")[j]).show();
                     }
-                    audio.setAttribute("src","http://192.168.1.125:8080/music/song/music/"+data.result[0].singer+"/"+data.result[0].song+".mp3");
+                    audio.setAttribute("src","http://192.168.1.125:8080/music/timeDown/music/"+data.result[0].singer+"/"+data.result[0].song+".mp3");
                     $("#song_info_name").html(data.result[0].singer);           //歌词滚动歌手
                     $("#song_info_singer").html(data.result[0].song);
                     /*==== 添加歌词 ====*/
@@ -146,7 +146,7 @@ window.onload = function change() {
                         $($(".list_name")[k]).append(data.result[k].song);
                         $($(".list_music")[k]).show();
                     }
-                    audio.setAttribute("src","http://192.168.1.125:8080/music/song/music/"+oneSinger+"/"+data.result[0].song+".mp3");
+                    audio.setAttribute("src","http://192.168.1.125:8080/music/timeDown/music/"+oneSinger+"/"+data.result[0].song+".mp3");
                     $("#song_info_name").html(oneSinger);
                     $("#song_info_singer").html(data.result[0].song);
                     audio.play();
@@ -191,7 +191,7 @@ window.onload = function change() {
     // var music = new Array();
     // music = ["音阙诗听、赵方婧 - 霜降", "G.E.M.邓紫棋 - 画 (Live Piano Session II)", "冷雪儿 - 浪子回头", "慵狐、熙兮兮兮 - 出山", "磯村由紀子 - 風の住む街"];
     // var num = 0;
-    // name.innerHTML =song+" - "+singer;
+    // name.innerHTML =timeDown+" - "+singer;
 
   // /*==== 添加歌词 ====*/
   // addLyric(lyric);
@@ -199,7 +199,7 @@ window.onload = function change() {
   //上一曲
   left.onclick = function () {
     num = (num + music.length - 1) % music.length;
-    audio.src = "http://192.168.1.125:8080/music/song/music/" + music[num] + ".mp3";
+    audio.src = "http://192.168.1.125:8080/music/timeDown/music/" + music[num] + ".mp3";
     name.innerHTML = song_singer[num];
     pause.style.backgroundPosition = "-30px 0px";
     song_name.innerHTML = pic_song[num];
@@ -215,7 +215,7 @@ window.onload = function change() {
   //下一曲
   right.onclick = function () {
     num = (num + 1) % music.length;
-    audio.src = "http://192.168.1.125:8080/music/song/music/" + music[num] + ".mp3";
+    audio.src = "http://192.168.1.125:8080/music/timeDown/music/" + music[num] + ".mp3";
     name.innerHTML = song_singer[num];
     pause.style.backgroundPosition = "-30px 0px";
       song_name.innerHTML = pic_song[num];
@@ -481,7 +481,7 @@ window.onload = function change() {
 
       // console.log("line: " + line);
 
-      // console.log("song.lyric.length: " + song.lyric.length);
+      // console.log("timeDown.lyric.length: " + timeDown.lyric.length);
 
       if (time >= song.lyric[song.lyric.length - 1].time) {
         line = song.lyric.length;
@@ -561,7 +561,7 @@ Song.prototype = {
     $.ajax({
       type: "get",
       url: "/lyricGet",     // 获取歌词的servlet
-      data: {"path":path},   // {"singer": singerName, "song": songName}
+      data: {"path":path},   // {"singer": singerName, "timeDown": songName}
       async: false,       // 必须为false才能接受到有效返回值
       success: function (result) {
         console.log(result);

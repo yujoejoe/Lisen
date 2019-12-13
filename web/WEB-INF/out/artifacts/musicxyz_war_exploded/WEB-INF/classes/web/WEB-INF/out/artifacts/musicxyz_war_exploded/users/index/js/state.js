@@ -12,49 +12,29 @@ $(document).ready((function(){
 	url: "/userGet",
 	data: {},
 	success: function(result){
-	  console.log(result);
+	  // console.log(result);
 	  var data = JSON.parse(result);
-	  console.log(data);
+	  // console.log(data);
+
 	  if(data.success === false){
 		$(notLog).css('display', 'block');
 		$(profile).css('display', 'none')
 	  }else{
 		$(notLog).css('display', 'none');
 		$(profile).css('display', 'block');
+		if (data.result[0].img !== "") {
+		  console.log(data.result[0].img);
+		  $("#login_img").attr("src", data.result[0].img);
+		}
+
+		$(".logged").click(function () {
+		  var users = data.result[0].name;
+		  // console.log(users);
+		  var  user =  encodeURI(encodeURI(users));
+		  window.location.href = "/users/myMusic/myMusic.html?user="+user;
+		})
 	  }
 	}
   });
 
-    //接受url传来的参数
-    function GetQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return null;
-    }
-
-// 调用方法
-//     alert(decodeURI(GetQueryString("search")));
-var  search  = decodeURI(GetQueryString("search"));
-    $.get(
-        "/userGet",
-        {"search":search},
-        function (result) {
-            var data = JSON.parse(result);
-            console.log(data);
-            if (result != null) {
-                // $(".login_img")[0].src = data.result[0].img;
-                if (data.result[0].img != null) {
-                    $("#login_img").attr("src", data.result[0].img);
-                }
-            }
-
-            $(".logged").click(function () {
-                var users = data.result[0].name;
-                console.log(users);
-               var  user =  encodeURI(encodeURI(users));
-                window.location.href = "/users/myMusic/myMusic.html?user="+user;
-            })
-        }
-    )
 }));

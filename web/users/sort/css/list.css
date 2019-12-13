@@ -1,0 +1,125 @@
+body{
+    background-image: linear-gradient(to bottom, #f6f6f6, #fff);
+}
+
+.list_info{
+    position: relative;
+    margin: 30px 0;
+}
+.list_info .avatar{
+    display: inline-block;
+    float: left;
+    width: 250px;
+    height: 250px;
+}
+.list_info .detail{
+    display: inline-block;
+    margin-left: 30px;
+    height: 250px;
+}
+.detail .title{
+    line-height: 48px;
+    font-size: 24px;
+    font-family: "Microsoft Yahei", sans-serif monospace;
+}
+.detail .author,
+.detail .info_item{
+    line-height: 24px;
+    font-size: 14px;
+}
+.author i,
+.info_item i{
+    color: #666;
+}
+.detail .toolbar{
+    margin: 35px 0;
+}
+.toolbar .bar_item{
+    width: 110px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    display: inline-block;
+    margin-left: 15px;
+    border: 1px solid #31c27c;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.bar_item i{
+    color: #bbb;
+}
+.bar_item:first-child,
+.bar_item:first-child i{
+    color: #fff;
+}
+.bar_item:first-child{
+    background: #31c27c;
+    margin: 0;
+}
+
+.bar_item:first-child:hover{
+    background: #2cae70;
+}
+.bar_item:hover{
+    background: #f8f8f8;
+}
+
+.songlist{
+    width: 70%;
+}
+.songlist .header,
+.song_list .song_list_item{
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px;
+}
+
+.songlist .header{
+    background: #edfcfad1;
+}
+.song_list .song_list_item:nth-child(even){
+    background: rgba(238, 238, 238 , .25);
+}
+
+li[class^="songlist_"],
+div[class^="songlist_"]{
+    display: inline-block;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+li[class^="songlist_"]{
+    color: #999;
+}
+div[class^="songlist_"]{
+    color: #333;
+}
+
+.songlist_name{
+    width: 40%;
+}
+.songlist_singer{
+    margin-left: 10px;
+    width: 24%;
+}
+.songlist_album{
+    margin-left: 10px;
+    width: 25%;
+}
+.songlist_time{
+    margin-left: 10px;
+    color: #999 !important;
+    width: 5%;
+}
+
+.song_list .song_list_item{
+    cursor: pointer;
+}
+
+.song_list .song_list_item:nth-child(even):hover{
+    background: rgba(238, 238, 238 , .5);
+}
+.song_list .song_list_item:nth-child(odd):hover{
+    background: rgba(221, 221, 221, .25);
+}
