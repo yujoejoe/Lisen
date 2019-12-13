@@ -23,8 +23,9 @@ public class SongHitsDAOImp implements SongHitsDAO {
                 String sql = "select distinct"
                         + " song.name as song,"
                         + " singer.name as singer,"
+                        + " album.img as img,"
                         + " song.hits as hits,"
-                        + " album.img as img"
+                        + " song.duration as duration"
                         + " from"
                         + " song"
                         + " inner join"
@@ -57,9 +58,6 @@ public class SongHitsDAOImp implements SongHitsDAO {
                     sql += limit;
                 }
 
-                /*// 控制台输出sql语句，检验正确性
-                System.out.println("SongHits SELECT: " + sql);*/
-
                 // 创建prepareStatement对象
                 pst = conn.prepareStatement(sql);
 
@@ -71,10 +69,11 @@ public class SongHitsDAOImp implements SongHitsDAO {
 
                 while (rs.next()) {
                     SongHits tmp = new SongHits();
-                    tmp.setImg(rs.getString("img"));
-                    tmp.setName(rs.getString("song"));
+                    tmp.setSong(rs.getString("song"));
                     tmp.setSinger(rs.getString("singer"));
+                    tmp.setImg(rs.getString("img"));
                     tmp.setHits(rs.getString("hits"));
+                    tmp.setDuration(rs.getString("duration"));
                     resultList.add(tmp);
                 }
 
@@ -99,9 +98,6 @@ public class SongHitsDAOImp implements SongHitsDAO {
             }
 
             pst = conn.prepareStatement(sql);
-
-            // 控制台输出sql语句，检验正确性
-//            System.out.println("timeDown COUNT: "+sql);
 
             ResultSet rs = pst.executeQuery();
             rs.next();

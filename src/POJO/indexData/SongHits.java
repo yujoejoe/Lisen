@@ -7,31 +7,26 @@ import POJO.Base;
  */
 public class SongHits extends Base {
 
-    String name;
+//    String name;
+    String song;
     String hits;
     String img;
     String singer;
+    String duration;
 
 
-    public String getName() {
+    /*public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String song) {
+        this.name = song;
+    }*/
 
-    public String getHits() {
-        return hits;
+    public String getSong() {
+        return song;
     }
-    public void setHits(String hits) {
-        this.hits = hits;
-    }
-
-    public String getImg() {
-        return img;
-    }
-    public void setImg(String img) {
-        this.img = img;
+    public void setSong(String song) {
+        this.song = song;
     }
 
     public String getSinger() {
@@ -41,14 +36,36 @@ public class SongHits extends Base {
         this.singer = singer;
     }
 
+    public String getImg() {
+        return img;
+    }
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getHits() {
+        return hits;
+    }
+    public void setHits(String hits) {
+        this.hits = hits;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
 
     @Override
     public String toString() {
         return " ["
-                + "name:" + name
+                + "song:" + song
                 + " ,singer:" + singer
                 + " ,img:" + img
                 + " ,hits:" + hits
+                + " ,duration:" + duration
                 + "]";
     }
 }

@@ -10,17 +10,18 @@ import java.net.URLEncoder;
  */
 public class timeDown extends Base {
 
-    String name;
+    String song;
     String date;
     String img;
     String singer;
+    String duration;
 
 
-    public String getName() {
-        return name;
+    public String getSong() {
+        return song;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setSong(String song) {
+        this.song = song;
     }
 
     public String getDate() {
@@ -44,14 +45,22 @@ public class timeDown extends Base {
         this.singer = singer;
     }
 
+    public String getDuration() {
+        return duration;
+    }
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
 
     @Override
     public String toString() {
         return " ["
-                + "name:" + name
+                + "song:" + song
                 + " ,singer:" + singer
                 + " ,img:" + img
                 + " ,date:" + date
+                + " ,duration:" + duration
                 + "]";
     }
 }

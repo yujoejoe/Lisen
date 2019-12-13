@@ -17,13 +17,14 @@ public class SongDAOImp implements SongDAO {
     }
 
         @Override
-        public ArrayList<timeDown> select (timeDown song) throws SQLException {
+        public ArrayList<timeDown> select (timeDown timeDown) throws SQLException {
             try {
                 String sql = "select distinct"
                         + " song.name as song,"
                         + " singer.name as singer,"
                         + " album.img as img,"
-                        + " song.date as date"
+                        + " song.date as date,"
+                        + " song.duration as duration"
                         + " from"
                         + " song"
                         + " inner join"
@@ -39,19 +40,19 @@ public class SongDAOImp implements SongDAO {
 
 
                 // 添加条件
-                String condition = song.getCondition();
+                String condition = timeDown.getCondition();
                 if (condition != null && !condition.equals("")) {
                     sql += " and" + condition;
                 }
 
                 // 排序
-                String orderBy = song.getOrderBy();
+                String orderBy = timeDown.getOrderBy();
                 if (orderBy != null && !orderBy.equals("")) {
                     sql += orderBy;
                 }
 
                 // 分页
-                String limit = song.getLimit();
+                String limit = timeDown.getLimit();
                 if (limit != null && limit.equals("")) {
                     sql += limit;
                 }
@@ -71,9 +72,10 @@ public class SongDAOImp implements SongDAO {
                 while (rs.next()) {
                     timeDown tmp = new timeDown();
                     tmp.setImg(rs.getString("img"));
-                    tmp.setName(rs.getString("song"));
+                    tmp.setSong(rs.getString("song"));
                     tmp.setSinger(rs.getString("singer"));
                     tmp.setDate(rs.getString("date"));
+                    tmp.setDuration(rs.getString("duration"));
                     resultList.add(tmp);
                 }
 
@@ -85,7 +87,7 @@ public class SongDAOImp implements SongDAO {
         }
 
     @Override
-    public int count(timeDown song) throws SQLException {
+    public int count(timeDown timeDown) throws SQLException {
         try{
             // sql语句
             String sql = "select count(*) as counts from song  " +
@@ -93,15 +95,12 @@ public class SongDAOImp implements SongDAO {
                     "INNER JOIN singer ON song.singerId = singer.id " +
                     "where 1=1";
             // 添加条件
-            String condition = song.getCondition();
+            String condition = timeDown.getCondition();
             if(condition != null && !condition.equals("")){
                 sql += " and" + condition;
             }
 
             pst = conn.prepareStatement(sql);
-
-            // 控制台输出sql语句，检验正确性
-//            System.out.println("timeDown COUNT: "+sql);
 
             ResultSet rs = pst.executeQuery();
             rs.next();

@@ -25,7 +25,8 @@ public class JapanDAOImp implements JapanDAO {
                         + " song.name as song,"
                         + " singer.name as singer,"
                         + " album.img as img,"
-                        + " song.date as date"
+                        + " song.date as date,"
+                        + " song.duration as duration"
                         + " from"
                         + " song"
                         + " inner join"
@@ -74,9 +75,10 @@ public class JapanDAOImp implements JapanDAO {
                 while (rs.next()) {
                     Japan tmp = new Japan();
                     tmp.setImg(rs.getString("img"));
-                    tmp.setName(rs.getString("song"));
+                    tmp.setSong(rs.getString("song"));
                     tmp.setSinger(rs.getString("singer"));
                     tmp.setDate(rs.getString("date"));
+                    tmp.setDuration(rs.getString("duration"));
                     resultList.add(tmp);
                 }
 
