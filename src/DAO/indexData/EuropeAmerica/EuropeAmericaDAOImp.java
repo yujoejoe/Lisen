@@ -35,7 +35,8 @@ public class EuropeAmericaDAOImp implements EuropeAmericaDAO {
                         + " on "
                         + " song.albumId = album.id"
                         + " WHERE singer.areaId=2"
-                        + " ORDER BY date DESC;";
+                        + " ORDER BY date DESC"
+                        + " LIMIT 20;";
 
 
                 // 添加条件

@@ -37,7 +37,8 @@ public class JapanDAOImp implements JapanDAO {
                         + " on "
                         + " song.albumId = album.id"
                         + " WHERE singer.areaId=4 OR singer.areaId=3"
-                        + " ORDER BY date DESC;";
+                        + " ORDER BY date DESC"
+                        + " LIMIT 20;";
 
 
                 // 添加条件

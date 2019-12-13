@@ -35,7 +35,8 @@ public class SongHitsDAOImp implements SongHitsDAO {
                         + " album "
                         + " on "
                         + " song.albumId = album.id"
-                        + " ORDER BY hits DESC;";
+                        + " ORDER BY hits DESC"
+                        + " LIMIT 20;";
 
 
                 // 添加条件

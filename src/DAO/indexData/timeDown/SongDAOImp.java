@@ -34,8 +34,8 @@ public class SongDAOImp implements SongDAO {
                         + " album "
                         + " on "
                         + " song.albumId = album.id"
-                        + " ORDER BY date DESC;";
-                        /*+ " where 1=1 ;";*/
+                        + " ORDER BY date DESC"
+                        + " LIMIT 20;";
 
 
                 // 添加条件
