@@ -1,11 +1,13 @@
-body{
-    background-image: linear-gradient(to bottom, #f6f6f6, #fff);
-}
 
 .list_info{
     position: relative;
     margin: 30px 0;
 }
+.list_cont{
+    position: relative;
+    margin-bottom: 60px;
+}
+
 .list_info .avatar{
     display: inline-block;
     float: left;
@@ -14,7 +16,7 @@ body{
 }
 .list_info .detail{
     display: inline-block;
-    margin-left: 30px;
+    margin-left: 50px;
     height: 250px;
 }
 .detail .title{
@@ -24,7 +26,7 @@ body{
 }
 .detail .author,
 .detail .info_item{
-    line-height: 24px;
+    line-height: 28px;
     font-size: 14px;
 }
 .author i,
@@ -61,7 +63,7 @@ body{
     background: #2cae70;
 }
 .bar_item:hover{
-    background: #f8f8f8;
+    background: #f4f4f4;
 }
 
 .songlist{
@@ -71,7 +73,7 @@ body{
 .song_list .song_list_item{
     height: 45px;
     line-height: 45px;
-    padding: 0 40px;
+    padding: 0 20px 0 40px;
 }
 
 .songlist .header{
@@ -117,9 +119,38 @@ div[class^="songlist_"]{
     cursor: pointer;
 }
 
+.song_list_item .number{
+    position: absolute;
+    left: 15px;
+    color: #ccc;
+}
+
 .song_list .song_list_item:nth-child(even):hover{
     background: rgba(238, 238, 238 , .5);
 }
 .song_list .song_list_item:nth-child(odd):hover{
     background: rgba(221, 221, 221, .25);
+}
+
+.aside{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 150px;
+    overflow: hidden;
+    /*border: 1px solid #ccc;*/
+    /*border-radius: 2px;*/
+}
+.aside .intro{
+    font-size: 18px;
+}
+.aside .cont{
+    width: 275px;
+    height: 115px;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 15px 0 0 15px;
+    padding-right: 24px;
+    overflow-y: scroll;
 }
