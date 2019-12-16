@@ -17,6 +17,7 @@
 
     <link rel="stylesheet" href="tools/aos/aos.css">
     <script src="users/index/js/script.js"></script>
+
     <script type="text/javascript" src="users/index/js/indexData.js"></script>
 
 </head>
@@ -93,12 +94,12 @@
     <div class="main-inner">
         <div class="carousel" data-aos="flip-down">
             <div class="carousel-slider">
-                <a href="#" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
-                <a href="#" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
-                <a href="#" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
-                <a href="#" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
-                <a href="#" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
-                <a href="#" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
+                <a href="/users/mv/playvideo.html" class="item item-pic1"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
+                <a href="/users/mv/playvideo.html" class="item item-pic2"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
+                <a href="/users/mv/playvideo.html" class="item item-pic3"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
+                <a href="/users/mv/playvideo.html" class="item item-pic4"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
+                <a href="/users/mv/playvideo.html" class="item item-pic5"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
+                <a href="/users/mv/playvideo.html" class="item item-pic6"><img src="" class="recommend_img"></a> <!--从数据库获取精彩推荐图片-->
             </div>
         </div>
     </div>
@@ -120,10 +121,10 @@
             <span class="line line-right"></span>
         </div>
         <div class="main-tab tab-title" data-aos="fade-right">
-            <a href="javascript:" class="item item-cur">全部</a>
-            <a href="javascript:" class="item">华语</a>
-            <a href="javascript:" class="item">欧美</a>
-            <a href="javascript:" class="item">日韩</a>
+            <a href="javascript:" class="item item-cur" id="all_NewSong">全部</a>
+            <a href="javascript:" class="item" id="China_NewSong">华语</a>
+            <a href="javascript:" class="item" id="EuropeAmerica_NewSong">欧美</a>
+            <a href="javascript:" class="item" id="JapanKorea_NewSong">日韩</a>
         </div>
         <div class="main-slider tab-cont" data-aos="fade-left">
             <ul class="slider-wrapper">
@@ -132,7 +133,6 @@
                         <li>
                             <a href="#" class="img">
                                 <img src="" class="newSongs_img">     <!--获取数据库歌曲图片-->
-
                                 <span class="mask"></span>
                                 <i class="icon-play"></i>
                             </a>
@@ -147,7 +147,6 @@
                         <li>
                             <a href="#" class="img">
                                 <img src="" class="newSongs_img">     <!--获取数据库歌曲图片-->
-
                                 <span class="mask"></span>
                                 <i class="icon-play"></i>
                             </a>
@@ -162,7 +161,6 @@
                         <li>
                             <a href="#" class="img">
                                 <img src="" class="newSongs_img">     <!--获取数据库歌曲图片-->
-
                                 <span class="mask"></span>
                                 <i class="icon-play"></i>
                             </a>
@@ -177,7 +175,6 @@
                         <li>
                             <a href="#" class="img">
                                 <img src="" class="newSongs_img">     <!--获取数据库歌曲图片-->
-
                                 <span class="mask"></span>
                                 <i class="icon-play"></i>
                             </a>
@@ -196,7 +193,6 @@
                         <li>
                             <a href="#" class="img">
                                 <img src="" class="newSongs_img">     <!--获取数据库歌曲图片-->
-
                                 <span class="mask"></span>
                                 <i class="icon-play"></i>
                             </a>
@@ -211,7 +207,6 @@
                         <li>
                             <a href="#" class="img">
                                 <img src="" class="newSongs_img">     <!--获取数据库歌曲图片-->
-
                                 <span class="mask"></span>
                                 <i class="icon-play"></i>
                             </a>
@@ -226,7 +221,6 @@
                         <li>
                             <a href="#" class="img">
                                 <img src="" class="newSongs_img">     <!--获取数据库歌曲图片-->
-
                                 <span class="mask"></span>
                                 <i class="icon-play"></i>
                             </a>
@@ -241,7 +235,6 @@
                         <li>
                             <a href="#" class="img">
                                 <img src="" class="newSongs_img">     <!--获取数据库歌曲图片-->
-
                                 <span class="mask"></span>
                                 <i class="icon-play"></i>
                             </a>
@@ -545,7 +538,7 @@
             <span class="line line-left"></span>
             <span class="line line-right"></span>
         </div>
-        <a href="#" class="readAll">全部<i class="icon-sprite"></i></a>
+        <a href="/users/mv/mv.html" class="readAll">全部<i class="icon-sprite"></i></a>
         <div class="main-tab tab-title">
             <a href="javascript:" class="item item-cur">全部</a>
             <a href="javascript:" class="item">华语</a>
@@ -554,7 +547,7 @@
         </div>
         <ul class="mv-list tab-cont" data-aos="zoom-in-up">
             <li class="item" data-aos="fade-left">
-                <a href="#" class="img"><img src="" class="mv_img"> <!--从数据库获取mv图片-->
+                <a href="#" class="img"><img src="/users/mv/playvideo.html" class="mv_img"> <!--从数据库获取mv图片-->
                     <i class="icon-play"></i></a>
                 <div class="info">
                     <a href="#" class="title mv_song" ></a> <!--从数据库获取mv_song-->
@@ -563,7 +556,7 @@
                 </div>
             </li>
             <li class="item" data-aos="fade-left">
-                <a href="#" class="img"><img src="" class="mv_img"> <!--从数据库获取mv图片-->
+                <a href="#" class="img"><img src="/users/mv/playvideo.html" class="mv_img"> <!--从数据库获取mv图片-->
                     <i class="icon-play"></i></a>
                 <div class="info">
                     <a href="#" class="title mv_song" ></a> <!--从数据库获取mv_song-->
@@ -572,7 +565,7 @@
                 </div>
             </li>
             <li class="item" data-aos="fade-left">
-                <a href="#" class="img"><img src="" class="mv_img"> <!--从数据库获取mv图片-->
+                <a href="#" class="img"><img src="/users/mv/playvideo.html" class="mv_img"> <!--从数据库获取mv图片-->
                     <i class="icon-play"></i></a>
                 <div class="info">
                     <a href="#" class="title mv_song" ></a> <!--从数据库获取mv_song-->
@@ -581,7 +574,7 @@
                 </div>
             </li>
             <li class="item" data-aos="fade-left">
-                <a href="#" class="img"><img src="" class="mv_img"> <!--从数据库获取mv图片-->
+                <a href="#" class="img"><img src="/users/mv/playvideo.html" class="mv_img"> <!--从数据库获取mv图片-->
                     <i class="icon-play"></i></a>
                 <div class="info">
                     <a href="#" class="title mv_song" ></a> <!--从数据库获取mv_song-->
@@ -590,7 +583,7 @@
                 </div>
             </li>
             <li class="item" data-aos="fade-right">
-                <a href="#" class="img"><img src="" class="mv_img"> <!--从数据库获取mv图片-->
+                <a href="#" class="img"><img src="/users/mv/playvideo.html" class="mv_img"> <!--从数据库获取mv图片-->
                     <i class="icon-play"></i></a>
                 <div class="info">
                     <a href="#" class="title mv_song" ></a> <!--从数据库获取mv_song-->
@@ -599,7 +592,7 @@
                 </div>
             </li>
             <li class="item" data-aos="fade-right">
-                <a href="#" class="img"><img src="" class="mv_img"> <!--从数据库获取mv图片-->
+                <a href="#" class="img"><img src="/users/mv/playvideo.html" class="mv_img"> <!--从数据库获取mv图片-->
                     <i class="icon-play"></i></a>
                 <div class="info">
                     <a href="#" class="title mv_song" ></a> <!--从数据库获取mv_song-->
@@ -608,7 +601,7 @@
                 </div>
             </li>
             <li class="item" data-aos="fade-right">
-                <a href="#" class="img"><img src="" class="mv_img"> <!--从数据库获取mv图片-->
+                <a href="#" class="img"><img src="/users/mv/playvideo.html" class="mv_img"> <!--从数据库获取mv图片-->
                     <i class="icon-play"></i></a>
                 <div class="info">
                     <a href="#" class="title mv_song" ></a> <!--从数据库获取mv_song-->
@@ -617,7 +610,7 @@
                 </div>
             </li>
             <li class="item" data-aos="fade-right">
-                <a href="#" class="img"><img src="" class="mv_img"> <!--从数据库获取mv图片-->
+                <a href="#" class="img"><img src="/users/mv/playvideo.html" class="mv_img"> <!--从数据库获取mv图片-->
                     <i class="icon-play"></i></a>
                 <div class="info">
                     <a href="#" class="title mv_song" ></a> <!--从数据库获取mv_song-->

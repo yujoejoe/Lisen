@@ -38,7 +38,7 @@ public class lyricGet extends HttpServlet {
         source.setPath(path);
         String lyric = source.getLyric();
 
-//        Song timeDown = new Song();
+//        timeDown timeDown = new timeDown();
 //        path += ".mp3";
 //        timeDown.setPath(path);
 //        String url = timeDown.getUrl();

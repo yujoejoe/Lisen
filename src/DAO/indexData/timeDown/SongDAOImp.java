@@ -35,6 +35,7 @@ public class SongDAOImp implements SongDAO {
                         + " album "
                         + " on "
                         + " song.albumId = album.id"
+                        + " WHERE singer.areaId=1"
                         + " ORDER BY date DESC"
                         + " LIMIT 20;";
 
@@ -93,7 +94,7 @@ public class SongDAOImp implements SongDAO {
             String sql = "select count(*) as counts from song  " +
                     "INNER JOIN album ON song.albumId = album.id  " +
                     "INNER JOIN singer ON song.singerId = singer.id " +
-                    "where 1=1";
+                    "where singer.areaId=1";
             // 添加条件
             String condition = timeDown.getCondition();
             if(condition != null && !condition.equals("")){

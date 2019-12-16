@@ -19,6 +19,24 @@
   background: url(../images/icon_sprite.png) no-repeat;
 }
 
+
+
+/*.choose ul{
+  color: gray;
+}
+.choose ul li{
+  float: left;
+  left: 500px;
+  margin-left: 40px;
+  margin-bottom: 40px;
+}
+.choose ul li:hover{
+  color: white;
+  cursor: pointer;
+}*/
+
+
+
 /* ====== public ====== */
 .main {
   overflow: hidden;
@@ -251,7 +269,6 @@
   margin-top: -54px;
   width: 72px;
   height: 108px;
-
   transition: all 0.3s;
   -webkit-transition: all 0.3s;
 }
@@ -608,6 +625,7 @@
 /*#recommend .main-title .line {*/
   /*background-color: #000;*/
 /*}*/
+
 #recommend .main-inner{
   margin: 150px auto !important;
   z-index: 1;
@@ -635,7 +653,6 @@
   top: 0;
   width: 820px;
   opacity: 0;
-
   transition: all 400ms ease-in-out;
 }
 .carousel-slider .item-pic2,
