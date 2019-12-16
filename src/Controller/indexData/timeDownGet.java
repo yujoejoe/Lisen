@@ -32,27 +32,6 @@ public class timeDownGet extends HttpServlet{
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        PrintWriter out = response.getWriter();
-
-
-        // （参）1、获取参数值保存到POJO对象中
-        // 设置查询条件
-        /*String search = request.getParameter("search");
-        if(search!=null && search.length()!=0){
-            timeDown.setCondition(" timeDown.name ='"+search+"' or timeDown.date='"+search+"'");
-        }else{
-            timeDown.setCondition("");
-        }
-        // 设置分页
-        String page = request.getParameter("page");     // 页数
-        String size = request.getParameter("size");     // 每页显示的数据大小
-        if(page!=null && page.length()!=0 && size!=null && size.length()!=0){
-            int p = Integer.parseInt(page);
-            int r = Integer.parseInt(size);
-            timeDown.setLimit(" limit " + (p-1)*r + "," + r);
-        }else{
-            timeDown.setLimit("");
-        }*/
 
         // 设置排序方式
         String field = request.getParameter("field");   // 排序字段
