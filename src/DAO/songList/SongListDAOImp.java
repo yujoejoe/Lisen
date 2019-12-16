@@ -1,6 +1,6 @@
 package DAO.songList;
 
-import POJO.SongList;
+import POJO.songList.SongList;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

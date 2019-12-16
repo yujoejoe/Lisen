@@ -1,6 +1,6 @@
 package ServiceDAO.songList;
 
-import POJO.SongList;
+import POJO.songList.SongList;
 
 import java.util.ArrayList;
 

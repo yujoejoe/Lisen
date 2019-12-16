@@ -247,15 +247,12 @@ Sort.prototype = {
 };
 
 function setCookie() {
-  document.cookie = "slId=" + this.getAttribute('data-id') + ";path=/";
+  var cName = "slId";
+  document.cookie = cName + "=" + this.getAttribute('data-id') + ";path=/";
   console.log(document.cookie);
 }
 
-function clearChild(parent) {
-  while (parent !== null && parent.hasChildNodes()) {
-	parent.removeChild(parent.firstChild);
-  }
-}
+
 
 $(document).ready(function () {
   var sort = new Sort();

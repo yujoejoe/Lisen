@@ -1,9 +1,11 @@
-package POJO;
+package POJO.songList;
+
+import POJO.Base;
 
 /**
  * Created by user on 2019/12/12.
  */
-public class SongList extends Base{
+public class SongList extends Base {
     private String author;
     private String style;
     private String theme;

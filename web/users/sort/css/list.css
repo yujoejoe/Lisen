@@ -14,6 +14,9 @@
     width: 250px;
     height: 250px;
 }
+.avatar img{
+    width: 100%;
+}
 .list_info .detail{
     display: inline-block;
     margin-left: 50px;
@@ -116,6 +119,7 @@ div[class^="songlist_"]{
 }
 
 .song_list .song_list_item{
+    position: relative;
     cursor: pointer;
 }
 
@@ -124,14 +128,31 @@ div[class^="songlist_"]{
     left: 15px;
     color: #ccc;
 }
-
+.song_list_play{
+    position: absolute;
+    left: 250px;
+    top: 6px;
+    width: 32px;
+    height: 32px;
+    line-height:32px;
+    text-align: center;
+    display: none;
+}
+.song_list_play i{
+    color: #ccc;
+}
+.song_list_play i:hover{
+    color: #31c27c;
+}
 .song_list .song_list_item:nth-child(even):hover{
     background: rgba(238, 238, 238 , .5);
 }
 .song_list .song_list_item:nth-child(odd):hover{
     background: rgba(221, 221, 221, .25);
 }
-
+.song_list .song_list_item:hover .song_list_play{
+    display: block;
+}
 .aside{
     position: absolute;
     top: 0;

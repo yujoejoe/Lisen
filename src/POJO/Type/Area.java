@@ -1,9 +1,11 @@
-package POJO;
+package POJO.Type;
+
+import POJO.Base;
 
 /**
- * Created by user on 2019/12/12.
+ * Created by user on 2019/12/3.
  */
-public class Style extends Base {
+public class Area extends Base {
     private int id;
     private String name;
 

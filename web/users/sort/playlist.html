@@ -16,7 +16,9 @@
   <!--------------------------当前页面自己用的js和css-------------------------->
   <link rel="stylesheet" href="./css/list.css">
 	<link rel="stylesheet" href="../common/css/com.css">
+	<script src="../common/js/com.js"></script>
   <script src="../common/js/loading.js"></script>
+	<script src="./js/playlist.js"></script>
 
 </head>
 <body>
@@ -95,20 +97,9 @@
 				<i class="fa fa-user-o"></i>
 				<span>卤蛋</span>
 			</div>
-			<ul>
-				<li class="info_item">
-					<i>标签</i>
-					<span>流行</span>
-				</li>
-				<li class="info_item">
-					<i>播放量</i>
-					<span>123</span>
-				</li>
-				<li class="info_item">
-					<i>收藏量</i>
-					<span>123</span>
-				</li>
-			</ul>
+			<div class="info_item"><i>标签：</i><span></span></div>
+			<div class="info_item"><i>播放量：</i><span></span></div>
+			<div class="info_item"><i>收藏量：</i><span></span></div>
 			<div class="toolbar">
 				<div class="bar_item">
 					<i class="fa fa-play"></i>
@@ -129,29 +120,18 @@
 				<li class="songlist_album">专辑</li>
 				<li class="songlist_time">时长</li>
 			</ul>
-			<ul class="song_list">
-				<li class="song_list_item">
+			<div class="song_list">
+				<div class="song_list_item">
+					<a href="/users/playMusic/playMusic.html" class="song_list_play">
+						<i class="fa fa-play"></i>
+					</a>
 					<span class="number">1</span>
 					<div class="songlist_name">忽然之间</div>
 					<div class="songlist_singer">毛不易</div>
 					<div class="songlist_album">蒙面唱将</div>
 					<div class="songlist_time">03:15</div>
-				</li>
-				<li class="song_list_item">
-					<span class="number">2</span>
-					<div class="songlist_name">忽然之间</div>
-					<div class="songlist_singer">毛不易</div>
-					<div class="songlist_album">蒙面唱将</div>
-					<div class="songlist_time">03:15</div>
-				</li>
-				<li class="song_list_item">
-					<span class="number">3</span>
-					<div class="songlist_name">忽然之间</div>
-					<div class="songlist_singer">毛不易</div>
-					<div class="songlist_album">蒙面唱将</div>
-					<div class="songlist_time">03:15</div>
-				</li>
-			</ul>
+				</div>
+			</div>
 			<div class="page" id="pageBox">
 				<a href="" class="page_index selected">1</a>
 				<a href="" class="page_index">2</a>

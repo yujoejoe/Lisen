@@ -1,9 +1,11 @@
-package POJO;
+package POJO.Type;
+
+import POJO.Base;
 
 /**
  * Created by user on 2019/12/3.
  */
-public class Area extends Base{
+public class Version extends Base {
     private int id;
     private String name;
 
@@ -25,6 +27,6 @@ public class Area extends Base{
 
     @Override
     public String toString() {
-        return "\"" + name + "\"";
+        return "\""+ name + "\"";
     }
 }

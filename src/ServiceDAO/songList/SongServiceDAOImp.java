@@ -1,7 +1,7 @@
 package ServiceDAO.songList;
 
-import DAO.songList.SongListDAOImp;
-import POJO.songList.SongList;
+import DAO.songList.SongDAOImp;
+import POJO.songList.Song;
 import util.DBUtil;
 
 import java.sql.Connection;
@@ -9,17 +9,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Created by user on 2019/12/12.
+ * Created by user on 2019/12/16.
  */
-public class SongListServiceDAOImp implements SongListServiceDAO{
+public class SongServiceDAOImp implements SongServiceDAO{
     @Override
-    public ArrayList<SongList> select(SongList sList) {
+    public ArrayList<Song> select(Song song) {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Song> selectList(Song song) {
         Connection conn = DBUtil.getConnection();
-        SongListDAOImp slDI = new SongListDAOImp(conn);
+        SongDAOImp sDI = new SongDAOImp(conn);
 
         try {
-            ArrayList<SongList> resultList = new ArrayList<>();
-            resultList = slDI.select(sList);
+            ArrayList<Song> resultList = new ArrayList<>();
+            resultList = sDI.selectList(song);
             conn.commit();
             return resultList;
         } catch (SQLException e) {
@@ -38,27 +43,22 @@ public class SongListServiceDAOImp implements SongListServiceDAO{
     }
 
     @Override
-    public ArrayList<SongList> selectRan(SongList sList) {
-        return null;
-    }
-
-    @Override
-    public int insert(SongList sList) {
+    public int insert(Song song) {
         return 0;
     }
 
     @Override
-    public int delete(SongList sList) {
+    public int delete(Song song) {
         return 0;
     }
 
     @Override
-    public int update(SongList sList) {
+    public int update(Song song) {
         return 0;
     }
 
     @Override
-    public int count(SongList sList) {
+    public int count(Song song) {
         return 0;
     }
 }

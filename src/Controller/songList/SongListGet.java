@@ -1,7 +1,7 @@
 package Controller.songList;
 
 import POJO.JsonData;
-import POJO.SongList;
+import POJO.songList.SongList;
 import ServiceDAO.songList.SongListServiceDAOImp;
 
 import javax.servlet.RequestDispatcher;
@@ -30,6 +30,7 @@ public class SongListGet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         // 前端参数
+        String listId = request.getParameter("listId");
         String name = request.getParameter("name");         // 歌单名字
         String style = request.getParameter("style");
         String theme = request.getParameter("theme");
@@ -43,8 +44,11 @@ public class SongListGet extends HttpServlet {
 
         // 添加条件
         String condition = "";
+        if(listId != null && !listId.equals("")){
+            condition += " and songlist.id = " + listId;
+        }
         if(name != null && !name.equals("")){
-            condition += " songlist.name = '" + name + "'";
+            condition += " and songlist.name = '" + name + "'";
         }
         if(style != null && !style.equals("")){
             condition += " and style.name = '" + style + "'";

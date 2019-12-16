@@ -2,18 +2,6 @@
  * Created by user on 2019/12/6.
  */
 
-document.onreadystatechange = loading;
-
-// 页面加载事件
-function loading() {
-  var load = document.querySelector('.loading');
-
-  if (document.readyState === "complete") {
-	load.style.display = "none";
-  } else {
-	load.style.display = "block";
-  }
-}
 
 function MVP() {
   this.mId = getCookie("mId");
@@ -29,29 +17,6 @@ function MVP() {
   this.volumeBtn = document.querySelector("#icoVolume");	    // 声音按钮
   this.fullscreenBtn = document.querySelector("#icofullscreen");// 全屏按钮
   this.isPlay = false;
-}
-
-function getCookie(key){
-  var cookies = document.cookie.replace(/\s*/g, "").split(";");
-  console.log(cookies);
-  var obj = [];
-  var value;
-  for(var i = 0; i < cookies.length; ++i){
-    var o = {
-      "key": cookies[i].split("=")[0],
-	  "value": cookies[i].split("=")[1]
-	};
-	obj.push(o);
-  }
-  console.log(obj);
-
-  for(var j = 0; j < obj.length; ++j){
-    if(obj[j].key === key){
-      value = obj[j].value;
-      break;
-	}
-  }
-  return value;
 }
 
 MVP.prototype = {
