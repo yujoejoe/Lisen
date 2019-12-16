@@ -4,19 +4,22 @@
 
 
 function MVP() {
-  this.mId = getCookie("mId");
+  this.mId = getCookie("mId");									// 视频id
   this.videoInfo = [];											// 接受后台发送的视频信息
   this.cmts = [];												// 接受发送的评论信息
-  this.video = document.querySelector("#mvPlay video");			// 视频
   this.duration = 0;											// 视频总时长
-  this.playBtn = document.querySelector("#icoPlay");			// 播放按钮
+  this.isPlay = false;											// 判断当前是否在播放状态
   this.vPro = document.querySelector(".progress");		        // 视频进度条
-  this.vProInner = document.querySelector(".progress .progress_inner");
+  this.playBtn = document.querySelector("#icoPlay");			// 播放按钮
   this.vDot = document.querySelector(".v_dot");					// 视频小圆点
+  this.video = document.querySelector("#mvPlay video");			// 视频
+  this.vProInner = document.querySelector(".progress .progress_inner");
   this.volPro = document.querySelector(".vol_progress");		// 声音进度条
   this.volumeBtn = document.querySelector("#icoVolume");	    // 声音按钮
   this.fullscreenBtn = document.querySelector("#icofullscreen");// 全屏按钮
-  this.isPlay = false;
+  this.dmBtn = document.querySelector(".dmWrap button");		// 发送弹幕按钮
+  this.dmInput = document.querySelector(".dmWrap input");		// 弹幕输入框
+  this.cmtInput = document.querySelector("#cmt cmt_input");		// 评论输入框
 }
 
 MVP.prototype = {
@@ -107,7 +110,7 @@ MVP.prototype = {
 	  $(self.vDot).css('left', (curWidth - dotWidth / 2) + 'px');	// 小圆点left值等于进度条当前宽度 - 半径
 	});
   },
-  event: function(){						// 绑定各种点击事件
+  event: function(){						// 绑定各种简单的事件
     var self = this;
     // 播放按钮
 	this.playBtn.onclick = function () {
@@ -133,17 +136,21 @@ MVP.prototype = {
 	// 点击播放进度条
 	this.vPro.onmousedown = videoEvent;
 
-	// this.vDot.onmousedown = function (e) {
-	//   console.log("emmm...");
-	//   document.onmousemove = function (e) {
-	// 	videoEvent(e);
-	//   };
-	//   document.onmouseup = function () {
-	// 	this.onmousemove = null;
-	// 	this.onmouseup = null;
-	//   };
-	//   return false;
-	// };
+	// 弹幕输入框
+	this.dmInput.onfocus = function () {
+	  this.placeholder = "";
+	};
+	this.dmInput.onblur = function () {
+	  this.placeholder = "发送弹幕~";
+	};
+
+	// 评论输入框
+	this.cmtInput.onfocus = function () {
+	  this.innerHTML = "";
+	};
+	this.cmtInput.onblur = function () {
+	  this.innerHTML = "期待你的神评论......";
+	};
 
 
 	this.volumeBtn.onmouseover = function(){

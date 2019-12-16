@@ -8,6 +8,7 @@ body{
 }
 
 .mv_part{
+    position: relative;
     background-color: #333;
 }
 .mv_inner{
@@ -23,22 +24,24 @@ body{
     width: 100%;
     outline: none;
 }
-
+.mv_danmu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 2;
+    overflow: hidden;
+}
 /*==== 弹幕 ====*/
 .barrage{
     position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto auto;
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-    text-align: center;
-    font-size: 18px;
-    color: #fff;
-    display: none;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 8s ease-out;
+    white-space: pre;
+    left: 100%;
+    line-height:10px;
 }
 
 /*==== 控制区域 ====*/
@@ -227,7 +230,7 @@ body{
     right: 0;
     top: 0;
 }
-.mv_btn i{
+.mv_btn a{
     margin: 0 10px;
     color: #fff;
     font-size: 18px;
@@ -235,6 +238,50 @@ body{
 }
 .mv_btn i:hover{
     color: #31c27c;
+}
+/*======== 弹幕 =======*/
+.dmWrap{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 200px;
+    margin: auto 0;
+    width: 350px;
+    height: 30px;
+}
+
+.dmWrap input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 272px;
+    border: 1px solid #666;
+    border-radius: 2px;
+    color: #ccc;
+    padding: 2px 5px;
+    box-sizing: border-box;
+    background: #2e2e2e;
+}
+.dmWrap button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 80px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    color: #eeeeee;
+    background: #31c27c;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.dmWrap button:hover{
+    background: #2db675;
+    color: #f8f8f8;
 }
 
 .mv_info{

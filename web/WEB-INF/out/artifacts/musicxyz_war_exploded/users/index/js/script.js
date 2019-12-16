@@ -123,17 +123,15 @@ $(function () {
 
       //新歌首发全部部分
       $("#all_NewSong").click(function () {
-          /*$(".newSongs_img").src.empty();
-          $(".newSongs_song").empty();
-          $(".newSongs_singerName").empty();*/
           $.get(
               "/timeDown/get",
               function (result) {
                   var data = JSON.parse(result);
                   for (var j = 0; j < 20; j++) {
-                      $(".newSongs_img")[j].src=data.result[j].img;
-                      $(".newSongs_song")[j].append(data.result[j].song);
-                      $(".newSongs_singerName")[j].append(data.result[j].singer);
+                      var i = 3*j;
+                      $(".newSongs_img")[j].src=data.result[i%data.result.length].img;
+                      $(".newSongs_song")[j].append(data.result[i%data.result.length].song);
+                      $(".newSongs_singerName")[j].append(data.result[i%data.result.length].singer);
                   }
               }
           );
@@ -141,9 +139,6 @@ $(function () {
 
       //新歌首发华语部分
       $("#China_NewSong").click(function () {
-          /*$(".newSongs_img").src.empty();
-          $(".newSongs_song").empty();
-          $(".newSongs_singerName").empty();*/
           $.get(
               "/timeDown/get",
               function (result) {
@@ -159,10 +154,6 @@ $(function () {
 
       //新歌首发日韩部分
       $("#JapanKorea_NewSong").click(function () {
-         /* var temp = "";
-          $(".newSongs_img").src.innerHTML=temp;
-          $(".newSongs_song").innerHTML=temp;
-          $(".newSongs_singerName").innerHTML=temp;*/
           $.get(
               "/Japan/get",
               function (result) {
@@ -178,9 +169,6 @@ $(function () {
 
       //新歌首发欧美部分
       $("#EuropeAmerica_NewSong").click(function () {
-          /*$(".newSongs_img").src.empty();
-          $(".newSongs_song").empty();
-          $(".newSongs_singerName").empty();*/
           $.get(
               "/EuropeAmerica/get",
               function (result) {
@@ -193,21 +181,6 @@ $(function () {
               }
           );
       });
-
-      /*$.get(
-          "/mvGet",
-          function (result) {
-              var data = JSON.parse(result);
-              //MV部分
-              this.mv = {
-                  1: [data.result[0].img,data.result[1].img,data.result[2].img,data.result[3].img,data.result[4].img,data.result[5].img,data.result[6].img,data.result[7].img],
-                  2: [data.result[8].img,data.result[9].img,data.result[10].img,data.result[11].img,data.result[12].img,data.result[13].img,data.result[14].img,data.result[15].img],
-                  3: [data.result[16].img,data.result[17].img,data.result[18].img,data.result[19].img,data.result[20].img,data.result[21].img,data.result[22].img,data.result[23].img],
-                  4: [data.result[24].img,data.result[25].img,data.result[26].img,data.result[27].img,data.result[28].img,data.result[3].img,data.result[1].img,data.result[2].img]
-              };
-          }
-      );*/
-
   };
 
 

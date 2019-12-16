@@ -67,45 +67,107 @@ $(document).ready(function () {
     );
 
 
+//     $.get(
+//     "/collection/get",
+//     {"search":search},
+//     function (result) {
+//         var  data = JSON.parse(result);
+//         console.log(data);
+//
+//             if(result!=null) {
+//
+//
+//                 for (var i = 0; i < data.result.length; i++) {
+//                     // 歌曲
+//                     $(".single_song")[i].append(data.result[i].song);
+//                     $(".single_singer")[i].append(data.result[i].singer);
+//                     $(".single_duration")[i].append(data.result[i].duration);
+//                     $($(".single_header")[i]).show();
+//                     // 专辑
+//                     $(".txt_img")[i].src = data.result[i].albumListImg;
+//                     $(".txt_name")[i].append(data.result[i].albumListName);
+//                     $($(".show_hide")[i]).show();
+//                     // MV
+//                     $(".txt_imgM")[i].src = data.result[i].mvImg;
+//                     $(".txt_nameM")[i].append(data.result[i].mvName);
+//                     $($(".show_hideM")[i]).show();
+//                 }
+//             }
+//
+//     }
+// );
+
     $.get(
-    "/collection/get",
-    {"search":search},
-    function (result) {
-        var  data = JSON.parse(result);
-        console.log(data);
-
-            if(result!=null) {
-
-
-                for (var i = 0; i < data.result.length; i++) {
-                    // 歌曲
+        "/collections/get",
+        {"search":search},
+        function (result) {
+            var data = JSON.parse(result);
+            console.log(data);
+            $("#song").append(data.counts);
+            for (var i = 0; i <data.result.length ; i++) {
+                // 歌曲
                     $(".single_song")[i].append(data.result[i].song);
                     $(".single_singer")[i].append(data.result[i].singer);
                     $(".single_duration")[i].append(data.result[i].duration);
                     $($(".single_header")[i]).show();
-                    // 专辑
+            }
+        }
+    );
+
+$.get(
+  "/collectiona/get",
+    {"search":search},
+    function (result) {
+      var  data =  JSON.parse(result);
+      console.log(data);
+        $("#album").append(data.counts);
+        for (var i = 0; i <data.result.length ; i++) {
+            // 专辑
                     $(".txt_img")[i].src = data.result[i].albumListImg;
                     $(".txt_name")[i].append(data.result[i].albumListName);
                     $($(".show_hide")[i]).show();
-                    // MV
+        }
+    }
+);
+
+
+$.get(
+  "/collectionm/get",
+    {"search":search},
+    function (result) {
+      var  data =  JSON.parse(result);
+      console.log(data);
+        $("#mv").append(data.counts);
+
+        for (var i = 0; i <data.result.length ; i++) {
+            // MV
                     $(".txt_imgM")[i].src = data.result[i].mvImg;
                     $(".txt_nameM")[i].append(data.result[i].mvName);
                     $($(".show_hideM")[i]).show();
-                }
-            }
-
+        }
     }
-)
+);
 
 
+
+    $("#mv").css("background","#31c27c");
 
     $("#song").click(function () {
+        $("#song").css("background","#31c27c");
+        $("#songList").css("background","none");
+        $("#album").css("background","none");
+        $("#mv").css("background","none");
         $("#single").show();
         $("#list_list").hide();
         $("#list_mv").hide();
+        $("#list_song").hide();
     });
 
     $("#songList").click(function () {
+        $("#song").css("background","none");
+        $("#songList").css("background","#31c27c");
+        $("#album").css("background","none");
+        $("#mv").css("background","none");
         $("#single").hide();
         $("#list_list").hide();
         $("#list_mv").hide()
@@ -113,17 +175,25 @@ $(document).ready(function () {
 
     })
     $("#album").click(function () {
-
+        $("#song").css("background","none");
+        $("#songList").css("background","none");
+        $("#album").css("background","#31c27c");
+        $("#mv").css("background","none");
         $("#single").hide();
         $("#list_list").show();
         $("#list_mv").hide();
+        $("#list_song").hide();
     });
 
     $("#mv").click(function () {
-
+        $("#song").css("background","none");
+        $("#songList").css("background","none");
+        $("#album").css("background","none");
+        $("#mv").css("background","#31c27c");
         $("#single").hide();
         $("#list_list").hide();
         $("#list_mv").show();
+        $("#list_song").show();
     });
 
 

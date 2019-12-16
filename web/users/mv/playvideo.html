@@ -117,17 +117,23 @@
                     <i class="fa fa-arrows-alt" aria-hidden="true" id="icoFullscreen"></i>
                 </div>
             </div>
-            <div class="barrage">
-                暂无视频
-            </div>
         </div>
         <div class="mv_tip">
             <h2 class="mv_title"></h2>
             <span class="mv_listen"></span>
+            <div class="dmWrap">
+                <input type="text" placeholder="发送弹幕~">
+                <button>发送弹幕</button>
+            </div>
             <div class="mv_btn">
-                <i class="fa fa-commenting"></i>
-                <i class="fa fa-heart"></i>
-                <i class="fa fa-share-alt"></i>
+                <a class="fa fa-commenting" href="#cmt"></a>
+                <a class="fa fa-heart"></a>
+                <a class="fa fa-share-alt"></a>
+            </div>
+        </div>
+        <div class="mv_danmu">
+            <div class="barrage">
+                暂无视频
             </div>
         </div>
     </div>
@@ -146,7 +152,7 @@
             <h3 class="cmt_title">评论<span class="cmt_title_desc">共有<span id="cmt_num">999+</span>条评论</span></h3>
         </div>
         <div class="cmt_text clear_float">
-            <div class="cmt_textarea">
+            <div class="cmt_textarea" id="cmt">
                 <div class="cmt_input" contenteditable="true">
                     期待你的神评论......
                 </div>
