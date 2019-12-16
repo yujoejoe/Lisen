@@ -28,7 +28,6 @@ $(document).ready(function () {
             }
         );
 
-
         //MV部分
         $.get(
             "/mvGet",
@@ -42,6 +41,7 @@ $(document).ready(function () {
                 }
             }
         );
+
 
         //排行榜新歌部分
         $.get(
