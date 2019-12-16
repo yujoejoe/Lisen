@@ -132,6 +132,7 @@ MVP.prototype = {
 
 	// 点击播放进度条
 	this.vPro.onmousedown = videoEvent;
+
 	// this.vDot.onmousedown = function (e) {
 	//   console.log("emmm...");
 	//   document.onmousemove = function (e) {
@@ -166,6 +167,11 @@ MVP.prototype = {
 	  $(self.vDot).css('left', (curWidth - dotWidth / 2) + 'px');
 	  // 修改当前播放时间
 	  self.video.currentTime = self.duration * (curWidth / videoWidth);
+	  // 播放视频
+	  self.video.play();
+	  self.playBtn.classList.remove("fa-play");
+	  self.playBtn.classList.add("fa-pause");
+	  self.isPlay = true;
 	}
 
   }
