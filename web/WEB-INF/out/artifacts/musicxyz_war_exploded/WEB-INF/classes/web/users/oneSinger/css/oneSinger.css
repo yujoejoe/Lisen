@@ -241,6 +241,27 @@ figure img:hover{
     color: #31c27c;
 }
 
+.txt_mv_pic{
+    width: 260px;
+    height: 161px;
+    border: 2px solid #c3e6cb;
+}
+.txt_mv_name{
+    font-size: 17px;
+    text-align: center;
+    margin-top: 15px;
+
+}
+.txt_mv_name:hover a{
+    color: #31c27c;
+}
+
+.show_hide_mv{
+    display: none;
+    margin-right: 30px;
+
+}
+
 /*分页*/
 .page{
     top: 1100px;

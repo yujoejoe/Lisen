@@ -134,17 +134,34 @@ $(document).ready(function () {
                 $("#txt_album_name").append(data.counts);
                 if(result!=null){
                     for (var j = 0; j <data.result.length; j++) {
-
                         $(".txt_name_pic")[j].src = data.result[j].img;
-                        console.log("aa");
                         $(".txt_name")[j].append(data.result[j].name);
                         $($(".show_hides")[j]).show();
                     }
                 }
             }
         );
+// mv
+$.get(
+    "/mvGet",
+    {"singer":singleGet},
+    function (result) {
+        var  data = JSON.parse(result);
+        console.log(data);
+        $("#mv_option").append(data.counts);
+        $("#mv_counts").append(data.counts);
+        if (result!==null){
+            for (var i = 0; i <data.result.length ; i++) {
+                $(".txt_mv_pic")[i].src = data.result[i].img;
+                $(".txt_mv_name")[i].append(data.result[i].title);
+                $($(".show_hide_mv")[i]).show();
+
+            }
+        }
 
 
+    }
+)
 
 
 

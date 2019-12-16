@@ -70,7 +70,7 @@ var  search =decodeURI(GetQueryString("search"));
 
 $(document).ready(function () {
     $.get(
-        "/album/timeDown/get",
+        "/album/song/get",
         {"search":search},
         function (result) {
             var  date = JSON.parse(result);
@@ -94,7 +94,7 @@ $(document).ready(function () {
         console.log(singers);
         var song = encodeURI(encodeURI(songs));
         var singer = encodeURI(encodeURI(singers));
-        window.location.href = "../playMusic/playMusic.html?timeDown=" + song + "&singer=" + singer;
+        window.location.href = "../playMusic/playMusic.html?song=" + song + "&singer=" + singer;
     });
 
 //全部播放
