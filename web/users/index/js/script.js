@@ -2,7 +2,6 @@ var num = 0;
 
 $(function () {
 
-
   // search 反馈结果
   var $search = $('.header-search');
   var $search_text = $search.find('.text');
@@ -20,8 +19,6 @@ $(function () {
 
 
 
-
-
   var newSong = $('#newSong');
   var mv = $('#mv');
   var hotSong = $('#hotSong');
@@ -33,8 +30,6 @@ $(function () {
   // tab 切换
   newSong.tab();
   mv.tab();
-
-
 
 
   // 旋转木马
@@ -113,31 +108,11 @@ $(function () {
     this.$slider_btn = $('.slider-btns').find('span');
 
 
-      /*//新歌首发部分
-      $.get(
-          "/timeDown/get",
-          function (result) {
-              var data = JSON.parse(result);
-              this.newSong = {
-                  1: [data.result[0].img,data.result[1].img,data.result[2].img,data.result[3].img,data.result[4].img,data.result[5].img,data.result[6].img,data.result[7].img,data.result[8].img,data.result[9].img,data.result[10].img,data.result[11].img],
-                  2: [data.result[12].img,data.result[13].img,data.result[14].img,data.result[15].img,data.result[16].img,data.result[17].img,data.result[18].img,data.result[19].img,data.result[20].img,data.result[21].img,data.result[22].img,data.result[23].img],
-                  3: [data.result[16].img,data.result[17].img,data.result[18].img,data.result[19].img,data.result[20].img,data.result[21].img,data.result[22].img,data.result[23].img,data.result[1].img,data.result[2].img,data.result[3].img,data.result[4].img],
-                  4: [data.result[24].img,data.result[25].img,data.result[26].img,data.result[27].img,data.result[28].img,data.result[29].img,data.result[30].img,data.result[31].img,data.result[1].img,data.result[2].img,data.result[3].img,data.result[4].img]
-              }
-          }
-      );*/
-
       //新歌首发部分
       $.get(
           "/timeDown/get",
           function (result) {
               var data = JSON.parse(result);
-              this.newSong = {
-                  1: ['data.result[0].img', 'data.result[1].img', 'data.result[2].img', 'data.result[3].img', 'data.result[4].img', 'data.result[5].img', 'data.result[6].img', 'data.result[7].img', 'data.result[8].img', 'data.result[9].img', 'data.result[10].img', 'data.result[11].img'],
-                  2: ['data.result[12].img', 'data.result[13].img', 'data.result[14].img', 'data.result[15].img', 'data.result[16].img', 'data.result[17].img', 'data.result[18].img', 'data.result[19].img', 'data.result[20].img', 'data.result[21].img', 'data.result[22].img', 'data.result[23].img'],
-                  3: ['data.result[3].img', 'data.result[5].img', 'data.result[4].img', 'data.result[3].img', 'data.result[4].img', 'data.result[15].img', 'data.result[16].img', 'data.result[17].img', 'data.result[8].img', 'data.result[2].img', 'data.result[10].img', 'data.result[11].img'],
-                  4: ['data.result[11].img', 'data.result[4].img', 'data.result[21].img', 'data.result[3].img', 'data.result[13].img', 'data.result[5].img', 'data.result[6].img', 'data.result[7].img', 'data.result[8].img', 'data.result[9].img', 'data.result[12].img', 'data.result[11].img']
-              };
               for (var j = 0; j < 20; j++) {
                   $(".newSongs_img")[j].src=data.result[j].img;
                   $(".newSongs_song")[j].append(data.result[j].song);
@@ -145,7 +120,6 @@ $(function () {
               }
           }
       );
-
 
       //新歌首发全部部分
       $("#all_NewSong").click(function () {
@@ -156,7 +130,6 @@ $(function () {
               "/timeDown/get",
               function (result) {
                   var data = JSON.parse(result);
-                  console.log(data);
                   for (var j = 0; j < 20; j++) {
                       $(".newSongs_img")[j].src=data.result[j].img;
                       $(".newSongs_song")[j].append(data.result[j].song);
@@ -175,11 +148,10 @@ $(function () {
               "/timeDown/get",
               function (result) {
                   var data = JSON.parse(result);
-                  console.log(data);
                   for (var j = 0; j < 20; j++) {
-                      $(".newSongs_img")[j].src=data.result[j].img;
-                      $(".newSongs_song")[j].append(data.result[j].song);
-                      $(".newSongs_singerName")[j].append(data.result[j].singer);
+                      $(".newSongs_img")[j].src=data.result[j%data.result.length].img;
+                      $(".newSongs_song")[j].append(data.result[j%data.result.length].song);
+                      $(".newSongs_singerName")[j].append(data.result[j%data.result.length].singer);
                   }
               }
           );
@@ -195,11 +167,10 @@ $(function () {
               "/Japan/get",
               function (result) {
                   var data = JSON.parse(result);
-                  console.log(data);
                   for (var j = 0; j < 20; j++) {
-                      $(".newSongs_img")[j].src=data.result[j].img;
-                      $(".newSongs_song")[j].append(data.result[j].song);
-                      $(".newSongs_singerName")[j].append(data.result[j].singer);
+                      $(".newSongs_img")[j].src=data.result[j%data.result.length].img;
+                      $(".newSongs_song")[j].append(data.result[j%data.result.length].song);
+                      $(".newSongs_singerName")[j].append(data.result[j%data.result.length].singer);
                   }
               }
           );
@@ -214,17 +185,16 @@ $(function () {
               "/EuropeAmerica/get",
               function (result) {
                   var data = JSON.parse(result);
-                  console.log(data);
-                  for (var j = 0; j < data.result.length; j++) {
-                      $(".newSongs_img")[j].src=data.result[j].img;
-                      $(".newSongs_song")[j].append(data.result[j].song);
-                      $(".newSongs_singerName")[j].append(data.result[j].singer);
+                  for (var j = 0; j < 20; j++) {
+                      $(".newSongs_img")[j].src=data.result[(j+3)%data.result.length].img;
+                      $(".newSongs_song")[j].append(data.result[(j+3)%data.result.length].song);
+                      $(".newSongs_singerName")[j].append(data.result[(j+3)%data.result.length].singer);
                   }
               }
           );
       });
 
-      $.get(
+      /*$.get(
           "/mvGet",
           function (result) {
               var data = JSON.parse(result);
@@ -233,12 +203,15 @@ $(function () {
                   1: [data.result[0].img,data.result[1].img,data.result[2].img,data.result[3].img,data.result[4].img,data.result[5].img,data.result[6].img,data.result[7].img],
                   2: [data.result[8].img,data.result[9].img,data.result[10].img,data.result[11].img,data.result[12].img,data.result[13].img,data.result[14].img,data.result[15].img],
                   3: [data.result[16].img,data.result[17].img,data.result[18].img,data.result[19].img,data.result[20].img,data.result[21].img,data.result[22].img,data.result[23].img],
-                  4: [data.result[24].img,data.result[25].img,data.result[26].img,data.result[27].img,data.result[28].img,data.result[29].img,data.result[30].img,data.result[31].img]
-              }
+                  4: [data.result[24].img,data.result[25].img,data.result[26].img,data.result[27].img,data.result[28].img,data.result[3].img,data.result[1].img,data.result[2].img]
+              };
           }
-      );
+      );*/
 
   };
+
+
+
 
   Plugin.prototype = {
     init: function () {
@@ -254,16 +227,13 @@ $(function () {
     },
 
     // 切换图片
-    change: function (index) {
-
+    /*change: function (index) {
 
       var self = this;
 
-
-
       // var img_src = 'user/index/images/cont/newSong/';
 
-        //新歌首发华语部分
+       /!* //新歌首发华语部分
         $("#China_NewSong").click(function () {
             $.get(
                 "/timeDown/get",
@@ -272,8 +242,7 @@ $(function () {
                     var img_src = data.result.img;
                 }
             );
-        });
-
+        });*!/
 
       // var mv_src = 'user/index/images/cont/mv/';
 
@@ -285,21 +254,13 @@ $(function () {
             }
         );
 
-
-
-
-
-
-
-
-
       this.$tab_item.removeClass('item-cur');
       this.$tab_item.eq(index).addClass("item-cur");
 
-      if (this.oWrapper.attr('id') === 'newSong') {
+      /!*if (this.oWrapper.attr('id') === 'newSong') {
 
         var img_length = self.newSong[1].length;
-        $(this.$tab_img).each(function (i) {
+        /!*$(this.$tab_img).each(function (i) {
           if(i < 4){
             // 让前面的复制体图片等于第三板块图片
             $(self.$tab_img[i]).attr('src', img_src + self.newSong[index + 1][img_length-4+i]+'');
@@ -309,16 +270,35 @@ $(function () {
           }else{
             $(self.$tab_img[i]).attr('src', img_src + self.newSong[index + 1][i-4]+'');
           }
-        });
+        });*!/
+
+
+
+        /!*  $(this.$tab_img).each(function (i) {
+            if(i < 4){
+              // 让前面的复制体图片等于第三板块图片
+              $(self.$tab_img[i]).attr('src',  self.newSong[index + 1][img_length-4+i]+'');
+            }else if(i > 15){
+              // 让后面的复制体图片等于第一板块图片
+              $(self.$tab_img[i]).attr('src',  self.newSong[index + 1][i-img_length-4]+'');
+            }else{
+              $(self.$tab_img[i]).attr('src', self.newSong[index + 1][i-4]+'');
+            }
+          });
+*!/
 
       } else if (this.oWrapper.attr('id') === 'mv') {
 
-        $(this.$tab_img).each(function (i) {
+       /!* $(this.$tab_img).each(function (i) {
           $(self.$tab_img[i]).attr('src', mv_src + self.mv[index + 1][i]+'');
-        });
+        });*!/
 
-      }
-    },
+          $(this.$tab_img).each(function (i) {
+              $(self.$tab_img[i]).attr('src',  self.mv[index + 1][i]+'');
+          });
+
+      }*!/
+    },*/
 
     constructor: Plugin
   };
@@ -332,8 +312,6 @@ $(function () {
 })(jQuery, window, document);
 
 (function ($, window, document, undefined) {
-
-
 
   var Plugin = function (elem) {
     this.$oParent = elem;
@@ -427,8 +405,6 @@ $(function () {
 // 改 prevClick
       prevClick: function () {
           var self = this;
-
-
 
           if(num === -1){
             num = this.$slider_btn.length - 1;
