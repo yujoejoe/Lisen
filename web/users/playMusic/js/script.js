@@ -189,7 +189,7 @@ window.onload = function change() {
         /*-------------------------- yyq加 start --------------------------------*/
 
 
-       /* //排行榜新歌
+        //排行榜新歌
         $.get(
             "/timeDown/get",
             {
@@ -209,7 +209,7 @@ window.onload = function change() {
                     audio.setAttribute("src","http://192.168.1.125:8080/music/song/music/"+data.result[0].singer+"/"+data.result[0].name+".mp3");
                     $("#song_info_name").html(data.result[0].singer);           //歌词滚动歌手
                     $("#song_info_singer").html(data.result[0].name);
-                    /!*==== 添加歌词 ====*!/
+                    /*==== 添加歌词 ====*/
 
                     //歌词滚动歌名
                     audio.play();
@@ -227,7 +227,7 @@ window.onload = function change() {
                 }
                 addLyric(lyric);
             }
-        );*/
+        );
 
         /*//排行榜热歌
         $.get(

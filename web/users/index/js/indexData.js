@@ -3,6 +3,54 @@ $(document).ready(function () {
 
     function indexData() {
 
+       /* //新歌首发华语部分
+        $("#China_NewSong").click(function () {
+            $.get(
+                "/timeDown/get",
+                function (result) {
+                    var data = JSON.parse(result);
+                    console.log(data);
+                    for (var j = 0; j < 12; j++) {
+                        $(".newSongs_img")[j].src=data.result[j].img;
+                        $(".newSongs_song")[j].append(data.result[j].song);
+                        $(".newSongs_singerName")[j].append(data.result[j].singer);
+                    }
+                }
+            );
+        });
+
+        //新歌首发日韩部分
+        $("#JapanKorea_NewSong").click(function () {
+            $.get(
+                "/Japan/get",
+                function (result) {
+                    var data = JSON.parse(result);
+                    console.log(data);
+                    for (var j = 0; j < 12; j++) {
+                        $(".newSongs_img")[j].src=data.result[j].img;
+                        $(".newSongs_song")[j].append(data.result[j].song);
+                        $(".newSongs_singerName")[j].append(data.result[j].singer);
+                    }
+                }
+            );
+        });
+
+        //新歌首发欧美部分
+        $("#EuropeAmerica_NewSong").click(function () {
+            $.get(
+                "/EuropeAmerica/get",
+                function (result) {
+                    var data = JSON.parse(result);
+                    console.log(data);
+                    for (var j = 0; j < 12; j++) {
+                        $(".newSongs_img")[j].src=data.result[j].img;
+                        $(".newSongs_song")[j].append(data.result[j].song);
+                        $(".newSongs_singerName")[j].append(data.result[j].singer);
+                    }
+                }
+            );
+        });*/
+
         $.get(
             "/mvGet",
             function (result) {
@@ -33,12 +81,13 @@ $(document).ready(function () {
             function (result) {
                 var data = JSON.parse(result);
                 console.log(data);
-                //新歌首发部分
+                /*//新歌首发全部部分
                 for (var j = 0; j < 12; j++) {
                     $(".newSongs_img")[j].src=data.result[j].img;
                     $(".newSongs_song")[j].append(data.result[j].song);
                     $(".newSongs_singerName")[j].append(data.result[j].singer);
-                }
+                }*/
+
                 //排行榜新歌部分
                 for (var i = 0; i < 5; i++) {
                     $(".NewSong_songName")[i].append(data.result[i].song);
@@ -88,6 +137,8 @@ $(document).ready(function () {
 
 
 
+
+
         /*--------------------- 页面对接start ---------------------*/
 
         //排行榜新歌播放
@@ -122,7 +173,6 @@ $(document).ready(function () {
             var song = encodeURI(encodeURI(songGet));
             window.location.href = "../users/playMusic/playMusic.html?song=" + song + "&singer=" + singer;
         });
-
 
         //排行榜欧美歌曲播放
         $("#play_EuropeAmerica").click(function () {
