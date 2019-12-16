@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  *
  */
-@WebServlet(name ="AlbumSongGet" ,urlPatterns ="/album/timeDown/get" )
+@WebServlet(name ="AlbumSongGet" ,urlPatterns ="/album/song/get" )
 public class AlbumSongGet extends HttpServlet{
     private static final long serialVersion = 1L;
 

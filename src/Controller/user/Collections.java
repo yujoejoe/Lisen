@@ -3,7 +3,7 @@ package Controller.user;
 
 import POJO.JsonData;
 
-import ServiceDAO.users.CoServiceDAOImp;
+import ServiceDAO.users.SServiceDAOImp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,11 +15,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(name ="Collection" ,urlPatterns ="/collection/get" )
-public class Collection extends HttpServlet {
+@WebServlet(name ="Collections" ,urlPatterns ="/collections/get" )
+public class Collections extends HttpServlet {
     private static final long serialVersion = 1L;
 
-    private CoServiceDAOImp collectionSDI = new CoServiceDAOImp();
+    private SServiceDAOImp collectionSDI = new SServiceDAOImp();
     private POJO.Collection collection = new POJO.Collection();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

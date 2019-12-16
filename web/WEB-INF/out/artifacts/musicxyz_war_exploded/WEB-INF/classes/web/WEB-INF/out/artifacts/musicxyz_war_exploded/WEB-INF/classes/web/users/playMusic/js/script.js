@@ -44,7 +44,7 @@ window.onload = function change() {
     var  song =decodeURI(GetQueryString("song"));
     var  singer =decodeURI(GetQueryString("singer"));
 
-// //单曲播放
+// // 单曲播放
 //     if(singer!="null") {
 //         $(".list_author")[0].append(singer);
 //         $($(".list_music")[0]).show();
@@ -78,9 +78,8 @@ window.onload = function change() {
         $($(".list_music")[0]).show();
         $(".list_name")[0].append(song);
         audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + singer + "/" + song + ".mp3");
-
         audio.play();
-        name.innerHTML = $($(".list_name")[0]).html()+" - "+$($(".list_author")[0]).html()
+        name.innerHTML = $($(".list_name")[0]).html()+" - "+$($(".list_author")[0]).html();
         if (audio.played) {
             pause.style.backgroundPosition = "-30px  0px";
         }
@@ -90,7 +89,6 @@ window.onload = function change() {
 
     $(document).ready(function () {
         var search = decodeURI(GetQueryString("album"));
-        // var music = new Array();
 
         //专辑播放列表
         $.get(
@@ -182,10 +180,6 @@ window.onload = function change() {
         // )
 
 
-
-
-
-
         /*-------------------------- yyq加 start --------------------------------*/
 
 
@@ -272,25 +266,10 @@ window.onload = function change() {
 
         /*--------------------------- yyq加 end --------------------------------*/
 
-
-
-
-
-
-
-
         addLyric(lyric);
 
     });
 
-    // var name = document.getElementById("music_name");
-    // var music = new Array();
-    // music = ["音阙诗听、赵方婧 - 霜降", "G.E.M.邓紫棋 - 画 (Live Piano Session II)", "冷雪儿 - 浪子回头", "慵狐、熙兮兮兮 - 出山", "磯村由紀子 - 風の住む街"];
-    // var num = 0;
-    // name.innerHTML =song+" - "+singer;
-
-  // /*==== 添加歌词 ====*/
-  // addLyric(lyric);
 
   //上一曲
   left.onclick = function () {

@@ -1,26 +1,18 @@
 package ServiceDAO.users;
 
-
-import DAO.user.CollectionDAOImp;
+import DAO.user.CollectionmDAOImp;
 import POJO.Collection;
-
-
 import util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- */
-public class CoServiceDAOImp  implements CoServiceDAO{
-
-
+public class MServiceDAOImp  implements MServiceDAO {
     @Override
     public ArrayList<Collection> select(Collection collection) {
         Connection conn = DBUtil.getConnection();
-        CollectionDAOImp collectionDI = new CollectionDAOImp(conn);
+        CollectionmDAOImp collectionDI = new CollectionmDAOImp(conn);
 
         try{
             ArrayList<Collection> resultLists = collectionDI.select(collection);
@@ -44,12 +36,10 @@ public class CoServiceDAOImp  implements CoServiceDAO{
         }
     }
 
-
-
     @Override
     public int count(Collection collection) {
         Connection conn = DBUtil.getConnection();
-        CollectionDAOImp  collectionDI = new CollectionDAOImp(conn);
+        CollectionmDAOImp collectionDI = new CollectionmDAOImp(conn);
 
         try{
             int cnt = collectionDI.count(collection);

@@ -2,62 +2,62 @@ package DAO.user;
 
 import POJO.Collection;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CollectionDAOImp  implements CollectionDAO {
+public class CollectionmDAOImp implements CollectionmDAO {
     private Connection conn = null;
     private PreparedStatement pst = null;
 
 
-    public CollectionDAOImp(){
+    public CollectionmDAOImp(){
         super();
     }
-    public CollectionDAOImp(Connection conn){
+    public CollectionmDAOImp(Connection conn){
         super();
         this.conn = conn;
     }
+
 
     @Override
     public ArrayList<Collection> select(Collection collection) throws SQLException {
         try{
             String sql =
-            "select"
-                    + " song.name as song,"
-                    + " singer.name as singer,"
-                    + " song.duration as duration,"
-                    + " album.img as albumListImg,"
-                    + " album.name as albumListName,"
+                    "select"
+//                            + " song.name as song,"
+//                            + " singer.name as singer,"
+//                            + " song.duration as duration"
+//                    + " album.img as albumListImg,"
+//                    + " album.name as albumListName,"
                     + " mv.title as mvName,"
-                    + " mv.img as mvImg,"
-                    + " user.name as userName"
-                    +" from"
-                    + " collection"
-                    +" left join"
-                    + " song"
-                    +" on"
-                    + " collection.songId = song.id"
-                    +" left join"
-                    + " album"
-                    +" on"
-                    + " collection.albumId = album.id"
+                    + " mv.img as mvImg"
+//                    + " user.name as userName"
+                            +" from"
+                            + " collectionm"
+//                            +" left join"
+//                            + " song"
+//                            +" on"
+//                            + " collections.songId = song.id"
+//                    +" left join"
+//                    + " album"
+//                    +" on"
+//                    + " collection.albumId = album.id"
                     +" left join"
                     + " mv"
                     +" on "
-                    +"collection.mvId = mv.id"
-                    +" left join"
-                    + " singer"
-                    +" on "
-                    +"song.singerId = singer.id"
-                    +" left join"
-                    + " user"
-                    +" on "
-                    +"collection.userId = user.id"
-                    +" where 1=1";
+                    +"collectionm.mvId = mv.id"
+//                            +" left join"
+//                            + " singer"
+//                            +" on "
+//                            +"song.singerId = singer.id"
+                            +" left join"
+                            + " user"
+                            +" on "
+                            +"collectionm.userId = user.id"
+                            +" where 1=1";
 
 
             // 添加条件
@@ -89,13 +89,13 @@ public class CollectionDAOImp  implements CollectionDAO {
 
             while(rs.next()){
                 Collection tmp = new Collection();
-                tmp.setSong(rs.getString("song"));
-                tmp.setSinger(rs.getString("singer"));
-                tmp.setDuration(rs.getString("duration"));
+//                tmp.setSong(rs.getString("song"));
+//                tmp.setSinger(rs.getString("singer"));
+//                tmp.setDuration(rs.getString("duration"));
 //                tmp.setSongListImg(rs.getString("songListImg"));
 //                tmp.setSongListName(rs.getString("songListName"));
-                tmp.setAlbumListImg(rs.getString("albumListImg"));
-                tmp.setAlbumListName(rs.getString("albumListName"));
+//                tmp.setAlbumListImg(rs.getString("albumListImg"));
+//                tmp.setAlbumListName(rs.getString("albumListName"));
                 tmp.setMvImg(rs.getString("mvImg"));
                 tmp.setMvName(rs.getString("mvName"));
                 resultList.add(tmp);
@@ -132,7 +132,7 @@ public class CollectionDAOImp  implements CollectionDAO {
     public int count(Collection collection) throws SQLException {
         try{
             // sql语句
-            String sql = "select count(*) as counts from collection  inner  join  user on collection.userId = user.id  where 1=1";
+            String sql = "select count(*) as counts from collectionm inner  join  user on collectionm.userId = user.id  where 1=1";
             // 添加条件
             String condition = collection.getCondition();
             if(condition != null && !condition.equals("")){

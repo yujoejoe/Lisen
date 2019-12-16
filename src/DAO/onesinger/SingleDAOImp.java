@@ -29,6 +29,7 @@ public class SingleDAOImp implements SingleDAO {
             String sql = "select"
                     + " song.name as song,"
                     + " album.name as album,"
+                    + " singer.name as singer,"
                     + " duration"
                     +" from"
                     + " song"
@@ -79,7 +80,10 @@ public class SingleDAOImp implements SingleDAO {
 
                 tmp.setSong(rs.getString("song"));
                 tmp.setAlbum(rs.getString("album"));
+                tmp.setSinger(rs.getString("singer"));
                 tmp.setDuration(rs.getString("duration"));
+
+
                 resultList.add(tmp);
             }
 

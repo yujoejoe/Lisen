@@ -5,7 +5,7 @@ import POJO.Singer;
 
 import java.util.ArrayList;
 
-public interface CoServiceDAO {
+public interface SServiceDAO {
 
     public ArrayList<Collection> select(Collection collection);
     public int count(Collection collection);

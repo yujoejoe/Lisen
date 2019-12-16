@@ -4,6 +4,10 @@ public class Single extends Base {
     String song;
     String album;
     String duration;
+    String singer;
+
+
+
 
     public String getSong() {
         return song;
@@ -21,6 +25,14 @@ public class Single extends Base {
         this.album = album;
     }
 
+    public String getSinger() {
+        return singer;
+    }
+
+    public void setSinger(String singer) {
+        this.singer = singer;
+    }
+
     public String getDuration() {
         return duration;
     }
@@ -29,11 +41,15 @@ public class Single extends Base {
         this.duration = duration;
     }
 
+
+
+
     @Override
     public String toString() {
         return "single ["
                 + "song:" + song
                 + " ,album:" + album
+                + " ,singer:" + singer
                 + " ,duration:" + duration
                 + "]";
     }

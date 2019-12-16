@@ -83,20 +83,20 @@ public class Collection extends Base {
         this.mvName = mvName;
     }
 
-    @Override
-    public String toString() {
-        return "collection ["
-                + "song:" + song
-                + " ,singer:" + singer
-                + " ,duration:" + duration
-                + " ,songListImg:" + songListImg
-                + " ,songListName:" + songListName
-                + " ,albumListImg:" + albumListImg
-                + " ,albumListName:" + albumListName
-                + " ,mvImg:" + mvImg
-                + " ,mvName:" + mvName
-                + "]";
-
-
-    }
+//    @Override
+//    public String toString() {
+//        return "collection ["
+//                + "song:" + song
+//                + " ,singer:" + singer
+//                + " ,duration:" + duration
+//                + " ,songListImg:" + songListImg
+//                + " ,songListName:" + songListName
+//                + " ,albumListImg:" + albumListImg
+//                + " ,albumListName:" + albumListName
+//                + " ,mvImg:" + mvImg
+//                + " ,mvName:" + mvName
+//                + "]";
+//
+//
+//    }
 }

@@ -76,7 +76,7 @@ public class AlbumSDAOImp  implements  AlbumSDAO{
                 while (rs.next()) {
                     AlbumS tmp = new AlbumS();
 
-                    tmp.setSong(rs.getString("timeDown"));
+                    tmp.setSong(rs.getString("song"));
                     tmp.setSinger(rs.getString("singer"));
                     resultList.add(tmp);
                 }

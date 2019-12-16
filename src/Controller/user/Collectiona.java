@@ -1,9 +1,10 @@
-package Controller.oneSinger;
+package Controller.user;
 
 
+import POJO.Collection;
 import POJO.JsonData;
-import POJO.Single;
-import ServiceDAO.onesinger.SingleServiceDAOImp;
+import ServiceDAO.users.AServiceDAOImp;
+import com.sun.net.httpserver.HttpServer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,12 +19,13 @@ import java.util.ArrayList;
 /**
  *
  */
-@WebServlet(name ="SingleGet" ,urlPatterns ="/single/get" )
-public class SingleGet extends HttpServlet {
+@WebServlet(name ="Collectiona" ,urlPatterns ="/collectiona/get" )
+public class Collectiona extends HttpServlet {
+
     private static final long serialVersion = 1L;
 
-    private SingleServiceDAOImp singleSDI = new SingleServiceDAOImp();
-    private Single single = new Single();
+    private AServiceDAOImp collectionSDI = new AServiceDAOImp();
+    private POJO.Collection collection = new POJO.Collection();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -40,10 +42,9 @@ public class SingleGet extends HttpServlet {
         // 设置查询条件
         String search = request.getParameter("search");
         if(search!=null && search.length()!=0){
-            // 模糊查找teacher的name、sequence
-            single.setCondition(" singer.name like '%"+search+"%'  or singer.img='"+search+"'");
+            collection.setCondition(" user.name='"+search+"'");
         }else{
-            single.setCondition("");
+            collection.setCondition("");
         }
         // 设置分页
         String page = request.getParameter("page");     // 页数
@@ -51,16 +52,16 @@ public class SingleGet extends HttpServlet {
         if(page!=null && page.length()!=0 && size!=null && size.length()!=0){
             int p = Integer.parseInt(page);
             int r = Integer.parseInt(size);
-            single.setLimit(" limit " + (p-1)*r + "," + r);
+            collection.setLimit(" limit " + (p-1)*r + "," + r);
         }else{
-            single.setLimit("");
+            collection.setLimit("");
         }
         // 设置排序方式
         String field = request.getParameter("field");   // 排序字段
         String order = request.getParameter("order");   // 排序方式 升序 或 降序
         if(field!=null && field.length()!=0 && order!=null && order.length()!=0){
-            single.setOrderBy(" order by " + field + " " + order);
-            single.setOrderBy("");
+            collection.setOrderBy(" order by " + field + " " + order);
+            collection.setOrderBy("");
         }else{
         }
 
@@ -70,8 +71,8 @@ public class SingleGet extends HttpServlet {
          * 1、调用DAO层的select方法，返回查询到的记录集
          * 2、调用DAO层的count方法，返回查询到的记录数
          */
-        ArrayList<Single> result = singleSDI.select(single);
-        int count = singleSDI.count(single);
+        ArrayList<Collection> result = collectionSDI.select(collection);
+        int count = collectionSDI.count(collection);
 
 
         // （存）3、将数据对象存储到request中
@@ -88,7 +89,7 @@ public class SingleGet extends HttpServlet {
         request.setAttribute("jsonData",jsonData);
 
         // 校验数据
-        System.out.println(jsonData);
+//        System.out.println(jsonData);
 
 
         // （转）4、将业务转发给View

@@ -1,13 +1,11 @@
 package DAO.user;
 
 import POJO.Collection;
-import POJO.Singer;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface CollectionDAO {
-
+public interface CollectionaDAO {
     public ArrayList<Collection> select(Collection collection) throws SQLException;
     public ArrayList<Collection> selectRan(Collection collection) throws SQLException;
     public int insert(Collection collection) throws SQLException;
