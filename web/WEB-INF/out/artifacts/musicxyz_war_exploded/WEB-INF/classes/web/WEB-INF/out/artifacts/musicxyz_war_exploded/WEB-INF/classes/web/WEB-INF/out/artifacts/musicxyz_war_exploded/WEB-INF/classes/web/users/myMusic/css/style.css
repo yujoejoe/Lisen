@@ -72,16 +72,23 @@
      width:60px;
      height:30px;
      float: left;
-     background-color: #2caf6f;
+     /*background-color: #2caf6f;*/
+     /*background-color: #e4b9b9;*/
      margin-right:60px;
      margin-top:20px;
-     color: white;
+     color: black;
      text-align: center;
      line-height: 20px;
      /*display: inline-block;*/
      cursor: pointer;
 
  }
+
+.main-contents a:hover{
+
+    background-color: #31c27c;
+}
+
 /*.main-content   p{*/
 /*    display: none;*/
 /*}*/

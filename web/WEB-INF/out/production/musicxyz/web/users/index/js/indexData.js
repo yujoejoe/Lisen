@@ -3,23 +3,24 @@ $(document).ready(function () {
 
     function indexData() {
 
-        //精彩推荐部分   暂时放了mv图片 需改！需改！需改！需改！需改！需改！需改！需改！
+        /*//精彩推荐部分   暂时放了mv图片 需改！需改！需改！需改！需改！需改！需改！需改！
         $.get(
             "/mvGet",
             function (result) {
                 var data = JSON.parse(result);
-                for (var k = 0; k < data.result.length; k++) {
+                console.log(data);
+                for (var k = 0; k < 6; k++) {
                     $(".recommend_img")[k].src=data.result[k].img;
                 }
             }
-        );
+        );*/
 
         //热门歌单部分
         $.get(
             "/SongListGet",
             function (result) {
                 var data = JSON.parse(result);
-                // console.log(data);
+                console.log(data);
                 for (var i = 0; i < 20; i++) {
                     $(".hotSongList_img")[i].src=data.result[i%data.result.length].img;
                     $(".hotSongList_song")[i].append(data.result[i%data.result.length].name);
@@ -39,9 +40,14 @@ $(document).ready(function () {
                     $(".mv_singerName")[j].append(data.result[j].singer);
                     $(".mv_playNum")[j].append((data.result[j].play/10000).toFixed(1) + '万');
                 }
+                // 绑定点击事件设置cookie
+                for (var i = 0; i < 8; i++) {
+                    var play = $(".play-icon");
+                    play[i].setAttribute("data-id", i+1);
+                    play[i].onclick = setCookie;
+                }
             }
         );
-
 
         //排行榜新歌部分
         $.get(
@@ -99,50 +105,26 @@ $(document).ready(function () {
 
 
 
-        /*--------------------- 页面对接start ---------------------*/
+        /*--------------------- 页面跳转对接start ---------------------*/
 
         //排行榜新歌播放
         $("#play_NewSong").click(function () {
-            var  singerGet = $(".NewSong_singerName").html();
-            var  songGet = $(".NewSong_songName").html();
-            console.log(singerGet);
-            console.log(songGet);
-            var singer = encodeURI(encodeURI(singerGet));
-            var song = encodeURI(encodeURI(songGet));
-            window.location.href = "../users/playMusic/playMusic.html?song=" + song + "&singer=" + singer;
+            window.location.href = "../users/playMusic/playMusic.html?filed=date&order=desc";
         });
 
-        //排行榜新歌播放
+        //排行榜热歌播放
         $("#play_HotSong").click(function () {
-            var  singerGet = $(".HotSong_singerName").html();
-            var  songGet = $(".HotSong_songName").html();
-            console.log(singerGet);
-            console.log(songGet);
-            var singer = encodeURI(encodeURI(singerGet));
-            var song = encodeURI(encodeURI(songGet));
-            window.location.href = "../users/playMusic/playMusic.html?song=" + song + "&singer=" + singer;
+            window.location.href = "../users/playMusic/playMusic.html?hotSong1=hits&hotSong2=desc";
         });
 
         //排行榜日韩歌曲播放
         $("#play_JapanKorea").click(function () {
-            var  singerGet = $(".JapanKorea_singerName").html();
-            var  songGet = $(".JapanKorea_songName").html();
-            console.log(singerGet);
-            console.log(songGet);
-            var singer = encodeURI(encodeURI(singerGet));
-            var song = encodeURI(encodeURI(songGet));
-            window.location.href = "../users/playMusic/playMusic.html?song=" + song + "&singer=" + singer;
+            window.location.href = "../users/playMusic/playMusic.html?filed=date&order=desc";
         });
 
         //排行榜欧美歌曲播放
         $("#play_EuropeAmerica").click(function () {
-            var  singerGet = $(".EuropeAmerica_singerName").html();
-            var  songGet = $(".EuropeAmerica_songName").html();
-            console.log(singerGet);
-            console.log(songGet);
-            var singer = encodeURI(encodeURI(singerGet));
-            var song = encodeURI(encodeURI(songGet));
-            window.location.href = "../users/playMusic/playMusic.html?song=" + song + "&singer=" + singer;
+            window.location.href = "../users/playMusic/playMusic.html?filed=date&order=desc";
         });
 
 
@@ -150,4 +132,11 @@ $(document).ready(function () {
 
     }
 
+
 });
+
+
+function setCookie() {
+    document.cookie = "mId=" + this.getAttribute('data-id') + ";path=/";
+    console.log(document.cookie);
+}

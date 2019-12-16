@@ -227,7 +227,7 @@ body{
     right: 0;
     top: 0;
 }
-.mv_btn i{
+.mv_btn a{
     margin: 0 10px;
     color: #fff;
     font-size: 18px;
@@ -235,6 +235,50 @@ body{
 }
 .mv_btn i:hover{
     color: #31c27c;
+}
+/*======== 弹幕 =======*/
+.dmWrap{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 200px;
+    margin: auto 0;
+    width: 350px;
+    height: 30px;
+}
+
+.dmWrap input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 272px;
+    border: 1px solid #666;
+    border-radius: 2px;
+    color: #ccc;
+    padding: 2px 5px;
+    box-sizing: border-box;
+    background: #2e2e2e;
+}
+.dmWrap button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 80px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    color: #eeeeee;
+    background: #31c27c;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.dmWrap button:hover{
+    background: #2db675;
+    color: #f8f8f8;
 }
 
 .mv_info{

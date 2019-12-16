@@ -35,10 +35,10 @@ public class SongHitsGet extends HttpServlet{
         PrintWriter out = response.getWriter();
 
         // 设置排序方式
-        String field = request.getParameter("field");   // 排序字段
-        String order = request.getParameter("order");   // 排序方式 升序 或 降序
-        if(field!=null && field.length()!=0 && order!=null && order.length()!=0){
-            SongHits.setOrderBy(" order by " + field + " " + order);
+        String hotSong1 = request.getParameter("hotSong1");   // 排序字段
+        String hotSong2 = request.getParameter("hotSong2");   // 排序方式 升序 或 降序
+        if(hotSong1!=null && hotSong1.length()!=0 && hotSong2!=null && hotSong2.length()!=0){
+            SongHits.setOrderBy(" order by " + hotSong1 + " " + hotSong2);
         }else{
             SongHits.setOrderBy("");
         }
