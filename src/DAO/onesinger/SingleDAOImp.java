@@ -104,7 +104,7 @@ public class SingleDAOImp implements SingleDAO {
             pst = conn.prepareStatement(sql);
 
             // 控制台输出sql语句，检验正确性
-            System.out.println("album COUNT: "+sql);
+//            System.out.println("album COUNT: "+sql);
 
             ResultSet rs = pst.executeQuery();
             rs.next();
