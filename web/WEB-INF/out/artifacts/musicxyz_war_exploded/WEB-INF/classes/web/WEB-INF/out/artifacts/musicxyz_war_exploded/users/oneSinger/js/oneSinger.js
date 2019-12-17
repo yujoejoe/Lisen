@@ -32,7 +32,6 @@ $(document).ready(function () {
 
     //点击歌手姓名传参
     $(".txt_name").click(function () {
-        // console.log("aaa");
         var value = $(this).html();
         console.log(value);
         var search = encodeURI(encodeURI(value));
@@ -41,7 +40,6 @@ $(document).ready(function () {
 
     //点击歌手图片传参
     $(".txt_name_pic").click(function () {
-        // console.log("aaa");
         var value = $(this).attr("src");
         console.log(value);
         var search = encodeURI(encodeURI(value));
@@ -56,9 +54,6 @@ $(document).ready(function () {
         var r = window.location.search.substr(1).match(reg);
         if(r!=null) return  unescape(r[2]); return null;
     }
-
-// 调用方法
-//     alert(decodeURI(GetQueryString("search")));
 
 
     function AlbumDataS() {
@@ -164,13 +159,5 @@ $.get(
 )
 
 
-
-
     }
 });
-
-
-
-
-
-

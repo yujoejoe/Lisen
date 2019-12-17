@@ -14,7 +14,10 @@ function MVP() {
   this.vDot = document.querySelector(".v_dot");					// 视频小圆点
   this.video = document.querySelector("#mvPlay video");			// 视频
   this.vProInner = document.querySelector(".progress .progress_inner");
-  this.volPro = document.querySelector(".vol_progress");		// 声音进度条
+  // 声音部分
+  this.volPro = document.querySelector(".vol_progress");	// 声音进度条
+  this.volProInner = document.querySelector(".vol_progress_inner");
+  this.volDot = document.querySelector(".volDot");
   this.volumeBtn = document.querySelector("#icoVolume");	    // 声音按钮
   this.fullscreenBtn = document.querySelector("#icofullscreen");// 全屏按钮
   this.dmBtn = document.querySelector(".dmWrap button");		// 发送弹幕按钮
@@ -135,6 +138,8 @@ MVP.prototype = {
 
 	// 点击播放进度条
 	this.vPro.onmousedown = videoEvent;
+	// 声音
+	this.volPro.onmousedown = volumeEvent;
 
 	// 弹幕输入框
 	this.dmInput.onfocus = function () {
@@ -144,21 +149,6 @@ MVP.prototype = {
 	  this.placeholder = "发送弹幕~";
 	};
 
-	// 评论输入框
-	this.cmtInput.onfocus = function () {
-	  this.innerHTML = "";
-	};
-	this.cmtInput.onblur = function () {
-	  this.innerHTML = "期待你的神评论......";
-	};
-
-
-	this.volumeBtn.onmouseover = function(){
-	  $(self.volPro).css('display', 'block');
-	};
-	this.volPro.onmouseout = function(){
-	  $(this).css('display', 'none');
-	};
 
 
 	function videoEvent(e){
@@ -179,6 +169,25 @@ MVP.prototype = {
 	  self.playBtn.classList.remove("fa-play");
 	  self.playBtn.classList.add("fa-pause");
 	  self.isPlay = true;
+	}
+
+	function volumeEvent(e){
+
+	  var volProBgHeight = $(".vol_progress_bg").css('height').match(/\d+/g)[0];	// 实际高度
+	  volProBgHeight = parseInt(volProBgHeight);
+	  var volProHeight = $(".vol_progress").css('height').match(/\d+/g)[0];		// 总高度
+	  volProHeight = parseInt(volProHeight);
+	  var offset = volProHeight - volProBgHeight;									// 高度差
+	  // console.log("offset： " + offset);
+	  var rec = self.volPro.getBoundingClientRect();
+	  var volHeight = parseInt(e.clientY) - parseInt(Math.floor(rec.top)) - offset / 2;
+	  volHeight = volHeight < 0 ? 0 : volHeight;
+	  volHeight = volHeight > volProBgHeight ? volProBgHeight : volHeight;
+	  volHeight = volProBgHeight - volHeight;
+
+	  self.volProInner.style.height = volHeight + 'px';
+
+	  self.video.volume = (volHeight / volProBgHeight).toFixed(1);
 	}
 
   }
