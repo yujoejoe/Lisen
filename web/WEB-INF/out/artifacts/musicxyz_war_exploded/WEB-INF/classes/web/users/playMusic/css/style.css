@@ -85,8 +85,22 @@ body {
     top: 50px;
     width: 56.7%;
     height: 540px;
+    overflow-y:scroll;
+
     /*background-color: #e4b9b9;*/
 
+}
+/*google*/
+::-webkit-scrollbar { width: 6px;}
+/*滚动槽*/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+/*滚动条滑块*/
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 10px;
 }
 
 .list .tool {
