@@ -156,15 +156,14 @@ $(document).ready(function () {
     })
 });
 
-//全部歌手获取
-$(document).ready(function () {
+function  all() {
     $.get(
         "/info/get",
         // {"page":6,"size":3},
         function (result) {
             var data = JSON.parse(result);
             console.log(data);
-            $(".page_firstShow").css("background-color","#31c27c");
+            $(".page_firstShow").css("background-color", "#31c27c");
             if (result != null && data.result.length < 16) {
                 for (var i = 0; i < data.result.length; i++) {
                     $(".txt_singer_img")[i].src = data.result[i].img;
@@ -175,18 +174,18 @@ $(document).ready(function () {
             } else if (result != null && data.result.length > 15) {
 
                 console.log("aaa");
-                for (var j= 0; j < 15; j++) {
+                for (var j = 0; j < 15; j++) {
                     $(".txt_singer_img")[j].src = data.result[j].img;
                     $(".txt_name")[j].innerHTML = data.result[j].name;
                     $($(".show_hide")[j]).show();
                 }
                 $($(".page_option")[2]).click(function () {
 
-                    $(this).css("background-color","#31c27c");
-                    $(".page_firstShow").css("background-color","");
-                        for (var k=0; k <data.result.length ; k++) {
-                        $(".txt_singer_img")[k].src = data.result[k+15].img;
-                        $(".txt_name")[k].innerHTML= data.result[k+15].name;
+                    $(this).css("background-color", "#31c27c");
+                    $(".page_firstShow").css("background-color", "");
+                    for (var k = 0; k < data.result.length; k++) {
+                        $(".txt_singer_img")[k].src = data.result[k + 15].img;
+                        $(".txt_name")[k].innerHTML = data.result[k + 15].name;
                         $($(".show_hide")[k]).show();
                     }
                 })
@@ -194,13 +193,29 @@ $(document).ready(function () {
             }
         }
     );
+}
+
+//全部歌手获取
+$(document).ready(function () {
+    all();
+
+    $("#all_option").click(function () {
+
+      all();
+    })
+
+
 });
+
 
 
 $(document).ready(function () {
 
+
     $(".nation").click(function () {
+
         $(".nation").css("background","none");
+        $("#all_option").css("background","none");
         $(this).css("background","#84fac1");
 
         var  search = $(this).html();
