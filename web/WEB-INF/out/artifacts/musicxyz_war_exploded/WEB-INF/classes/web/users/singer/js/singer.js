@@ -202,7 +202,7 @@ $(document).ready(function () {
     $(".nation").click(function () {
         $(".nation").css("background","none");
         $(this).css("background","#84fac1");
-        
+
         var  search = $(this).html();
         console.log(search);
         $.get(

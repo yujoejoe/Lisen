@@ -182,6 +182,7 @@ MVP.prototype = {
 	};
 
 	// 发送弹幕
+	// 点击发送
 	this.dmBtn.onclick = function(){
 	  var barrage = self.dmInput.value;
 	  if(barrage !== ""){
@@ -193,9 +194,8 @@ MVP.prototype = {
 	    self.dmInput.value = "";
 	  }
 	};
-
+	// 回车发送
 	this.dmInput.addEventListener('keyup', function(e){
-	  var barrage = self.dmInput.value;
 		if(e.key === 'Enter'){
 		  self.dmBtn.onclick();
 		}
