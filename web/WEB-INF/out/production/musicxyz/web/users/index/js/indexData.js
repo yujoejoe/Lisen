@@ -82,6 +82,8 @@ $(document).ready(function () {
         //排行榜日韩部分
         $.get(
             "/Japan/get",
+            {"areaId1":"3",
+            "areaId2":"4"},
             function (result) {
                 var data = JSON.parse(result);
                 console.log(data);
@@ -95,6 +97,7 @@ $(document).ready(function () {
         //排行榜欧美歌曲部分
         $.get(
             "/EuropeAmerica/get",
+            {"areaId":"2"},
             function (result) {
                 var data = JSON.parse(result);
                 console.log(data);
@@ -123,12 +126,12 @@ $(document).ready(function () {
 
         //排行榜日韩歌曲播放
         $("#play_JapanKorea").click(function () {
-            window.location.href = "../users/playMusic/playMusic.html";
+            window.location.href = "../users/playMusic/playMusic.html?areaId1=3&areaId2=4";
         });
 
         //排行榜欧美歌曲播放
         $("#play_EuropeAmerica").click(function () {
-            window.location.href = "../users/playMusic/playMusic.html";
+            window.location.href = "../users/playMusic/playMusic.html?areaId=2";
         });
 
 
