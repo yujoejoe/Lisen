@@ -21,22 +21,6 @@
 
 
 
-/*.choose ul{
-  color: gray;
-}
-.choose ul li{
-  float: left;
-  left: 500px;
-  margin-left: 40px;
-  margin-bottom: 40px;
-}
-.choose ul li:hover{
-  color: white;
-  cursor: pointer;
-}*/
-
-
-
 /* ====== public ====== */
 .main {
   overflow: hidden;
@@ -611,20 +595,12 @@
 #recommend {
   width: 100%;
   height: 610px;
-  background: url(../images/cont/newSong/newSong_bg.jpg) no-repeat center;
+  background: url(../images/ad/3.jpg) no-repeat center;
   -webkit-background-size: cover;
   background-size: cover;
   opacity: .75;
   transition: 400ms;
 }
-
-
-/*#recommend .main-title .title i {*/
-  /*background-position: 0 -240px;*/
-/*}*/
-/*#recommend .main-title .line {*/
-  /*background-color: #000;*/
-/*}*/
 
 #recommend .main-inner{
   margin: 150px auto !important;
@@ -691,6 +667,15 @@
 #recommend .slider-btns span.cur i {
   background-color: #151515;
 }
+
+#recommend .main-inner .carousel .carousel-slider a:hover{
+  cursor: auto;
+}
+#recommend .main-inner .carousel .carousel-slider img:hover{
+  cursor: auto;
+}
+
+
 /* ====== rank ====== */
 #rank {
   width: 100%;
@@ -803,6 +788,7 @@
   line-height: 30px;
   color: rgba(255, 255, 255, .5);
 }
+
 /* ====== hotSong ====== */
 #hotSong {
   width: 100%;

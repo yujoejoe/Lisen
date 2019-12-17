@@ -45,10 +45,9 @@ public class AlbumDAOImp implements AlbumDAO{
                     +" inner join"
                     + " language"
                     +" on"
-                    + " album.languageId = language.id"
-                    +" where 1=1 ";
+                    + " album.languageId = language.id";
+//                    +" where 1=1 ";
 
-//            String sql = " select album.name from album where 1=1 ";
 
 
 
@@ -113,9 +112,6 @@ public class AlbumDAOImp implements AlbumDAO{
             }
 
             pst = conn.prepareStatement(sql);
-
-            // 控制台输出sql语句，检验正确性
-//            System.out.println("album COUNT: "+sql);
 
             ResultSet rs = pst.executeQuery();
             rs.next();

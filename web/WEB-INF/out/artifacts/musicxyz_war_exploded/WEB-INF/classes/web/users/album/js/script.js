@@ -39,13 +39,9 @@ function GetQueryString(name)
     if(r!=null) return  unescape(r[2]); return null;
 }
 
-// 调用方法
-// alert(decodeURI(GetQueryString("search")));
 
 var  search =decodeURI(GetQueryString("search"));
 function AlbumData() {
-// var search = $(".txt_album_name").val();
-    // var search = $("#test").val();
 
     $.get(
         "/album/get",

@@ -52,6 +52,7 @@ public class AlbumGet extends HttpServlet{
         }else{
             album.setLimit("");
         }
+
         // 设置排序方式
         String field = request.getParameter("field");   // 排序字段
         String order = request.getParameter("order");   // 排序方式 升序 或 降序

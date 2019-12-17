@@ -3,17 +3,20 @@ $(document).ready(function () {
 
     function indexData() {
 
-        /*//精彩推荐部分   暂时放了mv图片 需改！需改！需改！需改！需改！需改！需改！需改！
+        //新歌首发部分
         $.get(
-            "/mvGet",
+            "/album/get",
+            { "field":"date",
+                "order":"desc" },
             function (result) {
                 var data = JSON.parse(result);
-                console.log(data);
-                for (var k = 0; k < 6; k++) {
-                    $(".recommend_img")[k].src=data.result[k].img;
+                for (var j = 0; j < 20; j++) {
+                    $(".newSongs_img")[j].src=data.result[j+11].img;
+                    $(".newSongs_song")[j].append(data.result[j+11].name);
+                    $(".newSongs_singerName")[j].append(data.result[j+11].singer);
                 }
             }
-        );*/
+        );
 
         //热门歌单部分
         $.get(
@@ -25,6 +28,12 @@ $(document).ready(function () {
                     $(".hotSongList_img")[i].src=data.result[i%data.result.length].img;
                     $(".hotSongList_song")[i].append(data.result[i%data.result.length].name);
                     $(".hotSongList_playNum")[i].append(data.result[i%data.result.length].play);
+                }
+                // 绑定点击事件设置cookie
+                for (var j = 0; j < 20; j++) {
+                    var play = $(".songList-icon");
+                    play[j].setAttribute("data-id", data.result[j].id);
+                    play[j].onclick = setCookieList;
                 }
             }
         );
@@ -43,7 +52,7 @@ $(document).ready(function () {
                 // 绑定点击事件设置cookie
                 for (var i = 0; i < 8; i++) {
                     var play = $(".play-icon");
-                    play[i].setAttribute("data-id", i+1);
+                    play[i].setAttribute("data-id", data.result[i].id);
                     play[i].onclick = setCookie;
                 }
             }
@@ -114,6 +123,21 @@ $(document).ready(function () {
 
         /*--------------------- 页面跳转对接start ---------------------*/
 
+
+ //新歌首发
+
+        //点击图片传参
+        $(".newSongs_img").click(function () {
+            var value = $(this).attr("src");
+            console.log(value);
+            var search = encodeURI(encodeURI(value));
+            window.location.href="../users/album/album.html?search="+search;
+        });
+
+
+
+ //排行榜
+
         //排行榜新歌播放
         $("#play_NewSong").click(function () {
             window.location.href = "../users/playMusic/playMusic.html?filed=date&order=desc";
@@ -145,5 +169,10 @@ $(document).ready(function () {
 
 function setCookie() {
     document.cookie = "mId=" + this.getAttribute('data-id') + ";path=/";
+    console.log(document.cookie);
+}
+function setCookieList() {
+    var cName = "slId";
+    document.cookie = cName + "=" + this.getAttribute('data-id') + ";path=/";
     console.log(document.cookie);
 }

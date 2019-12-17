@@ -100,90 +100,11 @@ $(function () {
 
   var Plugin = function (elem) {
     this.oWrapper = elem;
-
     this.$tab_item = this.oWrapper.find('.tab-title').find('.item');
     this.$tab_img = this.oWrapper.find('.tab-cont').find('img');
     this.$slider_wrapper = $('.slider-wrapper');
-
     this.$slider_btn = $('.slider-btns').find('span');
-
-
-      //新歌首发部分
-      $.get(
-          "/timeDown/get",
-          function (result) {
-              var data = JSON.parse(result);
-              for (var j = 0; j < 20; j++) {
-                  $(".newSongs_img")[j].src=data.result[j].img;
-                  $(".newSongs_song")[j].append(data.result[j].song);
-                  $(".newSongs_singerName")[j].append(data.result[j].singer);
-              }
-          }
-      );
-
-      //新歌首发全部部分
-      $("#all_NewSong").click(function () {
-          $.get(
-              "/timeDown/get",
-              function (result) {
-                  var data = JSON.parse(result);
-                  for (var j = 0; j < 20; j++) {
-                      var i = 3*j;
-                      $(".newSongs_img")[j].src=data.result[i%data.result.length].img;
-                      $(".newSongs_song")[j].append(data.result[i%data.result.length].song);
-                      $(".newSongs_singerName")[j].append(data.result[i%data.result.length].singer);
-                  }
-              }
-          );
-      });
-
-      //新歌首发华语部分
-      $("#China_NewSong").click(function () {
-          $.get(
-              "/timeDown/get",
-              function (result) {
-                  var data = JSON.parse(result);
-                  for (var j = 0; j < 20; j++) {
-                      $(".newSongs_img")[j].src=data.result[j%data.result.length].img;
-                      $(".newSongs_song")[j].append(data.result[j%data.result.length].song);
-                      $(".newSongs_singerName")[j].append(data.result[j%data.result.length].singer);
-                  }
-              }
-          );
-      });
-
-      //新歌首发日韩部分
-      $("#JapanKorea_NewSong").click(function () {
-          $.get(
-              "/Japan/get",
-              function (result) {
-                  var data = JSON.parse(result);
-                  for (var j = 0; j < 20; j++) {
-                      $(".newSongs_img")[j].src=data.result[j%data.result.length].img;
-                      $(".newSongs_song")[j].append(data.result[j%data.result.length].song);
-                      $(".newSongs_singerName")[j].append(data.result[j%data.result.length].singer);
-                  }
-              }
-          );
-      });
-
-      //新歌首发欧美部分
-      $("#EuropeAmerica_NewSong").click(function () {
-          $.get(
-              "/EuropeAmerica/get",
-              function (result) {
-                  var data = JSON.parse(result);
-                  for (var j = 0; j < 20; j++) {
-                      $(".newSongs_img")[j].src=data.result[(j+3)%data.result.length].img;
-                      $(".newSongs_song")[j].append(data.result[(j+3)%data.result.length].song);
-                      $(".newSongs_singerName")[j].append(data.result[(j+3)%data.result.length].singer);
-                  }
-              }
-          );
-      });
   };
-
-
 
 
   Plugin.prototype = {
@@ -414,7 +335,6 @@ $(function () {
       nextClick: function () {
           var self = this;
 
-
           if(num === this.$slider_btn.length){
             num = 0;
             this.$slider_wrapper.animate({left: -(num+1) * this.dis_w}, 0, function () {
@@ -440,4 +360,19 @@ $(function () {
 
 })(jQuery, window, document);
 
-
+/*$(document).ready(function () {
+    //搜索部分 根据点击量推荐
+    $.get(
+        "/SongHits/get",
+        { "hits":"hits",
+            "order2":"desc" },
+        function (result) {
+            var data = JSON.parse(result);
+            console.log(data);
+            for (var i = 0; i < 5; i++) {
+                $(".title")[i].append(data.result[i].song);
+                $(".num")[i].append((data.result[i].hits/9).toFixed(1)+ ' 万');
+            }
+        }
+    );
+});*/
