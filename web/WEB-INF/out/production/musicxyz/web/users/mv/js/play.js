@@ -7,6 +7,7 @@ function MVP() {
   this.mId = getCookie("mId");									// 视频id
   this.videoInfo = [];											// 接受后台发送的视频信息
   this.cmts = [];												// 接受发送的评论信息
+  // 视频
   this.duration = 0;											// 视频总时长
   this.isPlay = false;											// 判断当前是否在播放状态
   this.vPro = document.querySelector(".progress");		        // 视频进度条
@@ -22,6 +23,14 @@ function MVP() {
   this.fullscreenBtn = document.querySelector("#icofullscreen");// 全屏按钮
   this.dmBtn = document.querySelector(".dmWrap button");		// 发送弹幕按钮
   this.dmInput = document.querySelector(".dmWrap input");		// 弹幕输入框
+  // 弹幕
+  this.barrageCont = document.querySelector(".mv_danmu");
+  this.dmPool = [
+    "你指尖跃动的电光，是我此生不变的信仰！",
+	"樱花满地集于我心，楪舞纷飞祈愿相随！",
+	"2333~"
+  ];
+  this.domPool = [];
   this.cmtInput = document.querySelector("#cmt cmt_input");		// 评论输入框
 }
 
@@ -58,6 +67,7 @@ MVP.prototype = {
 
 	// 歌曲标题
 	mv_title.innerHTML = this.videoInfo[0].singer + " - " + this.videoInfo[0].title;
+	mv_title.setAttribute('title', this.videoInfo[0].title);
 
 	// 播放量
 	var str = this.videoInfo[0].play > 10000 ? ((this.videoInfo[0].play / 10000).toFixed(1)) : this.videoInfo[0].play;
@@ -68,6 +78,26 @@ MVP.prototype = {
 	var mv_date = document.querySelector(".mv_info_date span");
 	mv_singer.innerHTML = this.videoInfo[0].singer;
 	mv_date.innerHTML = this.videoInfo[0].date;
+  },
+  addBarrage: function(){
+	var self = this;
+	var channel = 3;
+	var counts = 3;
+
+	for(var i = 0; i < channel; ++i){
+	  var dom = [];
+	  for(var j = 0; j < counts; ++j){
+	    var dm = document.createElement('div');
+	    dm.classList.add("barrage");
+	    dm.style.top = i * 20 + 'px';
+	    dm.addEventListener('transitionend', function () {
+		  this.style.transform = null;
+		});
+	    dom.push(dm);
+	    self.barrageCont.appendChild(dm);
+	  }
+	  self.domPool.push(dom);
+	}
   },
   timeUpdate: function () {
 	var self = this;
@@ -115,6 +145,7 @@ MVP.prototype = {
   },
   event: function(){						// 绑定各种简单的事件
     var self = this;
+
     // 播放按钮
 	this.playBtn.onclick = function () {
 	  if (!self.isPlay) {
@@ -129,6 +160,7 @@ MVP.prototype = {
 		self.isPlay = false;
 	  }
 	};
+
 
 	// 全屏按钮
 	// this.fullscreenBtn.onclick = function(){
@@ -149,7 +181,25 @@ MVP.prototype = {
 	  this.placeholder = "发送弹幕~";
 	};
 
+	// 发送弹幕
+	this.dmBtn.onclick = function(){
+	  var barrage = self.dmInput.value;
+	  if(barrage !== ""){
+	    var dm = document.createElement('div');
+	    dm.classList.add("barrage");
+	    dm.innerHTML = barrage;
+	    dm.style.top = parseInt(Math.random()*60 + 10) + 'px';
+		self.barrageCont.appendChild(dm);
+	    self.dmInput.value = "";
+	  }
+	};
 
+	this.dmInput.addEventListener('keyup', function(e){
+	  var barrage = self.dmInput.value;
+		if(e.key === 'Enter'){
+		  self.dmBtn.onclick();
+		}
+	});
 
 	function videoEvent(e){
 	  var videoWidth = $('.mv_inner').css('width').match(/\d+/)[0];
@@ -189,6 +239,10 @@ MVP.prototype = {
 
 	  self.video.volume = (volHeight / volProBgHeight).toFixed(1);
 	}
+
+  },
+  shutBarrage:function () {
+	var self = this;
 
   }
 };
