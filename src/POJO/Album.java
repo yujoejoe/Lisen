@@ -7,7 +7,7 @@ public class Album extends Base{
 
     String name;
     String singer;
-//    String timeDown;
+//    String song;
     String date;
     String img;
     String company;
@@ -39,11 +39,11 @@ public class Album extends Base{
     }
 
 //    public String getSong() {
-//        return timeDown;
+//        return song;
 //    }
 //
-//    public void setSong(String timeDown) {
-//        this.timeDown = timeDown;
+//    public void setSong(String song) {
+//        this.song = song;
 //    }
 
     public String getDate() {

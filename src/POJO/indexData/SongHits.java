@@ -7,20 +7,12 @@ import POJO.Base;
  */
 public class SongHits extends Base {
 
-//    String name;
     String song;
     String hits;
     String img;
     String singer;
     String duration;
 
-
-    /*public String getName() {
-        return name;
-    }
-    public void setName(String song) {
-        this.name = song;
-    }*/
 
     public String getSong() {
         return song;

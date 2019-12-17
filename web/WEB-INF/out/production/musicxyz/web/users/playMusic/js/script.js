@@ -41,43 +41,8 @@ window.onload = function change() {
 //     alert(decodeURI(GetQueryString("album")));
     console.log(decodeURI(GetQueryString("song")));
     console.log(decodeURI(GetQueryString("singer")));
-
-    var song = decodeURI(GetQueryString("song"));
-    var singer = decodeURI(GetQueryString("singer"));
-    // alert(decodeURI(GetQueryString("song")));
-    // alert(decodeURI(GetQueryString("singer")));
-    // alert(decodeURI(GetQueryString("album")));
-
-
-// // 单曲播放
-//     if(singer!="null") {
-//         $(".list_author")[0].append(singer);
-//         $($(".list_music")[0]).show();
-//         $(".list_name")[0].append(song);
-//         audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/"+singer+"/"+song+".mp3");
-//
-//         audio.play();
-//         if (audio.played) {
-//             pause.style.backgroundPosition = "-30px  0px";
-//         }
-//     }
-
     var  song =decodeURI(GetQueryString("song"));
     var  singer =decodeURI(GetQueryString("singer"));
-
-// 单曲播放
-    if(singer!="null") {
-        $(".list_author")[0].append(singer);
-        $($(".list_music")[0]).show();
-        $(".list_name")[0].append(song);
-        audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/"+singer+"/"+song+".mp3");
-
-        audio.play();
-        if (audio.played) {
-            pause.style.backgroundPosition = "-30px  0px";
-        }
-
-    }
 
 
     //获取总时间
@@ -107,16 +72,12 @@ window.onload = function change() {
         if (audio.played) {
             pause.style.backgroundPosition = "-30px  0px";
         }
-        addLyric(lyric);
-        $($(".wave")[0]).attr("src","images/wave.gif");
-        $($(".list_number_position")[0]).hide();
     }
 
 
 
     $(document).ready(function () {
         var search = decodeURI(GetQueryString("album"));
-        // var music = new Array();
 
         //专辑播放列表
         $.get(
@@ -126,15 +87,18 @@ window.onload = function change() {
                 var data = JSON.parse(result);
                 console.log(data);
 
-                if (result !=="") {
+                if (result != null) {
                     for (var j = 0; j < data.result.length; j++) {
                         $(".list_name")[j].append(data.result[j].song);
                         $(".list_author")[j].append(data.result[j].singer);
                         $($(".list_music")[j]).show();
                     }
                     audio.setAttribute("src","http://192.168.1.125:8080/music/song/music/"+data.result[0].singer+"/"+data.result[0].song+".mp3");
-                    $("#song_info_name").html(data.result[0].singer);
+                    $("#song_info_name").html(data.result[0].singer);           //歌词滚动歌手
                     $("#song_info_singer").html(data.result[0].song);
+                    /*==== 添加歌词 ====*/
+
+                    //歌词滚动歌名
                     audio.play();
                     pause.style.backgroundPosition = "-30px  0px";
                     for (var i = 0; i <data.result.length; i++) {
@@ -149,8 +113,6 @@ window.onload = function change() {
                     name.innerHTML= song_singer[0];
                 }
                 addLyric(lyric);
-                $($(".wave")[0]).attr("src","images/wave.gif");
-                $($(".list_number_position")[0]).hide();
             }
         );
 
@@ -164,20 +126,21 @@ window.onload = function change() {
             function (result) {
                 var data = JSON.parse(result);
                 console.log(data);
-                if (result !=="") {
-                    for (var k= 0; k< 8; k++) {
-                        $($(".list_author")[k]).append(data.result[k].singer);
+                if (result != null) {
+                    for (var k= 0; k< data.result.length; k++) {
+                        $($(".list_author")[k]).append(oneSinger);
                         $($(".list_time")[k]).append(data.result[k].duration);
                         $($(".list_name")[k]).append(data.result[k].song);
                         $($(".list_music")[k]).show();
                     }
                     audio.setAttribute("src","http://192.168.1.125:8080/music/song/music/"+oneSinger+"/"+data.result[0].song+".mp3");
-                    $("#song_info_name").html(data.result[0].song);
-                    $("#song_info_singer").html(oneSinger);
+                    $("#song_info_name").html(oneSinger);
+                    $("#song_info_singer").html(data.result[0].song);
                     audio.play();
-
+                    // /*==== 添加歌词 ====*/
+                    // addLyric(lyric);
                     pause.style.backgroundPosition = "-30px  0px";
-                    for (var i = 0; i <8; i++) {
+                    for (var i = 0; i <data.result.length; i++) {
                         var urlSinger = oneSinger;
                         var urlSong = $($(".list_name")[i]).html();
                         music[i] = urlSinger+"/"+urlSong;
@@ -187,15 +150,12 @@ window.onload = function change() {
 
                         console.log(music[i]);
                     }
-                    name.innerHTML = song_singer[0];
+                    name.innerHTML= song_singer[0];
 
                 }
                 addLyric(lyric);
-                $($(".wave")[0]).attr("src", "images/wave.gif");
-                $($(".list_number_position")[0]).hide();
-
-
             }
+
         );
 
 
@@ -210,6 +170,8 @@ window.onload = function change() {
         //排行榜新歌
         var date= decodeURI(GetQueryString("filed"));
         var desc= decodeURI(GetQueryString("order"));
+        console.log("date："+date);
+        console.log("desc："+desc);
         $.get(
             "/timeDown/get",
             {"field":date,
@@ -247,13 +209,20 @@ window.onload = function change() {
             }
         );
 
-       /* //排行榜热歌
-        var hits= decodeURI(GetQueryString("hotSong1"));
-        var desc= decodeURI(GetQueryString("hotSong2"));
+
+        //排行榜热歌
+        var hits= decodeURI(GetQueryString("hits"));
+        var desc2= decodeURI(GetQueryString("order2"));
+        var limit= decodeURI(GetQueryString("limit"));
+        console.log("hits："+hits);
+        console.log("order2："+desc2);
+        console.log("limit："+limit);
+
         $.get(
             "/SongHits/get",
-            {"hotSong1": hits,
-            "hotSong2":desc},
+            {"hits": hits,
+            "order2":desc2,
+            "limit":limit},
             function (result) {
                 var data = JSON.parse(result);
                 console.log(data);
@@ -267,45 +236,7 @@ window.onload = function change() {
                     audio.setAttribute("src","http://192.168.1.125:8080/music/song/music/"+data.result[0].singer+"/"+data.result[0].song+".mp3");
                     $("#song_info_name").html(data.result[0].singer);           //歌词滚动歌手
                     $("#song_info_singer").html(data.result[0].song);
-                    /!*==== 添加歌词 ====*!/
-
-                    //歌词滚动歌名
-                    audio.play();
-                    pause.style.backgroundPosition = "-30px  0px";
-                    for (var i = 0; i <data.result.length; i++) {
-                        var urlSinger = $($(".list_author")[i]).html();
-                        var urlSong = $($(".list_name")[i]).html();
-                        music[i] = urlSinger+"/"+urlSong;
-                        song_singer[i]= urlSong+" - "+urlSinger;
-                        pic_song[i] = urlSong;
-                        pic_singer[i] = urlSinger;
-                        console.log(music[i]);
-                    }
-                    name.innerHTML= song_singer[j];
-                }
-                addLyric(lyric);
-            }
-        );*/
-
-        /*//排行榜日韩歌曲
-        var JapanKoreaSong= decodeURI(GetQueryString("JapanKoreaSong"));
-        $.get(
-            "/Japan/get",
-            {"JapanKoreaSong": JapanKoreaSong},
-            function (result) {
-                var data = JSON.parse(result);
-                console.log(data);
-                if (result != null) {
-                    for (var j = 0; j < data.result.length; j++) {
-                        $(".list_name")[j].append(data.result[j].song);
-                        $(".list_author")[j].append(data.result[j].singer);
-                        $(".list_time")[j].append(data.result[j].duration);
-                        $($(".list_music")[j]).show();
-                    }
-                    audio.setAttribute("src","http://192.168.1.125:8080/music/song/music/"+data.result[0].singer+"/"+data.result[0].song+".mp3");
-                    $("#song_info_name").html(data.result[0].singer);           //歌词滚动歌手
-                    $("#song_info_singer").html(data.result[0].song);
-                    /!*==== 添加歌词 ====*!/
+                    /*==== 添加歌词 ====*/
 
                     //歌词滚动歌名
                     audio.play();
@@ -324,42 +255,6 @@ window.onload = function change() {
                 addLyric(lyric);
             }
         );
-
-        //排行榜欧美歌曲
-        $.get(
-            "/EuropeAmerica/get",
-            function (result) {
-                var data = JSON.parse(result);
-                console.log(data);
-                if (result != null) {
-                    for (var j = 0; j < data.result.length; j++) {
-                        $(".list_name")[j].append(data.result[j].song);
-                        $(".list_author")[j].append(data.result[j].singer);
-                        $(".list_time")[j].append(data.result[j].duration);
-                        $($(".list_music")[j]).show();
-                    }
-                    audio.setAttribute("src","http://192.168.1.125:8080/music/song/music/"+data.result[0].singer+"/"+data.result[0].song+".mp3");
-                    $("#song_info_name").html(data.result[0].singer);           //歌词滚动歌手
-                    $("#song_info_singer").html(data.result[0].song);
-                    /!*==== 添加歌词 ====*!/
-
-                    //歌词滚动歌名
-                    audio.play();
-                    pause.style.backgroundPosition = "-30px  0px";
-                    for (var i = 0; i <data.result.length; i++) {
-                        var urlSinger = $($(".list_author")[i]).html();
-                        var urlSong = $($(".list_name")[i]).html();
-                        music[i] = urlSinger+"/"+urlSong;
-                        song_singer[i]= urlSong+" - "+urlSinger;
-                        pic_song[i] = urlSong;
-                        pic_singer[i] = urlSinger;
-                        console.log(music[i]);
-                    }
-                    name.innerHTML= song_singer[j];
-                }
-                addLyric(lyric);
-            }
-        );*/
 
 
 
@@ -394,13 +289,8 @@ window.onload = function change() {
     song_name.innerHTML = pic_song[num];
     singer_name.innerHTML = pic_singer[num];
     audio.play();
-    $($(".wave")[num+1]).attr("src","none");
-    $($(".list_number_position")[num+1]).show();
-    $($(".wave")[num]).attr("src","images/wave.gif");
-    $($(".list_number_position")[num]).hide();
 
-
-      /*==== 添加歌词 ====*/
+    /*==== 添加歌词 ====*/
     clearLyric(lyric);
     addLyric(lyric);
 
@@ -408,18 +298,14 @@ window.onload = function change() {
 
   //下一曲
   right.onclick = function () {
-      $($(".wave")[num]).attr("src","none");
-      $($(".list_number_position")[num]).show();
     num = (num + 1) % music.length;
     audio.src = "http://192.168.1.125:8080/music/song/music/" + music[num] + ".mp3";
     name.innerHTML = song_singer[num];
     pause.style.backgroundPosition = "-30px 0px";
-    song_name.innerHTML = pic_song[num];
-    singer_name.innerHTML = pic_singer[num];
+      song_name.innerHTML = pic_song[num];
+      singer_name.innerHTML = pic_singer[num];
     audio.play();
 
-    $($(".wave")[num]).attr("src","images/wave.gif");
-    $($(".list_number_position")[num]).hide();
     /*==== 添加歌词 ====*/
     clearLyric(lyric);
     addLyric(lyric);

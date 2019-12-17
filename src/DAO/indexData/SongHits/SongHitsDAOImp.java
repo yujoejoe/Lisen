@@ -20,7 +20,7 @@ public class SongHitsDAOImp implements SongHitsDAO {
         @Override
         public ArrayList<SongHits> select (SongHits SongHits) throws SQLException {
             try {
-                String sql = "select distinct"
+                String sql = "select "
                         + " song.name as song,"
                         + " singer.name as singer,"
                         + " album.img as img,"
@@ -35,9 +35,9 @@ public class SongHitsDAOImp implements SongHitsDAO {
                         + " inner join "
                         + " album "
                         + " on "
-                        + " song.albumId = album.id"
-                        + " ORDER BY hits DESC"
-                        + " LIMIT 20;";
+                        + " song.albumId = album.id";
+                       /* + " ORDER BY hits DESC"
+                        + " LIMIT 20;";*/
 
 
                 // 添加条件
