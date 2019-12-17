@@ -36,10 +36,10 @@ public class JapanDAOImp implements JapanDAO {
                         + " inner join "
                         + " album "
                         + " on "
-                        + " song.albumId = album.id"
-                        + " WHERE singer.areaId=4 OR singer.areaId=3"
+                        + " song.albumId = album.id";
+                        /*+ " WHERE singer.areaId=4 OR singer.areaId=3"
                         + " ORDER BY date DESC"
-                        + " LIMIT 20;";
+                        + " LIMIT 20;";*/
 
 
                 // 添加条件
@@ -60,8 +60,8 @@ public class JapanDAOImp implements JapanDAO {
                     sql += limit;
                 }
 
-                /*// 控制台输出sql语句，检验正确性
-                System.out.println("Japan SELECT: " + sql);*/
+                // 控制台输出sql语句，检验正确性
+                System.out.println("Japan SELECT: " + sql);
 
                 // 创建prepareStatement对象
                 pst = conn.prepareStatement(sql);
@@ -105,8 +105,8 @@ public class JapanDAOImp implements JapanDAO {
 
             pst = conn.prepareStatement(sql);
 
-            // 控制台输出sql语句，检验正确性
-//            System.out.println("timeDown COUNT: "+sql);
+             /*//控制台输出sql语句，检验正确性
+            System.out.println("timeDown COUNT: "+sql);*/
 
             ResultSet rs = pst.executeQuery();
             rs.next();

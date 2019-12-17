@@ -35,12 +35,21 @@ public class SongHitsGet extends HttpServlet{
         PrintWriter out = response.getWriter();
 
         // 设置排序方式
-        String hotSong1 = request.getParameter("hotSong1");   // 排序字段
-        String hotSong2 = request.getParameter("hotSong2");   // 排序方式 升序 或 降序
-        if(hotSong1!=null && hotSong1.length()!=0 && hotSong2!=null && hotSong2.length()!=0){
-            SongHits.setOrderBy(" order by " + hotSong1 + " " + hotSong2);
+        String hits = request.getParameter("hits");   // 排序字段
+        String order2 = request.getParameter("order2");   // 排序方式 升序 或 降序
+        if(hits!=null && hits.length()!=0 && order2!=null && order2.length()!=0){
+            SongHits.setOrderBy(" order by " + hits + " " + order2);
         }else{
             SongHits.setOrderBy("");
+        }
+
+
+        // 设置限制条数
+        String limit = request.getParameter("limit");
+        if(limit!=null && limit.length()!=0){
+            SongHits.setLimit(" limit " + limit);
+        }else{
+            SongHits.setLimit("");
         }
 
         // （调）2、调用ServiceDAO方法，完成业务

@@ -35,10 +35,10 @@ public class JapanGet extends HttpServlet{
         PrintWriter out = response.getWriter();
 
         // 设置排序方式
-        String field = request.getParameter("field");   // 排序字段
-        String order = request.getParameter("order");   // 排序方式 升序 或 降序
-        if(field!=null && field.length()!=0 && order!=null && order.length()!=0){
-            Japan.setOrderBy(" order by " + field + " " + order);
+        String areaId1 = request.getParameter("areaId1");   // 区域1
+        String areaId2 = request.getParameter("areaId2");   // 区域2
+        if(areaId1!=null && areaId1.length()!=0 && areaId2!=null && areaId2.length()!=0){
+            Japan.setOrderBy(" WHERE singer.areaId=" + areaId1 + " OR singer.areaId=" + areaId2 + " "+"ORDER BY date DESC");
         }else{
             Japan.setOrderBy("");
         }
