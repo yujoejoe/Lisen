@@ -61,25 +61,27 @@ window.onload = function change() {
     var num = 0;
 
 
-    //单曲播放
-    if (singer != "null") {
-        $(".list_author")[0].append(singer);
-        $($(".list_music")[0]).show();
-        $(".list_name")[0].append(song);
-        audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + singer + "/" + song + ".mp3");
-
-        audio.play();
-        name.innerHTML = $($(".list_name")[0]).html()+" - "+$($(".list_author")[0]).html()
-        if (audio.played) {
-            pause.style.backgroundPosition = "-30px  0px";
-        }
-        addLyric(lyric);
-        wave();
-    }
-
-
 
     $(document).ready(function () {
+
+        //单曲播放
+        if (singer !== "null") {
+            $(".list_author")[0].append(singer);
+            $($(".list_music")[0]).show();
+            $(".list_name")[0].append(song);
+            audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + singer + "/" + song + ".mp3");
+
+            audio.play();
+            name.innerHTML = $($(".list_name")[0]).html()+" - "+$($(".list_author")[0]).html();
+            if (audio.played) {
+                pause.style.backgroundPosition = "-30px  0px";
+            }
+            addLyric(lyric);
+            wave();
+            albumPic();
+        }
+
+
         var search = decodeURI(GetQueryString("album"));
         // var music = new Array();
 
@@ -93,13 +95,14 @@ window.onload = function change() {
 
                 if (result !=="") {
                     for (var j = 0; j < data.result.length; j++) {
-                        $(".list_name")[j].append(data.result[j].song);
-                        $(".list_author")[j].append(data.result[j].singer);
+                        $($(".list_name")[j]).append(data.result[j].song);
+                        $($(".list_author")[j]).append(data.result[j].singer);
                         $($(".list_music")[j]).show();
                     }
                     audio.setAttribute("src","http://192.168.1.125:8080/music/song/music/"+data.result[0].singer+"/"+data.result[0].song+".mp3");
                     $("#song_info_name").html(data.result[0].singer);
                     $("#song_info_singer").html(data.result[0].song);
+
                     audio.play();
                     pause.style.backgroundPosition = "-30px  0px";
                     for (var i = 0; i <data.result.length; i++) {
@@ -109,12 +112,16 @@ window.onload = function change() {
                         song_singer[i]= urlSong+" - "+urlSinger;
                         pic_song[i] = urlSong;
                         pic_singer[i] = urlSinger;
-                        console.log(music[i]);
+                        // console.log(music[i]);
                     }
                     name.innerHTML= song_singer[0];
                 }
                 addLyric(lyric);
-                wave();
+                $($(".wave")[0]).attr("src", "images/wave.gif");
+                $($(".list_number_position")[0]).hide();
+                $($(".list_music")[0]).css("background","rgba(51, 51, 51, 0.75)");
+                albumPic();
+
             }
         );
 
@@ -129,7 +136,7 @@ window.onload = function change() {
                 var data = JSON.parse(result);
                 // console.log(data);
                 if (result !=="") {
-                    for (var k= 0; k< 8; k++) {
+                    for (var k= 0; k< data.result.length; k++) {
                         $($(".list_author")[k]).append(data.result[k].singer);
                         $($(".list_time")[k]).append(data.result[k].duration);
                         $($(".list_name")[k]).append(data.result[k].song);
@@ -141,7 +148,7 @@ window.onload = function change() {
                     audio.play();
 
                     pause.style.backgroundPosition = "-30px  0px";
-                    for (var i = 0; i <8; i++) {
+                    for (var i = 0; i <data.result.length; i++) {
                         var urlSinger = oneSinger;
                         var urlSong = $($(".list_name")[i]).html();
                         music[i] = urlSinger+"/"+urlSong;
@@ -149,7 +156,7 @@ window.onload = function change() {
                         pic_song[i] = urlSong;
                         pic_singer[i] = urlSinger;
 
-                        console.log(music[i]);
+                        // console.log(music[i]);
                     }
                     name.innerHTML = song_singer[0];
 
@@ -157,6 +164,7 @@ window.onload = function change() {
                 addLyric(lyric);
                 wave();
                 albumPic();
+
             }
         );
 
@@ -209,6 +217,8 @@ window.onload = function change() {
                     name.innerHTML= song_singer[0];
                 }
                 addLyric(lyric);
+                wave();
+                albumPic();
             }
         );
 
@@ -254,6 +264,8 @@ window.onload = function change() {
                     name.innerHTML= song_singer[0];
                 }
                 addLyric(lyric);
+                wave();
+                albumPic();
             }
         );
 
@@ -296,6 +308,8 @@ window.onload = function change() {
                     name.innerHTML= song_singer[0];
                 }
                 addLyric(lyric);
+                wave();
+                albumPic();
             }
         );
 
@@ -335,12 +349,14 @@ window.onload = function change() {
                     name.innerHTML= song_singer[0];
                 }
                 addLyric(lyric);
+                wave();
+                albumPic();
             }
         );
 
 
         /*--------------------------- yyq加 end --------------------------------*/
-        addLyric(lyric);
+        // addLyric(lyric);
 
     });
 
@@ -366,7 +382,7 @@ window.onload = function change() {
     function wave() {
         var dbsong = $("#song_info_name").html();
         // console.log(dbsong)
-        for (var j = 0; j < 8; j++) {
+        for (var j = 0; j < 13; j++) {
             var dbsongs = $($(".list_name")[j]).html();
             // console.log(dbsongs);
             if (dbsong === dbsongs) {
@@ -385,7 +401,7 @@ window.onload = function change() {
 //双击播放
     $(".list_music").on("dblclick", function () {
 
-        console.log("this is dblclick event");
+
         var  dbsong =  $(this).find("li").eq(2).html();
         var  dbsinger =  $(this).find("li").eq(3).html();
         audio.src = "http://192.168.1.125:8080/music/song/music/" + dbsinger +"/"+dbsong+".mp3";
