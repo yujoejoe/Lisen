@@ -34,10 +34,10 @@ public class EuropeAmericaDAOImp implements EuropeAmericaDAO {
                         + " inner join "
                         + " album "
                         + " on "
-                        + " song.albumId = album.id"
-                        + " WHERE singer.areaId=2"
+                        + " song.albumId = album.id";
+                        /*+ " WHERE singer.areaId=2"
                         + " ORDER BY date DESC"
-                        + " LIMIT 20;";
+                        + " LIMIT 20;";*/
 
 
                 // 添加条件
@@ -58,8 +58,8 @@ public class EuropeAmericaDAOImp implements EuropeAmericaDAO {
                     sql += limit;
                 }
 
-                /*// 控制台输出sql语句，检验正确性
-                System.out.println("EuropeAmerica SELECT: " + sql);*/
+                // 控制台输出sql语句，检验正确性
+               /* System.out.println("EuropeAmerica SELECT: " + sql);*/
 
                 // 创建prepareStatement对象
                 pst = conn.prepareStatement(sql);

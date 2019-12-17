@@ -35,10 +35,9 @@ public class EuropeAmericaGet extends HttpServlet{
         PrintWriter out = response.getWriter();
 
         // 设置排序方式
-        String field = request.getParameter("field");   // 排序字段
-        String order = request.getParameter("order");   // 排序方式 升序 或 降序
-        if(field!=null && field.length()!=0 && order!=null && order.length()!=0){
-            EuropeAmerica.setOrderBy(" order by " + field + " " + order);
+        String areaId = request.getParameter("areaId");   // 区域
+        if(areaId!=null && areaId.length()!=0){
+            EuropeAmerica.setOrderBy(" WHERE singer.areaId=" + areaId +  " "+"ORDER BY date DESC");
         }else{
             EuropeAmerica.setOrderBy("");
         }

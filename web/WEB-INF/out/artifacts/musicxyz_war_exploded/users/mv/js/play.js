@@ -140,9 +140,6 @@ MVP.prototype = {
 	this.vPro.onmousedown = videoEvent;
 	// 声音
 	this.volPro.onmousedown = volumeEvent;
-	this.volumeBtn.onclick = function(){
-	  self.video.mute = !self.video.mute;
-	};
 
 	// 弹幕输入框
 	this.dmInput.onfocus = function () {

@@ -170,12 +170,12 @@ window.onload = function change() {
         //排行榜新歌
         var date= decodeURI(GetQueryString("filed"));
         var desc= decodeURI(GetQueryString("order"));
-        console.log("date："+date);
-        console.log("desc："+desc);
+        console.log("newSong--date："+date);
+        console.log("newSong--desc："+desc);
         $.get(
             "/timeDown/get",
-            {"field":date,
-                "order":desc},
+            { "field":date,
+              "order":desc },
             function (result) {
                 var data = JSON.parse(result);
                 console.log(data);
@@ -212,16 +212,15 @@ window.onload = function change() {
 
         //排行榜热歌
         var hits= decodeURI(GetQueryString("hits"));
-        var desc2= decodeURI(GetQueryString("desc2"));
+        var desc2= decodeURI(GetQueryString("order2"));
         var limit= decodeURI(GetQueryString("limit"));
-        console.log("hits："+hits);
-        console.log("desc2："+desc2);
-        console.log("limit："+limit);
-
+        console.log("hotSong--hits："+hits);
+        console.log("hotSong--order2："+desc2);
+        console.log("hotSong--limit："+limit);
         $.get(
             "/SongHits/get",
             {"hits": hits,
-            "desc2":desc2,
+            "order2":desc2,
             "limit":limit},
             function (result) {
                 var data = JSON.parse(result);
@@ -256,6 +255,42 @@ window.onload = function change() {
             }
         );
 
+
+        //排行榜日韩
+        $.get(
+            "/Japan/get",
+            function (result) {
+                var data = JSON.parse(result);
+                console.log(data);
+                if (result != null) {
+                    for (var j = 0; j < data.result.length; j++) {
+                        $(".list_name")[j].append(data.result[j].song);
+                        $(".list_author")[j].append(data.result[j].singer);
+                        $(".list_time")[j].append(data.result[j].duration);
+                        $($(".list_music")[j]).show();
+                    }
+                    audio.setAttribute("src","http://192.168.1.125:8080/music/song/music/"+data.result[0].singer+"/"+data.result[0].song+".mp3");
+                    $("#song_info_name").html(data.result[0].singer);           //歌词滚动歌手
+                    $("#song_info_singer").html(data.result[0].song);
+                    /*==== 添加歌词 ====*/
+
+                    //歌词滚动歌名
+                    audio.play();
+                    pause.style.backgroundPosition = "-30px  0px";
+                    for (var i = 0; i <data.result.length; i++) {
+                        var urlSinger = $($(".list_author")[i]).html();
+                        var urlSong = $($(".list_name")[i]).html();
+                        music[i] = urlSinger+"/"+urlSong;
+                        song_singer[i]= urlSong+" - "+urlSinger;
+                        pic_song[i] = urlSong;
+                        pic_singer[i] = urlSinger;
+                        console.log(music[i]);
+                    }
+                    name.innerHTML= song_singer[j];
+                }
+                addLyric(lyric);
+            }
+        );
 
 
         /*--------------------------- yyq加 end --------------------------------*/
