@@ -26,7 +26,7 @@ public class AlbumDAOImp implements AlbumDAO{
             String sql = "select"
                     + " album.name as name,"
                     + " singer.name as singer,"
-//                    + " song.name as song,"
+                    + " song.name as song,"
                     + " album.date as date,"
                     + " album.img as img,"
                     + " album.company as company,"
@@ -38,10 +38,10 @@ public class AlbumDAOImp implements AlbumDAO{
                     + " singer"
                     +" on "
                     + " album.singerId = singer.id "
-//                    + " inner join "
-//                    + " song "
-//                    + " on "
-//                    + " album.songId = song.albumId "
+                    + " inner join "
+                    + " song "
+                    + " on "
+                    + " song.albumId = album.id "
                     +" inner join"
                     + " language"
                     +" on"
@@ -85,6 +85,7 @@ public class AlbumDAOImp implements AlbumDAO{
 
                 tmp.setName(rs.getString("name"));
                 tmp.setSinger(rs.getString("singer"));
+                tmp.setSong(rs.getString("song"));
                 tmp.setDate(rs.getString("date"));
                 tmp.setImg(rs.getString("img"));
                 tmp.setCompany(rs.getString("company"));
@@ -104,7 +105,7 @@ public class AlbumDAOImp implements AlbumDAO{
     public int count(Album  album) throws SQLException {
         try{
             // sql语句
-            String sql = "select count(*) as counts from album inner join singer  on  album.singerId = singer.id  where 1=1";
+            String sql = "select count(*) as counts from album inner join singer  on  album.singerId = singer.id   inner join song  on  song.albumid = album.id   where 1=1";
             // 添加条件
             String condition = album.getCondition();
             if(condition != null && !condition.equals("")){

@@ -7,12 +7,23 @@ public class Album extends Base{
 
     String name;
     String singer;
-//    String song;
+    //    String timeDown;
+    String song;
     String date;
     String img;
     String company;
     String language;
     String genre;
+
+
+
+    public String getSong() {
+        return song;
+    }
+
+    public void setSong(String song) {
+        this.song = song;
+    }
 
     public String getGenre() {
         return genre;
@@ -39,11 +50,11 @@ public class Album extends Base{
     }
 
 //    public String getSong() {
-//        return song;
+//        return timeDown;
 //    }
 //
-//    public void setSong(String song) {
-//        this.song = song;
+//    public void setSong(String timeDown) {
+//        this.timeDown = timeDown;
 //    }
 
     public String getDate() {
