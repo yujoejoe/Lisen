@@ -75,8 +75,8 @@ List.prototype = {
 	// 标签
     var items = document.querySelectorAll('.info_item span');
     items[0].innerHTML = this.info[0].style;
-	items[1].innerHTML = this.info[0].play;
-
+	// items[1].innerHTML = this.info[0].play;
+    items[1].innerHTML = (this.info[0].play/10000).toFixed(1)+"万";
   },
   addSongs: function(){
     var self = this;

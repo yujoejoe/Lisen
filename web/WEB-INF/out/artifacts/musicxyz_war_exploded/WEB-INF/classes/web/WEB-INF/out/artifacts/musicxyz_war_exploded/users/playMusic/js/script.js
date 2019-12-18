@@ -239,7 +239,7 @@ window.onload = function change() {
                 var data = JSON.parse(result);
                 console.log(data);
                 if (result != null) {
-                    for (var j = 0; j < 8; j++) {
+                    for (var j = 0; j < 12; j++) {
                         $($(".list_name")[j]).append(data.result[j].song);
                         $($(".list_author")[j]).append(data.result[j].singer);
                         $($(".list_time")[j]).append(data.result[j].duration);
@@ -252,7 +252,7 @@ window.onload = function change() {
                     //歌词滚动歌名
                     audio.play();
                     pause.style.backgroundPosition = "-30px  0px";
-                    for (var i = 0; i <8; i++) {
+                    for (var i = 0; i < 12; i++) {
                         var urlSinger = $($(".list_author")[i]).html();
                         var urlSong = $($(".list_name")[i]).html();
                         music[i] = urlSinger+"/"+urlSong;
@@ -458,7 +458,7 @@ window.onload = function change() {
 
 //播放，暂停
     pause.onclick = function () {
-        if (pause.style.backgroundPosition != "-30px 0px") {
+        if (pause.style.backgroundPosition !== "-30px 0px") {
             audio.play();
             pause.style.backgroundPosition = "-30px 0px";
         } else {
@@ -476,7 +476,19 @@ window.onload = function change() {
   }, false);
 
 
+//勾选歌曲
+    $(".list_edit").click(function () {
+        if (this.style.backgroundPosition !== "-60px  -80px"){
 
+            $(this).css("background-position", "-60px -80px");
+
+        } else {
+
+            $(this).css("background-position", "-1000px");
+            console.log("aaa");
+
+        }
+});
 
 
 
