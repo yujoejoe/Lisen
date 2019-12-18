@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+//========================= ！！！仅用于判断用户的登陆状态，并返回当前登录用户的信息 ！！！ ==================
+
 @WebServlet(name = "UserGet", urlPatterns = "/userGet")
 public class UserGet extends HttpServlet {
     private static final long serialVersionUID = 1L;
