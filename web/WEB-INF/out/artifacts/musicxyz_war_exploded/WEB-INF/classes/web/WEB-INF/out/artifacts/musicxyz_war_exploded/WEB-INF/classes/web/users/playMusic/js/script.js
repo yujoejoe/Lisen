@@ -192,7 +192,7 @@ window.onload = function change() {
                 var data = JSON.parse(result);
                 console.log(data);
                 if (result != null) {
-                    for (var j = 0; j < 8; j++) {
+                    for (var j = 0; j < 12; j++) {
                         $($(".list_name")[j]).append(data.result[j].song);
                         $($(".list_author")[j]).append(data.result[j].singer);
                         $($(".list_time")[j]).append(data.result[j].duration);
@@ -205,7 +205,7 @@ window.onload = function change() {
                     //歌词滚动歌名
                     audio.play();
                     pause.style.backgroundPosition = "-30px  0px";
-                    for (var i = 0; i <8; i++) {
+                    for (var i = 0; i <12; i++) {
                         var urlSinger = $($(".list_author")[i]).html();
                         var urlSong = $($(".list_name")[i]).html();
                         music[i] = urlSinger+"/"+urlSong;
