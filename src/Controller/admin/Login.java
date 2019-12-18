@@ -1,9 +1,8 @@
-package loginAction;
+package Controller.admin;
 
 import POJO.JsonData;
 import POJO.User;
 import ServiceDAO.users.UserServiceDAOImp;
-import util.DBUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,38 +13,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Array;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
-
-@WebServlet(name ="loginAction" ,urlPatterns ="/loginAction/login" )
-public class login extends HttpServlet {
-
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public login() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+/**
+ * Created by user on 2019/12/18.
+ */
+@WebServlet(name = "Login", urlPatterns = "/admin/login")
+public class Login extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         //1、获取登录页面输入的用户名与密码
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String type = request.getParameter("type");
-        type = type == null ? "0" : type;
+        type = type == null ? "1" : type;
 
         UserServiceDAOImp userSDI = new UserServiceDAOImp();
         ArrayList<User> result = null;
@@ -73,11 +55,11 @@ public class login extends HttpServlet {
             }else{
                 success = true;
                 msg = "登录成功！";
-                // 保存user信息
-                user = result.get(0);
-                user.setCondition(" user.name = '" + user.getName() + "'");
-                HttpSession session = request.getSession(true);
-                session.setAttribute("user", user);
+//                // 保存user信息
+//                user = result.get(0);
+//                user.setCondition(" user.name = '" + user.getName() + "'");
+//                HttpSession session = request.getSession(true);
+//                session.setAttribute("user", user);
             }
         }
 
@@ -88,11 +70,7 @@ public class login extends HttpServlet {
         rd.forward(request,response);
     }
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doGet(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }
