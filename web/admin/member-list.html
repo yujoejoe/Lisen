@@ -136,11 +136,12 @@
 			elem: "#userInfo",
 			cols: [[
 				{type: "checkbox",width: 50, fixed: "left"},
-				{field: "id", title: "ID", minWidth: 80, sort: true},
-				{field: "name", title: "用户名", minWidth: 120},
-				{field: "sex", title: "性别", minWidth: 120},
-				{field: "email", title: "邮箱", minWidth: 120},
-				{field: "phone", title: "手机", }
+				{field: "id", title: "ID", width: 80, sort: true},
+				{field: "name", title: "用户名", minWidth: 150},
+				{field: "sex", title: "性别", width: 80},
+				{field: "email", title: "邮箱", minWidth: 150},
+				{field: "phone", title: "手机", minWidth: 150},
+				{title: "操作", width: 100, templet: "#operation"}
 			]],
 			url: "/admin/userSelect",
 			response: {
@@ -149,15 +150,23 @@
 				msgName: 'msg',
 				countName: 'counts',
 				dataName: 'result'
-			},
-			parseData: function (res) {
-				console.log(res);
-	  	}
+			}
+//			, parseData: function (res) {
+//				console.log(res);
+//	  	}
 		});
 	})
 </script>
 
 
+<script type="text/html" id="operation">
+	<a onclick="xadmin.open('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
+		<i class="layui-icon">&#xe642;</i>
+	</a>
+	<a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+		<i class="layui-icon">&#xe640;</i>
+	</a>
+</script>
 
 
 <script>
