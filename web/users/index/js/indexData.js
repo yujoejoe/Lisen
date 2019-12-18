@@ -21,18 +21,19 @@ $(document).ready(function () {
         //热门歌单部分
         $.get(
             "/SongListGet",
+            {"order":"1"},
             function (result) {
                 var data = JSON.parse(result);
                 console.log(data);
                 for (var i = 0; i < 20; i++) {
-                    $(".hotSongList_img")[i].src=data.result[i%data.result.length].img;
-                    $(".hotSongList_song")[i].append(data.result[i%data.result.length].name);
-                    $(".hotSongList_playNum")[i].append(data.result[i%data.result.length].play);
+                    $(".hotSongList_img")[i].src=data.result[i].img;
+                    $(".hotSongList_song")[i].append(data.result[i].name);
+                    $(".hotSongList_playNum")[i].append((data.result[i].play/10000).toFixed(1)+' 万');
                 }
-                // 绑定点击事件设置cookie
                 for (var j = 0; j < 20; j++) {
+                    // 绑定点击事件设置cookie
                     var songList = $(".songList-icon");
-                    songList[j].setAttribute("data-id", data.result[j%data.result.length].id);
+                    songList[j].setAttribute("data-id", data.result[j].id);
                     songList[j].onclick = setCookieList;
                 }
             }
@@ -41,6 +42,7 @@ $(document).ready(function () {
         //MV部分
         $.get(
             "/mvGet",
+            {"order":"0"},
             function (result) {
                 var data = JSON.parse(result);
                 for (var j = 0; j < 8; j++) {

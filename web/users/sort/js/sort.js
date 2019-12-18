@@ -170,7 +170,7 @@ Sort.prototype = {
 	  itemPlay.className = "item_play";
 
 	  //1.1.4.1.2、 播放量文本
-	  var text = document.createTextNode("播放量：" + self.content[i].play);
+        var text = document.createTextNode("播放量：" + self.content[i].play);
 	  // 添加播放量
 
 	  itemPlay.appendChild(text);

@@ -69,7 +69,7 @@ public class SongListGet extends HttpServlet {
         }
 
         // 分页
-        sList.setLimit(" limit 0, 10");
+        sList.setLimit(" limit 0, 20");
 
         // 查询
         result = slSDI.select(sList);

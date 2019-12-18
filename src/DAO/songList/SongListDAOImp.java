@@ -108,7 +108,7 @@ public class SongListDAOImp implements SongListDAO {
     @Override
     public int count(SongList sList) throws SQLException {
         // sql语句
-        String sql = "select count(id) as counts from songlst where 1=1";
+        String sql = "select count(id) as counts from songlist where 1=1";
 
         pst = conn.prepareStatement(sql);
 

@@ -1,5 +1,6 @@
 var num = 0;
 
+//广告部分
 $(function () {
 
   // search 反馈结果
@@ -96,6 +97,7 @@ $(function () {
 
 });
 
+
 (function ($, window, document, undefined) {
 
   var Plugin = function (elem) {
@@ -121,51 +123,67 @@ $(function () {
     },
 
     // 切换图片
-    /*change: function (index) {
+    change: function (index) {
 
       var self = this;
 
       // var img_src = 'user/index/images/cont/newSong/';
 
-       /!* //新歌首发华语部分
+        //新歌首发部分
         $("#China_NewSong").click(function () {
             $.get(
-                "/timeDown/get",
+                "/album/get",
+                { "field":"date",
+                    "order":"desc" },
                 function (result) {
                     var data = JSON.parse(result);
-                    var img_src = data.result.img;
+                    // var img_src = data.result.img;
+                    var img_length = 12;
+                    if (self.oWrapper.attr('id') === 'newSong'){
+                        $(self.$tab_img).each(function (i) {
+                            if(i < 4){
+                                // 让前面的复制体图片等于第三板块图片
+                                $(self.$tab_img[i]).attr('src', data.result[img_length-4+i].img +'');
+                            }else if(i > 15){
+                                // 让后面的复制体图片等于第一板块图片
+                                $(self.$tab_img[i]).attr('src', data.result[img_length-4+i].img +'');
+                            }else{
+                                $(self.$tab_img[i]).attr('src', data.result[img_length-4+i].img +'');
+                            }
+                        });
+                       /* $(self.$tab_img).each(function (i) {
+                            if(i < 4){
+                                // 让前面的复制体图片等于第三板块图片
+                                $(self.$tab_img[i]).attr('src', img_src + img_src[img_length-4+i]+'');
+                            }else if(i > 15){
+                                // 让后面的复制体图片等于第一板块图片
+                                $(self.$tab_img[i]).attr('src', img_src + img_src[i-img_length-4]+'');
+                            }else{
+                                $(self.$tab_img[i]).attr('src', img_src + img_src[i-4]+'');
+                            }
+                        });*/
+                    }
                 }
             );
-        });*!/
-
-      // var mv_src = 'user/index/images/cont/mv/';
-
-        $.get(
-            "/mvGet",
-            function (result) {
-                var data = JSON.parse(result);
-                var mv_src = data.result.img;
-            }
-        );
+        });
 
       this.$tab_item.removeClass('item-cur');
       this.$tab_item.eq(index).addClass("item-cur");
+/*
+      if (this.oWrapper.attr('id') === 'newSong') {
 
-      /!*if (this.oWrapper.attr('id') === 'newSong') {
-
-        var img_length = self.newSong[1].length;
-        /!*$(this.$tab_img).each(function (i) {
+        /!*var img_length = img_src.length;
+        $(this.$tab_img).each(function (i) {
           if(i < 4){
             // 让前面的复制体图片等于第三板块图片
-            $(self.$tab_img[i]).attr('src', img_src + self.newSong[index + 1][img_length-4+i]+'');
+            $(self.$tab_img[i]).attr('src', img_src + self.img_src[img_length-4+i]+'');
           }else if(i > 15){
             // 让后面的复制体图片等于第一板块图片
-            $(self.$tab_img[i]).attr('src', img_src + self.newSong[index + 1][i-img_length-4]+'');
+            $(self.$tab_img[i]).attr('src', img_src + self.img_src[i-img_length-4]+'');
           }else{
-            $(self.$tab_img[i]).attr('src', img_src + self.newSong[index + 1][i-4]+'');
+            $(self.$tab_img[i]).attr('src', img_src + self.img_src[i-4]+'');
           }
         });*!/
-
 
 
         /!*  $(this.$tab_img).each(function (i) {
@@ -191,8 +209,9 @@ $(function () {
               $(self.$tab_img[i]).attr('src',  self.mv[index + 1][i]+'');
           });
 
-      }*!/
-    },*/
+      }*/
+
+    },
 
     constructor: Plugin
   };
