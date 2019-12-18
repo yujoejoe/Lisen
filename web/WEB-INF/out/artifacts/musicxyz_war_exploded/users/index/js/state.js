@@ -4,8 +4,9 @@
 
 $(document).ready((function(){
   // 登陆状态
-  var profile = $('.logged');    // 头像
+  var profile = document.querySelector('.has-login');    // 头像
   var notLog = $('.not-login');
+  var exit = document.querySelector('.has-login .exit');
 // 发送请求获取数据
   $.ajax({
 	type: "post",
@@ -24,7 +25,7 @@ $(document).ready((function(){
 		$(profile).css('display', 'block');
 		if (data.result[0].img !== "") {
 		  console.log(data.result[0].img);
-		  $("#login_img").attr("src", data.result[0].img);
+		  $(profile).find('img')[0].setAttribute("src", data.result[0].img);
 		}
 
 		$(".logged").click(function () {
@@ -37,4 +38,20 @@ $(document).ready((function(){
 	}
   });
 
+  exit.onclick = function(){
+	$.ajax({
+	  type: "get",
+	  url: "/loginAction/exit",
+	  async: false,
+	  success: function (result) {
+		var data = JSON.parse(result);
+		if(data.success){
+		  console.log("exit!");
+		  location.reload();
+		}else{
+		  console.log("exit error!");
+		}
+	  }
+	});
+  };
 }));

@@ -28,8 +28,12 @@ public class exit extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=utf-8");
         HttpSession se = request.getSession();
-        se.invalidate();
-        out.print("{\"success\":true,\"msg\":\"注销成功\"}");
+        if (se != null) {
+            se.invalidate();
+            out.print("{\"success\":true,\"msg\":\"注销成功！\"}");
+        }else{
+            out.print("{\"success\":false,\"msg\":\"注销失败！\"}");
+        }
     }
 
     /**

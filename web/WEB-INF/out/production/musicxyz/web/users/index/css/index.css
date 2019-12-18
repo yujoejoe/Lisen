@@ -543,18 +543,29 @@
 }
 
 .logged{
-  display: none;
+  display: inline-block;
   width: 40px;
   height: 40px;
-  margin: 25px 0;
-  overflow: hidden;
-  border-radius: 50%;
 }
 .logged img{
   width: 100%;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-
+.has-login{
+  display: none;
+}
+.has-login .exit{
+  display: inline-block;
+  font-size: 10px;
+  cursor: pointer;
+  color: #bbb;
+  margin: 2px 0 0 10px;
+}
+.has-login .exit:hover{
+  color: #31c27c;
+}
 
 .header-subNav {
   margin: 0 24%;

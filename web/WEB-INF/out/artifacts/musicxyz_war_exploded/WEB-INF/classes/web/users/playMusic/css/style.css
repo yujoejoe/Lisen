@@ -271,7 +271,28 @@ body {
     height: 14px;
     line-height: 14px;
     border: 1px solid rgba(225, 225, 225, .4);
+    /*background-position: -60px -80px;*/
     background-position: -1000px;
+    background-image: url("../images/pict.png");
+
+}
+
+.list_edit_head {
+    left: 0;
+    /* border-color: #545555; */
+    display: block;
+    position: absolute;
+
+    top: 50%;
+    margin-top: -9px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    border: 1px solid rgba(225, 225, 225, .4);
+    /*background-position: -60px -80px;*/
+    background-position:-1000px;
+    background-image: url("../images/pict.png");
+
 }
 
 .list_number_position {
@@ -316,6 +337,8 @@ body {
 }
 
 .list_input {
+    height: 14px;
+    width: 14px;
     opacity: 0;
 }
 
