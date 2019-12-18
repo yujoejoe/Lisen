@@ -458,7 +458,7 @@ window.onload = function change() {
 
 //播放，暂停
     pause.onclick = function () {
-        if (pause.style.backgroundPosition != "-30px 0px") {
+        if (pause.style.backgroundPosition !== "-30px 0px") {
             audio.play();
             pause.style.backgroundPosition = "-30px 0px";
         } else {
@@ -476,7 +476,19 @@ window.onload = function change() {
   }, false);
 
 
+//勾选歌曲
+    $(".list_edit").click(function () {
+        if (this.style.backgroundPosition !== "-60px  -80px"){
 
+            $(this).css("background-position", "-60px -80px");
+
+        } else {
+
+            $(this).css("background-position", "-1000px");
+            console.log("aaa");
+
+        }
+});
 
 
 
