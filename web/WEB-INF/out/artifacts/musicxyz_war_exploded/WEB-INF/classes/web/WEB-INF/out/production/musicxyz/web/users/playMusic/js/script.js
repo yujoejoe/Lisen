@@ -1,5 +1,14 @@
 window.onload = function change() {
 
+var userId;
+    $.get(
+        "/userGet",
+        function (result) {
+            var data =JSON.parse(result);
+            console.log(data);
+            userId = data.result[0].id;
+        }
+    );
 
   var pause = document.getElementById("pause"); //暂停，播放
   var range = document.getElementById("play_load");
@@ -475,20 +484,71 @@ window.onload = function change() {
 
   }, false);
 
+//   var  listEdit = document.getElementsByClassName("list_edit");
+// //勾选歌曲
+//
+//     for (var j = 0; j <listEdit.length ; j++) {
+//         listEdit[j].onclick = function () {
+//             if (this.style.backgroundPosition !== "-60px -80px"){
+//                 this.style.backgroundPosition = "-60px -80px";
+//                 console.log(this.style.backgroundPosition);
+//             } else {
+//                 this.style.backgroundPosition = "-1000px";
+//                 // $(this).css("background-position", "-1000px");
+//             }
+//         };
+//     }
 
-//勾选歌曲
+//     勾选歌曲
     $(".list_edit").click(function () {
-        if (this.style.backgroundPosition !== "-60px  -80px"){
+       if($(this).css("background-position")!=="-60px -80px"){
 
-            $(this).css("background-position", "-60px -80px");
+           $(this).css("background-position", "-60px -80px");
+       } else {
 
-        } else {
+           $(this).css("background-position", "-1000px");
 
-            $(this).css("background-position", "-1000px");
-            console.log("aaa");
+       }
+    });
 
-        }
+// 勾选全部
+$(".list_edit_head").click(function () {
+
+    if($(".list_edit_head").css("background-position")!=="-60px -80px"){
+        $(".list_edit_head").css("background-position","-60px -80px");
+        $(".list_edit").css("background-position","-60px -80px");
+    }else {
+        $(".list_edit_head").css("background-position","-1000px");
+        $(".list_edit").css("background-position","-1000px");
+
+    }
+
 });
+
+// 清空列表
+
+$("#clear").click(function () {
+    // $(".list_music").hide();
+    $(".list_music").empty();
+    audio.pause();
+
+});
+
+
+//收藏
+    $("#collection").click(function () {
+         console.log("aaa");
+        for (var j = 0; j <$(".list_edit").length ; j++) {
+
+            if($($(".list_edit")[j]).css("background-position")==="-60px -80px"){
+                // var  text =   $($(".list_edit")[j]).find("li").eq(1).html();
+                var  text =   $($(".list_edit")[j]).next().html();
+                  console.log(text);
+
+            }
+        }
+
+    });
 
 
 

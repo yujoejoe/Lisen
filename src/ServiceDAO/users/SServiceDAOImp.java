@@ -75,6 +75,8 @@ public class SServiceDAOImp implements SServiceDAO {
 
     @Override
     public int insert(Collection collection) {
+
+
         return 0;
     }
 
