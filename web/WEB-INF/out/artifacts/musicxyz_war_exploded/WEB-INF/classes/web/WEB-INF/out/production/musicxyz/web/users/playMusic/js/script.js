@@ -542,7 +542,7 @@ $("#clear").click(function () {
 
             if($($(".list_edit")[j]).css("background-position")==="-60px -80px"){
                 // var  text =   $($(".list_edit")[j]).find("li").eq(1).html();
-                var  text =   $($(".list_edit")[j]).next().html();
+                var  text =   $($(".list_name")[j]).html();
                   console.log(text);
 
             }
