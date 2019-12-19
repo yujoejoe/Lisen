@@ -6,10 +6,12 @@ window.onload = function change() {
     $.get(
         "/userGet",
         function (result) {
-            var data = JSON.parse(result);
-            console.log(data);
-            userId = data.result[0].id;
-        }
+		  var data = JSON.parse(result);
+		  // console.log(data);
+		  if (data.success) {
+			userId = data.result[0].id;
+		  }
+		}
     );
 
     var pause = document.getElementById("pause"); //暂停，播放
@@ -101,7 +103,7 @@ window.onload = function change() {
             {"search": search},
             function (result) {
                 var data = JSON.parse(result);
-                // console.log(data);
+                console.log(data);
 
                 if (result !== "") {
                     for (var j = 0; j < data.result.length; j++) {
