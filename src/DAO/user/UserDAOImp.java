@@ -46,7 +46,7 @@ public class UserDAOImp implements UserDAO {
         sql += " and " + condition;
       }
 
-      System.out.println("user SELECT: " + sql);
+//      System.out.println("user SELECT: " + sql);
 
       pst = conn.prepareStatement(sql);
       ResultSet rs = pst.executeQuery();
@@ -89,7 +89,7 @@ public class UserDAOImp implements UserDAO {
       return pst.executeUpdate();
     }catch(Exception e){
       e.printStackTrace();
-      System.out.println("UserDAOImp Insert 异常！");
+//      System.out.println("UserDAOImp Insert 异常！");
       return -1;
     }
   }
