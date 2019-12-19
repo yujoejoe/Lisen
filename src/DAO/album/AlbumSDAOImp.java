@@ -63,7 +63,7 @@ public class AlbumSDAOImp  implements  AlbumSDAO{
                 }
 
                 // 控制台输出sql语句，检验正确性
-                System.out.println("AlbumS SELECT: " + sql);
+//                System.out.println("AlbumS SELECT: " + sql);
 
                 // 创建prepareStatement对象
                 pst = conn.prepareStatement(sql);
