@@ -14,7 +14,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 
-
+/**
+ *
+ */
 @WebServlet(name ="Collection/song/insert" ,urlPatterns ="/collection/song/insert" )
 public class CollectionSongInsert extends HttpServlet {
 
@@ -31,18 +33,13 @@ public class CollectionSongInsert extends HttpServlet {
 
 
 
+        conn = DBUtil.getConnection();
         int  userId   =Integer.parseInt( request.getParameter("userId"));
         int  songId   =Integer.parseInt( request.getParameter("songId"));
         try{
 
             String sql = "insert into collections set userId="+userId+",songId="+songId;
-
-
-            conn = DBUtil.getConnection();
             pst = conn.prepareStatement(sql);
-
-
-
             System.out.println("song insert:"+sql);
             int i= pst.executeUpdate(sql);
             conn.commit();

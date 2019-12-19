@@ -31,15 +31,15 @@ public class CollectionmDAOImp implements CollectionmDAO {
                             + " mv.title as mvName,"
                             + " mv.img as mvImg"
                             + " from"
-                            + " collectionm"
+                            + " collectionMv"
                             + " left join"
                             + " mv"
                             + " on "
-                            + "collectionm.mvId = mv.id"
+                            + "collectionMv.mvId = mv.id"
                             + " left join"
                             + " user"
                             + " on "
-                            + "collectionm.userId = user.id"
+                            + "collectionMv.userId = user.id"
                             + " where 1=1";
 
 
@@ -108,7 +108,7 @@ public class CollectionmDAOImp implements CollectionmDAO {
     public int count(Collection collection) throws SQLException {
         try {
             // sql语句
-            String sql = "select count(*) as counts from collectionm inner  join  user on collectionm.userId = user.id  where 1=1";
+            String sql = "select count(*) as counts from collectionMv inner  join  user on collectionMv.userId = user.id  where 1=1";
             // 添加条件
             String condition = collection.getCondition();
             if (condition != null && !condition.equals("")) {
