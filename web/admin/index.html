@@ -330,15 +330,17 @@
 <!-- 右侧主体结束 -->
 
 <script src="/users/common/js/com.js"></script>
-<script src="./js/jquery.min.js"></script>
 <script>
-  $(function () {
-	var admin = getCookie("admin");
+	
+  (function () {
+	let admin = getCookie("admin");
 	if (admin !== undefined) {
 	  admin = decodeURI(admin);
-	  $("#admin").html(admin);
+	  document.querySelector("#admin").innerHTML = admin;
+	}else{
+	  location.href = "./login.html";
 	}
-  });
+  })();
 </script>
 
 </body>

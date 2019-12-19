@@ -48,17 +48,13 @@ public class SongSelect extends HttpServlet {
             song.setLimit("limit " + (p - 1) * l + ',' + l);
         }
 
-
+        // 返回给前端的数据
         ArrayList<Song> result = songSDI.select(song);
-
         boolean success = result.size() != 0;
-
         String msg = result.size() != 0 ? "查询成功！" : "查询失败！";
-
         int counts = songSDI.count(song);
 
         JsonData jsonData = new JsonData(success, msg, counts, result);
-
         request.setAttribute("jsonData", jsonData);
 
         RequestDispatcher rd = request.getRequestDispatcher("/view/ToJSON");

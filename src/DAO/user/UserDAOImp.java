@@ -45,8 +45,13 @@ public class UserDAOImp implements UserDAO {
       if(condition != null && ! condition.equals("")){
         sql += " and " + condition;
       }
+      // 分页
+      String limit = user.getLimit();
+      if(limit != null && !limit.equals("")){
+        sql += limit;
+      }
 
-//      System.out.println("user SELECT: " + sql);
+      System.out.println("USER SELECT: " + sql);
 
       pst = conn.prepareStatement(sql);
       ResultSet rs = pst.executeQuery();
