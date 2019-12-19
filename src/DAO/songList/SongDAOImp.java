@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class SongDAOImp implements SongDAO{
     private Connection conn = null;
     private PreparedStatement pst = null;
-
+    
     public SongDAOImp(){
         super();
     }
@@ -22,10 +22,11 @@ public class SongDAOImp implements SongDAO{
         super();
         this.conn = conn;
     }
-
+    
     @Override
     public ArrayList<Song> select(Song song) throws SQLException {
         String sql = "select"
+                    + " song.id as id,"
                     + " song.name as song,"
                     + " singer.name as singer,"
                     + " album.name as album,"
@@ -43,6 +44,7 @@ public class SongDAOImp implements SongDAO{
                     +"left join style "
                     +"on song.styleId = style.id "
                     +"where 1=1 ";
+
         // 添加条件
         String condition = song.getCondition();
         if(condition!=null && !condition.equals("")){
@@ -70,10 +72,15 @@ public class SongDAOImp implements SongDAO{
         ArrayList<Song> resultList = new ArrayList<>();
         while(rs.next()){
             Song tmp = new Song();
-            tmp.setDuration(rs.getString("duration"));
+            tmp.setDuration(rs.getString("time"));
             tmp.setSinger(rs.getString("singer"));
+            tmp.setFormat(rs.getString("format"));
+            tmp.setStyle(rs.getString("style"));
             tmp.setAlbum(rs.getString("album"));
             tmp.setSong(rs.getString("song"));
+            tmp.setDate(rs.getString("date"));
+            tmp.setHits(rs.getInt("hits"));
+            tmp.setId(rs.getInt("id"));
             resultList.add(tmp);
         }
         return resultList;
