@@ -29,12 +29,23 @@ public class SongSelect extends HttpServlet {
 
         String page = request.getParameter("page");
         String limit = request.getParameter("limit");
+        String songname = request.getParameter("songname");
 
         SongServiceDAOImp songSDI = new SongServiceDAOImp();
         Song song = new Song();
 
+        // 添加条件
+        String condition = "";
+        if(songname != null && !songname.equals("")){
+            condition += " and song.name like '%" + songname + "%'";
+        }
+
+        song.setCondition(condition);
+
         if(page != null && !page.equals("") && limit != null && !limit.equals("")){
-            song.setLimit("limit " + page + ',' + limit);
+            int p = Integer.parseInt(page);
+            int l = Integer.parseInt(limit);
+            song.setLimit("limit " + (p - 1) * l + ',' + l);
         }
 
 
@@ -44,7 +55,7 @@ public class SongSelect extends HttpServlet {
 
         String msg = result.size() != 0 ? "查询成功！" : "查询失败！";
 
-        int counts = result.size();
+        int counts = songSDI.count(song);
 
         JsonData jsonData = new JsonData(success, msg, counts, result);
 

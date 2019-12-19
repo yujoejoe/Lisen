@@ -7,7 +7,7 @@
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport"
-				content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+		  content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
 	<link rel="stylesheet" href="./css/font.css">
 	<link rel="stylesheet" href="./css/xadmin.css">
 	<script src="./lib/layui/layui.js" charset="utf-8"></script>
@@ -21,8 +21,9 @@
                 <a href="">歌曲管理</a>
                 <a><cite>歌曲列表</cite></a>
             </span>
-	<a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()"
-		 title="刷新">
+	<a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+	   onclick="location.reload()"
+	   title="刷新">
 		<i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
 	</a>
 </div>
@@ -36,138 +37,142 @@
 						<!--<input class="layui-input" placeholder="开始日" name="start" id="start"></div>-->
 						<!--<div class="layui-input-inline layui-show-xs-block">-->
 						<!--<input class="layui-input" placeholder="截止日" name="end" id="end"></div>-->
-						<!--<div class="layui-input-inline layui-show-xs-block">-->
-						<!--<select name="contrller">-->
-						<!--<option>支付方式</option>-->
-						<!--<option>支付宝</option>-->
-						<!--<option>微信</option>-->
-						<!--<option>货到付款</option></select>-->
-						<!--</div>-->
-						<!--<div class="layui-input-inline layui-show-xs-block">-->
-						<!--<select name="contrller">-->
-						<!--<option value="">订单状态</option>-->
-						<!--<option value="0">待确认</option>-->
-						<!--<option value="1">已确认</option>-->
-						<!--<option value="2">已收货</option>-->
-						<!--<option value="3">已取消</option>-->
-						<!--<option value="4">已完成</option>-->
-						<!--<option value="5">已作废</option></select>-->
-						<!--</div>-->
+						
 						<div class="layui-input-inline layui-show-xs-block">
-							<input type="text" name="username" placeholder="请输入歌曲名" autocomplete="off" class="layui-input"></div>
+							<input type="text" name="songname" id="songname" placeholder="请输入歌曲名" autocomplete="off"
+								   class="layui-input"></div>
 						<div class="layui-input-inline layui-show-xs-block">
-							<button class="layui-btn" lay-submit="" lay-filter="sreach">
-								<i class="layui-icon">&#xe615;</i></button>
+							<button class="layui-btn" lay-submit="search_submit" lay-filter="search" id="search">
+								<i class="layui-icon">&#xe615;</i>
+							</button>
 						</div>
+						<button type="button" class="layui-btn layui-btn-normal" id="searchAll">查询所有</button>
 					</form>
 				</div>
 				<div class="layui-card-header">
-					<button class="layui-btn layui-btn-danger" onclick="delAll()">
-						<i class="layui-icon"></i>批量删除
+					<button class="layui-btn layui-btn-danger" onclick="del()">
+						<i class="layui-icon"></i>删除
 					</button>
 					<button class="layui-btn" onclick="xadmin.open('添加用户','./order-add.html',800,600)">
 						<i class="layui-icon"></i>添加
 					</button>
 				</div>
 				<div class="layui-card-body layui-table-body layui-table-main">
-					<table class="layui-table layui-form" id="song">
-						<!--<thead>-->
-						<!--<tr>-->
-							<!--<th>-->
-								<!--<input type="checkbox" name="" lay-skin="primary">-->
-							<!--</th>-->
-							<!--<th>ID</th>-->
-							<!--<th>歌曲名</th>-->
-							<!--<th>歌手名</th>-->
-							<!--<th>专辑名</th>-->
-							<!--<th>歌曲风格</th>-->
-							<!--<th>歌曲时长</th>-->
-							<!--<th>歌曲格式</th>-->
-							<!--<th>发布日期</th>-->
-							<!--<th>操作</th>-->
-						<!--</tr>-->
-						<!--</thead>-->
-						<!--<tbody>-->
-						<!--<tr>-->
-							<!--<td>-->
-								<!--<input type="checkbox" name="" lay-skin="primary"></td>-->
-							<!--<td>1</td>-->
-							<!--<td>晴天</td>-->
-							<!--<td>周杰伦</td>-->
-							<!--<td>晴天</td>-->
-							<!--<td>流行</td>-->
-							<!--<td>04:29</td>-->
-							<!--<td>.mp3</td>-->
-							<!--<td>2003-07&#45;&#45;31</td>-->
-							<!--<td class="td-manage">-->
-								<!--<a title="查看" onclick="xadmin.open('编辑','order-view.html')" href="javascript:;">-->
-									<!--<i class="layui-icon">&#xe63c;</i></a>-->
-								<!--<a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">-->
-									<!--<i class="layui-icon">&#xe640;</i></a>-->
-							<!--</td>-->
-						<!--</tr>-->
-						<!--</tbody>-->
-					</table>
-				</div>
-				<div class="layui-card-body ">
-					<div class="page">
-						<div>
-							<a class="prev" href="">&lt;&lt;</a>
-							<a class="num" href="">1</a>
-							<span class="current">2</span>
-							<a class="num" href="">3</a>
-							<a class="num" href="">489</a>
-							<a class="next" href="">&gt;&gt;</a></div>
-					</div>
+					<table class="layui-table layui-form" id="song"></table>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 </body>
+
 <script>
-  layui.use(['laydate', 'form', 'table'],
+
+  layui.use(['laydate', 'form', 'table', 'laypage'],
 	function () {
-	  var laydate = layui.laydate;
-
-	  //执行一个laydate实例
-	  laydate.render({
-		elem: '#start' //指定元素
-	  });
-
-	  //执行一个laydate实例
-	  laydate.render({
-		elem: '#end' //指定元素
-	  });
-
 	  var table = layui.table;
-	  table.render({
-		elem: '#song',
-		cols: [[
+	  var $ = layui.jquery;
+
+	  // 渲染表格
+	  var songInfo = table.render({
+		elem: '#song'
+		, height: 480
+		, id: "songList"
+		, url: "/admin/songSelect"
+		, page: {
+		  layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+		  , curr: 1							// 当前页
+		  , groups: 3 					//只显示 3 个连续页码
+		  , first: '首页' 				//首页
+		  , prev: '上一页'
+		  , next: '下一页'
+		  , last: '尾页' 				//尾页
+		  , limit: 10
+		  , limits: [10, 20, 30]
+		}
+		, cols: [[
 		  {type: "checkbox", width: 50, fixed: "left"},
 		  {field: "id", title: "ID", width: 80, sort: true},
 		  {field: "song", title: "歌曲名", minWidth: 150},
-		  {field: "singer", title: "歌手名", width: 80},
-		  {field: "album", title: "专辑名", minWidth: 150},
-		  {field: "style", title: "歌曲风格", minWidth: 150},
-		  {field: "time", title: "歌曲时长", minWidth: 150},
+		  {field: "singer", title: "歌手名", minWidth: 80, sort: true},
+		  {field: "album", title: "专辑名", minWidth: 150, sort: true},
+		  {field: "style", title: "歌曲风格", minWidth: 150, sort: true},
+		  {field: "duration", title: "歌曲时长", minWidth: 150},
 		  {field: "format", title: "歌曲格式", minWidth: 150},
-		  {field: "date", title: "发布日期", minWidth: 150},
-		  {title: "操作", width: 100, templet: "#operation"}
-		]],
-		url: "/admin/songSelect",
-		response: {
-		  statusName: 'success',
-		  statusCode: true,
-		  msgName: 'msg',
-		  countName: 'counts',
-		  dataName: 'result'
+		  {field: "date", title: "发布日期", minWidth: 150, sort: true}
+		]]
+		, response: {
+		  statusCode: true					// 修改状态码为true | false
 		}
+		, parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+		  return {
+			"code": res.success, 			//解析接口状态
+			"msg": res.msg, 					//解析提示文本
+			"count": res.counts, 			//解析数据长度
+			"data": res.result 				//解析数据列表
+		  };
+		}
+
+
 	  });
 
+
+	  // 重载表格
+	  $('#search').click(function () {
+		var songname = $('#songname').val();
+		if (songname !== undefined && songname !== "") {
+		  songInfo.reload({
+			where: {
+			  songname: songname
+			}
+			, page: {
+			  curr: 1
+			}
+			, parseData: function (res) {
+			  return {
+				"code": res.success, 			//解析接口状态
+				"msg": res.msg, 					//解析提示文本
+				"count": res.result.length, 			//解析数据长度
+				"data": res.result 				//解析数据列表
+			  }
+			}
+		  });
+		}
+		return false;				// 关闭button自带事件
+	  });			// 查询指定内容
+	  $('#searchAll').click(function () {
+		songInfo.reload({
+			where: {
+			  songname: ""
+			}
+			, page: {
+			  layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+			  , curr: 1
+			  , groups: 3 					//只显示 3 个连续页码
+			  , first: '首页' 				//首页
+			  , prev: '上一页'
+			  , next: '下一页'
+			  , last: '尾页' 				//尾页
+			  , limit: 10
+			  , limits: [10, 20, 30]
+			}
+			, parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+			  return {
+				"code": res.success, 			//解析接口状态
+				"msg": res.msg, 					//解析提示文本
+				"count": res.counts, 			//解析数据长度
+				"data": res.result 				//解析数据列表
+			  }
+			}
+		  }
+		);
+		return false;
+	  });			// 查询所有内容
+
+
 	});
-	
-	/*用户-停用*/
+  
+  /*用户-停用*/
   function member_stop(obj, id) {
 	layer.confirm('确认要停用吗？',
 	  function (index) {
@@ -197,8 +202,8 @@
 
 	  });
   }
-	
-	/*用户-删除*/
+  
+  /*删除*/
   function member_del(obj, id) {
 	layer.confirm('确认要删除吗？',
 	  function (index) {
@@ -211,28 +216,28 @@
 	  });
   }
 
-  function delAll(argument) {
+  function del(argument) {
 
-	var data = tableCheck.getData();
+	var data = layui.table.checkStatus('songList').data;
 
-	layer.confirm('确认要删除吗？' + data,
-	  function (index) {
-		//捉到所有被选中的，发异步进行删除
-		layer.msg('删除成功', {
-		  icon: 1
-		});
-		$(".layui-form-checked").not('.header').parents('tr').remove();
+	if (data.length === 0) {
+	  layer.msg("请选择要删除的数据", {
+		icon: 2
 	  });
-  }
-</script>
+	} else {
+	  layer.confirm('确认要删除这' + data.length + '条数据吗？',
+		function (index) {
+		  
+		  layer.msg('删除成功', {
+			icon: 1
+			, time: 1000
+		  }, function () {
+			location.reload();
+		  });
 
-<script type="text/html" id="operation">
-	<a onclick="xadmin.open('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
-		<i class="layui-icon">&#xe642;</i>
-	</a>
-	<a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
-		<i class="layui-icon">&#xe640;</i>
-	</a>
+		});
+	}
+  }
 </script>
 
 </html>

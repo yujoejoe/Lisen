@@ -30,7 +30,7 @@ public class AlbumDAOImp implements AlbumDAO{
                     + " album.date as date,"
                     + " album.img as img,"
                     + " album.company as company,"
-//                    + " language.name as language,"
+                    + " language.name as language,"
                     + " album.genre as genre"
                     +" from"
                     + " album"
@@ -41,13 +41,12 @@ public class AlbumDAOImp implements AlbumDAO{
                     + " inner join "
                     + " song "
                     + " on "
-                    + " song.albumId = album.id ";
-                   /* +" inner join"
+                    + " song.albumId = album.id "
+                    + " inner join"
                     + " language"
-                    +" on"
-                    + " album.languageId = language.id";*/
-//                    +" where 1=1 ";
-
+                    + " on"
+                    + " album.languageId = language.id"
+                    +" where 1=1 ";
 
 
 
@@ -69,7 +68,7 @@ public class AlbumDAOImp implements AlbumDAO{
             }
 
             // 控制台输出sql语句，检验正确性
-//            System.out.println("Album SELECT: " +sql);
+            System.out.println("Album SELECT: " +sql);
 
             // 创建prepareStatement对象
             pst = conn.prepareStatement(sql);
@@ -88,7 +87,7 @@ public class AlbumDAOImp implements AlbumDAO{
                 tmp.setDate(rs.getString("date"));
                 tmp.setImg(rs.getString("img"));
                 tmp.setCompany(rs.getString("company"));
-//                tmp.setLanguage(rs.getString("language"));
+                tmp.setLanguage(rs.getString("language"));
                 tmp.setGenre(rs.getString("genre"));
                 resultList.add(tmp);
         }
