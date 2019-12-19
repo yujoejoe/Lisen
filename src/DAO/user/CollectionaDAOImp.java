@@ -131,7 +131,7 @@ public class CollectionaDAOImp implements CollectionaDAO{
     public int count(Collection collection) throws SQLException {
         try{
             // sql语句
-            String sql = "select count(*) as counts from collections  inner  join  user on collections.userId = user.id  where 1=1";
+            String sql = "select count(*) as counts from collectiona  inner  join  user on collectiona.userId = user.id  where 1=1";
             // 添加条件
             String condition = collection.getCondition();
             if(condition != null && !condition.equals("")){
