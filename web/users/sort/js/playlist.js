@@ -89,7 +89,26 @@ List.prototype = {
 
 	  var btn = document.createElement('a');
 	  btn.classList.add("song_list_play");
-	  btn.setAttribute("href", "/users/playMusic/playMusic.html");
+	  // btn.setAttribute("href", "/users/playMusic/playMusic.html");
+
+        /*----------------------- yyq改start ------------------------*/
+		//单曲播放
+        var songs = self.songs[i].song;
+        var singers = self.songs[i].singer;
+        var time = self.songs[i].duration;
+        var song = encodeURI(encodeURI(songs));
+        var singer = encodeURI(encodeURI(singers));
+        var duration = encodeURI(encodeURI(time));
+		btn.setAttribute("href", "/users/playMusic/playMusic.html?song=" + song + "&singer=" + singer + "&duration=" + duration);
+
+        //全部播放
+        $(".fa-play").click(function () {
+        	var slId = getCookie("slId");
+            var listId = encodeURI(encodeURI(slId));
+            window.location.href = "../playMusic/playMusic.html?listId=" + listId;
+
+        });
+		/*------------------------ yyq改end -------------------------*/
 
 	  var tag = document.createElement('i');
 	  tag.classList.add("fa", "fa-play");
@@ -126,7 +145,8 @@ List.prototype = {
 	  sl_item.appendChild(slTime);
 
 	  // 跳转到播放音乐页面
-	  sl_item.setAttribute("href", "/users/playMusic/playMusic.html");
+	  // sl_item.setAttribute("href", "/users/playMusic/playMusic.html");
+      sl_item.setAttribute("href", "/users/playMusic/playMusic.html?song=" + song + "&singer=" + singer);
 
 	  song_list.appendChild(sl_item);
 	}
@@ -135,9 +155,7 @@ List.prototype = {
     var self = this;
     var pageBox = document.querySelector('#pageBox');
 	clearChild(pageBox);
-
 	var size = Math.ceil(self.songs.length / 10);
-
 	var index = 0;
     for(var i = 0; i < size - 1; ++i){
       var page = document.createElement('span');
@@ -153,7 +171,6 @@ List.prototype = {
   bindClick: function(){
     var self = this;
     var pages = document.querySelector('#pageBox').querySelectorAll('.page_index');
-
     var index = 0;
     for(var i = 0; i < pages.length; ++i){
       pages[i].onclick = function(){

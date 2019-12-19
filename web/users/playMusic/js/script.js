@@ -1,7 +1,7 @@
 window.onload = function change() {
 
-    var userId = null;     //用户id
-    var songId = null;   //歌曲id
+    var userId;     //用户id
+    var songId;   //歌曲id
     //获取用户id
     $.get(
         "/userGet",
@@ -533,67 +533,45 @@ window.onload = function change() {
 
     });
 
-    var songName;             //获取歌名
-    var songNums = 0;         //标记收藏歌曲的数量
-    var editNums = 0;         //标记被勾选歌曲的数量
+
     //收藏
     $("#collection").click(function () {
-        console.log(userId);
-       //验证用户是否登录
-       if(userId===""||userId===null){
-           var r = confirm("温馨提示：请您登录后再操作！");
-           if (r == true) {
-             window.location.href ="../login/login.html" ;
-           }
-       }
+        // var songId;   //歌曲id
         console.log("aaa");
         for (var j = 0; j < $(".list_edit").length; j++) {
 
             if ($($(".list_edit")[j]).css("background-position") === "-60px -80px") {
+                var songName = $($(".list_name")[j]).html();
 
-                editNums++;
-                songName = $($(".list_name")[j]).html();
                 console.log(songName);
                 console.log(userId);
                 //获取歌曲id
-                $.ajax({
-                    type: "get",
-                    url: "/collection/song/get",
-                    data: {"name": songName},
-                    async: false,
-                    success: function (result) {
+                $.get(
+                    "/collection/song/get",
+                    {"name": songName},
+                    function (result) {
                         var data = JSON.parse(result);
                         console.log(data);
                         songId = data.result[0];
 
+
                         // 收藏歌曲
-                        $.ajax({
-                            type: "get",
-                            url: "/collection/song/insert",
-                            data: {"userId": userId, "songId": songId},
-                            async: false,
-                            success: function (result) {
+                        $.get(
+                            "/collection/song/insert",
+                            {"userId": userId, "songId": songId},
+                            function (result) {
                                 console.log(songId);
                                 var data = JSON.parse(result);
                                 console.log(data);
-                                songNums++;
                             }
-                        });
+                        );
 
                     }
-                });
+
+                );
 
             }
-
         }
-        if(editNums===0&&userId!==null){
-            alert("请选择相关的歌曲进行操作");
-        }
-
-        if(songNums>0){
-             alert("成功添加"+songNums+"首歌曲");
-        }
-
 
     });
 

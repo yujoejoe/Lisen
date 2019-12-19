@@ -26,7 +26,8 @@ public class AlbumSDAOImp  implements  AlbumSDAO{
             try {
                 String sql = "select"
                         + " song.name as song,"
-                        + " singer.name as singer"
+                        + " singer.name as singer,"
+                        + " song.duration as duration"
                         + " from"
                         + " song"
                         + " inner join"
@@ -78,6 +79,7 @@ public class AlbumSDAOImp  implements  AlbumSDAO{
 
                     tmp.setSong(rs.getString("song"));
                     tmp.setSinger(rs.getString("singer"));
+                    tmp.setDuration(rs.getString("duration"));
                     resultList.add(tmp);
                 }
 
