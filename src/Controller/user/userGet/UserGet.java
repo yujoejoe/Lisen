@@ -1,4 +1,4 @@
-package Controller.user;
+package Controller.user.userGet;
 
 import POJO.JsonData;
 import POJO.User;

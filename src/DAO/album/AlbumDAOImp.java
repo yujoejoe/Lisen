@@ -23,14 +23,14 @@ public class AlbumDAOImp implements AlbumDAO{
     @Override
     public ArrayList<Album> select(Album album) throws SQLException {
         try{
-            String sql = "select"
+            String sql = "select DISTINCT"
                     + " album.name as name,"
                     + " singer.name as singer,"
-                    + " song.name as song,"
+//                    + " song.name as song,"
                     + " album.date as date,"
                     + " album.img as img,"
                     + " album.company as company,"
-                    + " language.name as language,"
+//                    + " language.name as language,"
                     + " album.genre as genre"
                     +" from"
                     + " album"
@@ -41,11 +41,11 @@ public class AlbumDAOImp implements AlbumDAO{
                     + " inner join "
                     + " song "
                     + " on "
-                    + " song.albumId = album.id "
-                    +" inner join"
+                    + " song.albumId = album.id ";
+                   /* +" inner join"
                     + " language"
                     +" on"
-                    + " album.languageId = language.id";
+                    + " album.languageId = language.id";*/
 //                    +" where 1=1 ";
 
 
@@ -69,7 +69,7 @@ public class AlbumDAOImp implements AlbumDAO{
             }
 
             // 控制台输出sql语句，检验正确性
-            System.out.println("Album SELECT: " +sql);
+//            System.out.println("Album SELECT: " +sql);
 
             // 创建prepareStatement对象
             pst = conn.prepareStatement(sql);
@@ -84,11 +84,11 @@ public class AlbumDAOImp implements AlbumDAO{
 
                 tmp.setName(rs.getString("name"));
                 tmp.setSinger(rs.getString("singer"));
-                tmp.setSong(rs.getString("song"));
+//                tmp.setSong(rs.getString("song"));
                 tmp.setDate(rs.getString("date"));
                 tmp.setImg(rs.getString("img"));
                 tmp.setCompany(rs.getString("company"));
-                tmp.setLanguage(rs.getString("language"));
+//                tmp.setLanguage(rs.getString("language"));
                 tmp.setGenre(rs.getString("genre"));
                 resultList.add(tmp);
         }
@@ -104,7 +104,8 @@ public class AlbumDAOImp implements AlbumDAO{
     public int count(Album  album) throws SQLException {
         try{
             // sql语句
-            String sql = "select count(*) as counts from album inner join singer  on  album.singerId = singer.id   inner join song  on  song.albumid = album.id   where 1=1";
+//            String sql = "select count(*) as counts from album inner join singer  on  album.singerId = singer.id   inner join song  on  song.albumid = album.id   where 1=1";
+            String sql = "select count(*) as counts from album inner join singer  on  album.singerId = singer.id      where 1=1";
             // 添加条件
             String condition = album.getCondition();
             if(condition != null && !condition.equals("")){

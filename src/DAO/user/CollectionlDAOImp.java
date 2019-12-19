@@ -8,59 +8,57 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CollectionmDAOImp implements CollectionmDAO {
+public class CollectionlDAOImp  implements CollectionlDAO  {
     private Connection conn = null;
     private PreparedStatement pst = null;
 
 
-    public CollectionmDAOImp() {
+    public CollectionlDAOImp(){
         super();
     }
-
-    public CollectionmDAOImp(Connection conn) {
+    public CollectionlDAOImp(Connection conn){
         super();
         this.conn = conn;
     }
-
 
     @Override
     public ArrayList<Collection> select(Collection collection) throws SQLException {
         try {
             String sql =
                     "select"
-                            + " mv.title as mvName,"
-                            + " mv.img as mvImg"
+                            + " songList.img as songListImg,"
+                            + " songList.name as songListName"
                             + " from"
-                            + " collectionm"
+                            + " collectionl"
                             + " left join"
-                            + " mv"
-                            + " on "
-                            + "collectionm.mvId = mv.id"
+                            + " songList"
+                            + " on"
+                            + " collectionl.songListId = songList.id"
                             + " left join"
                             + " user"
                             + " on "
-                            + "collectionm.userId = user.id"
+                            + "collectionl.userId = user.id"
                             + " where 1=1";
 
 
             // 添加条件
             String condition = collection.getCondition();
-            if (condition != null && !condition.equals("")) {
+            if(condition!=null && !condition.equals("")){
                 sql += " and" + condition;
             }
             // 排序
             String orderBy = collection.getOrderBy();
-            if (orderBy != null && !orderBy.equals("")) {
+            if(orderBy != null && !orderBy.equals("")){
                 sql += orderBy;
             }
             // 分页
             String limit = collection.getLimit();
-            if (limit != null && limit.equals("")) {
+            if(limit != null && limit.equals("")){
                 sql += limit;
             }
 
             // 控制台输出sql语句，检验正确性
-//            System.out.println("collection SELECT: " +sql);
+            System.out.println("collection SELECT: " +sql);
 
             // 创建prepareStatement对象
             pst = conn.prepareStatement(sql);
@@ -70,15 +68,22 @@ public class CollectionmDAOImp implements CollectionmDAO {
             // 创建ArrayList对象存储每条记录
             ArrayList<Collection> resultList = new ArrayList<Collection>();
 
-            while (rs.next()) {
+            while(rs.next()){
                 Collection tmp = new Collection();
-                tmp.setMvImg(rs.getString("mvImg"));
-                tmp.setMvName(rs.getString("mvName"));
+//                tmp.setSong(rs.getString("song"));
+//                tmp.setSinger(rs.getString("singer"));
+//                tmp.setDuration(rs.getString("duration"));
+//                tmp.setSongListImg(rs.getString("songListImg"));
+//                tmp.setSongListName(rs.getString("songListName"));
+                tmp.setAlbumListImg(rs.getString("albumListImg"));
+                tmp.setAlbumListName(rs.getString("albumListName"));
+//                tmp.setMvImg(rs.getString("mvImg"));
+//                tmp.setMvName(rs.getString("mvName"));
                 resultList.add(tmp);
             }
 
             return resultList;
-        } catch (Exception e) {
+        }catch(Exception e){
             e.printStackTrace();
             return null;
         }
@@ -106,19 +111,19 @@ public class CollectionmDAOImp implements CollectionmDAO {
 
     @Override
     public int count(Collection collection) throws SQLException {
-        try {
+        try{
             // sql语句
-            String sql = "select count(*) as counts from collectionm inner  join  user on collectionm.userId = user.id  where 1=1";
+            String sql = "select count(*) as counts from collectionl  inner  join  user on collectionl.userId = user.id  where 1=1";
             // 添加条件
             String condition = collection.getCondition();
-            if (condition != null && !condition.equals("")) {
+            if(condition != null && !condition.equals("")){
                 sql += " and" + condition;
             }
 
             pst = conn.prepareStatement(sql);
 
             // 控制台输出sql语句，检验正确性
-//            System.out.println("collection COUNT: "+sql);
+            System.out.println("collection COUNT: "+sql);
 
             ResultSet rs = pst.executeQuery();
             rs.next();
@@ -126,7 +131,7 @@ public class CollectionmDAOImp implements CollectionmDAO {
             int counts = Integer.parseInt(rs.getString("counts"));
 
             return counts;
-        } catch (Exception e) {
+        }catch(Exception e){
             e.printStackTrace();
             return -1;
         }

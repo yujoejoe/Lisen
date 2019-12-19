@@ -7,23 +7,22 @@ public class Album extends Base{
 
     String name;
     String singer;
-    //    String timeDown;
-    String song;
+//    String song;
     String date;
     String img;
     String company;
-    String language;
+//    String language;
     String genre;
 
 
 
-    public String getSong() {
+  /*  public String getSong() {
         return song;
     }
 
     public void setSong(String song) {
         this.song = song;
-    }
+    }*/
 
     public String getGenre() {
         return genre;
@@ -49,14 +48,6 @@ public class Album extends Base{
         this.singer = singer;
     }
 
-//    public String getSong() {
-//        return timeDown;
-//    }
-//
-//    public void setSong(String timeDown) {
-//        this.timeDown = timeDown;
-//    }
-
     public String getDate() {
         return date;
     }
@@ -81,13 +72,13 @@ public class Album extends Base{
         this.company = company;
     }
 
-    public String getLanguage() {
+ /*   public String getLanguage() {
         return language;
     }
 
     public void setLanguage(String language) {
         this.language = language;
-    }
+    }*/
 
 
 
@@ -99,7 +90,7 @@ public class Album extends Base{
                 + " ,date:" + date
                 + " ,img:" + img
                 + " ,company:" + company
-                + " ,language:" + language
+//                + " ,language:" + language
                 + " ,genre:" + genre
                 + "]";
     }

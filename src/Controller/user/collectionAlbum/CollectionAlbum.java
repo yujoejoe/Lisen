@@ -1,8 +1,10 @@
-package Controller.album;
+package Controller.user.collectionAlbum;
 
+
+import POJO.Collection;
 import POJO.JsonData;
-import POJO.Album;
-import ServiceDAO.album.AlbumServiceDAOImp;
+import ServiceDAO.users.AServiceDAOImp;
+import com.sun.net.httpserver.HttpServer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,15 +15,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
 /**
  *
  */
-@WebServlet(name ="AlbumGet" ,urlPatterns ="/album/get" )
-public class AlbumGet extends HttpServlet{
+@WebServlet(name ="Collection/album" ,urlPatterns ="/collection/album/get" )
+public class CollectionAlbum extends HttpServlet {
+
     private static final long serialVersion = 1L;
 
-    private AlbumServiceDAOImp albumSDI = new AlbumServiceDAOImp();
-    private Album album = new Album();
+    private AServiceDAOImp collectionSDI = new AServiceDAOImp();
+    private POJO.Collection collection = new POJO.Collection();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -38,10 +42,9 @@ public class AlbumGet extends HttpServlet{
         // 设置查询条件
         String search = request.getParameter("search");
         if(search!=null && search.length()!=0){
-//            album.setCondition(" album.name like '%"+search+"%'  or album.img='"+search+"'  or singer.name='"+search+"'  or song.name='"+search+"'");
-            album.setCondition(" album.name like '%"+search+"%'  or album.img='"+search+"'  or singer.name='"+search+"'  ");
+            collection.setCondition(" user.name='"+search+"'");
         }else{
-            album.setCondition("");
+            collection.setCondition("");
         }
         // 设置分页
         String page = request.getParameter("page");     // 页数
@@ -49,17 +52,16 @@ public class AlbumGet extends HttpServlet{
         if(page!=null && page.length()!=0 && size!=null && size.length()!=0){
             int p = Integer.parseInt(page);
             int r = Integer.parseInt(size);
-            album.setLimit(" limit " + (p-1)*r + "," + r);
+            collection.setLimit(" limit " + (p-1)*r + "," + r);
         }else{
-            album.setLimit("");
+            collection.setLimit("");
         }
-
         // 设置排序方式
         String field = request.getParameter("field");   // 排序字段
         String order = request.getParameter("order");   // 排序方式 升序 或 降序
         if(field!=null && field.length()!=0 && order!=null && order.length()!=0){
-            album.setOrderBy(" order by " + field + " " + order);
-            album.setOrderBy("");
+            collection.setOrderBy(" order by " + field + " " + order);
+            collection.setOrderBy("");
         }else{
         }
 
@@ -69,8 +71,8 @@ public class AlbumGet extends HttpServlet{
          * 1、调用DAO层的select方法，返回查询到的记录集
          * 2、调用DAO层的count方法，返回查询到的记录数
          */
-        ArrayList<Album> result = albumSDI.select(album);
-        int count = albumSDI.count(album);
+        ArrayList<Collection> result = collectionSDI.select(collection);
+        int count = collectionSDI.count(collection);
 
 
         // （存）3、将数据对象存储到request中
@@ -94,4 +96,5 @@ public class AlbumGet extends HttpServlet{
         RequestDispatcher rd = request.getRequestDispatcher("/view/ToJSON");
         rd.forward(request,response);
     }
+
 }

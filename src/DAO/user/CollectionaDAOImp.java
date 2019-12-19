@@ -8,75 +8,58 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CollectionaDAOImp implements CollectionaDAO{
+public class CollectionaDAOImp implements CollectionaDAO {
     private Connection conn = null;
     private PreparedStatement pst = null;
 
 
-    public CollectionaDAOImp(){
+    public CollectionaDAOImp() {
         super();
     }
-    public CollectionaDAOImp(Connection conn){
+
+    public CollectionaDAOImp(Connection conn) {
         super();
         this.conn = conn;
     }
 
     @Override
     public ArrayList<Collection> select(Collection collection) throws SQLException {
-        try{
+        try {
             String sql =
                     "select"
-//                            + " song.name as song,"
-//                            + " singer.name as singer,"
-//                            + " song.duration as duration"
-                    + " album.img as albumListImg,"
-                    + " album.name as albumListName"
-//                    + " mv.title as mvName,"
-//                    + " mv.img as mvImg,"
-//                    + " user.name as userName"
-                            +" from"
+                            + " album.img as albumListImg,"
+                            + " album.name as albumListName"
+                            + " from"
                             + " collectiona"
-//                            +" left join"
-//                            + " song"
-//                            +" on"
-//                            + " collections.songId = song.id"
-                    +" left join"
-                    + " album"
-                    +" on"
-                    + " collectiona.albumId = album.id"
-//                    +" left join"
-//                    + " mv"
-//                    +" on "
-//                    +"collection.mvId = mv.id"
-//                            +" left join"
-//                            + " singer"
-//                            +" on "
-//                            +"song.singerId = singer.id"
-                            +" left join"
+                            + " left join"
+                            + " album"
+                            + " on"
+                            + " collectiona.albumId = album.id"
+                            + " left join"
                             + " user"
-                            +" on "
-                            +"collectiona.userId = user.id"
-                            +" where 1=1";
+                            + " on "
+                            + "collectiona.userId = user.id"
+                            + " where 1=1";
 
 
             // 添加条件
             String condition = collection.getCondition();
-            if(condition!=null && !condition.equals("")){
+            if (condition != null && !condition.equals("")) {
                 sql += " and" + condition;
             }
             // 排序
             String orderBy = collection.getOrderBy();
-            if(orderBy != null && !orderBy.equals("")){
+            if (orderBy != null && !orderBy.equals("")) {
                 sql += orderBy;
             }
             // 分页
             String limit = collection.getLimit();
-            if(limit != null && limit.equals("")){
+            if (limit != null && limit.equals("")) {
                 sql += limit;
             }
 
             // 控制台输出sql语句，检验正确性
-            System.out.println("collection SELECT: " +sql);
+//            System.out.println("collection SELECT: " +sql);
 
             // 创建prepareStatement对象
             pst = conn.prepareStatement(sql);
@@ -86,22 +69,15 @@ public class CollectionaDAOImp implements CollectionaDAO{
             // 创建ArrayList对象存储每条记录
             ArrayList<Collection> resultList = new ArrayList<Collection>();
 
-            while(rs.next()){
+            while (rs.next()) {
                 Collection tmp = new Collection();
-//                tmp.setSong(rs.getString("song"));
-//                tmp.setSinger(rs.getString("singer"));
-//                tmp.setDuration(rs.getString("duration"));
-//                tmp.setSongListImg(rs.getString("songListImg"));
-//                tmp.setSongListName(rs.getString("songListName"));
                 tmp.setAlbumListImg(rs.getString("albumListImg"));
                 tmp.setAlbumListName(rs.getString("albumListName"));
-//                tmp.setMvImg(rs.getString("mvImg"));
-//                tmp.setMvName(rs.getString("mvName"));
                 resultList.add(tmp);
             }
 
             return resultList;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -129,19 +105,19 @@ public class CollectionaDAOImp implements CollectionaDAO{
 
     @Override
     public int count(Collection collection) throws SQLException {
-        try{
+        try {
             // sql语句
-            String sql = "select count(*) as counts from collections  inner  join  user on collections.userId = user.id  where 1=1";
+            String sql = "select count(*) as counts from collectiona  inner  join  user on collectiona.userId = user.id  where 1=1";
             // 添加条件
             String condition = collection.getCondition();
-            if(condition != null && !condition.equals("")){
+            if (condition != null && !condition.equals("")) {
                 sql += " and" + condition;
             }
 
             pst = conn.prepareStatement(sql);
 
             // 控制台输出sql语句，检验正确性
-            System.out.println("collection COUNT: "+sql);
+//            System.out.println("collection COUNT: "+sql);
 
             ResultSet rs = pst.executeQuery();
             rs.next();
@@ -149,7 +125,7 @@ public class CollectionaDAOImp implements CollectionaDAO{
             int counts = Integer.parseInt(rs.getString("counts"));
 
             return counts;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return -1;
         }
