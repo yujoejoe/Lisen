@@ -26,6 +26,7 @@ public class SongDAOImp implements SongDAO{
     @Override
     public ArrayList<Song> select(Song song) throws SQLException {
         String sql = "select"
+                    + " song.id as id,"
                     + " song.name as song,"
                     + " singer.name as singer,"
                     + " album.name as album,"
@@ -44,7 +45,45 @@ public class SongDAOImp implements SongDAO{
                     +"on song.styleId = style.id "
                     +"where 1=1 ";
 
+        // 添加条件
+        String condition = song.getCondition();
+        if(condition!=null && !condition.equals("")){
+            sql += condition;
+        }
+        // 排序
+        String orderBy = song.getOrderBy();
+        if(orderBy != null && !orderBy.equals("")){
+            sql += orderBy;
+        }
+        // 分页
+        String limit = song.getLimit();
+        if(limit != null && !limit.equals("")){
+            sql += limit;
+        }
 
+        // 控制台输出sql语句，检验正确性
+        System.out.println("Song SELECT: " +sql);
+
+        // 创建prepareStatement对象
+        pst = conn.prepareStatement(sql);
+        // 执行查询语句并返回结果集
+        ResultSet rs = pst.executeQuery();
+
+        ArrayList<Song> resultList = new ArrayList<>();
+        while(rs.next()){
+            Song tmp = new Song();
+            tmp.setDuration(rs.getString("time"));
+            tmp.setSinger(rs.getString("singer"));
+            tmp.setFormat(rs.getString("format"));
+            tmp.setStyle(rs.getString("style"));
+            tmp.setAlbum(rs.getString("album"));
+            tmp.setSong(rs.getString("song"));
+            tmp.setDate(rs.getString("date"));
+            tmp.setHits(rs.getInt("hits"));
+            tmp.setId(rs.getInt("id"));
+            resultList.add(tmp);
+        }
+        return resultList;
     }
 
     @Override

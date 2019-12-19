@@ -13,9 +13,16 @@ public class Song extends Base {
     private String style;
     private String album;
     private String singer;
+    private String format;
     private String duration;
 
+    public String getFormat() {
+        return format;
+    }
 
+    public void setFormat(String format) {
+        this.format = format;
+    }
 
     public int getId() {
         return id;
