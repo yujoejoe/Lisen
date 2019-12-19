@@ -157,7 +157,9 @@ window.onload = function change() {
 		  audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + oneSinger + "/" + data.result[0].song + ".mp3");
 		  $("#song_info_name").html(data.result[0].song);
 		  $("#song_info_singer").html(oneSinger);
-		  audio.play();
+		  audio.addEventListener('canplaythrough', function () {
+			this.play();
+		  });
 
 		  pause.style.backgroundPosition = "-30px  0px";
 		  for (var i = 0; i < data.result.length; i++) {

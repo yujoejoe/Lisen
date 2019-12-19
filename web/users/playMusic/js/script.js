@@ -52,8 +52,8 @@ window.onload = function change() {
 //     alert(decodeURI(GetQueryString("song")));
 //     alert(decodeURI(GetQueryString("singer")));
 //     alert(decodeURI(GetQueryString("album")));
-  console.log(decodeURI(GetQueryString("song")));
-  console.log(decodeURI(GetQueryString("singer")));
+//   console.log(decodeURI(GetQueryString("song")));
+//   console.log(decodeURI(GetQueryString("singer")));
   var song = decodeURI(GetQueryString("song"));
   var singer = decodeURI(GetQueryString("singer"));
 
@@ -157,7 +157,9 @@ window.onload = function change() {
 		  audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + oneSinger + "/" + data.result[0].song + ".mp3");
 		  $("#song_info_name").html(data.result[0].song);
 		  $("#song_info_singer").html(oneSinger);
-		  audio.play();
+		  audio.addEventListener('canplaythrough', function () {
+			this.play();
+		  });
 
 		  pause.style.backgroundPosition = "-30px  0px";
 		  for (var i = 0; i < data.result.length; i++) {
@@ -878,7 +880,7 @@ Song.prototype = {
 	  data: {"path": path},   // {"singer": singerName, "song": songName}
 	  async: false,       // 必须为false才能接受到有效返回值
 	  success: function (result) {
-		console.log(result);
+		// console.log(result);
 		if (result === "null") {
 		  console.log("%c 获取歌词失败！", "color: #fff;background: #f00; padding:5px 0;");
 		  return;
