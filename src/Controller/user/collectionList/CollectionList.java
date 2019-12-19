@@ -7,6 +7,7 @@ import ServiceDAO.users.LServiceDAOImp;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  *
  */
 @WebServlet(name ="Collection/list" ,urlPatterns ="/collection/list/get" )
-public class CollectionList {
+public class CollectionList extends HttpServlet {
 
     private static final long serialVersion = 1L;
 

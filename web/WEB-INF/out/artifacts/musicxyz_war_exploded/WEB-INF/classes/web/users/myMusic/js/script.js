@@ -96,57 +96,78 @@ $(document).ready(function () {
 //
 //     }
 // );
-
+    // 歌曲
     $.get(
         "/collections/get",
-        {"search":search},
+        {"search": search},
         function (result) {
             var data = JSON.parse(result);
             console.log(data);
             $("#song").append(data.counts);
-            for (var i = 0; i <data.result.length ; i++) {
-                // 歌曲
-                    $(".single_song")[i].append(data.result[i].song);
-                    $(".single_singer")[i].append(data.result[i].singer);
-                    $(".single_duration")[i].append(data.result[i].duration);
-                    $($(".single_header")[i]).show();
+            for (var i = 0; i < data.result.length; i++) {
+
+                $(".single_song")[i].append(data.result[i].song);
+                $(".single_singer")[i].append(data.result[i].singer);
+                $(".single_duration")[i].append(data.result[i].duration);
+                $($(".single_header")[i]).show();
             }
         }
     );
 
-$.get(
-  "/collection/album/get",
-    {"search":search},
-    function (result) {
-      var  data =  JSON.parse(result);
-      console.log(data);
-        $("#album").append(data.counts);
-        for (var i = 0; i <data.result.length ; i++) {
-            // 专辑
-                    $(".txt_img")[i].src = data.result[i].albumListImg;
-                    $(".txt_name")[i].append(data.result[i].albumListName);
-                    $($(".show_hide")[i]).show();
+
+    //歌单
+    $.get(
+      "/collection/list/get",
+        {"search":search},
+        function (result) {
+          var data = JSON.parse(result);
+          console.log(data);
+            $("#songList").append(data.counts);
+            for (var i = 0; i < data.result.length; i++) {
+                $(".txt_imgS")[i].src = data.result[i].songListImg;
+                $(".txt_nameS")[i].append(data.result[i].songListName);
+                $($(".show_hideS")[i]).show();
+            }
+
         }
-    }
-);
+    );
 
 
-$.get(
-  "/collection/mv/get",
-    {"search":search},
-    function (result) {
-      var  data =  JSON.parse(result);
-      console.log(data);
-        $("#mv").append(data.counts);
 
-        for (var i = 0; i <data.result.length ; i++) {
-            // MV
-                    $(".txt_imgM")[i].src = data.result[i].mvImg;
-                    $(".txt_nameM")[i].append(data.result[i].mvName);
-                    $($(".show_hideM")[i]).show();
+    // 专辑
+    $.get(
+        "/collection/album/get",
+        {"search": search},
+        function (result) {
+            var data = JSON.parse(result);
+            console.log(data);
+            $("#album").append(data.counts);
+            for (var i = 0; i < data.result.length; i++) {
+
+                $(".txt_img")[i].src = data.result[i].albumListImg;
+                $(".txt_name")[i].append(data.result[i].albumListName);
+                $($(".show_hide")[i]).show();
+            }
         }
-    }
-);
+    );
+
+    // MV
+    $.get(
+        "/collection/mv/get",
+        {"search": search},
+        function (result) {
+            var data = JSON.parse(result);
+            console.log(data);
+            $("#mv").append(data.counts);
+
+            for (var i = 0; i < data.result.length; i++) {
+
+                $(".txt_imgM")[i].src = data.result[i].mvImg;
+                $(".txt_nameM")[i].append(data.result[i].mvName);
+                $($(".show_hideM")[i]).show();
+            }
+        }
+    );
 
 
 
@@ -193,7 +214,7 @@ $.get(
         $("#single").hide();
         $("#list_list").hide();
         $("#list_mv").show();
-        $("#list_song").show();
+        $("#list_song").hide();
     });
 
 

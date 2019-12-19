@@ -29,15 +29,15 @@ public class CollectionlDAOImp  implements CollectionlDAO  {
                             + " songList.img as songListImg,"
                             + " songList.name as songListName"
                             + " from"
-                            + " collectionl"
+                            + " collectionList"
                             + " left join"
                             + " songList"
                             + " on"
-                            + " collectionl.songListId = songList.id"
+                            + " collectionList.songListId = songList.id"
                             + " left join"
                             + " user"
                             + " on "
-                            + "collectionl.userId = user.id"
+                            + "collectionList.userId = user.id"
                             + " where 1=1";
 
 
@@ -75,8 +75,8 @@ public class CollectionlDAOImp  implements CollectionlDAO  {
 //                tmp.setDuration(rs.getString("duration"));
 //                tmp.setSongListImg(rs.getString("songListImg"));
 //                tmp.setSongListName(rs.getString("songListName"));
-                tmp.setAlbumListImg(rs.getString("albumListImg"));
-                tmp.setAlbumListName(rs.getString("albumListName"));
+                tmp.setSongListImg(rs.getString("songListImg"));
+                tmp.setSongListName(rs.getString("songListName"));
 //                tmp.setMvImg(rs.getString("mvImg"));
 //                tmp.setMvName(rs.getString("mvName"));
                 resultList.add(tmp);
@@ -113,7 +113,7 @@ public class CollectionlDAOImp  implements CollectionlDAO  {
     public int count(Collection collection) throws SQLException {
         try{
             // sql语句
-            String sql = "select count(*) as counts from collectionl  inner  join  user on collectionl.userId = user.id  where 1=1";
+            String sql = "select count(*) as counts from collectionList  inner  join  user on collectionList.userId = user.id  where 1=1";
             // 添加条件
             String condition = collection.getCondition();
             if(condition != null && !condition.equals("")){

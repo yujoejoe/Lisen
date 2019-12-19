@@ -31,11 +31,11 @@ public class CollectionsDAOImp implements CollectionsDAO {
                     + " singer.name as singer,"
                     + " song.duration as duration"
                     + " from"
-                    + " collections"
+                    + " collectionSong"
                     + " left join"
                     + " song"
                     + " on"
-                    + " collections.songId = song.id"
+                    + " collectionSong.songId = song.id"
                     + " left join"
                     + " singer"
                     + " on "
@@ -43,7 +43,7 @@ public class CollectionsDAOImp implements CollectionsDAO {
                     + " left join"
                     + " user"
                     + " on "
-                    + "collections.userId = user.id"
+                    + "collectionSong.userId = user.id"
                     + " where 1=1";
 
 
@@ -119,7 +119,7 @@ public class CollectionsDAOImp implements CollectionsDAO {
     public int count(Collection collection) throws SQLException {
         try{
             // sql语句
-            String sql = "select count(*) as counts from collections  inner  join  user on collections.userId = user.id  where 1=1";
+            String sql = "select count(*) as counts from collectionSong  inner  join  user on collectionSong.userId = user.id  where 1=1";
             // 添加条件
             String condition = collection.getCondition();
             if(condition != null && !condition.equals("")){
