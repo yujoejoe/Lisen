@@ -25,7 +25,26 @@ public class SongDAOImp implements SongDAO{
     
     @Override
     public ArrayList<Song> select(Song song) throws SQLException {
-        return null;
+        String sql = "select"
+                    + " song.name as song,"
+                    + " singer.name as singer,"
+                    + " album.name as album,"
+                    + " style.name as style,"
+                    + " song.format as format,"
+                    + " song.duration as time,"
+                    + " song.date as date,"
+                    + " song.hits as hits "
+                    +"from"
+                    + " song "
+                    +"left join singer "
+                    +"on song.singerId = singer.id "
+                    +"left join album "
+                    +"on song.albumId = album.id "
+                    +"left join style "
+                    +"on song.styleId = style.id "
+                    +"where 1=1 ";
+
+
     }
 
     @Override
