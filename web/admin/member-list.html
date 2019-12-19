@@ -85,66 +85,63 @@
 
 
 <script>
-
+function getData(page) {
+  let rows = 3;				// 每页行数
+  
   layui.use(['laydate', 'form', 'table', 'laypage'], function () {
 	let laydate = layui.laydate;
 	let form = layui.form;
 	let laypage = layui.laypage;
 	let table = layui.table;
 
-	let data = selectAll();
-	
+	let index = layer.load(1);
+
 	// 渲染表格
 	let userInfo = table.render({
 	  elem: "#userInfo"
 	  , id: "userList"
-	  , height: 450
-	  , data: {
-	    "id": '1',
-		"name": 'sir',
-		"sex": '男',
-		"email": '123',
-		"phone": '1234'
+	  , url: "/admin/userSelect"
+	  , where: {
+	    type: 0
+	    , 'page': page
+		, 'limit': rows
 	  }
+	  , loading: false
+	  , ceilMinWidth: 80
 	  , cols: [[
 		{type: "checkbox", width: 50, fixed: "left"},
-		{field: "id", title: "ID", width: 80, sort: true},
-		{field: "name", title: "用户名", minWidth: 150},
+		{field: "id", title: "ID", width: 80, fixed: "left", sort: true},
+		{field: "name", title: "用户名", width: 200},
 		{field: "sex", title: "性别", width: 80, sort: true},
-		{field: "email", title: "邮箱", minWidth: 150},
-		{field: "phone", title: "手机", minWidth: 150},
-		{title: "操作", width: 100, templet: "#operation"}
+		{field: "email", title: "邮箱", width: 200},
+		{field: "phone", title: "手机", width: 200},
+		{title: "操作", minWidth: 100, templet: "#operation"}
 	  ]]
 	  , response: {
-		statusCode: true
+		statusName: 'success'
+		, statusCode: true
+		, countName: 'counts'
+		, dataName: 'result'
+	  }
+	  , done: function (res, curr, count) {
+		// 分页
+		laypage.render({
+		  elem: 'pages'
+		  , layout: ['count', 'prev', 'next', 'refresh', 'skip', 'page']
+		  , count: count
+		  , limit: rows
+		  , curr: page
+		  , groups: 2
+		  , jump: function (obj, first) {
+			if (!first) {
+			  getData(obj.curr);
+			}
+		  }
+		});
+		
+		layer.close(index);
 	  }
 	});
-
-
-	
-	if (data !== undefined && data.success) {
-	  console.log(data);
-	  let tableData = {
-		'code': data.success
-		, 'msg': data.msg
-		, 'count': 10
-		, 'data': data.result
-	  };
-	  userInfo.reload({
-		data: tableData
-	  });
-	  // 分页
-	  laypage.render({
-		elem: 'pages'
-		, count: data.counts
-		, limit: 10
-		, curr: 1
-		, groups: 2
-		, jump: function () {
-
-		}
-	  });
-	}
 
 
 	// 监听全选
@@ -170,23 +167,8 @@
 
 
   });
-
-  // 获取所有用户
-  function selectAll() {
-	let $ = layui.jquery;
-	let data;
-	$.ajax({
-	  type: "get"
-	  , url: "/admin/userSelect"
-	  , async: false
-	  , data: {"type": 0}
-	  , success: function (result) {
-		data = JSON.parse(result);
-	  }
-	});
-	return data;
-  }
-  
+}
+  getData(1);
   /*用户-停用*/
   function member_stop(obj, id) {
 	layer.confirm('确认要停用吗？', function (index) {

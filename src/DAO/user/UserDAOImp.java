@@ -104,20 +104,20 @@ public class UserDAOImp implements UserDAO {
    */
   public int count(User user) throws SQLException {
     try{
-      String sql = "select count(id) as cnt from user where 1=1";
-      String condition = user.getCondition();
-      if(condition!=null && !condition.equals("")){
-        sql += " and " + condition;
-      }
-      String limit = user.getLimit();
-      if(limit!=null && !limit.equals("")){
-        sql += limit;
-      }
+      String sql = "select count(id) as counts from user where 1=1";
+//      String condition = user.getCondition();
+//      if(condition!=null && !condition.equals("")){
+//        sql += " and " + condition;
+//      }
+//      String limit = user.getLimit();
+//      if(limit!=null && !limit.equals("")){
+//        sql += limit;
+//      }
       pst = conn.prepareStatement(sql);
       ResultSet rs = pst.executeQuery();
       rs.next();
-      int cnt = Integer.parseInt(rs.getString("cnt"));
-      return cnt;
+
+      return Integer.parseInt(rs.getString("counts"));
     }catch(Exception e){
       e.printStackTrace();
       return -1;
