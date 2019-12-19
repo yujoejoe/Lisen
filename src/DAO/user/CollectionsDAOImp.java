@@ -30,34 +30,21 @@ public class CollectionsDAOImp implements CollectionsDAO {
                     + " song.name as song,"
                     + " singer.name as singer,"
                     + " song.duration as duration"
-//                    + " album.img as albumListImg,"
-//                    + " album.name as albumListName,"
-//                    + " mv.title as mvName,"
-//                    + " mv.img as mvImg,"
-//                    + " user.name as userName"
-                    +" from"
+                    + " from"
                     + " collections"
-                    +" left join"
+                    + " left join"
                     + " song"
-                    +" on"
+                    + " on"
                     + " collections.songId = song.id"
-//                    +" left join"
-//                    + " album"
-//                    +" on"
-//                    + " collection.albumId = album.id"
-//                    +" left join"
-//                    + " mv"
-//                    +" on "
-//                    +"collection.mvId = mv.id"
-                    +" left join"
+                    + " left join"
                     + " singer"
-                    +" on "
-                    +"song.singerId = singer.id"
-                    +" left join"
+                    + " on "
+                    + "song.singerId = singer.id"
+                    + " left join"
                     + " user"
-                    +" on "
-                    +"collections.userId = user.id"
-                    +" where 1=1";
+                    + " on "
+                    + "collections.userId = user.id"
+                    + " where 1=1";
 
 
             // 添加条件
@@ -77,7 +64,7 @@ public class CollectionsDAOImp implements CollectionsDAO {
             }
 
             // 控制台输出sql语句，检验正确性
-            System.out.println("collection SELECT: " +sql);
+//            System.out.println("collection SELECT: " +sql);
 
             // 创建prepareStatement对象
             pst = conn.prepareStatement(sql);
@@ -142,7 +129,7 @@ public class CollectionsDAOImp implements CollectionsDAO {
             pst = conn.prepareStatement(sql);
 
             // 控制台输出sql语句，检验正确性
-            System.out.println("collection COUNT: "+sql);
+//            System.out.println("collection COUNT: "+sql);
 
             ResultSet rs = pst.executeQuery();
             rs.next();

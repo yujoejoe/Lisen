@@ -115,7 +115,7 @@ $(document).ready(function () {
     );
 
 $.get(
-  "/collectiona/get",
+  "/collection/album/get",
     {"search":search},
     function (result) {
       var  data =  JSON.parse(result);
@@ -132,7 +132,7 @@ $.get(
 
 
 $.get(
-  "/collectionm/get",
+  "/collection/mv/get",
     {"search":search},
     function (result) {
       var  data =  JSON.parse(result);

@@ -1,10 +1,9 @@
-package Controller.user;
+package Controller.user.collectionSong;
 
 
-import POJO.Collection;
 import POJO.JsonData;
-import ServiceDAO.users.AServiceDAOImp;
-import com.sun.net.httpserver.HttpServer;
+
+import ServiceDAO.users.SServiceDAOImp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,15 +15,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-/**
- *
- */
-@WebServlet(name ="Collectiona" ,urlPatterns ="/collectiona/get" )
-public class Collectiona extends HttpServlet {
-
+@WebServlet(name ="Collections" ,urlPatterns ="/collections/get" )
+public class CollectionSong extends HttpServlet {
     private static final long serialVersion = 1L;
 
-    private AServiceDAOImp collectionSDI = new AServiceDAOImp();
+    private SServiceDAOImp collectionSDI = new SServiceDAOImp();
     private POJO.Collection collection = new POJO.Collection();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -71,7 +66,7 @@ public class Collectiona extends HttpServlet {
          * 1、调用DAO层的select方法，返回查询到的记录集
          * 2、调用DAO层的count方法，返回查询到的记录数
          */
-        ArrayList<Collection> result = collectionSDI.select(collection);
+        ArrayList<POJO.Collection> result = collectionSDI.select(collection);
         int count = collectionSDI.count(collection);
 
 
@@ -96,5 +91,6 @@ public class Collectiona extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/view/ToJSON");
         rd.forward(request,response);
     }
+
 
 }

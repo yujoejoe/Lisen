@@ -1,4 +1,4 @@
-package Controller.user;
+package Controller.user.collectionMv;
 
 import POJO.Collection;
 import POJO.JsonData;
@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(name ="Collectionm" ,urlPatterns ="/collectionm/get" )
-public class Collectionm extends HttpServlet {
+@WebServlet(name ="Collection/mv" ,urlPatterns ="/collection/mv/get" )
+public class CollectionMv extends HttpServlet {
     private static final long serialVersion = 1L;
 
     private MServiceDAOImp collectionSDI = new MServiceDAOImp();
