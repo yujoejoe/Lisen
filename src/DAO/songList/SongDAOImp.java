@@ -158,6 +158,15 @@ public class SongDAOImp implements SongDAO{
 
     @Override
     public int count(Song song) throws SQLException {
-        return 0;
+        // sql语句
+        String sql = "select count(id) as counts from song where 1=1";
+
+        pst = conn.prepareStatement(sql);
+
+        // 控制台输出sql语句，检验正确性
+        System.out.println("Song COUNT: "+sql);
+        ResultSet rs = pst.executeQuery();
+        rs.next();
+        return Integer.parseInt(rs.getString("counts"));
     }
 }
