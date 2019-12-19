@@ -70,7 +70,7 @@ public class SingerDAOImp implements SingerDAO {
             }
 
             // 控制台输出sql语句，检验正确性
-            System.out.println("Singer SELECT: " +sql);
+//            System.out.println("Singer SELECT: " +sql);
 
             // 创建prepareStatement对象
             pst = conn.prepareStatement(sql);
@@ -136,7 +136,7 @@ public class SingerDAOImp implements SingerDAO {
             pst = conn.prepareStatement(sql);
 
             // 控制台输出sql语句，检验正确性
-            System.out.println("singer COUNT: "+sql);
+//            System.out.println("singer COUNT: "+sql);
 
             ResultSet rs = pst.executeQuery();
             rs.next();
