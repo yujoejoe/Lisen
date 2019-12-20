@@ -41,7 +41,7 @@ public class AlbumSongGet extends HttpServlet{
         String search = request.getParameter("search");
         if(search!=null && search.length()!=0){
 //            albums.setCondition(" album.name like '%"+search+"%'");
-            albums.setCondition(" album.name ='"+search+"' or album.img='"+search+"'");
+            albums.setCondition(" album.name ='"+search+"' or album.img='"+search+"'  or  song.name='"+search+"'");
         }else{
             albums.setCondition("");
         }

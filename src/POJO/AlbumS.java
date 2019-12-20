@@ -7,6 +7,27 @@ public class AlbumS extends Base {
     String song;
     String singer;
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    String img;
+
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    String duration;
+
     public String getSong() {
         return song;
     }
@@ -27,6 +48,7 @@ public class AlbumS extends Base {
         return "album ["
                 + "song:" + song
                 + " ,singer:" + singer
+                + " ,duration:" + duration
                 + "]";
     }
 

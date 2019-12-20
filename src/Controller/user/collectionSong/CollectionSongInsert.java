@@ -37,7 +37,7 @@ public class CollectionSongInsert extends HttpServlet {
         int  songId   =Integer.parseInt( request.getParameter("songId"));
         try{
 
-            String sql = "insert into collections set userId="+userId+",songId="+songId;
+            String sql = "insert into collectionSong set userId="+userId+",songId="+songId;
             PreparedStatement   pst = conn.prepareStatement(sql);
             System.out.println("song insert:"+sql);
             int i= pst.executeUpdate(sql);
