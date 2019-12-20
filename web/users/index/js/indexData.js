@@ -11,9 +11,9 @@ $(document).ready(function () {
             function (result) {
                 var data = JSON.parse(result);
                 for (var j = 0; j < 20; j++) {
-                    $(".newSongs_img")[j].src=data.result[j].img;
-                    $(".newSongs_song")[j].append(data.result[j].name);
-                    $(".newSongs_singerName")[j].append(data.result[j].singer);
+                    $(".newSongs_img")[j].src=data.result[j+13].img;
+                    $(".newSongs_song")[j].append(data.result[j+13].name);
+                    $(".newSongs_singerName")[j].append(data.result[j+13].singer);
                 }
             }
         );

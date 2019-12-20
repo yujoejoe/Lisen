@@ -27,7 +27,7 @@ public class CollectionSongGet extends HttpServlet {
         response.setContentType("text/html; charset=utf-8");
 
 
-        // 因为语句简短所以暂时不使用MVC模式，如以后有需求再做更改
+
 
         Connection conn = DBUtil.getConnection();
         String  name  =  request.getParameter("name");

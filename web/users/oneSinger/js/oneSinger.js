@@ -90,14 +90,11 @@ $(document).ready(function () {
             // console.log("aaa");
             var songs = $(this).find("li").eq(1).html();
             var singers = $(".txt_one_name").html();
-            var time = $(".single_time").html();
             console.log(songs);
             console.log(singers);
-            console.log(time);
             var song = encodeURI(encodeURI(songs));
             var singer = encodeURI(encodeURI(singers));
-            var duration = encodeURI(encodeURI(time));
-            window.location.href = "../playMusic/playMusic.html?song=" + song + "&singer=" + singer + "&duration=" + duration;
+            window.location.href = "../playMusic/playMusic.html?song=" + song + "&singer=" + singer;
         });
 
 

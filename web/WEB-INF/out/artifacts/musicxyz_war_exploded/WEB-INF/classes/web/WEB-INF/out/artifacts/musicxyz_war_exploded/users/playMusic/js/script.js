@@ -1,7 +1,7 @@
 window.onload = function change() {
 
-    var userId;     //用户id
-    var songId;   //歌曲id
+    var userId = null;     //用户id
+    var songId = null;   //歌曲id
     //获取用户id
     $.get(
         "/userGet",
@@ -16,7 +16,6 @@ window.onload = function change() {
     var range = document.getElementById("play_load");
     var progress = document.getElementById("play_dot");
     var dot = document.getElementById("dot");
-    // var time = document.getElementById("play_time");
     var audio = document.getElementById("audio");
     var current = document.getElementById("current_time");
     var left = document.getElementById("btn_left");
@@ -37,7 +36,7 @@ window.onload = function change() {
     }
 
 
-    /* 接受url传来的参数 */
+    /*接受url传来的参数*/
 
     function GetQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -54,7 +53,6 @@ window.onload = function change() {
     console.log(decodeURI(GetQueryString("singer")));
     var song = decodeURI(GetQueryString("song"));
     var singer = decodeURI(GetQueryString("singer"));
-    var duration = decodeURI(GetQueryString("duration"));
 
 
     //获取总时间
@@ -75,40 +73,42 @@ window.onload = function change() {
 
     $(document).ready(function () {
 
-    //单曲播放
+        //单曲播放
         if (singer !== "null") {
-            $($(".list_author")[0]).append(singer);
+            $(".list_author")[0].append(singer);
             $($(".list_music")[0]).show();
-            $($(".list_name")[0]).append(song);
-            $($(".list_time")[0]).append(duration);
+            $(".list_name")[0].append(song);
             audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + singer + "/" + song + ".mp3");
+
             audio.play();
             name.innerHTML = $($(".list_name")[0]).html() + " - " + $($(".list_author")[0]).html();
-            $("#song_info_name").html($($(".list_name")[0]).html());
-            $("#song_info_singer").html($($(".list_author")[0]).html());
             if (audio.played) {
                 pause.style.backgroundPosition = "-30px  0px";
             }
+            $("#song_info_name").html(singer);
+            $("#song_info_singer").html(song);
             addLyric(lyric);
             wave();
             albumPic();
         }
 
 
-    //专辑列表
         var search = decodeURI(GetQueryString("album"));
+        // var music = new Array();
+
+        //专辑播放列表
         $.get(
             "/album/song/get",
             {"search": search},
             function (result) {
                 var data = JSON.parse(result);
                 // console.log(data);
+
                 if (result !== "") {
                     for (var j = 0; j < data.result.length; j++) {
                         $($(".list_name")[j]).append(data.result[j].song);
                         $($(".list_author")[j]).append(data.result[j].singer);
                         $($(".list_music")[j]).show();
-                        $($(".list_time")[j]).append(data.result[j].duration);
                     }
                     audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3");
                     $("#song_info_name").html(data.result[0].singer);
@@ -136,10 +136,11 @@ window.onload = function change() {
             }
         );
 
-        //单曲列表播放
+        console.log(decodeURI(GetQueryString("oneSinger")));
         var oneSinger = decodeURI(GetQueryString("oneSinger"));
-        // console.log(decodeURI(GetQueryString("oneSinger")));
         // alert(decodeURI(GetQueryString("oneSinger")));
+
+        //单曲列表播放
         $.get(
             "/single/get",
             {"search": oneSinger},
@@ -180,14 +181,14 @@ window.onload = function change() {
         );
 
 
-    /*-------------------------- yyq加 start --------------------------------*/
+        /*-------------------------- yyq加 start --------------------------------*/
 
 
-     //排行榜新歌
+        //排行榜新歌
         var date = decodeURI(GetQueryString("filed"));
         var desc = decodeURI(GetQueryString("order"));
-        // console.log("newSong--date：" + date);
-        // console.log("newSong--desc：" + desc);
+        console.log("newSong--date：" + date);
+        console.log("newSong--desc：" + desc);
         $.get(
             "/timeDown/get",
             {
@@ -229,13 +230,13 @@ window.onload = function change() {
         );
 
 
-     //排行榜热歌
+        //排行榜热歌
         var hits = decodeURI(GetQueryString("hits"));
         var desc2 = decodeURI(GetQueryString("order2"));
         var limit = decodeURI(GetQueryString("limit"));
-        // console.log("hotSong--hits：" + hits);
-        // console.log("hotSong--order2：" + desc2);
-        // console.log("hotSong--limit：" + limit);
+        console.log("hotSong--hits：" + hits);
+        console.log("hotSong--order2：" + desc2);
+        console.log("hotSong--limit：" + limit);
         $.get(
             "/SongHits/get",
             {
@@ -278,11 +279,11 @@ window.onload = function change() {
         );
 
 
-    //排行榜日韩
+        //排行榜日韩
         var areaId1 = decodeURI(GetQueryString("areaId1"));
         var areaId2 = decodeURI(GetQueryString("areaId2"));
-        // console.log("日韩--areaId1：" + areaId1);
-        // console.log("日韩--areaId2：" + areaId2);
+        console.log("日韩--areaId1：" + areaId1);
+        console.log("日韩--areaId2：" + areaId2);
         $.get(
             "/Japan/get",
             {
@@ -324,9 +325,9 @@ window.onload = function change() {
         );
 
 
-    //排行榜欧美
+        //排行榜欧美
         var areaId = decodeURI(GetQueryString("areaId"));
-        // console.log("欧美--areaId：" + areaId);
+        console.log("欧美--areaId：" + areaId);
         $.get(
             "/EuropeAmerica/get",
             {"areaId": areaId},
@@ -364,48 +365,9 @@ window.onload = function change() {
             }
         );
 
-    //歌单播放列表
-        var listId = decodeURI(GetQueryString("listId"));
-        // console.log("测试slId："+listId);
-        $.ajax({
-            type: "get",
-            url: "/ListGet",
-            data: {"listId": listId},
-            success: function(result){
-                var data = JSON.parse(result);
-                if (result != null) {
-                    for (var j = 0; j < data.result.length; j++) {
-                        $($(".list_name")[j]).append(data.result[j].song);
-                        $($(".list_author")[j]).append(data.result[j].singer);
-                        $($(".list_time")[j]).append(data.result[j].duration);
-                        $($(".list_music")[j]).show();
-                    }
-                    audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3");
-                    $("#song_info_name").html(data.result[0].song);           //歌词滚动歌手
-                    $("#song_info_singer").html(data.result[0].singer);
 
-                    //歌词滚动歌名
-                    audio.play();
-                    pause.style.backgroundPosition = "-30px  0px";
-                    for (var i = 0; i < 8; i++) {
-                        var urlSinger = $($(".list_author")[i]).html();
-                        var urlSong = $($(".list_name")[i]).html();
-                        music[i] = urlSinger + "/" + urlSong;
-                        song_singer[i] = urlSong + " - " + urlSinger;
-                        pic_song[i] = urlSong;
-                        pic_singer[i] = urlSinger;
-                        console.log(music[i]);
-                    }
-                    name.innerHTML = song_singer[0];
-                }
-                addLyric(lyric);
-                wave();
-                albumPic();
-            }
-        });
-
-    /*--------------------------- yyq加 end --------------------------------*/
-
+        /*--------------------------- yyq加 end --------------------------------*/
+        // addLyric(lyric);
 
     });
 
@@ -449,6 +411,8 @@ window.onload = function change() {
 
     //双击播放
     $(".list_music").on("dblclick", function () {
+
+
         var dbsong = $(this).find("li").eq(2).html();
         var dbsinger = $(this).find("li").eq(3).html();
         audio.src = "http://192.168.1.125:8080/music/song/music/" + dbsinger + "/" + dbsong + ".mp3";
@@ -461,6 +425,7 @@ window.onload = function change() {
         albumPic();
         // clearLyric(lyric);
         // addLyric(lyric);
+
     });
 
     //上一曲
@@ -501,6 +466,7 @@ window.onload = function change() {
 
     };
 
+
     //播放，暂停
     pause.onclick = function () {
         if (pause.style.backgroundPosition !== "-30px 0px") {
@@ -511,6 +477,7 @@ window.onload = function change() {
             pause.style.backgroundPosition = "0px 0px";
         }
     };
+
 
     //自动播放下一首
     audio.addEventListener('ended', function () {
@@ -568,43 +535,67 @@ window.onload = function change() {
 
     });
 
+    var songName;             //获取歌名
+    var songNums = 0;         //标记收藏歌曲的数量
+    var editNums = 0;         //标记被勾选歌曲的数量
     //收藏
     $("#collection").click(function () {
-        // var songId;   //歌曲id
+        console.log(userId);
+       //验证用户是否登录
+       if(userId===""||userId===null){
+           var r = confirm("温馨提示：请您登录后再操作！");
+           if (r == true) {
+             window.location.href ="../login/login.html" ;
+           }
+       }
         console.log("aaa");
         for (var j = 0; j < $(".list_edit").length; j++) {
 
             if ($($(".list_edit")[j]).css("background-position") === "-60px -80px") {
-                var songName = $($(".list_name")[j]).html();
 
+                editNums++;
+                songName = $($(".list_name")[j]).html();
                 console.log(songName);
                 console.log(userId);
                 //获取歌曲id
-                $.get(
-                    "/collection/song/get",
-                    {"name": songName},
-                    function (result) {
+                $.ajax({
+                    type: "get",
+                    url: "/collection/song/get",
+                    data: {"name": songName},
+                    async: false,
+                    success: function (result) {
                         var data = JSON.parse(result);
                         console.log(data);
                         songId = data.result[0];
 
                         // 收藏歌曲
-                        $.get(
-                            "/collection/song/insert",
-                            {"userId": userId, "songId": songId},
-                            function (result) {
+                        $.ajax({
+                            type: "get",
+                            url: "/collection/song/insert",
+                            data: {"userId": userId, "songId": songId},
+                            async: false,
+                            success: function (result) {
                                 console.log(songId);
                                 var data = JSON.parse(result);
                                 console.log(data);
+                                songNums++;
                             }
-                        );
+                        });
 
                     }
-
-                );
+                });
 
             }
+
         }
+        if(editNums===0&&userId!==null){
+            alert("请选择相关的歌曲进行操作");
+        }
+
+        if(songNums>0){
+             alert("成功添加"+songNums+"首歌曲");
+        }
+
 
     });
 
@@ -812,7 +803,7 @@ window.onload = function change() {
             scroll(curTime);
         });
 
-
+//
         /*==== 歌词滚动 ====*/
         function scroll(time) {
             if (song.isEmpty) {
@@ -860,6 +851,7 @@ window.onload = function change() {
 
     }
 
+//
 
     /*==== 清除歌词 ====*/
     function clearLyric(lyric) {
@@ -913,17 +905,17 @@ Song.prototype = {
                     return;
                 }
                 console.log("%c 获取歌词成功！", "color: #0f0;background: #eee; padding:5px 0;");
-         // 分割换行符，获取每行歌词和时间
+                // 分割换行符，获取每行歌词和时间
                 var data = result.split('\n\n');
-
-        // 获取歌手名和歌曲名
+//
+//         // 获取歌手名和歌曲名
                 var artist = data[0].substring(data[0].indexOf(':') + 1, data[0].indexOf(']'));
                 var title = data[1].substring(data[1].indexOf(':') + 1, data[1].indexOf(']'));
 
                 song.artist = artist;
                 song.title = title;
                 var lyric = [];
-        // 获取歌词和时间,data最后一行是空行
+//         // 获取歌词和时间,data最后一行是空行
                 for (var i = 2; i < data.length - 1; ++i) {
                     var time = data[i].substring(data[i].indexOf('[') + 1, data[i].indexOf(']'));
                     var t = parseInt(time.split(':')[0]) * 60 + parseFloat(time.split(':')[1]);
@@ -935,3 +927,7 @@ Song.prototype = {
         });
     }
 };
+
+
+
+

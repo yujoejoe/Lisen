@@ -14,26 +14,7 @@ import java.util.ArrayList;
 public class SongServiceDAOImp implements SongServiceDAO{
     @Override
     public ArrayList<Song> select(Song song) {
-        Connection conn = DBUtil.getConnection();
-        SongDAOImp sDI = new SongDAOImp(conn);
-
-        try {
-            ArrayList<Song> resultList = sDI.select(song);
-            conn.commit();
-            return resultList;
-        } catch (SQLException e) {
-            try {
-                conn.rollback();
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-            e.printStackTrace();
-            return null;
-        } finally {
-            if(conn != null){
-                DBUtil.closeConnection(conn);
-            }
-        }
+        return null;
     }
 
     @Override
@@ -78,24 +59,6 @@ public class SongServiceDAOImp implements SongServiceDAO{
 
     @Override
     public int count(Song song) {
-        Connection conn = DBUtil.getConnection();
-        SongDAOImp sDI = new SongDAOImp(conn);
-        try {
-            int count = sDI.count(song);
-            conn.commit();
-            return count;
-        } catch (SQLException e) {
-            try{
-                conn.rollback();
-            }catch(SQLException sqe){
-                sqe.printStackTrace();
-            }
-            e.printStackTrace();
-            return -1;
-        } finally {
-            if(conn != null){
-                DBUtil.closeConnection(conn);
-            }
-        }
+        return 0;
     }
 }

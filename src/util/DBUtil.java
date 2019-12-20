@@ -68,7 +68,6 @@ public class DBUtil {
         if (conn != null) {
             try {//关闭连接
                 conn.close();
-                System.out.println("DBUtil: 关闭数据库连接！");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
