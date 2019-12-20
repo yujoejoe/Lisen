@@ -26,6 +26,7 @@ public class AlbumDAOImp implements AlbumDAO{
             String sql = "select DISTINCT"
                     + " album.name as name,"
                     + " singer.name as singer,"
+//                    + " song.duration as duration,"
 //                    + " song.name as song,"
                     + " album.date as date,"
                     + " album.img as img,"

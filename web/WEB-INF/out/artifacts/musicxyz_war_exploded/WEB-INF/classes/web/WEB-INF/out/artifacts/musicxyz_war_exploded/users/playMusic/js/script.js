@@ -95,7 +95,7 @@ window.onload = function change() {
         }
 
 
-    //专辑播放列表
+    //专辑列表
         var search = decodeURI(GetQueryString("album"));
         $.get(
             "/album/song/get",
@@ -588,7 +588,6 @@ window.onload = function change() {
                         console.log(data);
                         songId = data.result[0];
 
-
                         // 收藏歌曲
                         $.get(
                             "/collection/song/insert",
@@ -936,7 +935,3 @@ Song.prototype = {
         });
     }
 };
-
-
-
-

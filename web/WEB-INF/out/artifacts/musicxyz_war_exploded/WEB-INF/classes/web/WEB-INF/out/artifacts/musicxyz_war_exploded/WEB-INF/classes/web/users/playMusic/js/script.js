@@ -46,15 +46,6 @@ window.onload = function change() {
         return null;
     }
 
-// 调用方法
-//     alert(decodeURI(GetQueryString("song")));
-//     alert(decodeURI(GetQueryString("singer")));
-//     alert(decodeURI(GetQueryString("album")));
-    console.log(decodeURI(GetQueryString("song")));
-    console.log(decodeURI(GetQueryString("singer")));
-    var song = decodeURI(GetQueryString("song"));
-    var singer = decodeURI(GetQueryString("singer"));
-    var duration = decodeURI(GetQueryString("duration"));
 
 
     //获取总时间
@@ -73,6 +64,16 @@ window.onload = function change() {
     var num = 0;
 
 
+// 调用方法
+//     alert(decodeURI(GetQueryString("song")));
+//     alert(decodeURI(GetQueryString("singer")));
+//     alert(decodeURI(GetQueryString("album")));
+
+    /*console.log(decodeURI(GetQueryString("song")));
+    console.log(decodeURI(GetQueryString("singer")));*/
+    var song = decodeURI(GetQueryString("song"));
+    var singer = decodeURI(GetQueryString("singer"));
+    var duration = decodeURI(GetQueryString("duration"));
     $(document).ready(function () {
 
     //单曲播放
@@ -95,7 +96,7 @@ window.onload = function change() {
         }
 
 
-    //专辑播放列表
+    //专辑列表
         var search = decodeURI(GetQueryString("album"));
         $.get(
             "/album/song/get",
@@ -136,7 +137,7 @@ window.onload = function change() {
             }
         );
 
-        //单曲列表播放
+    //单曲列表播放
         var oneSinger = decodeURI(GetQueryString("oneSinger"));
         // console.log(decodeURI(GetQueryString("oneSinger")));
         // alert(decodeURI(GetQueryString("oneSinger")));
@@ -579,6 +580,7 @@ window.onload = function change() {
 
                 console.log(songName);
                 console.log(userId);
+
                 //获取歌曲id
                 $.get(
                     "/collection/song/get",
@@ -587,7 +589,6 @@ window.onload = function change() {
                         var data = JSON.parse(result);
                         console.log(data);
                         songId = data.result[0];
-
 
                         // 收藏歌曲
                         $.get(
@@ -616,9 +617,7 @@ window.onload = function change() {
     /*==== 获取进度条的宽度 ====*/
     var rangeWidth = parseInt($(range).css('width').substring(0, $(range).css('width').length - 2));
 
-
     var mute = false;   //  默认打开声音
-
 
     setInterval(setProgress, 100);   //通过定时器设置进度的自动改变
     function setProgress() {
@@ -936,7 +935,3 @@ Song.prototype = {
         });
     }
 };
-
-
-
-
