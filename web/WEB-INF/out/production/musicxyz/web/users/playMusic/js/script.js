@@ -8,7 +8,10 @@ window.onload = function change() {
         function (result) {
             var data = JSON.parse(result);
             console.log(data);
-            userId = data.result[0].id;
+            if (data.success){
+
+                userId = data.result[0].id;
+            }
         }
     );
 
@@ -104,15 +107,15 @@ window.onload = function change() {
                 var data = JSON.parse(result);
                 // console.log(data);
 
-                if (result !== "") {
+                if (data.result) {
                     for (var j = 0; j < data.result.length; j++) {
                         $($(".list_name")[j]).append(data.result[j].song);
                         $($(".list_author")[j]).append(data.result[j].singer);
                         $($(".list_music")[j]).show();
                     }
                     audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3");
-                    $("#song_info_name").html(data.result[0].singer);
-                    $("#song_info_singer").html(data.result[0].song);
+                    $("#song_info_name").html(data.result[0].song);
+                    $("#song_info_singer").html(data.result[0].singer);
 
                     audio.play();
                     pause.style.backgroundPosition = "-30px  0px";
@@ -147,7 +150,7 @@ window.onload = function change() {
             function (result) {
                 var data = JSON.parse(result);
                 // console.log(data);
-                if (result !== "") {
+                if (data.result) {
                     for (var k = 0; k < data.result.length; k++) {
                         $($(".list_author")[k]).append(data.result[k].singer);
                         $($(".list_time")[k]).append(data.result[k].duration);
@@ -383,7 +386,10 @@ window.onload = function change() {
             function (result) {
                 var data = JSON.parse(result);
                 console.log(data);
-                $("#song_info_pic").attr("src", data.result[0].img);
+                if(data.result){
+
+                    $("#song_info_pic").attr("src", data.result[0].img);
+                }
             }
         )
     }
