@@ -20,8 +20,7 @@ import java.sql.PreparedStatement;
 @WebServlet(name ="Collection/song/insert" ,urlPatterns ="/collection/song/insert" )
 public class CollectionSongInsert extends HttpServlet {
 
-   private Connection conn = null;
-   private PreparedStatement pst = null;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
@@ -33,13 +32,13 @@ public class CollectionSongInsert extends HttpServlet {
 
 
 
-        conn = DBUtil.getConnection();
+        Connection conn = DBUtil.getConnection();
         int  userId   =Integer.parseInt( request.getParameter("userId"));
         int  songId   =Integer.parseInt( request.getParameter("songId"));
         try{
 
             String sql = "insert into collections set userId="+userId+",songId="+songId;
-            pst = conn.prepareStatement(sql);
+            PreparedStatement   pst = conn.prepareStatement(sql);
             System.out.println("song insert:"+sql);
             int i= pst.executeUpdate(sql);
             conn.commit();

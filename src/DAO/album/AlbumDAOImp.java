@@ -26,7 +26,8 @@ public class AlbumDAOImp implements AlbumDAO{
             String sql = "select DISTINCT"
                     + " album.name as name,"
                     + " singer.name as singer,"
-//                    + " song.name as song,"
+                    + " song.duration as duration,"
+                    + " song.name as song,"
                     + " album.date as date,"
                     + " album.img as img,"
                     + " album.company as company,"
@@ -51,6 +52,7 @@ public class AlbumDAOImp implements AlbumDAO{
 
 
 
+
             // 添加条件
             String condition = album.getCondition();
             if(condition!=null && !condition.equals("")){
@@ -68,7 +70,7 @@ public class AlbumDAOImp implements AlbumDAO{
             }
 
             // 控制台输出sql语句，检验正确性
-//            System.out.println("Album SELECT: " +sql);
+            System.out.println("Album SELECT: " +sql);
 
             // 创建prepareStatement对象
             pst = conn.prepareStatement(sql);
@@ -83,7 +85,7 @@ public class AlbumDAOImp implements AlbumDAO{
 
                 tmp.setName(rs.getString("name"));
                 tmp.setSinger(rs.getString("singer"));
-//                tmp.setSong(rs.getString("song"));
+                tmp.setSong(rs.getString("song"));
                 tmp.setDate(rs.getString("date"));
                 tmp.setImg(rs.getString("img"));
                 tmp.setCompany(rs.getString("company"));
@@ -104,7 +106,7 @@ public class AlbumDAOImp implements AlbumDAO{
         try{
             // sql语句
 //            String sql = "select count(*) as counts from album inner join singer  on  album.singerId = singer.id   inner join song  on  song.albumid = album.id   where 1=1";
-            String sql = "select count(*) as counts from album inner join singer  on  album.singerId = singer.id      where 1=1";
+            String sql = "select count(*) as counts from album inner join song  on  song.albumId = album.id  inner join  singer  on album.singerId=singer.id   where 1=1";
             // 添加条件
             String condition = album.getCondition();
             if(condition != null && !condition.equals("")){

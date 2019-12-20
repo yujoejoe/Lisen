@@ -11,9 +11,9 @@ $(document).ready(function () {
             function (result) {
                 var data = JSON.parse(result);
                 for (var j = 0; j < 20; j++) {
-                    $(".newSongs_img")[j].src=data.result[j].img;
-                    $(".newSongs_song")[j].append(data.result[j].name);
-                    $(".newSongs_singerName")[j].append(data.result[j].singer);
+                    $(".newSongs_img")[j].src=data.result[j+13].img;
+                    $(".newSongs_song")[j].append(data.result[j+13].name);
+                    $(".newSongs_singerName")[j].append(data.result[j+13].singer);
                 }
             }
         );
@@ -51,11 +51,18 @@ $(document).ready(function () {
                     $(".mv_singerName")[j].append(data.result[j].singer);
                     $(".mv_playNum")[j].append((data.result[j].play/10000).toFixed(1) + '万');
                 }
-                // 绑定点击事件设置cookie
+                // 绑定点击mv图片事件设置cookie
                 for (var i = 0; i < 8; i++) {
                     var play = $(".play-icon");
                     play[i].setAttribute("data-id", data.result[i].id);
                     play[i].onclick = setCookie;
+                }
+                // 绑定点击mv名事件设置cookie
+                for (var k = 0; k < 8; k++) {
+                    var mv_song = $(".mv_song");
+                    mv_song[k].setAttribute("data-id", data.result[k].id);
+                    mv_song[k].onclick = setCookie;
+                    mv_song[k].href = "/users/mv/playvideo.html";
                 }
             }
         );
@@ -173,6 +180,7 @@ function setCookie() {
     document.cookie = "mId=" + this.getAttribute('data-id') + ";path=/";
     console.log(document.cookie);
 }
+
 function setCookieList() {
     var cName = "slId";
     document.cookie = cName + "=" + this.getAttribute('data-id') + ";path=/";

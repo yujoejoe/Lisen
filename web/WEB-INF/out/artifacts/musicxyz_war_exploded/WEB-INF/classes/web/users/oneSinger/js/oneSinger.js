@@ -90,14 +90,11 @@ $(document).ready(function () {
             // console.log("aaa");
             var songs = $(this).find("li").eq(1).html();
             var singers = $(".txt_one_name").html();
-            var time = $(".single_time").html();
             console.log(songs);
             console.log(singers);
-            console.log(time);
             var song = encodeURI(encodeURI(songs));
             var singer = encodeURI(encodeURI(singers));
-            var duration = encodeURI(encodeURI(time));
-            window.location.href = "../playMusic/playMusic.html?song=" + song + "&singer=" + singer + "&duration=" + duration;
+            window.location.href = "../playMusic/playMusic.html?song=" + song + "&singer=" + singer;
         });
 
 
@@ -149,11 +146,26 @@ $.get(
         $("#mv_option").append(data.counts);
         $("#mv_counts").append(data.counts);
         if (result!==null){
-            for (var i = 0; i <data.result.length ; i++) {
-                $(".txt_mv_pic")[i].src = data.result[i].img;
-                $(".txt_mv_name")[i].append(data.result[i].title);
-                $($(".show_hide_mv")[i]).show();
+            for (var j = 0; j <data.result.length ; j++) {
+                $(".txt_mv_pic")[j].src = data.result[j].img;
+                $(".txt_mv_name")[j].append(data.result[j].title);
+                $($(".show_hide_mv")[j]).show();
 
+            }
+            // 绑定点击mv图片事件设置cookie
+            for (var i = 0; i < data.result.length; i++) {
+                var mv_pic = $(".txt_mv_pic");
+                mv_pic[i].setAttribute("data-id", data.result[i].id);
+                mv_pic[i].onclick = setCookie;
+                var txt_mv = $(".txt_mv");
+                txt_mv[i].href = "/users/mv/playvideo.html";
+            }
+            // 绑定点击mv名事件设置cookie
+            for (var k = 0; k < data.result.length; k++) {
+                var mv_name = $(".txt_mv_name");
+                mv_name[k].setAttribute("data-id", data.result[k].id);
+                mv_name[k].onclick = setCookie;
+                mv_name[k].href = "/users/mv/playvideo.html";
             }
         }
 
@@ -164,3 +176,9 @@ $.get(
 
     }
 });
+
+
+function setCookie() {
+    document.cookie = "mId=" + this.getAttribute('data-id') + ";path=/";
+    console.log(document.cookie);
+}
