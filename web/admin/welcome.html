@@ -23,15 +23,15 @@
 <body>
 <div class="layui-fluid">
 	<div class="layui-row layui-col-space15">
-		<div class="layui-col-md12">
-			<div class="layui-card">
-				<div class="layui-card-body ">
-					<blockquote class="layui-elem-quote">
-						欢迎管理员：<span class="x-red" id="admin">admin</span>！当前时间: <span id="date"></span>
-					</blockquote>
-				</div>
-			</div>
-		</div>
+		<!--<div class="layui-col-md12">-->
+			<!--<div class="layui-card">-->
+				<!--<div class="layui-card-body ">-->
+					<!--<blockquote class="layui-elem-quote">-->
+						<!--欢迎管理员：<span class="x-red" id="admin">admin</span>！当前时间: <span id="date"></span>-->
+					<!--</blockquote>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</div>-->
 		<div class="layui-col-md12">
 			<div class="layui-card">
 				<div class="layui-card-header">数据统计</div>
@@ -39,7 +39,7 @@
 					<ul class="layui-row layui-col-space10 layui-this x-admin-carousel x-admin-backlog">
 						<li class="layui-col-md2 layui-col-xs6">
 							<a href="javascript:;" class="x-admin-backlog-body">
-								<h3>文章数</h3>
+								<h3>歌曲数</h3>
 								<p>
 									<cite>66</cite></p>
 							</a>
@@ -220,16 +220,17 @@
 <script src="/users/common/js/com.js"></script>
 <script src="./js/jquery.min.js"></script>
 <script>
-	$(function () {
-		var admin = getCookie("admin");
-		if(admin !== undefined){
-		  admin = decodeURI(admin);
-		  $("#admin").html(admin);
-		}
-		var date = new Date();
-		var today = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
-		$("#date").html(today);
-  });
+ 
+//  (function () {
+//	let data = getAdmin();
+//	if(data !== undefined && data.success && data.result[0].type >= 1){
+//	  $('#admin').html(data.result[0].name);
+//	  let date = new Date();
+//	  let today = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
+//	  $("#date").html(today);
+//	}
+//  })();
+  
 </script>
 </body>
 </html>

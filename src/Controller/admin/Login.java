@@ -44,7 +44,7 @@ public class Login extends HttpServlet {
         }else{
             // 添加条件
             String condition = "";
-            condition = " user.name = '" + username + "'" + " and user.pswd = '" + password + "'" + " and user.type = " + type;
+            condition = " user.name = '" + username + "'" + " and user.pswd = '" + password + "'" + " and user.type >= " + type;
             user.setCondition(condition);
             // 查询记录
             result = userSDI.select(user);
@@ -52,14 +52,16 @@ public class Login extends HttpServlet {
             if(result == null || result.size() == 0){
                 success = false;
                 msg = "账号或密码错误！";
-            }else{
+            }else if(result.get(0).getStatus() == 1){
+                success = false;
+                msg = "当前账号已冻结，请联系超级管理员！";
+            } else{
                 success = true;
                 msg = "登录成功！";
-//                // 保存user信息
-//                user = result.get(0);
-//                user.setCondition(" user.name = '" + user.getName() + "'");
-//                HttpSession session = request.getSession(true);
-//                session.setAttribute("user", user);
+                // 保存user信息
+                user = result.get(0);
+                HttpSession session = request.getSession(true);
+                session.setAttribute("user", user);
             }
         }
 

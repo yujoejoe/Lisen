@@ -8,6 +8,7 @@ import POJO.Base;
 public class Song extends Base {
     private int id;
     private int hits;
+    private int status;
     private String date;
     private String song;
     private String style;
@@ -15,6 +16,14 @@ public class Song extends Base {
     private String singer;
     private String format;
     private String duration;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public String getFormat() {
         return format;

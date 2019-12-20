@@ -39,8 +39,9 @@ public class UserGet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
 
+
         // 返回到前端的数据
-        ArrayList<User> result = null;
+        ArrayList<User> result = new ArrayList<>();
         boolean success = false;
         String msg = "";
 
@@ -51,8 +52,10 @@ public class UserGet extends HttpServlet {
             msg = "用户未登录！";
         } else {
             User user = (User) session.getAttribute("user");
-            result = usersSD.select(user);
-            System.out.println("User: " + user);
+            if(user != null){
+                result.add(user);
+            }
+            System.out.println("User: " + result);
             success = true;
             msg = "用户已登录！";
         }
