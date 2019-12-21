@@ -244,8 +244,7 @@ public class UserDAOImp implements UserDAO {
             String sql = "delete from user where id=?";
             pst = conn.prepareStatement(sql);
             pst.setInt(1, user.getId());
-            int i = pst.executeUpdate();
-            return i;
+            return pst.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
             return -1;

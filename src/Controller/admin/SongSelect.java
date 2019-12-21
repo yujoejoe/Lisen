@@ -30,6 +30,8 @@ public class SongSelect extends HttpServlet {
         String page = request.getParameter("page");
         String limit = request.getParameter("limit");
         String songname = request.getParameter("songname");
+        String singer = request.getParameter("singer");
+        String album = request.getParameter("album");
 
         SongServiceDAOImp songSDI = new SongServiceDAOImp();
         Song song = new Song();
@@ -39,6 +41,15 @@ public class SongSelect extends HttpServlet {
         if(songname != null && !songname.equals("")){
             condition += " and song.name like '%" + songname + "%'";
         }
+
+        if(singer != null && !singer.equals("")){
+            condition += " and singer.name like '%" + singer + "%'";
+        }
+
+        if(album != null && !album.equals("")){
+            condition += " and album.name like '%" + album + "%'";
+        }
+
 
         song.setCondition(condition);
 

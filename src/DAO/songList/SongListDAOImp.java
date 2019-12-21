@@ -113,7 +113,7 @@ public class SongListDAOImp implements SongListDAO {
         pst = conn.prepareStatement(sql);
 
         // 控制台输出sql语句，检验正确性
-        System.out.println("mv COUNT: "+sql);
+        System.out.println("songlist COUNT: "+sql);
         ResultSet rs = pst.executeQuery();
         rs.next();
         return Integer.parseInt(rs.getString("counts"));

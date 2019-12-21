@@ -39,7 +39,7 @@ public class UserSelect extends HttpServlet {
         String condition = " user.type = " + type;
 
         if(username != null && !username.equals("")){
-            condition += " and user.name = " + username;
+            condition += " and user.name like '%" + username + "%'";
         }
 
         user.setCondition(condition);

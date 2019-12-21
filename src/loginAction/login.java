@@ -44,8 +44,6 @@ public class login extends HttpServlet {
         //1、获取登录页面输入的用户名与密码
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String type = request.getParameter("type");
-        type = type == null ? "0" : type;
 
         UserServiceDAOImp userSDI = new UserServiceDAOImp();
         ArrayList<User> result = null;
@@ -62,7 +60,7 @@ public class login extends HttpServlet {
         }else{
             // 添加条件
             String condition = "";
-            condition = " user.name = '" + username + "'" + " and user.pswd = '" + password + "'" + " and user.type = " + type;
+            condition = " user.name = '" + username + "'" + " and user.pswd = '" + password + "'" + " and user.type = 0";
             user.setCondition(condition);
             // 查询记录
             result = userSDI.select(user);
