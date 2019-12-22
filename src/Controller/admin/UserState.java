@@ -1,4 +1,4 @@
-package Controller.user.userGet;
+package Controller.admin;
 
 import POJO.JsonData;
 import POJO.User;
@@ -17,13 +17,13 @@ import java.util.ArrayList;
 
 //========================= ！！！仅用于判断用户的登陆状态，并返回当前登录用户的信息 ！！！ ==================
 
-@WebServlet(name = "UserGet", urlPatterns = "/userGet")
-public class UserGet extends HttpServlet {
+@WebServlet(name = "UserState", urlPatterns = "/admin/userState")
+public class UserState extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserServiceDAOImp usersSD = new UserServiceDAOImp();
     private User user = new User();
 
-    public UserGet() {
+    public UserState() {
         super();
     }
 
@@ -50,7 +50,7 @@ public class UserGet extends HttpServlet {
         if (session != null) {
             User user = (User) session.getAttribute("user");
 
-            if(user != null && user.getType() == 0){
+            if(user != null && user.getType() > 0){
                 result.add(user);
                 success = true;
                 msg = "用户已登录！";

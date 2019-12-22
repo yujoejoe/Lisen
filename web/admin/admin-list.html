@@ -39,7 +39,7 @@
                                     <!--<input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">-->
                                 <!--</div>-->
                                 <div class="layui-inline layui-show-xs-block">
-                                    <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                    <input type="text" name="username"  placeholder="请输入登录名" autocomplete="off" class="layui-input">
                                 </div>
                                 <div class="layui-inline layui-show-xs-block">
                                     <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                            <button class="layui-btn" onclick="xadmin.open('添加用户','./admin-add.html',600,400)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn" onclick="xadmin.open('添加管理员','./admin-add.html',600,400)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body ">
                             <table class="layui-table layui-form">
@@ -59,10 +59,10 @@
                                   </th>
                                   <th>ID</th>
                                   <th>登录名</th>
+                                  <th>密码</th>
                                   <th>手机</th>
                                   <th>邮箱</th>
                                   <th>角色</th>
-                                  <!--<th>加入时间</th>-->
                                   <th>状态</th>
                                   <th>操作</th>
                               </thead>

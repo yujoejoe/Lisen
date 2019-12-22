@@ -4,7 +4,7 @@
 
 function getAdmin(){
   let data;
-  let url = "/userGet";
+  let url = "/admin/userState";
   $.ajax({
 	type: "get"
 	, url: url

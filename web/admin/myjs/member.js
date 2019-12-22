@@ -2,7 +2,7 @@
  * Created by user on 2019/12/22.
  */
 
-
+getData(1);
 // 获取指定页数据
 function getData(page) {
   let rows = 5;				// 每页行数
@@ -28,9 +28,8 @@ function getData(page) {
 	  }
 	  , loading: false
 	  , height: 320
-	  , ceilMinWidth: 80
 	  , cols: [[
-		{field: "checkbox", type: "checkbox", width: 30, fixed: "left"},
+		{field: "checkbox", type: "checkbox", width: 48, fixed: "left"},
 		{field: "id", title: "ID", width: 80, sort: true, event: "selectRow"},
 		{field: "name", title: "用户名", width: 150, event: "selectRow"},
 		{field: "sex", title: "性别", width: 80, sort: true, templet: "#sex", event: "selectRow"},
@@ -87,16 +86,30 @@ function getData(page) {
 		});
 	  }				// 查看
 	  else if (layEvent === 'del') {								// 删除操作
-		layer.confirm('确定要永久删除该数据吗？删除后将无法恢复！'
-		  , {icon: 0, title: '提示'}
-		  , function (index) {
-			if (delData(data.id)) {
-			  obj.del(); //删除对应行（tr）的DOM结构
-			  layer.msg('删除成功！', {icon: 1, time: 1500}, function () {
-				userInfo.reload();
-			  })
+		layer.prompt({
+			title: "敏感操作，请验证密码！"
+			// , skin: 'check-skin'
+			, formType: 1
+		  }
+		  , function (value, index, elem) {
+			// console.log(value);
+			let password = 'delete';						// 应该从后台获取！！！
+			if (value === password) {
+			  layer.confirm('确定要永久删除该数据吗？删除后将无法恢复！'
+				, {icon: 0, title: '提示', skin: 'warn-skin'}
+				, function (index) {
+				  if (delData(data.id)) {
+					obj.del(); //删除对应行（tr）的DOM结构
+					layer.msg('删除成功！', {icon: 1, time: 1500}, function () {
+					  userInfo.reload();
+					})
+				  } else {
+					layer.msg('删除失败，服务器异常！', {icon: 2, time: 1500})
+				  }
+				  layer.close(index);
+				});
 			} else {
-			  layer.msg('删除失败，服务器异常！', {icon: 2, time: 1500})
+			  layer.msg('密码错误！', {time: 1000});
 			}
 			layer.close(index);
 		  });
@@ -196,7 +209,7 @@ function getData(page) {
 		let allCheckbox = $('.layui-table-fixed .layui-table-body input[name=layTableCheckbox]');
 //		  console.log(allCheckbox);
 //		  console.log(result);
-		for(let i = 0; i < allCheckbox.length; ++i){			// 此处存在严重bug，排序后result的id无法与表格对应
+		for (let i = 0; i < allCheckbox.length; ++i) {			// 此处存在严重bug，排序后result的id无法与表格对应
 		  allCheckbox[i].value = result[i].id;
 //		    console.log(allCheckbox[i].value);
 		}
@@ -204,11 +217,11 @@ function getData(page) {
 	});
 
 	// 搜索
-	form.on('submit(search)', function(data){
+	form.on('submit(search)', function (data) {
 	  let username = data.field.username;
-	  if(username === ""){
-		layer.msg('请输入用户名！',{icon: 5, time: 1000});
-	  }else{
+	  if (username === "") {
+		layer.msg('请输入用户名！', {icon: 5, time: 1000});
+	  } else {
 		userInfo.reload({
 		  page: {curr: 1}
 		  , where: {
@@ -222,13 +235,12 @@ function getData(page) {
 	});
 
 	$('#delAll').click(function () {
-	  if(delAll()){
+	  if (delAll()) {
 		userInfo.reload();
 	  }
 	})
   });
 }
-getData(1);
 // 删除选中行数据
 function delData(id) {
   let success = false;
@@ -264,18 +276,36 @@ function delAll() {
   if (ids.length === 0) {
 	layer.msg('请先选择要删除的数据！', {time: 1000});
   } else {
-	layer.confirm('确定要删除这' + ids.length + '条数据吗？'
-	  , {icon: 0, title: '提示'}
-	  , function (index) {
-		//捉到所有被选中的，发异步进行删除
-		success = delData(ids);
-		if(success){
-		  layer.msg('删除成功！', {icon: 1, time: 1000});
-		}else{
-		  layer.msg('删除失败！', {icon: 2, time: 1000});
+
+	layer.prompt({
+		title: "敏感操作，请验证密码！"
+		// , skin: 'check-skin'
+		, formType: 1
+	  }
+	  , function (value, index, elem) {
+		// console.log(value);
+		let password = 'delete';						// 应该从后台获取！！！
+		if (value === password) {
+		  layer.confirm('确定要永久删除这' + ids.length + '数据吗？删除后将无法恢复！'
+			, {icon: 0, title: '提示', skin: 'warn-skin'}
+			, function (index) {
+			  //捉到所有被选中的，发异步进行删除
+			  success = delData(ids);
+			  if (success) {
+				layer.msg('删除成功！', {icon: 1, time: 1000});
+			  } else {
+				layer.msg('删除失败！', {icon: 2, time: 1000});
+			  }
+			  layer.close(index);
+			});
+		} else {
+		  layer.msg('密码错误！', {time: 1000});
 		}
 		layer.close(index);
-	  });
+	  }
+	);
+
+
   }
   return success;
 }

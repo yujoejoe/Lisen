@@ -194,7 +194,7 @@ function del(argument) {
 
   if (data.length === 0) {
 	layer.msg("请选择要删除的数据", {
-	  icon: 2
+	  time: 1000
 	});
   }
   else {
@@ -202,27 +202,42 @@ function del(argument) {
 	for (let i = 0; i < data.length; ++i) {
 	  songId.push(data[i].id);
 	}
-	layer.confirm('确认要删除这' + songId.length + '条数据吗？'
-	  , {icon: 0, title: '提示'}
-	  , function (index) {
-		// 发送异步请求，执行删除操作
-		$.ajax({
-		  type: "post"
-		  , url: "/admin/songDelete"
-		  , traditional: true					// 设置traditional: true才能传数组
-		  , data: {"songId": songId}
-		  , success: function (res) {
-			let data = JSON.parse(res);
-			if (data.success) {
-			  layer.msg(data.msg, {icon: 1, time: 1000}, function () {
-				location.reload();
+	layer.prompt({
+		title: "敏感操作，请验证密码！"
+		// , skin: 'check-skin'
+		, formType: 1
+	  }
+	  , function (value, index, elem) {
+		// console.log(value);
+		let password = 'delete';						// 应该从后台获取！！！
+		if (value === password) {
+		  layer.confirm('确认要删除这' + songId.length + '条数据吗？'
+			, {icon: 0, title: '提示'}
+			, function (index) {
+			  // 发送异步请求，执行删除操作
+			  $.ajax({
+				type: "post"
+				, url: "/admin/songDelete"
+				, traditional: true					// 设置traditional: true才能传数组
+				, data: {"songId": songId}
+				, success: function (res) {
+				  let data = JSON.parse(res);
+				  if (data.success) {
+					layer.msg(data.msg, {icon: 1, time: 1000}, function () {
+					  location.reload();
+					});
+				  }
+				  else {
+					layer.msg(data.msg, {icon: 2, time: 1000});
+				  }
+				}
 			  });
-			}
-			else {
-			  layer.msg(data.msg, {icon: 2, time: 1000});
-			}
-		  }
-		});
+			  layer.close(index);
+			});
+		}
+		else {
+		  layer.msg('密码错误！', {time: 1000});
+		}
 		layer.close(index);
 	  });
   }

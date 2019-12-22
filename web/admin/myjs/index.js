@@ -21,4 +21,12 @@
 	let date = new Date();
 	$('#date').html(date.toLocaleDateString() + " " + date.toLocaleTimeString());
   }, 1000);
+
 })();
+
+// 退出
+function exit() {
+  $.get("/loginAction/exit", function (res) {
+	location.href = "/";
+  });
+}
