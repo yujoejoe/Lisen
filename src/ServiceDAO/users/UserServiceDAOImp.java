@@ -64,12 +64,12 @@ public class UserServiceDAOImp implements UserServiceDAO {
   /**
    * 统计业务
    */
-  public int count(User user) {
+  public int count(User user, int type) {
     Connection conn = DBUtil.getConnection();
     UserDAOImp usersD = new UserDAOImp(conn);
     int cnt;
     try{
-      cnt = usersD.count(user);//返回记录集
+      cnt = usersD.count(user, type);//返回记录集
       conn.commit();
       return cnt;
     }catch(Exception e){
@@ -158,6 +158,29 @@ public class UserServiceDAOImp implements UserServiceDAO {
     }finally{
       if(conn != null){
     	DBUtil.closeConnection(conn);
+      }
+    }
+  }
+
+  @Override
+  public int update(User user) {
+    Connection conn = DBUtil.getConnection();
+    UserDAOImp UserD = new UserDAOImp(conn);
+    try{
+      int i = UserD.update(user);
+      conn.commit();
+      return i;
+    }catch(Exception e){
+      try {
+        conn.rollback();
+      } catch (SQLException e1) {
+        e1.printStackTrace();
+      }
+      e.printStackTrace();
+      return -1;
+    }finally{
+      if(conn != null){
+        DBUtil.closeConnection(conn);
       }
     }
   }

@@ -34,7 +34,8 @@ public class SongDAOImp implements SongDAO{
                     + " song.format as format,"
                     + " song.duration as time,"
                     + " song.date as date,"
-                    + " song.hits as hits "
+                    + " song.hits as hits,"
+                    + " song.status as status "
                     +"from"
                     + " song "
                     +"left join singer "
@@ -77,6 +78,7 @@ public class SongDAOImp implements SongDAO{
             tmp.setFormat(rs.getString("format"));
             tmp.setStyle(rs.getString("style"));
             tmp.setAlbum(rs.getString("album"));
+            tmp.setStatus(rs.getInt("status"));
             tmp.setSong(rs.getString("song"));
             tmp.setDate(rs.getString("date"));
             tmp.setHits(rs.getInt("hits"));
@@ -158,6 +160,15 @@ public class SongDAOImp implements SongDAO{
 
     @Override
     public int count(Song song) throws SQLException {
-        return 0;
+        // sql语句
+        String sql = "select count(id) as counts from song where 1=1";
+
+        pst = conn.prepareStatement(sql);
+
+        // 控制台输出sql语句，检验正确性
+        System.out.println("song COUNT: "+sql);
+        ResultSet rs = pst.executeQuery();
+        rs.next();
+        return Integer.parseInt(rs.getString("counts"));
     }
 }

@@ -15,24 +15,59 @@
 	<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
 	<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	
+	<style>
+		/*设置单元格高度*/
+		.layui-table-cell {
+			height: 40px;
+			line-height: 40px;
+		}
+		
+		body .info-class .layui-layer-title {
+			background: #019587;
+			color: #fff;
+			border: none;
+		}
+		
+		body .info-class .layui-layer-btn {
+			border-top: 1px solid #E9E7E7
+		}
+		
+		body .info-class .layui-layer-btn a {
+			background: #01b4a4;
+			border: none
+		}
+		
+		body .info-class .layui-layer-btn .layui-layer-btn1 {
+			background: #999;
+		}
+		
+		body .info-class .layui-layer-content {
+			font-size: 14px;
+		}
+	
+	</style>
+
 </head>
 <body>
 <div class="x-nav">
           <span class="layui-breadcrumb">
             <a href="">首页</a>
             <a href="">用户管理</a>
-            <a><cite>用户修改</cite></a>
+            <a><cite>用户列表</cite></a>
           </span>
 	<a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
 	   onclick="location.reload()"
 	   title="刷新">
-		<i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+		<i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+	</a>
 </div>
 <div class="layui-fluid">
 	<div class="layui-row layui-col-space15">
 		<div class="layui-col-md12">
 			<div class="layui-card">
 				<div class="layui-card-body ">
+					<!--搜索-->
 					<form class="layui-form layui-col-space5">
 						<!----------------------------------- 起止日期 ------------------------------------>
 						
@@ -46,26 +81,32 @@
 						
 						<!----------------------------------------- 用户名查找 ------------------------------------>
 						<div class="layui-inline layui-show-xs-block">
-							<input type="text" name="username" placeholder="请输入用户名" autocomplete="off"
-								   class="layui-input">
+							<input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-inline layui-show-xs-block">
-							<button class="layui-btn" lay-submit="" lay-filter="sreach"><i
-								class="layui-icon">&#xe615;</i></button>
+							<button class="layui-btn" lay-submit="" lay-filter="search">
+								<i class="layui-icon">&#xe615;</i>
+							</button>
 						</div>
 					</form>
+					<!--搜索结束-->
 				</div>
+				
+				<!-- 工具栏 -->
 				<div class="layui-card-header">
-					<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除
+					<button class="layui-btn layui-btn-danger" id="delAll">
+						<i class="layui-icon"></i><span>批量删除</span>
 					</button>
-					<button class="layui-btn" onclick="xadmin.open('添加用户','./member-add.html',600,400)"><i
-						class="layui-icon"></i>添加
+					<button class="layui-btn" onclick="xadmin.open('添加用户','./member-add.html',600,400)">
+						<i class="layui-icon"></i><span>添加</span>
 					</button>
 				</div>
+				<!--工具栏结束 -->
+				
 				<div class="layui-card-body layui-table-body layui-table-main">
-					<table class="layui-table layui-form" id="userInfo"></table>
+					<table class="layui-table layui-form" id="userInfo" lay-filter="info"></table>
 				</div>
-				<div id="pages"></div>
+				<div id="pages" style="padding: 0 15px;"></div>
 			</div>
 		</div>
 	</div>
@@ -74,150 +115,311 @@
 
 <script src="./js/jquery.min.js"></script>
 
+<!-- 左侧复选框 -->
+<script type="text/html" id="checkbox">
+	<input type="checkbox" name="tableCheckbox" lay-skin="primary" value="{{d.id}}">
+</script>
+<!-- 性别 -->
+<script type="text/html" id="sex">
+	{{#  if(d.sex === '女'){ }}
+	<span style="color: #f490b9;">{{ d.sex }}</span>
+	{{#  } else { }}
+	{{ d.sex }}
+	{{#  } }}
+</script>
+<!-- 数据表格右侧编辑栏 -->
 <script type="text/html" id="operation">
-	<a onclick="xadmin.open('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
-		<i class="layui-icon">&#xe642;</i>
-	</a>
-	<a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
-		<i class="layui-icon">&#xe640;</i>
-	</a>
+	<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+	<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">编辑</a>
+	<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<!-- 状态栏 -->
+<script type="text/html" id="status">
+	{{#  if(d.status === 0){ }}
+	<input type="checkbox" name="status" lay-skin="switch" lay-filter="status" lay-text="启用|禁用" value="0" checked>
+	{{#  } else{ }}
+	{{# console.log(d.status) }}
+	<input type="checkbox" name="status" lay-skin="switch" lay-filter="status" lay-text="启用|禁用" value="1">
+	{{#  } }}
 </script>
 
-
 <script>
-function getData(page) {
-  let rows = 3;				// 每页行数
-  
-  layui.use(['laydate', 'form', 'table', 'laypage'], function () {
-	let laydate = layui.laydate;
-	let form = layui.form;
-	let laypage = layui.laypage;
-	let table = layui.table;
+  // 获取指定页数据
+  function getData(page) {
+	let rows = 5;				// 每页行数
 
-	let index = layer.load(1);
+	layui.use(['form', 'table', 'laypage'], function () {
+	  let laydate = layui.laydate;
+	  let form = layui.form;
+	  let laypage = layui.laypage;
+	  let table = layui.table;
+	  let result = null;					// 保存表格中的所有数据
+	  let index = layer.load(2);
 
-	// 渲染表格
-	let userInfo = table.render({
-	  elem: "#userInfo"
-	  , id: "userList"
-	  , url: "/admin/userSelect"
-	  , where: {
-	    type: 0
-	    , 'page': page
-		, 'limit': rows
-	  }
-	  , loading: false
-	  , ceilMinWidth: 80
-	  , cols: [[
-		{type: "checkbox", width: 50, fixed: "left"},
-		{field: "id", title: "ID", width: 80, fixed: "left", sort: true},
-		{field: "name", title: "用户名", width: 200},
-		{field: "sex", title: "性别", width: 80, sort: true},
-		{field: "email", title: "邮箱", width: 200},
-		{field: "phone", title: "手机", width: 200},
-		{title: "操作", minWidth: 100, templet: "#operation"}
-	  ]]
-	  , response: {
-		statusName: 'success'
-		, statusCode: true
-		, countName: 'counts'
-		, dataName: 'result'
-	  }
-	  , done: function (res, curr, count) {
-		// 分页
-		laypage.render({
-		  elem: 'pages'
-		  , layout: ['count', 'prev', 'next', 'refresh', 'skip', 'page']
-		  , count: count
-		  , limit: rows
-		  , curr: page
-		  , groups: 2
-		  , jump: function (obj, first) {
-			if (!first) {
-			  getData(obj.curr);
+	  // 渲染表格
+	  let userInfo = table.render({
+		elem: "#userInfo"
+		, title: "普通用户"
+		, id: "userList"
+		, url: "/admin/userSelect"
+		, where: {
+		  type: 0
+		  , 'page': page
+		  , 'limit': rows
+		}
+		, loading: false
+		, height: 320
+		, ceilMinWidth: 80
+		, cols: [[
+		  {field: "checkbox", type: "checkbox", width: 30, fixed: "left"},
+		  {field: "id", title: "ID", width: 80, sort: true, event: "selectRow"},
+		  {field: "name", title: "用户名", width: 150, event: "selectRow"},
+		  {field: "sex", title: "性别", width: 80, sort: true, templet: "#sex", event: "selectRow"},
+		  {field: "email", title: "邮箱", minWidth: 180, event: "selectRow"},
+		  {field: "phone", title: "手机", minWidth: 180, event: "selectRow"},
+		  {field: "status", title: "状态", minWidth: 100, templet: "#status"},
+		  {title: "操作", width: 200, templet: "#operation"}
+		]]
+		, response: {
+		  statusName: 'success'
+		  , statusCode: true
+		  , countName: 'counts'
+		  , dataName: 'result'
+		}
+		, done: function (res, curr, count) {
+		  result = res.result;
+//		  console.log(res);
+		  // 分页
+		  laypage.render({
+			elem: 'pages'
+			, layout: ['count', 'prev', 'next', 'skip', 'page']
+			, count: count
+			, limit: rows
+			, curr: page
+			, groups: 2
+			, jump: function (obj, first) {
+			  if (!first) {
+				getData(obj.curr);
+			  }
 			}
+		  });
+
+		  layer.close(index);
+		}
+	  });
+
+	  // 监听操作事件
+	  table.on('tool(info)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+		let data = obj.data //获得当前行数据
+		  , layEvent = obj.event; //获得 lay-event 对应的值
+//		console.log(obj);
+		if (layEvent === 'detail') {
+		  let status = data.status === 0 ? '已启用' : '已禁用';
+		  let msg = "ID: " + data.id + "<br>"
+			+ "用户名: " + data.name + "<br>"
+			+ "性别: " + data.sex + "<br>"
+			+ "邮箱: " + data.email + "<br>"
+			+ "手机: " + data.phone + "<br>"
+			+ "当前状态：" + status + "<br>";
+		  layer.open({
+			title: '用户信息'
+			, skin: 'info-class'
+			, content: msg
+		  });
+		}				// 查看
+		else if (layEvent === 'del') {								// 删除操作
+		  layer.confirm('确定要永久删除该数据吗？删除后将无法恢复！'
+			, {icon: 0, title: '提示'}
+			, function (index) {
+			  if (delData(data.id)) {
+				obj.del(); //删除对应行（tr）的DOM结构
+				layer.msg('删除成功！', {icon: 1, time: 1500}, function () {
+				  userInfo.reload();
+				})
+			  } else {
+				layer.msg('删除失败，服务器异常！', {icon: 2, time: 1500})
+			  }
+			  layer.close(index);
+			});
+		}				// 删除
+		else if (layEvent === 'edit') {								// 编辑操作
+		  let request = "id=" + data.id + '&'
+			+ "name=" + data.name + '&'
+			+ "sex=" + data.sex + '&'
+			+ "email=" + data.email + '&'
+			+ "phone=" + data.phone;
+		  xadmin.open('编辑', './member-edit.html?' + request, 600, 400, false);
+		}				// 编辑
+		else if (layEvent === 'selectRow') {
+		  selectRow(obj);					// 此处存在一个bug：无法触发全选
+		}
+	  });
+
+	  // 监听单击行事件
+	  function selectRow(obj) {
+		let input = $(obj.tr[1]).find('input')[0];
+		input.value = obj.data.id;						// 设置复选框的value值
+//		console.log("value = " + input.value);
+		input.checked = input.checked !== true;			// 设置复选框状态
+		console.log(input.checked);
+		let checked = input.checked;
+		obj['checked'] = checked;
+		if (checked) {								// 根据复选框是否选中，修改样式
+		  $(obj.tr[1]).find('div')[1].classList.add("layui-form-checked");
+		} else {
+		  $(obj.tr[1]).find('div')[1].classList.remove("layui-form-checked");
+		}
+		obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');  // 设置当前行样式
+	  }
+
+	  // 监听状态开关
+	  form.on('switch(status)', function (data) {
+
+//		console.log(data);
+		let text = data.othis[0].innerText;				// 获取文本信息
+		let msg = '确认要' + text + '该用户吗？';			// 提示信息
+		layer.confirm(msg, {icon: 3, title: '提示'}
+		  , function (index) {
+			data.elem.value = data.value === '1' ? 0 : 1;			// 令当前元素value值取反
+			let tr = data.elem.parentNode.parentNode.parentNode;
+			let id = tr.childNodes[1].childNodes[0].innerText;
+//		    console.log("id: " + tr);
+//		    console.log("value = " + data.elem.value);
+			// 发送异步请求执行状态变更
+			$.ajax({
+			  type: 'post'
+			  , url: '/admin/userUpdate'
+			  , data: {"id": id, "status": data.elem.value}
+			  , success: function (res) {
+				let data = JSON.parse(res);
+				if (data.success) {
+//				console.log(data);
+				  let msgText = text === '启用' ? '已启用' : '已禁用';
+				  layer.msg(msgText, {icon: 1, time: 1000}, function () {
+					userInfo.reload();				// 重新渲染表格
+				  });
+				}
+				else {
+				  layer.msg('服务器异常！', {icon: 2, time: 1000});
+				}
+			  }
+			});
+			layer.close(index);
+		  }   			// 点击确定按钮后触发事件
+		  , function (index) {
+			if (text === '启用') {
+			  data.othis[0].classList.remove("layui-form-onswitch");
+			  $(data.othis[0]).find('em')[0].innerText = '禁用';			// 修改文本内容
+			  data.elem.checked = false;								// 修改状态
+			} else if (text === '禁用') {
+			  data.othis[0].classList.add("layui-form-onswitch");
+			  $(data.othis[0]).find('em')[0].innerText = '启用';
+			  data.elem.checked = true;
+			}
+//			console.log('取消操作');
+//		 	console.log(data);
+			layer.close(index);
+		  });			// 点击取消按钮后触发事件
+
+	  });
+
+	  // 监听复选框事件
+	  table.on('checkbox(info)', function (obj) {
+		//当前元素
+//		console.log(obj);
+		if (obj.type === 'one') {
+		  let input = $(obj.tr[1]).find('input')[0];
+		  input.value = obj.data.id;						// 设置复选框的value值
+//		  console.log("value = " + input.value);
+//		  console.log(input.checked);
+		} else if (obj.type === 'all') {
+		  // 获取左侧固定位置的所有复选框（除了表头部分）
+		  let allCheckbox = $('.layui-table-fixed .layui-table-body input[name=layTableCheckbox]');
+//		  console.log(allCheckbox);
+//		  console.log(result);
+		  for(let i = 0; i < allCheckbox.length; ++i){			// 此处存在严重bug，排序后result的id无法与表格对应
+		    allCheckbox[i].value = result[i].id;
+//		    console.log(allCheckbox[i].value);
 		  }
-		});
-		
-		layer.close(index);
-	  }
+		}
+	  });
+	  
+	  // 搜索
+	  form.on('submit(search)', function(data){
+	    let username = data.field.username;
+	    if(username === ""){
+	      layer.msg('请输入用户名！',{icon: 5, time: 1000});
+		}else{
+	 		userInfo.reload({
+			  page: {curr: 1}
+			  , where: {
+			    'username': username
+			  	, 'type': 0
+				, 'limit': rows
+			  }
+			});
+		}
+	    return false;
+	  });
+	
+	  $('#delAll').click(function () {
+		if(delAll()){
+		  userInfo.reload();
+		}
+	  })
 	});
-
-
-	// 监听全选
-	form.on('checkbox(checkall)', function (data) {
-
-	  if (data.elem.checked) {
-		$('tbody input').prop('checked', true);
-	  } else {
-		$('tbody input').prop('checked', false);
-	  }
-	  form.render('checkbox');
-	});
-
-	//执行一个laydate实例
-	laydate.render({
-	  elem: '#start' //指定元素
-	});
-
-	//执行一个laydate实例
-	laydate.render({
-	  elem: '#end' //指定元素
-	});
-
-
-  });
-}
+  }
   getData(1);
-  /*用户-停用*/
-  function member_stop(obj, id) {
-	layer.confirm('确认要停用吗？', function (index) {
-
-	  if ($(obj).attr('title') == '启用') {
-
-		//发异步把用户状态进行更改
-		$(obj).attr('title', '停用')
-		$(obj).find('i').html('&#xe62f;');
-
-		$(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-		layer.msg('已停用!', {icon: 5, time: 1000});
-
-	  } else {
-		$(obj).attr('title', '启用')
-		$(obj).find('i').html('&#xe601;');
-
-		$(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-		layer.msg('已启用!', {icon: 5, time: 1000});
+  // 删除选中行数据
+  function delData(id) {
+	let success = false;
+	let url = "/admin/userDelete";
+	$.ajax({
+	  type: "post"
+	  , url: url
+	  , async: false
+	  , traditional: true
+	  , data: {"id": id}
+	  , success: function (res) {
+		let data = JSON.parse(res);
+		console.log(data);
+		success = data.success;
 	  }
-
 	});
-  }
-  
-  /*用户-删除*/
-  function member_del(obj, id) {
-	layer.confirm('确认要删除吗？', function (index) {
-	  //发异步删除数据
-	  $(obj).parents("tr").remove();
-	  layer.msg('已删除!', {icon: 1, time: 1000});
-	});
+	return success;
   }
 
-
-  function delAll(argument) {
+  function delAll() {
 	let ids = [];
-
+	let success = false;
 	// 获取选中的id
-	$('tbody input').each(function (index, el) {
+	
+	let checkbox = $('.layui-table-fixed-l tbody input');
+	console.log(checkbox);
+	$(checkbox).each(function (index, el) {
 	  if ($(this).prop('checked')) {
 		ids.push($(this).val())
 	  }
 	});
 
-	layer.confirm('确认要删除吗？' + ids.toString(), function (index) {
-	  //捉到所有被选中的，发异步进行删除
-	  layer.msg('删除成功', {icon: 1});
-	  $(".layui-form-checked").not('.header').parents('tr').remove();
-	});
+	if (ids.length === 0) {
+	  layer.msg('请先选择要删除的数据！', {time: 1000});
+	} else {
+	  layer.confirm('确定要删除这' + ids.length + '条数据吗？'
+		, {icon: 0, title: '提示'}
+		, function (index) {
+		  //捉到所有被选中的，发异步进行删除
+		  success = delData(ids);
+		  if(success){
+		    layer.msg('删除成功！', {icon: 1, time: 1000});
+		  }else{
+		    layer.msg('删除失败！', {icon: 2, time: 1000});
+		  }
+		  layer.close(index);
+		});
+	}
+	return success;
   }
+  
 </script>
 </html>

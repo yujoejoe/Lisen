@@ -20,7 +20,7 @@ import java.util.ArrayList;
 @WebServlet(name = "UserSelect", urlPatterns = "/admin/userSelect")
 public class UserSelect extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +39,7 @@ public class UserSelect extends HttpServlet {
         String condition = " user.type = " + type;
 
         if(username != null && !username.equals("")){
-            condition += " and user.name = " + username;
+            condition += " and user.name like '%" + username + "%'";
         }
 
         user.setCondition(condition);
@@ -54,7 +54,7 @@ public class UserSelect extends HttpServlet {
         ArrayList<User> result = userSDI.select(user);
         boolean success = result.size() != 0;
         String msg = result.size() != 0 ? "查询成功！" : "查询失败！";
-        int counts = userSDI.count(user);
+        int counts = userSDI.count(user, Integer.parseInt(type));
 
         JsonData jsonData = new JsonData(success, msg, counts, result);
         request.setAttribute("jsonData", jsonData);

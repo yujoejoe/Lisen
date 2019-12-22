@@ -59,6 +59,27 @@ public class SongListServiceDAOImp implements SongListServiceDAO{
 
     @Override
     public int count(SongList sList) {
-        return 0;
+        Connection conn = DBUtil.getConnection();
+        SongListDAOImp singerDI = new SongListDAOImp(conn);
+
+        try{
+            int count = singerDI.count(sList);
+            conn.commit();
+            return count;
+        }catch(Exception e){
+            try{
+                conn.rollback();
+            }catch(SQLException sqe){
+                System.out.println("failed to rollback!");
+                sqe.printStackTrace();
+            }
+            e.printStackTrace();
+            return -1;
+        }finally {
+            // 释放数据库资源
+            if(conn != null){
+                DBUtil.closeConnection(conn);
+            }
+        }
     }
 }

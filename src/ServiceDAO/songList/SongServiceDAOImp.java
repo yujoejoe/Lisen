@@ -14,7 +14,27 @@ import java.util.ArrayList;
 public class SongServiceDAOImp implements SongServiceDAO{
     @Override
     public ArrayList<Song> select(Song song) {
-        return null;
+        Connection conn = DBUtil.getConnection();
+        SongDAOImp sDI = new SongDAOImp(conn);
+
+        try {
+            ArrayList<Song> resultList = new ArrayList<>();
+            resultList = sDI.select(song);
+            conn.commit();
+            return resultList;
+        } catch (SQLException e) {
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+            e.printStackTrace();
+            return null;
+        } finally {
+            if(conn != null){
+                DBUtil.closeConnection(conn);
+            }
+        }
     }
 
     @Override
@@ -59,6 +79,27 @@ public class SongServiceDAOImp implements SongServiceDAO{
 
     @Override
     public int count(Song song) {
-        return 0;
+        Connection conn = DBUtil.getConnection();
+        SongDAOImp singerDI = new SongDAOImp(conn);
+
+        try{
+            int count = singerDI.count(song);
+            conn.commit();
+            return count;
+        }catch(Exception e){
+            try{
+                conn.rollback();
+            }catch(SQLException sqe){
+                System.out.println("failed to rollback!");
+                sqe.printStackTrace();
+            }
+            e.printStackTrace();
+            return -1;
+        }finally {
+            // 释放数据库资源
+            if(conn != null){
+                DBUtil.closeConnection(conn);
+            }
+        }
     }
 }

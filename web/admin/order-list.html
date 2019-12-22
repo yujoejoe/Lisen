@@ -58,8 +58,9 @@
 					</button>
 				</div>
 				<div class="layui-card-body layui-table-body layui-table-main">
-					<table class="layui-table layui-form" id="song"></table>
+					<table class="layui-table layui-form" id="song" lay-filter="song"></table>
 				</div>
+				<div id="pages" style="padding: 0 15px;"></div>
 			</div>
 		</div>
 	</div>
@@ -68,9 +69,15 @@
 
 <script>
 
-  layui.use(['laydate', 'form', 'table', 'laypage'], function () {
+//  function getData(page) {
+	
+	layui.use(['form', 'table', 'laypage'], function () {
 	  let table = layui.table;
+	  let laypage = layui.laypage;
 	  let $ = layui.jquery;
+	  let index = layer.load(2);
+	  let result = null;
+	  let rows = 10;
 
 	  // 渲染表格
 	  let songInfo = table.render({
@@ -78,17 +85,22 @@
 		, height: 480
 		, id: "songList"
 		, url: "/admin/songSelect"
-		, page: {
-		  layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
-		  , curr: 1							// 当前页
-		  , groups: 3 					//只显示 3 个连续页码
-		  , first: '首页' 				//首页
-		  , prev: '上一页'
-		  , next: '下一页'
-		  , last: '尾页' 				//尾页
-		  , limit: 10
-		  , limits: [10, 20, 30]
-		}
+//		, where: {
+//		  'page': 1
+//		  , 'limit': rows
+//		}
+	  , page: {
+		layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+		, curr: 1							// 当前页
+		, groups: 3 					//只显示 3 个连续页码
+		, first: '首页' 				//首页
+		, prev: '上一页'
+		, next: '下一页'
+		, last: '尾页' 				//尾页
+		, limit: 10
+		, limits: [10, 20, 30]
+	  }
+//		, page: true
 		, cols: [[
 		  {type: "checkbox", width: 50, fixed: "left"},
 		  {field: "id", title: "ID", width: 80, sort: true},
@@ -101,17 +113,34 @@
 		  {field: "date", title: "发布日期", minWidth: 150, sort: true}
 		]]
 		, response: {
-		  statusCode: true					// 修改状态码为true | false
+		  statusName: 'success'
+		  , statusCode: true
+		  , countName: 'counts'
+		  , dataName: 'result'
 		}
-		, parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
-		  return {
-			"code": res.success, 			//解析接口状态
-			"msg": res.msg, 				//解析提示文本
-			"count": res.counts, 			//解析数据长度
-			"data": res.result 				//解析数据列表
-		  };
+		, done: function (res, curr, count) {
+		  result = res.result;
+		  console.log(res);
+		  console.log(curr);
+		  console.log(count);
+		  // 分页
+//		  laypage.render({
+//			elem: 'pages'
+//			, layout: ['count', 'prev', 'next', 'skip', 'page']
+//			, count: count
+//			, limit: rows
+//			, limits: [10, 20 ,30]
+//			, curr: page
+//			, groups: 2
+//			, jump: function (obj, first) {
+//			  if (!first) {
+//				getData(obj.curr);
+//			  }
+//			}
+//		  });
+
+		  layer.close(index);
 		}
-		
 	  });
 
 
@@ -154,14 +183,6 @@
 			  , limit: 10
 			  , limits: [10, 20, 30]
 			}
-			, parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
-			  return {
-				"code": res.success, 			//解析接口状态
-				"msg": res.msg, 					//解析提示文本
-				"count": res.counts, 			//解析数据长度
-				"data": res.result 				//解析数据列表
-			  }
-			}
 		  }
 		);
 		return false;
@@ -169,6 +190,9 @@
 
 
 	});
+//  }
+
+//  getData(1);
   
   /*用户-停用*/
   function member_stop(obj, id) {
@@ -225,7 +249,7 @@
 	} else {
 	  layer.confirm('确认要删除这' + data.length + '条数据吗？',
 		function (index) {
-		  
+
 		  layer.msg('删除成功', {
 			icon: 1
 			, time: 1000

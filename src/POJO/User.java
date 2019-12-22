@@ -4,13 +4,31 @@ public class User extends Base{
 
   private static final long serialVersionUID = 1L;
   
-  private int id;
+  private int id = -1;
+  private int type = -1;
+  private String sex;
+  private String img;
+  private int status = -1;
   private String name;
   private String pswd;
-  private String phone;
-  private String sex;
   private String email;
-  private String img;
+  private String phone;
+
+  public int getType() {
+    return type;
+  }
+
+  public void setType(int type) {
+    this.type = type;
+  }
+
+  public int getStatus() {
+    return status;
+  }
+
+  public void setStatus(int status) {
+    this.status = status;
+  }
 
   public String getImg() {
     return img;
@@ -68,16 +86,18 @@ public class User extends Base{
     this.email = email;
   }
 
+  @Override
   public String toString() {
-    return "User [id=" + id + "," +
-            " name=" + name + ", " +
-            "pswd=" + pswd + "," +
-            " phone=" + phone + ", " +
-            "sex=" + sex + ", " +
-            "email=" + email + ", " +
-            "condition=" + condition + "," +
-            " limit=" + limit + ", " +
-            "orderBy=" + orderBy + "]";
+    return "User{" +
+            "id=" + id +
+            ", type=" + type +
+            ", sex='" + sex + '\'' +
+            ", img='" + img + '\'' +
+            ", status=" + status +
+            ", name='" + name + '\'' +
+            ", pswd='" + pswd + '\'' +
+            ", email='" + email + '\'' +
+            ", phone='" + phone + '\'' +
+            '}';
   }
-
 }
