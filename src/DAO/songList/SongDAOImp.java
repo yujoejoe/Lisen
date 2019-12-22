@@ -1,12 +1,19 @@
 package DAO.songList;
 
+import POJO.Album;
+import POJO.Singer;
 import POJO.songList.Song;
+import ServiceDAO.album.AlbumServiceDAOImp;
+import ServiceDAO.singer.SingerServiceDAOImp;
+import util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by user on 2019/12/16.
@@ -155,7 +162,107 @@ public class SongDAOImp implements SongDAO{
 
     @Override
     public int update(Song song) throws SQLException {
-        return 0;
+        Map<String, Object> para = new HashMap<>();
+
+        int id = song.getId();
+        if(id != -1){
+            para.put("id", id);
+        }
+        int status = song.getStatus();
+        if(status != -1){
+            para.put("status", status);
+        }
+        String name = song.getSong();
+        if(name != null && !name.equals("")){
+            para.put("name", "'" + name + "'");
+        }
+        String data = song.getDate();
+        if(data != null && !data.equals("")){
+            para.put("data", "'" + data + "'");
+        }
+        String singer = song.getSinger();
+        if(singer != null && !singer.equals("")){
+            para.put("singer", "'" + singer + "'");
+        }
+        String album = song.getAlbum();
+        if(album != null && !album.equals("")){
+            para.put("album", "'" + album + "'");
+        }
+        String style = song.getStyle();
+        if(style != null && !style.equals("")){
+            para.put("style", "'" + style + "'");
+        }
+        String format = song.getFormat();
+        if(format != null && !format.equals("")){
+            para.put("format", "'" + format + "'");
+        }
+        String duration = song.getDuration();
+        if(duration != null && !duration.equals("")){
+            para.put("duration", "'" + duration + "'");
+        }
+
+        if(para.size() != 0 && id > 0) {
+            StringBuilder sql = new StringBuilder("update song set");
+
+            for (String key: para.keySet()) {
+                if(key.equals("singer")){
+                    String singerSql = "select singer.id as id from singer where singer.name = " + key;
+                    System.out.println("Song UPDATE(singer): " + singerSql);
+                    Connection conn = DBUtil.getConnection();
+                    PreparedStatement pst = conn.prepareStatement(singerSql);
+                    ResultSet rs = pst.executeQuery();
+                    Object singerId = null;
+                    if(rs.next()){
+                        singerId = rs.getInt("id");
+                    }
+                    para.put(key, singerId);
+                    DBUtil.closeConnection(conn);
+                }
+                if(key.equals("album")){
+                    String albumSql = "select album.id as id from album where album.name = " + key;
+                    System.out.println("Song UPDATE(album): " + albumSql);
+                    Connection conn = DBUtil.getConnection();
+                    PreparedStatement pst = conn.prepareStatement(albumSql);
+                    ResultSet rs = pst.executeQuery();
+                    Object albumId = null;
+                    if(rs.next()){
+                        albumId = rs.getInt("id");
+                    }
+                    para.put(key, albumId);
+                    DBUtil.closeConnection(conn);
+                }
+                if(key.equals("style")){
+                    String styleSql = "select style.id as id from style where style.name = " + key;
+                    System.out.println("Song UPDATE(style): " + styleSql);
+                    Connection conn = DBUtil.getConnection();
+                    PreparedStatement pst = conn.prepareStatement(styleSql);
+                    ResultSet rs = pst.executeQuery();
+                    Object styleId = null;
+                    if(rs.next()){
+                        styleId = rs.getInt("id");
+                    }
+                    para.put(key, styleId);
+                    DBUtil.closeConnection(conn);
+                }
+                String str = " " + key + "=" + para.get(key) + ",";
+                sql.append(str);
+            }
+            sql.setCharAt(sql.length() - 1, ' ');
+
+            if(para.size() != 0 && song.getId() > 0){
+                String condition = "where song.id = " + id;
+                sql.append(condition);
+                System.out.println("Song UPDATE: " + sql.toString());
+
+                pst = conn.prepareStatement(sql.toString());
+
+                return pst.executeUpdate();
+
+            }
+
+        }
+
+        return -1;
     }
 
     @Override

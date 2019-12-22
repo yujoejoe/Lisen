@@ -74,7 +74,26 @@ public class SongServiceDAOImp implements SongServiceDAO{
 
     @Override
     public int update(Song song) {
-        return 0;
+        Connection conn = DBUtil.getConnection();
+        SongDAOImp songDI = new SongDAOImp(conn);
+        try {
+            int count = songDI.update(song);
+            conn.commit();
+            return count;
+        } catch (SQLException e) {
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+            e.printStackTrace();
+            return -1;
+        } finally {
+            if(conn != null){
+                DBUtil.closeConnection(conn);
+                conn = null;
+            }
+        }
     }
 
     @Override
@@ -99,6 +118,7 @@ public class SongServiceDAOImp implements SongServiceDAO{
             // 释放数据库资源
             if(conn != null){
                 DBUtil.closeConnection(conn);
+                conn = null;
             }
         }
     }

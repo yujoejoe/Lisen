@@ -79,8 +79,8 @@ public class UserUpdate extends HttpServlet {
 
         UserServiceDAOImp userSDI = new UserServiceDAOImp();
         int counts = userSDI.update(user);
-        boolean success = counts >= 0;
-        String msg = counts >= 0 ? "修改成功！" : "修改失败！";
+        boolean success = counts > 0;
+        String msg = counts > 0 ? "修改成功！" : "修改失败！";
 
         JsonData jsonData = new JsonData(success, msg);
         request.setAttribute("jsonData", jsonData);

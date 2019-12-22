@@ -395,3 +395,36 @@ $(function () {
         }
     );
 });*/
+
+var searchs;  //搜索关键字
+// 搜索推荐
+$(document).ready(function () {
+
+    $(".result-item").click(function () {
+         searchs = $(this).find("span").eq(1).html();
+        console.log(searchs);
+        var search = encodeURI(encodeURI(searchs));
+        window.location.href = "users/oneSinger/oneSinger.html?search="+search;
+
+    });
+
+    //按搜索文本框内容搜索
+    $(".btn").click(function () {
+        searchs = $(".text").val();
+        console.log(searchs);
+        var search = encodeURI(encodeURI(searchs));
+        if (search!==""&&search!==null){
+
+            window.location.href = "users/oneSinger/oneSinger.html?search="+search;
+        }
+    });
+
+
+});
+
+//添加空格绑定点击事件
+$(document).keydown(function(event){
+    if(event.keyCode===13){
+        $(".btn").click();
+    }
+});

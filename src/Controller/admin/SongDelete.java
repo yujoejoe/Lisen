@@ -1,8 +1,6 @@
 package Controller.admin;
 
 import POJO.JsonData;
-import POJO.User;
-import ServiceDAO.users.UserServiceDAOImp;
 import util.DBUtil;
 
 import javax.servlet.RequestDispatcher;
@@ -14,37 +12,36 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Created by user on 2019/12/21.
+ * Created by user on 2019/12/22.
  */
-@WebServlet(name = "UserDelete", urlPatterns = "/admin/userDelete")
-public class UserDelete extends HttpServlet {
+@WebServlet(name = "SongDelete", urlPatterns = "/admin/songDelete")
+public class SongDelete extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
 
-        String[] id = request.getParameterValues("id");
+        String[] songId = request.getParameterValues("songId");
 
         int counts = 0;
         String msg = "删除失败！";
         boolean success = false;
 
-        if(id != null && id.length != 0){
+        if(songId != null && songId.length != 0){
             StringBuilder str = new StringBuilder();
-            for (String ele:id) {
+            for (String ele:songId) {
                 str.append(ele);
                 str.append(',');
             }
-            str.setLength(str.length() - 1);
-//            System.out.println(str.toString());
-            String sql = "delete from user where user.id in (" + str.toString() + ")";
-//            System.out.println("User Delete: " + sql);
+            str.setLength(str.length() - 1);        // 删除最后的逗号
+
+            String sql = "delete from song where song.id in (" + str.toString() + ")";
+
             Connection conn = DBUtil.getConnection();
 
             try{
@@ -66,27 +63,15 @@ public class UserDelete extends HttpServlet {
                     DBUtil.closeConnection(conn);
                 }
             }
+
         }
 
-
-
-//        UserServiceDAOImp userSDI = new UserServiceDAOImp();
-//        User user = new User();
-//
-//        if(id != null && !id.equals("")){
-//            user.setId(Integer.parseInt(id));
-//        }else{
-//            user.setId(-1);
-//        }
-//
-//        int count = userSDI.delete(user);
-//        boolean success = count > 0;
-//        String msg = count > 0 ? "删除成功！" : "删除失败, 用户不存在！";
-//
         JsonData jsonData = new JsonData(success, msg);
         request.setAttribute("jsonData", jsonData);
         RequestDispatcher rd = request.getRequestDispatcher("/view/ToJSON");
         rd.forward(request, response);
+
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

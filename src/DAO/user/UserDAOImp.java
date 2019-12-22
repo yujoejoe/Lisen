@@ -133,37 +133,46 @@ public class UserDAOImp implements UserDAO {
         try {
             /*========== 必须要提供用户的id才能实现更新！！！ =========*/
             Map<String, Object> para = new HashMap<>();
-            if (user.getId() != -1) {
-                para.put("id", user.getId());
+            int id = user.getId();
+            if (id != -1) {
+                para.put("id", id);
             }
-            if (user.getType() != -1) {
-                para.put("type", user.getType());
+            int type = user.getType();
+            if (type != -1) {
+                para.put("type", type);
             }
-            if (user.getStatus() != -1) {
-                para.put("status", user.getStatus());
+            int status = user.getStatus();
+            if (status != -1) {
+                para.put("status", status);
             }
-            if (user.getName() != null && !user.getName().equals("")) {
-                para.put("name", "'" + user.getName() + "'");
+            String name = user.getName();
+            if (name != null && !name.equals("")) {
+                para.put("name", "'" + name + "'");
             }
-            if (user.getSex() != null && !user.getSex().equals("")) {
-                para.put("sex", "'" + user.getSex() + "'");
+            String sex = user.getSex();
+            if (sex != null && !sex.equals("")) {
+                para.put("sex", "'" + sex + "'");
             }
-            if (user.getEmail() != null && !user.getEmail().equals("")) {
-                para.put("email", "'" + user.getEmail() + "'");
+            String email = user.getEmail();
+            if (email != null && !email.equals("")) {
+                para.put("email", "'" + email + "'");
             }
-            if (user.getPhone() != null && !user.getPhone().equals("")) {
-                para.put("phone", "'" + user.getPhone() + "'");
+            String phone = user.getPhone();
+            if (phone != null && !phone.equals("")) {
+                para.put("phone", "'" + phone + "'");
             }
-            if (user.getPswd() != null && !user.getPswd().equals("")) {
-                para.put("pswd", "'" + user.getPswd() + "'");
+            String pswd = user.getPswd();
+            if (pswd != null && !pswd.equals("")) {
+                para.put("pswd", "'" + pswd + "'");
             }
-            if (user.getImg() != null && !user.getImg().equals("")) {
-                para.put("img", "'" + user.getImg() + "'");
+            String img = user.getImg();
+            if (img != null && !img.equals("")) {
+                para.put("img", "'" + img + "'");
             }
 
 //            System.out.println(para);
 
-            if(para.size() != 0 && user.getId() > 0) {
+            if(para.size() != 0 && id > 0) {
                 StringBuilder sql = new StringBuilder("update user set");
 
                 for (String key: para.keySet()) {
@@ -172,10 +181,10 @@ public class UserDAOImp implements UserDAO {
                 }
                 sql.setCharAt(sql.length() - 1, ' ');
                 // 添加条件
-                String condition = "where id = " + user.getId();
+                String condition = "where id = " + id;
                 sql.append(condition);
 
-                System.out.println("User UPDATE: " + sql);
+                System.out.println("User UPDATE: " + sql.toString());
 
                 pst = conn.prepareStatement(sql.toString());
 

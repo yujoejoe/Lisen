@@ -25,6 +25,8 @@ public class SongSelect extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
 
         String page = request.getParameter("page");
@@ -63,7 +65,7 @@ public class SongSelect extends HttpServlet {
         ArrayList<Song> result = songSDI.select(song);
         boolean success = result.size() != 0;
         String msg = result.size() != 0 ? "查询成功！" : "查询失败！";
-        int counts = songSDI.count(song);
+        int counts = (songname != null && !songname.equals("")) ? result.size() : songSDI.count(song);
 
         JsonData jsonData = new JsonData(success, msg, counts, result);
         request.setAttribute("jsonData", jsonData);
