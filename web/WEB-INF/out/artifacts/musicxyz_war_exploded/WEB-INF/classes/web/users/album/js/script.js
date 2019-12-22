@@ -75,6 +75,7 @@ $(document).ready(function () {
                 for (var i = 0; i <=date.result.length; i++) {
                     $(".album_singer")[i].innerHTML=date.result[i].singer;
                     $(".album_name")[i].innerHTML = date.result[i].song;
+                    $(".album_time")[i].innerHTML = date.result[i].duration;
                     $($(".show_hide")[i]).show();
                 }
             }
@@ -86,11 +87,13 @@ $(document).ready(function () {
         // console.log("aaa");
         var songs = $(this).find("li").eq(1).html();
         var singers = $(this).find("li").eq(2).html();
+        var durations = $(this).find("li").eq(3).html();
         console.log(songs);
         console.log(singers);
         var song = encodeURI(encodeURI(songs));
         var singer = encodeURI(encodeURI(singers));
-        window.location.href = "../playMusic/playMusic.html?song=" + song + "&singer=" + singer;
+        var duration = encodeURI(encodeURI(durations));
+        window.location.href = "../playMusic/playMusic.html?song=" + song + "&singer=" + singer+ "&duration="+duration;
     });
 
 //全部播放
