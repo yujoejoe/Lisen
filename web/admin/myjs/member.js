@@ -18,7 +18,7 @@ function getData(page) {
 	// 渲染表格
 	let userInfo = table.render({
 	  elem: "#userInfo"
-	  , title: "普通用户"
+	  , title: "用户列表"
 	  , id: "userList"
 	  , url: "/admin/userSelect"
 	  , where: {
@@ -73,15 +73,15 @@ function getData(page) {
 //		console.log(obj);
 	  if (layEvent === 'detail') {
 		let status = data.status === 0 ? '已启用' : '已禁用';
-		let msg = "ID: " + data.id + "<br>"
-		  + "用户名: " + data.name + "<br>"
-		  + "性别: " + data.sex + "<br>"
-		  + "邮箱: " + data.email + "<br>"
-		  + "手机: " + data.phone + "<br>"
-		  + "当前状态：" + status + "<br>";
+		let msg = "<span>ID</span><pre>:  " + data.id + "</pre><br>"
+		  + "<span>用户名</span><pre>:  " + data.name + "</pre><br>"
+		  + "<span>性别</span><pre>:  " + data.sex + "</pre><br>"
+		  + "<span>邮箱</span><pre>:  " + data.email + "</pre><br>"
+		  + "<span>手机</span><pre>:  " + data.phone + "</pre><br>"
+		  + "<span>当前状态</span><pre>:  " + status + "</pre><br>";
 		layer.open({
 		  title: '用户信息'
-		  , skin: 'info-class'
+		  , skin: 'info-skin'
 		  , content: msg
 		});
 	  }				// 查看
@@ -240,6 +240,7 @@ function getData(page) {
 	  }
 	})
   });
+
 }
 // 删除选中行数据
 function delData(id) {

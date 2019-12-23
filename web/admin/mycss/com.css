@@ -10,27 +10,37 @@
 }
 
 /*=================== 查看信息样式 ===================*/
-body .info-class .layui-layer-title {
+body .info-skin .layui-layer-title {
     background: #019587;
     color: #fff;
     border: none;
 }
 
-body .info-class .layui-layer-btn {
+body .info-skin .layui-layer-btn {
     border-top: 1px solid #E9E7E7
 }
 
-body .info-class .layui-layer-btn a {
+body .info-skin .layui-layer-btn a {
     background: #01b4a4;
     border: none
 }
 
-body .info-class .layui-layer-btn .layui-layer-btn1 {
+body .info-skin .layui-layer-btn .layui-layer-btn1 {
     background: #999;
 }
 
-body .info-class .layui-layer-content {
+body .info-skin .layui-layer-content {
+    height: auto!important;
     font-size: 14px;
+}
+
+body .info-skin .layui-layer-content span{
+    display: inline-block;
+    width: 54px;
+}
+
+body .info-skin .layui-layer-content pre{
+    display: inline-block;
 }
 
 /*=================== 删除警告样式 ===================*/

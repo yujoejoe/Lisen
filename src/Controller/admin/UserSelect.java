@@ -36,7 +36,13 @@ public class UserSelect extends HttpServlet {
         UserServiceDAOImp userSDI = new UserServiceDAOImp();
         User user = new User();
 
-        String condition = " user.type = " + type;
+        String condition = "";
+
+        if(type.equals("0")){
+            condition += " user.type = 0";
+        }else if(type.equals("1") || type.equals("2")){
+            condition += " user.type >= 1";
+        }
 
         if(username != null && !username.equals("")){
             condition += " and user.name like '%" + username + "%'";
