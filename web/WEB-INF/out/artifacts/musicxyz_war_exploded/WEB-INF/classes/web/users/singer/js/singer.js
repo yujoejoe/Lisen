@@ -170,14 +170,17 @@ function  all() {
                     $(".txt_name")[i].innerHTML = data.result[i].name;
                     $($(".show_hide")[i]).show();
                 }
+
             } else if (result != null && data.result.length > 15) {
-                // console.log("aaa");
+
+                console.log("aaa");
                 for (var j = 0; j < 15; j++) {
                     $(".txt_singer_img")[j].src = data.result[j].img;
                     $(".txt_name")[j].innerHTML = data.result[j].name;
                     $($(".show_hide")[j]).show();
                 }
                 $($(".page_option")[2]).click(function () {
+
                     $(this).css("background-color", "#31c27c");
                     $(".page_firstShow").css("background-color", "");
                     for (var k = 0; k < data.result.length; k++) {
@@ -201,16 +204,18 @@ $(document).ready(function () {
       all();
     })
 
+
 });
 
 
 
 $(document).ready(function () {
 
+    //选择哪个国家的歌手
     $(".nation").click(function () {
 
         $(".nation").css("background","none");
-        $("#all_option").css("background","none");
+        // $("#all_option").css("background","none");
         $(this).css("background","#84fac1");
 
         var  search = $(this).html();
@@ -221,14 +226,36 @@ $(document).ready(function () {
             function (result) {
                 var  data = JSON.parse(result);
                 console.log(data);
-                if(result!=null){
                     $(".show_hide").hide();
                     for (var i = 0; i <data.result.length; i++) {
                         $(".txt_singer_img")[i].src = data.result[i].img;
                         $(".txt_name")[i].innerHTML = data.result[i].name;
                         $($(".show_hide")[i]).show();
                     }
-                }
+            }
+        )
+    });
+
+    //选择哪个风格的歌手
+    $(".style").click(function () {
+        $(".style").css("background","none");
+        $(this).css("background","#84fac1");
+        var  search = $(this).html();
+        console.log(search);
+        $.get(
+            "/info/get",
+            {"search":search},
+            function (result) {
+                var  data = JSON.parse(result);
+                console.log(data);
+
+                    $(".show_hide").hide();
+                    for (var i = 0; i <data.result.length; i++) {
+                        $(".txt_singer_img")[i].src = data.result[i].img;
+                        $(".txt_name")[i].innerHTML = data.result[i].name;
+                        $($(".show_hide")[i]).show();
+                    }
+
             }
         )
 

@@ -7,7 +7,7 @@
 }
 
 body {
-    background: rgba(0, 0, 0, .75);
+    background: rgba(0, 0, 0, .5);
     font-family: "Microsoft Yahei", sans-serif monospace;
     color: #cfcfcf;
     /*让用户无法选中文字*/
@@ -59,7 +59,7 @@ body {
     -webkit-mask-image: url(../images/player_logo.png);
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: contain;
-    background-color: #515151;
+    background-color: rgba(238, 238, 238, .5);
 }
 
 .login {
@@ -74,7 +74,7 @@ body {
     float: left;
     margin-right: 26px;
     font-size: 14px;
-    color: rgba(0,0,0,0.2);
+    color: rgba(238, 238, 238, .75);
     line-height: 30px;
     margin-top: -4px;
 }
@@ -85,7 +85,6 @@ body {
     top: 50px;
     width: 56.7%;
     height: 540px;
-    overflow-y:scroll;
 
     /*background-color: #e4b9b9;*/
 
@@ -248,7 +247,7 @@ body {
 }
 
 .list_music:hover {
-    background-color: rgba(51, 51, 51, 0.75);
+    background-color: rgba(0, 0, 0, 0.25);
     cursor: pointer;
 
 }
@@ -714,3 +713,31 @@ body {
     font-size: 15px;
 }
 
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 695px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .5);
+    z-index: -1;
+}
+
+body .bg{
+    position: absolute;
+    width: 100%;
+    height: 695px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    opacity: 0.5;
+    -webkit-filter: blur(65px);
+    filter: blur(65px);
+    z-index: -1;
+}
+
+.song_list{
+    overflow-y: scroll;
+    height: 410px;
+}
