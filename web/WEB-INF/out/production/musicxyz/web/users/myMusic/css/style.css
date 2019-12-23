@@ -142,6 +142,14 @@
 /*    overflow: hidden;*/
 /*}*/
 
+.action{
+    text-align: center;
+    font-size: 20px;
+    /*margin-left: 30px;*/
+    float: left;
+    background-color: #e4b9b9;
+
+}
 .single{
     width: 1000px;
     position:absolute;
@@ -159,11 +167,20 @@
     line-height: 50px;
     background-color: rgba(0,0,0,.01);
     color: #999;
+    opacity: 0.5;
     padding-right: 30px;
     top:200px;
     width: 1000px;
     display: none;
 }
+
+.single_header:hover{
+    opacity: 1;
+    background-color: #c0c0c0;
+
+}
+
+
 .single_headers{
     /*position: absolute;*/
     padding-left: 20px;
@@ -171,10 +188,25 @@
     line-height: 50px;
     background-color: rgba(0,0,0,.01);
     color: #999;
+    /*opacity: 0.5;*/
     padding-right: 30px;
-    top:200px;
+    top:300px;
     width: 1000px;
     /*display: none;*/
+}
+.icon_delete{
+    width: 16px;
+    height: 16px;
+    /*background-position: 0 -160px;*/
+    vertical-align: -3px;
+    display: inline-block;
+    margin-right: 6px;
+    /*margin-left: px;*/
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    /*background-color: #c0c0c0;*/
+    background-image: url(../images/delete.png);
+
 }
 
 .single_song{
@@ -196,8 +228,8 @@
     /*position: absolute;*/
     /*top: 0;*/
     /*right: 38px;*/
-    width: 14%;
-    float: right;
+    width: 8%;
+    float: left;
 
 }
 .single_songs{

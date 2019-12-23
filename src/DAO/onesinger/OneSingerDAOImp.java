@@ -36,13 +36,19 @@ public class OneSingerDAOImp implements OneSingerDAO {
                         + " singer.img as img,"
                         + " singer.songNum as songNum,"
                         + " singer.birthPlace as birthPlace,"
-                        + " singer.fans as fans"
+                        + " singer.fans as fans,"
+                        + " style.name as style,"
+                        + " singer.py as py"
                         +" from"
                         + " singer"
                         +" inner join"
                         + " area"
                         +" on"
                         + " singer.areaId = area.id"
+                        +" inner join"
+                        + " style"
+                        +" on"
+                        + " singer.styleId = style.id"
                         +" where 1=1";
 
 
@@ -84,6 +90,8 @@ public class OneSingerDAOImp implements OneSingerDAO {
                     tmp.setArea(rs.getString("area"));
                     tmp.setBirthPlace(rs.getString("birthPlace"));
                     tmp.setImg(rs.getString("img"));
+                    tmp.setStyle(rs.getString("style"));
+                    tmp.setPy(rs.getString("py"));
                     resultList.add(tmp);
                 }
 
@@ -98,7 +106,7 @@ public class OneSingerDAOImp implements OneSingerDAO {
     public int count(Singer singer) throws SQLException {
         try{
             // sql语句
-            String sql = "select count(*) as counts from singer inner join  area  on singer.areaId = area.id where 1=1";
+            String sql = "select count(*) as counts from singer inner join  area  on singer.areaId = area.id  inner  join  style  on singer.styleId = style.id  where 1=1";
             // 添加条件
             String condition = singer.getCondition();
             if(condition != null && !condition.equals("")){
