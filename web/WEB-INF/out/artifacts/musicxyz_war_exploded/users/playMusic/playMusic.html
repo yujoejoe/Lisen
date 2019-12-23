@@ -1,239 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>音乐播放-哩森</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/icon.png">
-    <script type="text/javascript" src="../../tools/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+	<meta charset="UTF-8">
+	<title>音乐播放-哩森</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="images/icon.png">
+	<script type="text/javascript" src="../../tools/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
 </head>
 
 <body>
 
 <div class="main">
-    <div class="logo">
-        <a  href="#" class="logo_img"></a>
-        <a  href="#" class="logo_img_mask"></a>
-    </div>
-    <div class="login">
-        <a class="guide">哩森音乐,千万高品质曲库尽享</a></div>
-    <!--    歌单部分-->
-    <div class="list">
-        <div class="tool">
-            <a class="tool_box tool_box_collection"  id="collection">
-                <i class="icon_like"></i>
-                收藏
-            </a>
-            <a class="tool_box tool_box_add"  id="add">
-                <i class="icon_add"></i>
-                添加到
-            </a>
-            <a class="tool_box tool_box_download" id="download">
-                <i class="icon_down"></i>
-                下载
-            </a>
-            <a class="tool_box tool_box_delete"  id="delete">
-                <i class="icon_delete"></i>
-                删除
-            </a>
-            <a class="tool_box tool_box_clear" id="clear">
-                <i class="icon_clear"></i>
-                清空列表
-            </a>
-        </div>
-        <!--        主要内容 包括歌曲，歌手，时长-->
-        <i class="list_line"></i>
-        <ul class="list_header">
-            <li class="list_edit_head"></li>
-            <li class="list_name_head">歌曲</li>
-            <li class="list_authors_head">歌手</li>
-            <li class="list_time_head">时长</li>
-        </ul>
-        <i class="list_line"></i>
-        <!--        歌单-->
-<!--    鼠标移动播放图标    <i class="mod_list_iconPlay" id="mod_list_iconPlay"></i>-->
-
-        <ul class="list_music">
-            <li class="list_edit">
-<!--                <input type="checkbox" class="list_input">-->
-            </li>
-            <li class="list_number"><img src=""  class="wave"   alt=""><a class="list_number_position">1</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-        <i class="list_line"></i>
-
-        <ul class="list_music">
-            <li class="list_edit"></li>
-            <li class="list_number"><img src="" alt=""  class="wave"><a class="list_number_position">2</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-        <i class="list_line"></i>
-
-        <ul class="list_music">
-            <li class="list_edit"></li>
-            <li class="list_number"><img src="" alt=""  class="wave"><a class="list_number_position">3</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-        <i class="list_line"></i>
-
-        <ul class="list_music">
-            <li class="list_edit"></li>
-            <li class="list_number"><img src="" alt=""  class="wave"><a class="list_number_position">4</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-        <i class="list_line"></i>
-
-        <ul class="list_music">
-            <li class="list_edit"></li>
-            <li class="list_number"><img src="" alt=""  class="wave"><a class="list_number_position">5</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-        <i class="list_line"></i>
-
-        <ul class="list_music">
-            <li class="list_edit"></li>
-            <li class="list_number"><img src="" alt=""  class="wave"><a class="list_number_position">6</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-        <i class="list_line"></i>
-
-        <ul class="list_music">
-            <li class="list_edit"></li>
-            <li class="list_number"><img src="" alt=""  class="wave"><a class="list_number_position">7</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-        <i class="list_line"></i>
-
-        <ul class="list_music">
-            <li class="list_edit"></li>
-            <li class="list_number"><img src="" alt=""  class="wave"><a class="list_number_position">8</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-
-        <ul class="list_music">
-            <li class="list_edit"></li>
-            <li class="list_number"><img src="" alt=""  class="wave"><a class="list_number_position">9</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-
-        <ul class="list_music">
-            <li class="list_edit"></li>
-            <li class="list_number"><img src="" alt=""  class="wave"><a class="list_number_position">10</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-
-        <ul class="list_music">
-            <li class="list_edit"></li>
-            <li class="list_number"><img src="" alt=""  class="wave"><a class="list_number_position">11</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-
-        <ul class="list_music">
-            <li class="list_edit"></li>
-            <li class="list_number"><img src="" alt=""  class="wave"><a class="list_number_position">12</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-
-        <ul class="list_music">
-            <li class="list_edit"></li>
-            <li class="list_number"><img src="" alt=""  class="wave"><a class="list_number_position">13</a></li>
-            <li class="list_name"></li>
-            <li class="list_author"></li>
-            <li class="list_time"></li>
-        </ul>
-    </div>
-
-<!--进度条部分-->
-<audio src="" id="audio" autoplay></audio>
-<div class="control">
-    <a class="btn_left" id="btn_left"></a>
-    <a class="btn_mid" id="pause"></a>
-    <a class="btn_right" id="btn_right"></a>
-    <div class="play_music">
-        <div class="play_music_info">
-            <a href="#" id="music_name"></a>
-        </div>
-        <div class="play_music_time">
-            <span id="current_time">00:00</span>
-            <span>/</span>
-            <span id="total_time">00:00</span>
-        </div>
-
-        <!--        进度条-->
-        <div class="play_music_progress" id="play_load">
-            <div class="play_progress_inner">
-                <div class="play_progress_load" style="width: 100%;"></div>
-                <div class="play_progress_play" style="width:0%;" id="play_dot">
-                    <div class="play_progress_dot" id="dot"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--    收藏，下载区-->
-
-    <a href="#" class="btn_like" title="喜欢"></a>
-    <a href="#" class="btn_down" title="下载"></a>
-    <a href="../comment/comment.html" class="btn_comment" title="评论"></a>
-    <a href="" class="btn_switch" title="纯净模式"></a>
-
-    <div class="play_voice">
-        <a class="btn_voice" id="btn_voice" title="关闭声音"></a>
-        <div class="play_music_progress" style="width: 100%" id="play_voice">
-            <div class="play_progress_inner">
-            <div class="play_progress_play" id="progress_voice" style="width:50%;">
-                <i class="play_progress_dot" id="voice_dot"></i>
-            </div>
-            </div>
-        </div>
-    </div>
+	<div class="logo">
+		<a href="#" class="logo_img"></a>
+		<a href="#" class="logo_img_mask"></a>
+	</div>
+	<div class="login">
+		<a class="guide">哩森音乐,千万高品质曲库尽享</a></div>
+	<!--    歌单部分-->
+	<div class="list">
+		<div class="tool">
+			<a class="tool_box tool_box_collection" id="collection">
+				<i class="icon_like"></i>
+				收藏
+			</a>
+			<a class="tool_box tool_box_add" id="add">
+				<i class="icon_add"></i>
+				添加到
+			</a>
+			<a class="tool_box tool_box_download" id="download">
+				<i class="icon_down"></i>
+				下载
+			</a>
+			<a class="tool_box tool_box_delete" id="delete">
+				<i class="icon_delete"></i>
+				删除
+			</a>
+			<a class="tool_box tool_box_clear" id="clear">
+				<i class="icon_clear"></i>
+				清空列表
+			</a>
+		</div>
+		<!--        主要内容 包括歌曲，歌手，时长-->
+		<i class="list_line"></i>
+		<ul class="list_header">
+			<li class="list_edit_head"></li>
+			<li class="list_name_head">歌曲</li>
+			<li class="list_authors_head">歌手</li>
+			<li class="list_time_head">时长</li>
+		</ul>
+		<i class="list_line"></i>
+		<!--        歌单-->
+		<!--    鼠标移动播放图标    <i class="mod_list_iconPlay" id="mod_list_iconPlay"></i>-->
+		<div class="song_list">
+			<ul class="list_music">
+				<li class="list_edit">
+					<!--                <input type="checkbox" class="list_input">-->
+				</li>
+				<li class="list_number"><img src="" class="wave" alt=""><a class="list_number_position">1</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+			<i class="list_line"></i>
+			
+			<ul class="list_music">
+				<li class="list_edit"></li>
+				<li class="list_number"><img src="" alt="" class="wave"><a class="list_number_position">2</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+			<i class="list_line"></i>
+			
+			<ul class="list_music">
+				<li class="list_edit"></li>
+				<li class="list_number"><img src="" alt="" class="wave"><a class="list_number_position">3</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+			<i class="list_line"></i>
+			
+			<ul class="list_music">
+				<li class="list_edit"></li>
+				<li class="list_number"><img src="" alt="" class="wave"><a class="list_number_position">4</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+			<i class="list_line"></i>
+			
+			<ul class="list_music">
+				<li class="list_edit"></li>
+				<li class="list_number"><img src="" alt="" class="wave"><a class="list_number_position">5</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+			<i class="list_line"></i>
+			
+			<ul class="list_music">
+				<li class="list_edit"></li>
+				<li class="list_number"><img src="" alt="" class="wave"><a class="list_number_position">6</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+			<i class="list_line"></i>
+			
+			<ul class="list_music">
+				<li class="list_edit"></li>
+				<li class="list_number"><img src="" alt="" class="wave"><a class="list_number_position">7</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+			<i class="list_line"></i>
+			
+			<ul class="list_music">
+				<li class="list_edit"></li>
+				<li class="list_number"><img src="" alt="" class="wave"><a class="list_number_position">8</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+			
+			<ul class="list_music">
+				<li class="list_edit"></li>
+				<li class="list_number"><img src="" alt="" class="wave"><a class="list_number_position">9</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+			
+			<ul class="list_music">
+				<li class="list_edit"></li>
+				<li class="list_number"><img src="" alt="" class="wave"><a class="list_number_position">10</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+			
+			<ul class="list_music">
+				<li class="list_edit"></li>
+				<li class="list_number"><img src="" alt="" class="wave"><a class="list_number_position">11</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+			
+			<ul class="list_music">
+				<li class="list_edit"></li>
+				<li class="list_number"><img src="" alt="" class="wave"><a class="list_number_position">12</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+			
+			<ul class="list_music">
+				<li class="list_edit"></li>
+				<li class="list_number"><img src="" alt="" class="wave"><a class="list_number_position">13</a></li>
+				<li class="list_name"></li>
+				<li class="list_author"></li>
+				<li class="list_time"></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!--进度条部分-->
+	<audio src="" id="audio"></audio>
+	<div class="control">
+		<a class="btn_left" id="btn_left"></a>
+		<a class="btn_mid" id="pause"></a>
+		<a class="btn_right" id="btn_right"></a>
+		<div class="play_music">
+			<div class="play_music_info">
+				<a href="#" id="music_name"></a>
+			</div>
+			<div class="play_music_time">
+				<span id="current_time">00:00</span>
+				<span>/</span>
+				<span id="total_time">00:00</span>
+			</div>
+			
+			<!--        进度条-->
+			<div class="play_music_progress" id="play_load">
+				<div class="play_progress_inner">
+					<div class="play_progress_load" style="width: 100%;"></div>
+					<div class="play_progress_play" style="width:0%;" id="play_dot">
+						<div class="play_progress_dot" id="dot"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--    收藏，下载区-->
+		
+		<a href="#" class="btn_like" title="喜欢"></a>
+		<a href="#" class="btn_down" title="下载"></a>
+		<a href="../comment/comment.html" class="btn_comment" title="评论"></a>
+		<a href="" class="btn_switch" title="纯净模式"></a>
+		
+		<div class="play_voice">
+			<a class="btn_voice" id="btn_voice" title="关闭声音"></a>
+			<div class="play_music_progress" style="width: 100%" id="play_voice">
+				<div class="play_progress_inner">
+					<div class="play_progress_play" id="progress_voice" style="width:50%;">
+						<i class="play_progress_dot" id="voice_dot"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--右边图片部分-->
+	<div class="pic">
+		<div class="song_info_info">
+			<a class="song_info_cover">
+				<img src="" alt="" class="song_info_pic" id="song_info_pic">
+			</a>
+			<div class="song_info_name">
+				歌曲名：
+				<a href="" target="_blank" id="song_info_name"></a>
+			</div>
+			<div class="song_info_singer">
+				歌手：
+				<a href="" target="_blank" id="song_info_singer"></a>
+			</div>
+		</div>
+		<!--    歌词滚动部分-->
+		<div class="song_info_lyric">
+			<div class="song_info_lyric_inner" id="lyric">
+			
+			</div>
+		</div>
+	</div>
 </div>
 
-<!--右边图片部分-->
-<div class="pic">
-    <div class="song_info_info">
-        <a class="song_info_cover">
-            <img src="" alt="" class="song_info_pic"  id="song_info_pic">
-        </a>
-        <div class="song_info_name">
-            歌曲名：
-            <a href="" target="_blank"  id="song_info_name"></a>
-        </div>
-        <div class="song_info_singer">
-            歌手：
-            <a href="" target="_blank"  id="song_info_singer"></a>
-        </div>
-    </div>
-    <!--    歌词滚动部分-->
-    <div class="song_info_lyric">
-        <div class="song_info_lyric_inner" id="lyric">
+<div class="mask"></div>
+<div class="bg"></div>
 
-        </div>
-    </div>
-</div>
 </body>
 </html>
