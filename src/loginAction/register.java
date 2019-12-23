@@ -59,7 +59,10 @@ public class register extends HttpServlet {
         if(name == null || name.equals("")){
             msg = "用户名不能为空！";
             success = false;
-        }else {
+        } else if (pswd == null || pswd.equals("")){
+            msg = "密码不能为空！";
+            success = false;
+        } else {
             // 设置条件
             user.setCondition(" user.name = '" + name + "'");
             // 查询
