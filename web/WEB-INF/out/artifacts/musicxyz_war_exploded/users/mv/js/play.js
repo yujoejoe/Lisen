@@ -60,6 +60,10 @@ MVP.prototype = {
   },
   addVideo: function () {
 	this.video.setAttribute('src', this.videoInfo[0].url);
+	this.video.addEventListener('canplay', function () {
+	  this.muted = false;
+	  this.play();
+	})
   },
   addInfo: function () {
 	var mv_title = document.querySelector(".mv_title");
@@ -187,10 +191,29 @@ MVP.prototype = {
 	  var barrage = self.dmInput.value;
 	  if(barrage !== ""){
 	    var dm = document.createElement('div');
+	    var videoWidth = $(self.video).css('width').match(/\d+/g)[0];		// 视频宽度
+		videoWidth = parseInt(videoWidth);
+		// console.log("videoWidth: " + videoWidth);
 	    dm.classList.add("barrage");
 	    dm.innerHTML = barrage;
-	    dm.style.top = parseInt(Math.random()*60 + 10) + 'px';
-		self.barrageCont.appendChild(dm);
+	    dm.style.top = parseInt(Math.random()*100 + 10) + 'px';
+		self.barrageCont.appendChild(dm);			// 添加弹幕
+
+		// var dmWidth = $(dm).css('width').match(/\d+/g)[0];			// 获取文本宽度
+		// dmWidth = parseInt(dmWidth);
+		// console.log("dmWidth: " + dmWidth);
+		//
+		// var X = videoWidth + dmWidth + 50;
+		// dm.style.transform = "translateX(-" + X + "px)";
+
+		////绑定过渡时间结束事件
+		// dm.addEventListener('transitionend', function(){
+		//   setTimeout(function () {
+		// 	dm.style.left = "100%";
+		// 	dm.style.transform = "translateX(-" + X + "px)";
+		//   }, 1000);
+		// });
+
 	    self.dmInput.value = "";
 	  }
 	};
@@ -256,5 +279,32 @@ window.onload = function () {
 
   mvp.timeUpdate();
   mvp.event();
+
+  var heart = document.querySelector(".mv_btn .fa-heart");
+  var click = false;
+  heart.onclick = function(){
+    if(click){
+      heart.style.color = "#fff";
+      click = false;
+	}else{
+      heart.style.color = "#31c27c";
+      click = true;
+	}
+  };
+
+  var fakeInput = document.querySelector("#fake_input");
+  var trueInput = document.querySelector("#true_input");
+  trueInput.style.display = "none";
+  trueInput.style.color = "#333";
+
+  fakeInput.onfocus = function () {
+	this.style.display = "none";
+	trueInput.style.display = "block";
+	trueInput.focus();
+  };
+  trueInput.onblur = function () {
+	this.style.display = "none";
+	fakeInput.style.display = "block";
+  }
 
 };

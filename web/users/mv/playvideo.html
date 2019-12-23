@@ -129,7 +129,7 @@
 <div class="mv_part">
 	<div class="mv_inner">
 		<div class="mv_play" id="mvPlay">
-			<video src=""></video>
+			<video src="" muted autoplay></video>
 			<div class="v_control">
 				<div class="progress">
 					<div class="progress_bg"></div>
@@ -193,9 +193,10 @@
 		</div>
 		<div class="cmt_text clear_float">
 			<div class="cmt_textarea" id="cmt">
-				<div class="cmt_input" contenteditable="true">
+				<div class="cmt_input" contenteditable="true" id="fake_input">
 					期待你的神评论......
 				</div>
+				<div class="cmt_input" contenteditable="true" id="true_input"></div>
 				<div class="cmt_tip">剩余<span id="words">300</span>字</div>
 			</div>
 			<div class="cmt_btn">发表评论</div>

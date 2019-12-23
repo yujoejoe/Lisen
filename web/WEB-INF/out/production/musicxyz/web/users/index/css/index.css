@@ -602,6 +602,11 @@
   width: 1200px;
   height: auto !important;
 }
+
+#newSong .slider-li li:hover .newSongs_singerName{
+  color: #fff!important;
+}
+
 /* ====== recommend ====== */
 #recommend {
   width: 100%;
