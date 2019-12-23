@@ -410,6 +410,7 @@ $(document).ready(function () {
 
     //按搜索文本框内容搜索
     $(".btn").click(function () {
+
         searchs = $(".text").val();
         console.log(searchs);
         var search = encodeURI(encodeURI(searchs));

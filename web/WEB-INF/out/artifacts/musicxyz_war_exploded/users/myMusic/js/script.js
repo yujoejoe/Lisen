@@ -38,6 +38,9 @@
 
 $(document).ready(function () {
 
+var userId = null;          //用户Id
+var songId = null;          //歌曲Id
+
 
 //接受url传来的参数
     function GetQueryString(name) {
@@ -56,10 +59,11 @@ $(document).ready(function () {
         function (result) {
             var  data = JSON.parse(result);
             console.log(data);
-            if (result != null) {
+            if (data.success) {
                 if (data.result[0].img!=="") {
                     $(".img")[0].src = data.result[0].img;
                 }
+                userId = data.result[0].id;
                 $(".userName")[0].append(data.result[0].name)
             }
 
@@ -172,7 +176,7 @@ $(document).ready(function () {
 
 
     $("#mv").css("background","#31c27c");
-
+    //点击歌曲
     $("#song").click(function () {
         $("#song").css("background","#31c27c");
         $("#songList").css("background","none");
@@ -183,7 +187,7 @@ $(document).ready(function () {
         $("#list_mv").hide();
         $("#list_song").hide();
     });
-
+    //点击歌单
     $("#songList").click(function () {
         $("#song").css("background","none");
         $("#songList").css("background","#31c27c");
@@ -194,7 +198,9 @@ $(document).ready(function () {
         $("#list_mv").hide()
         $("#list_song").show()
 
-    })
+    });
+
+    //点击专辑
     $("#album").click(function () {
         $("#song").css("background","none");
         $("#songList").css("background","none");
@@ -206,6 +212,7 @@ $(document).ready(function () {
         $("#list_song").hide();
     });
 
+    //点击mv
     $("#mv").click(function () {
         $("#song").css("background","none");
         $("#songList").css("background","none");
@@ -216,6 +223,40 @@ $(document).ready(function () {
         $("#list_mv").show();
         $("#list_song").hide();
     });
+
+$(".icon_delete").click(function () {
+    var songName = $(this).parents("ul").find("li").eq(0).html();
+    $(this).parents("ul").hide();
+console.log(songName);
+    //获取歌曲id
+    $.ajax({
+        type: "get",
+        url: "/collection/song/get",
+        data: {"name": songName},
+        async: false,
+        success: function (result) {
+            var data = JSON.parse(result);
+            console.log(data);
+            songId = data.result[0];
+
+            // 删除歌曲
+            $.ajax({
+                type: "get",
+                url: "/collection/song/delete",
+                data: {"userId": userId, "songId": songId},
+                async: false,
+                success: function (result) {
+                    console.log(songId);
+                    var data = JSON.parse(result);
+                    console.log(data);
+
+                }
+            });
+
+        }
+    });
+})
+
 
 
 });

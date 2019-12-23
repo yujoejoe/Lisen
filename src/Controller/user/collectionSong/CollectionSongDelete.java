@@ -13,14 +13,11 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-
 /**
  *
  */
-@WebServlet(name ="Collection/song/insert" ,urlPatterns ="/collection/song/insert" )
-public class CollectionSongInsert extends HttpServlet {
-
-
+@WebServlet(name ="Collection/song/delete" ,urlPatterns ="/collection/song/delete" )
+public class CollectionSongDelete extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
@@ -37,15 +34,16 @@ public class CollectionSongInsert extends HttpServlet {
         int  songId   =Integer.parseInt( request.getParameter("songId"));
         try{
 
-            String sql = "insert into collectionSong set userId="+userId+",songId="+songId;
-            PreparedStatement   pst = conn.prepareStatement(sql);
-//            System.out.println("song insert:"+sql);
+//            String sql = "insert into collectionSong set userId="+userId+",songId="+songId;
+            String sql = "delete  from  CollectionSong  where userId="+userId+" and songId="+songId;
+            PreparedStatement pst = conn.prepareStatement(sql);
+            System.out.println("song delete:"+sql);
             int i= pst.executeUpdate(sql);
             conn.commit();
             boolean success;//操作成功与否
             String msg;//返回的结果信息
-            if(i<1){success = false; msg = "添加失败";}
-            else{success = true; msg = "成功添加["+i+"]条记录";}
+            if(i<1){success = false; msg = "刪除失败";}
+            else{success = true; msg = "成功刪除["+i+"]条记录";}
 
             // 业务转发
             JsonData jsonData = new JsonData(success, msg);
@@ -61,5 +59,7 @@ public class CollectionSongInsert extends HttpServlet {
             }
         }
     }
+
+
 
 }
