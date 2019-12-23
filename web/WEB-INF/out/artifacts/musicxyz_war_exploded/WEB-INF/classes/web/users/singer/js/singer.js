@@ -170,17 +170,14 @@ function  all() {
                     $(".txt_name")[i].innerHTML = data.result[i].name;
                     $($(".show_hide")[i]).show();
                 }
-
             } else if (result != null && data.result.length > 15) {
-
-                console.log("aaa");
+                // console.log("aaa");
                 for (var j = 0; j < 15; j++) {
                     $(".txt_singer_img")[j].src = data.result[j].img;
                     $(".txt_name")[j].innerHTML = data.result[j].name;
                     $($(".show_hide")[j]).show();
                 }
                 $($(".page_option")[2]).click(function () {
-
                     $(this).css("background-color", "#31c27c");
                     $(".page_firstShow").css("background-color", "");
                     for (var k = 0; k < data.result.length; k++) {
@@ -204,13 +201,11 @@ $(document).ready(function () {
       all();
     })
 
-
 });
 
 
 
 $(document).ready(function () {
-
 
     $(".nation").click(function () {
 

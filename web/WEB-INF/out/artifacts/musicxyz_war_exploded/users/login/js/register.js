@@ -29,6 +29,7 @@ $(document).ready(function(){
 		  if(data.success === false){
 			alert(data.msg);
 		  }else {
+		  	alert(data.msg);
 			window.location.href="/index.html";
 		  }
 		}
