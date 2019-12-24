@@ -4,17 +4,28 @@
 
 //	console.log(getCookie("adminType"));
 var type = getCookie("adminType");
+
+
 layui.use(['table', 'form', 'laytpl'], function () {
   let table = layui.table;
   let laytpl = layui.laytpl;
   let index = layer.load(2);
 
+  // 打开添加管理员页面
+  if (type === "2") {
+	let addBtn = document.querySelector('#add');
+	addBtn.classList.remove("layui-btn-disabled");
+	addBtn.addEventListener('click', function () {
+	  xadmin.open('添加管理员', './admin-add.html', 600, 420);
+	})
+  }
+
   // 渲染表格
   let adminInfo = table.render({
 	elem: '#admin'
 	, cols: [[
-	  {field: "checkbox", type: "checkbox", width: 48, fixed: "left"}
-	  , {field: "id", title: "ID", width: 80, sort: true}
+	  // {field: "checkbox", type: "checkbox", width: 48, fixed: "left"}
+	  {field: "id", title: "ID", width: 80, sort: true}
 	  , {field: "name", title: "登录名", width: 120}
 	  , {field: "pswd", title: "密码", type: "password", width: 150}
 	  , {field: "phone", title: "手机", width: 150}
@@ -39,7 +50,7 @@ layui.use(['table', 'form', 'laytpl'], function () {
   table.on('tool(admin)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
 	let data = obj.data; //获得当前行数据
 	let layEvent = obj.event; //获得 lay-event 对应的值
-	  console.log(obj);
+	console.log(obj);
 	if (layEvent === 'detail') {
 	  let status = data.status === 0 ? '已审核' : '未审核';
 	  let role = data.type === 1 ? '管理员' : '超级管理员';
@@ -91,7 +102,7 @@ layui.use(['table', 'form', 'laytpl'], function () {
 		+ "pswd=" + data.pswd + '&'
 		+ "email=" + data.email + '&'
 		+ "phone=" + data.phone + '&'
-	  	+ "role=" + data.type;
+		+ "role=" + data.type;
 	  xadmin.open('编辑', './admin-edit.html?' + request, 600, 420, false);
 	}				// 编辑
   });

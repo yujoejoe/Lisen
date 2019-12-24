@@ -88,7 +88,7 @@ public class UserDAOImp implements UserDAO {
      */
     public int insert(User user) throws SQLException {
         try {
-            String sql = "insert into user(name,pswd,phone,sex,email,img) values(?,?,?,?,?,?) ";
+            String sql = "insert into user(name,pswd,phone,sex,email,img,type) values(?,?,?,?,?,?,?) ";
             pst = conn.prepareStatement(sql);
             pst.setString(1, user.getName());
             pst.setString(2, user.getPswd());
@@ -96,6 +96,7 @@ public class UserDAOImp implements UserDAO {
             pst.setString(4, user.getSex());
             pst.setString(5, user.getEmail());
             pst.setString(6, user.getImg());
+            pst.setInt(7, user.getType());
 
             return pst.executeUpdate();
         } catch (Exception e) {

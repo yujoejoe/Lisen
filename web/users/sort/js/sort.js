@@ -161,7 +161,7 @@ Sort.prototype = {
 	  //1.1.3、 创建歌手
 	  var itemAuthor = document.createElement('a');
 	  itemAuthor.className = "item_author";
-	  itemAuthor.innerHTML = self.content[i].author;
+	  itemAuthor.innerHTML = self.content[i].author === "" ? "匿名" : self.content[i].author;
 	  //1.1.4、 创建播放信息
 	  var itemInfo = document.createElement('div');
 	  itemInfo.className = "item_info";
