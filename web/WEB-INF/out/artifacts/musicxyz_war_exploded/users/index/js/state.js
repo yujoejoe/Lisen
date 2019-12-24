@@ -20,7 +20,8 @@ $(document).ready((function(){
 	  if(data.success === false){
 		$(notLog).css('display', 'block');
 		$(profile).css('display', 'none')
-	  }else{
+	  }
+	  else{
 		$(notLog).css('display', 'none');
 		$(profile).css('display', 'block');
 		if (data.result[0].img !== "") {
