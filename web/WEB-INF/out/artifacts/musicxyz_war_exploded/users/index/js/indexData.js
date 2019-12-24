@@ -33,7 +33,7 @@ $(document).ready(function () {
                 for (var j = 0; j < 20; j++) {
                     // 绑定点击事件设置cookie
                     var songList = document.querySelector("#hotSong .slider-wrapper").querySelectorAll(" .img");
-                    console.log(songList[j]);
+                    // console.log(songList[j]);
                     songList[j].setAttribute("data-id", data.result[j].id);
                     songList[j].onclick = setCookieList;
                 }
@@ -54,7 +54,7 @@ $(document).ready(function () {
                 }
                 // 绑定点击mv图片事件设置cookie
                 for (var i = 0; i < 8; i++) {
-                    var play = $(".play-icon");
+                    var play = $("#mv .img");
                     play[i].setAttribute("data-id", data.result[i].id);
                     play[i].onclick = setCookie;
                 }

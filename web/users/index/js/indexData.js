@@ -54,7 +54,7 @@ $(document).ready(function () {
                 }
                 // 绑定点击mv图片事件设置cookie
                 for (var i = 0; i < 8; i++) {
-                    var play = $(".play-icon");
+                    var play = $("#mv .img");
                     play[i].setAttribute("data-id", data.result[i].id);
                     play[i].onclick = setCookie;
                 }
