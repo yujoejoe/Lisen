@@ -9,9 +9,16 @@
     background-repeat:no-repeat;
 
 }
-.content  .text{
+.content  .text,
+.content  .text2,
+.content  .login{
     position: absolute;
-    left: 350px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.content  .text{
     top: 300px;
     text-align: center;
     width: 800px;
@@ -23,9 +30,7 @@
 
 }
 .content    .text2{
-    position: absolute;
     text-align: center;
-    left: 500px;
     top: 400px;
     width: 500px;
     height: 60px;
@@ -36,14 +41,15 @@
 }
 .content  .login{
     border-radius:5px;
-    background-color:#31c27c;
-    position: absolute;
+    background-color: #31c27c;
     text-align: center;
-    left: 680px;
     top: 470px;
-    width: 120px;
-    height: 40px;
     font-size: 20px;
-    padding-top: 12px;
+    padding: 5px 15px;
     color: white;
+    border: 1px solid #15dfa7;
+}
+.content  .login:hover{
+    color: #fff;
+    background: #2db373;
 }
