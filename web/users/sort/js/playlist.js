@@ -102,7 +102,7 @@ List.prototype = {
         btn.setAttribute("href", "/users/playMusic/playMusic.html?song=" + song + "&singer=" + singer + "&duration=" + duration);
 
         //全部播放
-        $(".fa-play").click(function () {
+        $("#all_play").click(function () {
             var slId = getCookie("slId");
             var listId = encodeURI(encodeURI(slId));
             window.location.href = "../playMusic/playMusic.html?listId=" + listId;

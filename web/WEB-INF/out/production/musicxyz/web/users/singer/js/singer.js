@@ -1,4 +1,4 @@
-onload=function change() {
+onload = function change() {
     var all_option = document.getElementById("all_option");
 //     var china_option = document.getElementById("china_option");
 //     var euramerica_option = document.getElementById("euramerica_option");
@@ -13,20 +13,20 @@ onload=function change() {
 //     var japan = document.getElementById("japan");
 //     var es = document.getElementById("es");
 //
-    all_option.onclick=function () {
-        all.style.display="block";
-        china.style.display="none";
-        euramerica.style.display="none";
-        korea.style.display="none";
-        japan.style.display="none";
-        es.style.display="none";
-        if (all.style.display==="block") {
-            all_option.style.backgroundColor="#84fac1";
-            china_option.style.backgroundColor="#f6f6f6";
-            euramerica_option.style.backgroundColor="#f6f6f6";
-            korea_option.style.backgroundColor="#f6f6f6";
-            japan_option.style.backgroundColor="#f6f6f6";
-            else_option.style.backgroundColor="#f6f6f6";
+    all_option.onclick = function () {
+        all.style.display = "block";
+        china.style.display = "none";
+        euramerica.style.display = "none";
+        korea.style.display = "none";
+        japan.style.display = "none";
+        es.style.display = "none";
+        if (all.style.display === "block") {
+            all_option.style.backgroundColor = "#84fac1";
+            china_option.style.backgroundColor = "#f6f6f6";
+            euramerica_option.style.backgroundColor = "#f6f6f6";
+            korea_option.style.backgroundColor = "#f6f6f6";
+            japan_option.style.backgroundColor = "#f6f6f6";
+            else_option.style.backgroundColor = "#f6f6f6";
         }
     };
 //
@@ -138,10 +138,10 @@ $(document).ready(function () {
     //歌手名传参
     $(".txt_name").click(function () {
         // console.log("aaa");
-       var value = $(this).html();
+        var value = $(this).html();
         console.log(value);
         var search = encodeURI(encodeURI(value));
-        window.location.href="../oneSinger/oneSinger.html?search="+search;
+        window.location.href = "../oneSinger/oneSinger.html?search=" + search;
     });
 
     //歌手图片传参
@@ -151,12 +151,12 @@ $(document).ready(function () {
         var value = $(this).next("a").html();
         console.log(value);
         var search = encodeURI(encodeURI(value));
-        window.location.href="../oneSinger/oneSinger.html?search="+search;
+        window.location.href = "../oneSinger/oneSinger.html?search=" + search;
 
     })
 });
 
-function  all() {
+function all() {
     $.get(
         "/info/get",
         // {"page":6,"size":3},
@@ -198,32 +198,32 @@ $(document).ready(function () {
 
     $("#all_option").click(function () {
 
-      all();
+        all();
     })
 
 });
 
 
-
 $(document).ready(function () {
 
+    //选择哪个国家的歌手
     $(".nation").click(function () {
 
-        $(".nation").css("background","none");
-        $("#all_option").css("background","none");
-        $(this).css("background","#84fac1");
+        $(".nation").css("background", "none");
+        $(this).css("background", "#84fac1");
+        // $("#all_option").css("background","none");
 
-        var  search = $(this).html();
+        var search = $(this).html();
         console.log(search);
         $.get(
             "/info/get",
-            {"search":search},
+            {"search": search},
             function (result) {
-                var  data = JSON.parse(result);
+                var data = JSON.parse(result);
                 console.log(data);
-                if(result!=null){
+                if (result != null) {
                     $(".show_hide").hide();
-                    for (var i = 0; i <data.result.length; i++) {
+                    for (var i = 0; i < data.result.length; i++) {
                         $(".txt_singer_img")[i].src = data.result[i].img;
                         $(".txt_name")[i].innerHTML = data.result[i].name;
                         $($(".show_hide")[i]).show();
@@ -232,6 +232,31 @@ $(document).ready(function () {
             }
         )
 
+    });
+    
+    //根据拼音选择风格类型选择歌手
+    $(".style").click(function () {
+        $(".show_hide").hide();
+        $(".style").css("background", "none");
+        $(this).css("background", "#84fac1");
+        var search = $(this).html();
+        console.log(search);
+        $.get(
+            "/info/get",
+            {"search": search},
+            function (result) {
+                var data = JSON.parse(result);
+                console.log(data);
+                if (data.success) {
+
+                    for (var i = 0; i < data.result.length; i++) {
+                        $(".txt_singer_img")[i].src = data.result[i].img;
+                        $(".txt_name")[i].innerHTML = data.result[i].name;
+                        $($(".show_hide")[i]).show();
+                    }
+                }
+            }
+        )
     })
 
 

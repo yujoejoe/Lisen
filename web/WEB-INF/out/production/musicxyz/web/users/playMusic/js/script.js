@@ -87,11 +87,11 @@ window.onload = function change() {
 	  $(".list_time")[0].append(duration);
 	  audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + singer + "/" + song + ".mp3");
 
-	  // audio.play();
+	  audio.play();
 	  name.innerHTML = $($(".list_name")[0]).html() + " - " + $($(".list_author")[0]).html();
-	  // if (audio.played) {
-		// pause.style.backgroundPosition = "-30px  0px";
-	  // }
+	  if (audio.played) {
+		pause.style.backgroundPosition = "-30px  0px";
+	  }
 	  $("#song_info_name").html(song);
 	  $("#song_info_singer").html(singer);
 	  wave();
@@ -131,8 +131,8 @@ window.onload = function change() {
 			$("#song_info_name").html(data.result[0].song);
 			$("#song_info_singer").html(data.result[0].singer);
 
-			// audio.play();
-			// pause.style.backgroundPosition = "-30px  0px";
+			audio.play();
+			pause.style.backgroundPosition = "-30px  0px";
 			for (var i = 0; i < data.result.length; i++) {
 			  var urlSinger = $($(".list_author")[i]).html();
 			  var urlSong = $($(".list_name")[i]).html();
@@ -182,8 +182,8 @@ window.onload = function change() {
 			$("#song_info_name").html(data.result[0].song);
 			$("#song_info_singer").html(oneSinger);
 
-			// audio.play();
-			// pause.style.backgroundPosition = "-30px  0px";
+			audio.play();
+			pause.style.backgroundPosition = "-30px  0px";
 			for (var i = 0; i < data.result.length; i++) {
 			  var urlSinger = oneSinger;
 			  var urlSong = $($(".list_name")[i]).html();
@@ -236,8 +236,8 @@ window.onload = function change() {
 			$("#song_info_singer").html(data.result[0].singer);
 
 			//歌词滚动歌名
-			// audio.play();
-			// pause.style.backgroundPosition = "-30px  0px";
+			audio.play();
+			pause.style.backgroundPosition = "-30px  0px";
 			for (var i = 0; i < 12; i++) {
 			  var urlSinger = $($(".list_author")[i]).html();
 			  var urlSong = $($(".list_name")[i]).html();
@@ -288,8 +288,8 @@ window.onload = function change() {
 			$("#song_info_singer").html(data.result[0].singer);
 
 			//歌词滚动歌名
-			// audio.play();
-			// pause.style.backgroundPosition = "-30px  0px";
+			audio.play();
+			pause.style.backgroundPosition = "-30px  0px";
 			for (var i = 0; i < 12; i++) {
 			  var urlSinger = $($(".list_author")[i]).html();
 			  var urlSong = $($(".list_name")[i]).html();
@@ -338,8 +338,8 @@ window.onload = function change() {
 			$("#song_info_singer").html(data.result[0].singer);
 
 			//歌词滚动歌名
-			// audio.play();
-			// pause.style.backgroundPosition = "-30px  0px";
+			audio.play();
+			pause.style.backgroundPosition = "-30px  0px";
 			for (var i = 0; i < 8; i++) {
 			  var urlSinger = $($(".list_author")[i]).html();
 			  var urlSong = $($(".list_name")[i]).html();
@@ -382,8 +382,8 @@ window.onload = function change() {
 			$("#song_info_singer").html(data.result[0].singer);
 
 			//歌词滚动歌名
-			// audio.play();
-			// pause.style.backgroundPosition = "-30px  0px";
+			audio.play();
+			pause.style.backgroundPosition = "-30px  0px";
 			for (var i = 0; i < 8; i++) {
 			  var urlSinger = $($(".list_author")[i]).html();
 			  var urlSong = $($(".list_name")[i]).html();
