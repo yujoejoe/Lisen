@@ -58,14 +58,6 @@
                       </div>
                   </div>
                   <div class="layui-form-item">
-                      <label class="layui-form-label"><span class="x-red">*</span>角色</label>
-                      <div class="layui-input-block">
-                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="超级管理员" checked="">
-                        <input type="checkbox" name="like1[read]" lay-skin="primary" title="编辑人员">
-                        <input type="checkbox" name="like1[write]" lay-skin="primary" title="宣传人员" checked="">
-                      </div>
-                  </div>
-                  <div class="layui-form-item">
                       <label for="L_pass" class="layui-form-label">
                           <span class="x-red">*</span>密码
                       </label>
@@ -90,7 +82,7 @@
                       <label for="L_repass" class="layui-form-label">
                       </label>
                       <button  class="layui-btn" lay-filter="add" lay-submit="">
-                          增加
+                          保存
                       </button>
                   </div>
               </form>
@@ -122,7 +114,7 @@
                 function(data) {
                     console.log(data);
                     //发异步，把数据提交给php
-                    layer.alert("增加成功", {
+                    layer.alert("修改成功", {
                         icon: 6
                     },
                     function() {
@@ -135,13 +127,8 @@
                     return false;
                 });
 
-            });</script>
-        <script>var _hmt = _hmt || []; (function() {
-                var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();</script>
+            });
+        </script>
     </body>
 
 </html>

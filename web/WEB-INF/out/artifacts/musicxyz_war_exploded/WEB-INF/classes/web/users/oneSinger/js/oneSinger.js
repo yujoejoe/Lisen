@@ -115,7 +115,7 @@ $(document).ready(function () {
 		  $("#singleNum").append(data.counts);       //单曲数目
 
 		  for (var i = 0; i < data.result.length; i++) {
-		    console.log($(".single_name"));
+		    // console.log($(".single_name"));
 			$(".single_name")[i].append(data.result[i].song);
 			$(".single_special")[i].append(data.result[i].album);
 			$(".single_time")[i].append(data.result[i].duration);

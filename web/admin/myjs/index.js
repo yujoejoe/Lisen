@@ -4,6 +4,7 @@
 
 (function () {
   let data = getAdmin();
+  document.cookie = "adminType=" + data.result[0].type + ";path=/admin/";
   if (data !== undefined && data.success && data.result[0].type >= 1) {
 	$('.admin').html(data.result[0].name);
   }
