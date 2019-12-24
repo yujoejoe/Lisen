@@ -32,7 +32,8 @@ $(document).ready(function () {
                 }
                 for (var j = 0; j < 20; j++) {
                     // 绑定点击事件设置cookie
-                    var songList = $(".songList-icon");
+                    var songList = document.querySelector("#hotSong .slider-wrapper").querySelectorAll(" .img");
+                    // console.log(songList[j]);
                     songList[j].setAttribute("data-id", data.result[j].id);
                     songList[j].onclick = setCookieList;
                 }
