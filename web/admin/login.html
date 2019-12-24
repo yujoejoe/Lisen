@@ -53,6 +53,7 @@
 		  data: {"username": username, "password": password, "type": 1},
 		  success: function (result) {
 			let data = JSON.parse(result);
+			console.log(data);
 			if (data.success === true) {
 			  // 提示信息并跳转页面
 			  let msg = username + ", 欢迎登录哩森音乐-后台管理系统！";
@@ -63,10 +64,9 @@
 				location.href = "index.html";
 			  });
 			  username = encodeURI(username);
-			  document.cookie = "admin=" + username + ";path=/admin";			// 设置cookie
+			  document.cookie = "admin=" + username + ";path=/admin/";			// 设置cookie
 			} else {
-			  let errMsg = "只有管理员才能登录哦";
-			  layer.msg(errMsg, {
+			  layer.msg(data.msg, {
 				icon: 5,				// 沮丧图案
 				time: 1500
 			  })

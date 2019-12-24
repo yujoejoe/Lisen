@@ -162,7 +162,10 @@
 	{{#  } }}
 </script>
 
+<script src="/users/common/js/com.js"></script>
+
 <script>
+	console.log(getCookie("adminType"));
   layui.use(['table', 'form', 'laytpl'], function () {
 	let table = layui.table;
 	let laytpl = layui.laytpl;
