@@ -102,7 +102,7 @@ layui.use(['table', 'form', 'laytpl'], function () {
 		+ "pswd=" + data.pswd + '&'
 		+ "email=" + data.email + '&'
 		+ "phone=" + data.phone + '&'
-		+ "role=" + data.type;
+		+ "status=" + data.status;
 	  xadmin.open('编辑', './admin-edit.html?' + request, 600, 420, false);
 	}				// 编辑
   });

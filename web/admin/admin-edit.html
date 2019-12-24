@@ -77,6 +77,14 @@
 				</div>
 			</div>
 			<div class="layui-form-item">
+				<label class="layui-form-label">
+					审核状态
+				</label>
+				<div class="layui-input-inline" style="padding: 5px 0;">
+					<input type="checkbox" id="status" name="status" lay-skin="switch" lay-filter="status" lay-text="已审核|未审核">
+				</div>
+			</div>
+			<div class="layui-form-item">
 				<label for="L_repass" class="layui-form-label">
 				</label>
 				<button class="layui-btn" lay-filter="save" lay-submit="">保存</button>
@@ -102,6 +110,8 @@
 	  // 提交表单
 	  form.on('submit(save)', function (data) {
 		let field = data.field;
+		console.log(data.field);
+		let status = document.querySelector('#status');
 		$.ajax({
 		  type: 'post'
 		  , url: '/admin/userUpdate'
@@ -111,6 +121,7 @@
 			, "password": field.pswd
 			, "email": field.email
 			, "phone": field.phone
+			, "status": status.value
 		  }
 		  , success: function (res) {
 			let data = JSON.parse(res);
@@ -164,6 +175,13 @@
 		}
 	  });
 
+	  form.on('switch(status)', function (data) {
+		console.log(data);
+		let status = document.querySelector('#status');
+		status.value = status.value === "0" ? "1" : "0";
+//		console.log(status.value);
+	  });
+	  
 	  function resetForm(data) {
 		form.val("adminInfo", {
 		  "name": data.name
@@ -171,6 +189,17 @@
 		  , "email": data.email
 		  , "phone": data.phone
 		});
+		let status = document.querySelector('#status');
+		status.checked = data.status === '0';
+		if(status.checked){
+		  status.nextElementSibling.classList.add("layui-form-onswitch");
+		  status.nextElementSibling.querySelector('em').innerHTML = '已审核';
+		  status.value = 0;
+		}else{
+		  status.nextElementSibling.classList.remove("layui-form-onswitch");
+		  status.nextElementSibling.querySelector('em').innerHTML = '未审核';
+		  status.value = 1;
+		}
 	  };
 
 	});
