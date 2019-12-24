@@ -6,16 +6,17 @@
     <link rel="icon" href="images/icon.png">
     <link  rel="stylesheet"  href="css/style.css" >
 <!--    <script type="text/javascript" src="/tools/aos/aos.js"></script>-->
-    <script src="js/jquery.min.js"></script>
+    <!--<script src="js/jquery.min.js"></script>-->
 <!--    <script type="text/javascript"  src="js/animation.js"></script>-->
     <link rel="stylesheet" href="css/aos.css">
     <script type="text/javascript" src="js/aos.js"></script>
     <!--<link rel="icon" href="images/ico.png">-->
-    <link rel="stylesheet" href="../index/css/reset.css">
-    <link rel="stylesheet" href="../index/css/index.css">
+    <link rel="stylesheet" href="/users/index/css/reset.css">
+    <link rel="stylesheet" href="/users/index/css/index.css">
+    <link rel="stylesheet" href="/users/index/css/layout.css">
     <link rel="stylesheet" href="/tools/aos/aos.css">
     <script src="/tools/jquery/jquery.min.js"></script>
-    <script src="../index/js/script.js"></script>
+    <!--<script src="../index/js/script.js"></script>-->
     <script src="../login/js/judgeLoginState.js"></script>
 
 </head>
@@ -23,61 +24,98 @@
 <header class="header">
     <div class="header-container">
         <div class="header-top">
-            <a href="#" class="logo"></a>
+            <a href="/" class="logo"></a>
             <nav class="header-nav">
                 <ul>
-                    <li><a href="#" class="header-nav__cur">音乐</a></li>
-                    <li><a href="../loginMyMusic/loginMyMusic.html">我的音乐</a></li>
-
+                    <li><a href="/">音乐</a></li>
+                    <li><a href="/users/loginMyMusic/loginMyMusic.html" class="header-nav__cur">我的音乐</a></li>
                 </ul>
             </nav>
             <div class="header-search">
-                <input type="text" class="text" placeholder="here...">
+                <input type="text" class="text" placeholder="请输入您要搜索的歌手">
                 <div class="btn"><i class="icon-sprite"></i></div>
                 <div class="result">
                     <a href="#" class="result-item">
                         <span class="rank">1</span>
-                        <span class="title">默</span>
-                        <span class="num">3.4万</span>
+                        <span class="title search">周杰伦</span>
+                        <span class="num">2100.6万</span>
                     </a>
                     <a href="#" class="result-item">
                         <span class="rank">2</span>
-                        <span class="title">侧田</span>
-                        <span class="num">3.4万</span>
+                        <span class="title search">G.E.M.邓紫棋</span>
+                        <span class="num">1526.5万</span>
                     </a>
                     <a href="#" class="result-item">
                         <span class="rank">3</span>
-                        <span class="title">让我留在你身边</span>
-                        <span class="num">3.4万</span>
+                        <span class="title search">薛之谦</span>
+                        <span class="num">1278.3万</span>
                     </a>
                     <a href="#" class="result-item">
                         <span class="rank">4</span>
-                        <span class="title">皮皮虾我们走</span>
-                        <span class="num">3.4万</span>
+                        <span class="title search">林俊杰</span>
+                        <span class="num">1112.4万</span>
                     </a>
                     <a href="#" class="result-item">
                         <span class="rank">5</span>
-                        <span class="title">欢乐好声音</span>
-                        <span class="num">3.4万</span>
+                        <span class="title search">许嵩</span>
+                        <span class="num">932.2万</span>
                     </a>
                     <div class="history">
                         <span>搜索历史</span>
                         <i class="icon-sprite"></i>
                     </div>
                 </div>
+                <!--<div class="result">-->
+                <!--<a href="#" class="result-item">-->
+                <!--<span class="rank">1</span>-->
+                <!--<span class="title"></span>-->
+                <!--<span class="num"></span>-->
+                <!--</a>-->
+                <!--<a href="#" class="result-item">-->
+                <!--<span class="rank">2</span>-->
+                <!--<span class="title"></span>-->
+                <!--<span class="num"></span>-->
+                <!--</a>-->
+                <!--<a href="#" class="result-item">-->
+                <!--<span class="rank">3</span>-->
+                <!--<span class="title"></span>-->
+                <!--<span class="num"></span>-->
+                <!--</a>-->
+                <!--<a href="#" class="result-item">-->
+                <!--<span class="rank">4</span>-->
+                <!--<span class="title"></span>-->
+                <!--<span class="num"></span>-->
+                <!--</a>-->
+                <!--<a href="#" class="result-item">-->
+                <!--<span class="rank">5</span>-->
+                <!--<span class="title"></span>-->
+                <!--<span class="num"></span>-->
+                <!--</a>-->
+                <!--<div class="history">-->
+                <!--<span>搜索历史</span>-->
+                <!--<i class="icon-sprite"></i>-->
+                <!--</div>-->
+                <!--</div>-->
             </div>
             <div class="header-login">
-                <a href="../../users/login/register.html" class="registered" id="btn_register">注册</a>
-                <a href="../../users/login/login.html" class="login" id="btn_login">登录</a>
+                <div class="not-login">
+                    <a href="/users/login/register.html" class="registered" id="btn_register">注册</a>
+                    <a href="/users/login/login.html" class="login" id="btn_login">登录</a>
+                </div>
+                <div class="has-login">
+                    <a class="logged">
+                        <img src="/users/index/images/default.jpg" alt="" class="login_img" id="login_img">
+                    </a>
+                    <a href="#" class="exit">[ 退出登录 ]</a>
+                </div>
             </div>
         </div>
         <ul class="header-subNav">
-            <li><a href="#" class="subNav-cur">首页</a></li>
-            <li><a href="../singer/singer.html">歌手</a></li>
-            <li><a href="#">专辑</a></li>
+            <li><a href="/index.html" class="subNav-cur">首页</a></li>
+            <li><a href="/users/singer/singer.html">歌手</a></li>
             <li><a href="#rank">排行榜</a></li>
-            <li><a href="#">分类歌单</a></li>
-            <li><a href="#">MV</a></li>
+            <li><a href="/users/sort/sort.html">分类歌单</a></li>
+            <li><a href="/users/mv/mv.html">MV</a></li>
         </ul>
     </div>
 </header>
