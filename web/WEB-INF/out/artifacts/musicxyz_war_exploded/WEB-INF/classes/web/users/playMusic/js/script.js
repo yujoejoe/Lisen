@@ -75,7 +75,9 @@ window.onload = function change() {
   var pic_song = new Array();
   var pic_singer = new Array();
   var num = 0;            // 当前播放的歌曲
+  var btnDown = document.querySelector('.btn_down');
 
+  console.log(btnDown);
 
   $(document).ready(function () {
 
@@ -85,7 +87,12 @@ window.onload = function change() {
 	  $($(".list_music")[0]).show();
 	  $(".list_name")[0].append(song);
 	  $(".list_time")[0].append(duration);
-	  audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + singer + "/" + song + ".mp3");
+	  let url = 'http://192.168.1.125:8080/music/song/music/' + singer + '/' + song + '.mp3';
+	  // 添加下载
+	  btnDown.setAttribute('href', url);
+	  audio.setAttribute("src", url);
+
+
 
 	  audio.play();
 	  name.innerHTML = $($(".list_name")[0]).html() + " - " + $($(".list_author")[0]).html();
@@ -127,7 +134,10 @@ window.onload = function change() {
 			  $($(".list_time")[j]).append(data.result[j].duration);
 			  $($(".list_music")[j]).show();
 			}
-			audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3");
+			let url = 'http://192.168.1.125:8080/music/song/music/' + data.result[0].singer + '/' + data.result[0].song + '.mp3';
+			// 添加下载
+			btnDown.setAttribute('href', url);
+			audio.setAttribute("src", url);
 			$("#song_info_name").html(data.result[0].song);
 			$("#song_info_singer").html(data.result[0].singer);
 
@@ -178,7 +188,11 @@ window.onload = function change() {
 			  $($(".list_name")[k]).append(data.result[k].song);
 			  $($(".list_music")[k]).show();
 			}
-			audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + oneSinger + "/" + data.result[0].song + ".mp3");
+			let url = "http://192.168.1.125:8080/music/song/music/" + oneSinger + "/" + data.result[0].song + ".mp3";
+			// 添加下载
+			btnDown.setAttribute('href', url);
+
+			audio.setAttribute("src", url);
 			$("#song_info_name").html(data.result[0].song);
 			$("#song_info_singer").html(oneSinger);
 
@@ -231,7 +245,9 @@ window.onload = function change() {
 			  $($(".list_time")[j]).append(data.result[j].duration);
 			  $($(".list_music")[j]).show();
 			}
-			audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3");
+			let url = "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3";
+			btnDown.setAttribute('href', url);
+			audio.setAttribute("src", url);
 			$("#song_info_name").html(data.result[0].song);           //歌词滚动歌手
 			$("#song_info_singer").html(data.result[0].singer);
 
@@ -283,7 +299,9 @@ window.onload = function change() {
 			  $($(".list_time")[j]).append(data.result[j].duration);
 			  $($(".list_music")[j]).show();
 			}
-			audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3");
+			let url = "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3";
+			btnDown.setAttribute('href', url);
+			audio.setAttribute("src", );
 			$("#song_info_name").html(data.result[0].song);           //歌词滚动歌手
 			$("#song_info_singer").html(data.result[0].singer);
 
@@ -333,7 +351,10 @@ window.onload = function change() {
 			  $($(".list_time")[j]).append(data.result[j].duration);
 			  $($(".list_music")[j]).show();
 			}
-			audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3");
+			let url = "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3";
+			btnDown.setAttribute('href', url);
+
+			audio.setAttribute("src", url);
 			$("#song_info_name").html(data.result[0].song);           //歌词滚动歌手
 			$("#song_info_singer").html(data.result[0].singer);
 
@@ -377,7 +398,9 @@ window.onload = function change() {
 			  $($(".list_time")[j]).append(data.result[j].duration);
 			  $($(".list_music")[j]).show();
 			}
-			audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3");
+			let url = "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3";
+			btnDown.setAttribute('href', url);
+			audio.setAttribute("src",url);
 			$("#song_info_name").html(data.result[0].song);           //歌词滚动歌手
 			$("#song_info_singer").html(data.result[0].singer);
 
@@ -412,14 +435,16 @@ window.onload = function change() {
           data: {"listId": listId},
           success: function(result){
               var data = JSON.parse(result);
-              if (result != null) {
+              if (data.success) {
                   for (var j = 0; j < data.result.length; j++) {
                       $($(".list_name")[j]).append(data.result[j].song);
                       $($(".list_author")[j]).append(data.result[j].singer);
                       $($(".list_time")[j]).append(data.result[j].duration);
                       $($(".list_music")[j]).show();
                   }
-                  audio.setAttribute("src", "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3");
+                  let url =  "http://192.168.1.125:8080/music/song/music/" + data.result[0].singer + "/" + data.result[0].song + ".mp3";
+                 btnDown.setAttribute('href', url);
+                  audio.setAttribute("src", url);
                   $("#song_info_name").html(data.result[0].song);           //歌词滚动歌手
                   $("#song_info_singer").html(data.result[0].singer);
 
@@ -495,7 +520,9 @@ window.onload = function change() {
 
 	var dbsong = $(this).find("li").eq(2).html();
 	var dbsinger = $(this).find("li").eq(3).html();
+
 	audio.src = "http://192.168.1.125:8080/music/song/music/" + dbsinger + "/" + dbsong + ".mp3";
+	btnDown.setAttribute('href', audio.src);
 	name.innerHTML = dbsong + "-" + dbsinger;
 	pause.style.backgroundPosition = "-30px 0px";
 	song_name.innerHTML = dbsong;
@@ -513,6 +540,7 @@ window.onload = function change() {
   left.onclick = function () {
 	num = (num + music.length - 1) % music.length;
 	audio.src = "http://192.168.1.125:8080/music/song/music/" + music[num] + ".mp3";
+	btnDown.setAttribute('href', audio.src);
 	name.innerHTML = song_singer[num];
 	pause.style.backgroundPosition = "-30px 0px";
 	song_name.innerHTML = pic_song[num];
@@ -533,6 +561,7 @@ window.onload = function change() {
   right.onclick = function () {
 	num = (num + 1) % music.length;
 	audio.src = "http://192.168.1.125:8080/music/song/music/" + music[num] + ".mp3";
+	btnDown.setAttribute('href', audio.src);
 	name.innerHTML = song_singer[num];
 	pause.style.backgroundPosition = "-30px 0px";
 	song_name.innerHTML = pic_song[num];

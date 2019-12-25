@@ -60,7 +60,7 @@ public class login extends HttpServlet {
         }else{
             // 添加条件
             String condition = "";
-            condition = " user.name = '" + username + "'" + " and user.pswd = '" + password + "'" + " and user.type = 0 and user.status = 0";
+            condition = " user.name = '" + username + "'" + " and user.pswd = '" + password + "'" + " and user.type = 0";
             user.setCondition(condition);
             // 查询记录
             result = userSDI.select(user);

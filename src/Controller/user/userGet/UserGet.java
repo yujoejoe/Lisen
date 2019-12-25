@@ -51,9 +51,14 @@ public class UserGet extends HttpServlet {
             User user = (User) session.getAttribute("user");
 
             if(user != null && user.getType() == 0){
-                result.add(user);
-                success = true;
-                msg = "用户已登录！";
+                if(user.getStatus() == 0) {
+                    result.add(user);
+                    success = true;
+                    msg = "用户已登录！";
+                }else{
+                    success = false;
+                    msg = "账号异常！";
+                }
             }
 
             System.out.println("User: " + result);
