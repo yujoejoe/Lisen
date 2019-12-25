@@ -1,7 +1,7 @@
 window.onload = function change() {
 
   var userId = null;     //用户id
-  var songId = null;   //歌曲id
+  var songId = null;     //歌曲id
   //获取用户id
   $.get(
 	"/userGet",
@@ -23,11 +23,8 @@ window.onload = function change() {
   var current = document.getElementById("current_time");
   var left = document.getElementById("btn_left");
   var right = document.getElementById("btn_right");
-
-  /*==== 歌词容器 ====*/
-  var lyric = document.getElementById('lyric');
+  var lyric = document.getElementById('lyric');       //歌词容器
   var bg = document.querySelector('body .bg');			// 背景图
-
 
   function format(t) {
 	var m = Math.floor(t / 60);
@@ -49,13 +46,6 @@ window.onload = function change() {
 	return null;
   }
 
-// 调用方法
-//     alert(decodeURI(GetQueryString("song")));
-//     alert(decodeURI(GetQueryString("singer")));
-//     alert(decodeURI(GetQueryString("duration")));
-//     console.log(decodeURI(GetQueryString("song")));
-//     console.log(decodeURI(GetQueryString("singer")));
-//     console.log(decodeURI(GetQueryString("duration")));
   var song = decodeURI(GetQueryString("song"));
   var singer = decodeURI(GetQueryString("singer"));
   var duration = decodeURI(GetQueryString("duration"));
@@ -77,10 +67,8 @@ window.onload = function change() {
   var num = 0;            // 当前播放的歌曲
   var btnDown = document.querySelector('.btn_down');
 
-  console.log(btnDown);
 
   $(document).ready(function () {
-
 	//单曲播放
 	if (singer !== "null") {
 	  $(".list_author")[0].append(singer);
@@ -91,9 +79,6 @@ window.onload = function change() {
 	  // 添加下载
 	  btnDown.setAttribute('href', url);
 	  audio.setAttribute("src", url);
-
-
-
 	  audio.play();
 	  name.innerHTML = $($(".list_name")[0]).html() + " - " + $($(".list_author")[0]).html();
 	  if (audio.played) {
@@ -103,18 +88,12 @@ window.onload = function change() {
 	  $("#song_info_singer").html(singer);
 	  wave();
 	  albumPic();
-
-
 	  //  音频加载完后，显示歌词
 	  audio.onloadedmetadata = function () {
 		var path = singer + "/" + song;
 		addLyric(lyric, path);
 	  };
-
-
 	}
-
-
 	var search = decodeURI(GetQueryString("album"));
 	// var music = new Array();
 	// console.log("album: " + search + " type: " + typeof(search));
@@ -125,8 +104,6 @@ window.onload = function change() {
 		{"search": search},
 		function (result) {
 		  var data = JSON.parse(result);
-		  // console.log(data);
-
 		  if (data.success) {
 			for (var j = 0; j < data.result.length; j++) {
 			  $($(".list_name")[j]).append(data.result[j].song);
@@ -140,7 +117,6 @@ window.onload = function change() {
 			audio.setAttribute("src", url);
 			$("#song_info_name").html(data.result[0].song);
 			$("#song_info_singer").html(data.result[0].singer);
-
 			audio.play();
 			pause.style.backgroundPosition = "-30px  0px";
 			for (var i = 0; i < data.result.length; i++) {
@@ -152,27 +128,19 @@ window.onload = function change() {
 			  pic_singer[i] = urlSinger;
 			  // console.log(music[i]);
 			}
-			name.innerHTML = song_singer[0];
-
-			addLyric(lyric, music[0]);
-
-			albumPic();
-
+			name.innerHTML = song_singer[0];      //进度条歌曲-歌手
+			addLyric(lyric, music[0]);            //添加歌词
+			albumPic();                           //添加专辑图片
 			$($(".wave")[0]).attr("src", "images/wave.gif");
 			$($(".list_number_position")[0]).hide();
 			$($(".list_music")[0]).css("background", "rgba(51, 51, 51, 0.75)");
 		  }
-
-
-
 		}
 	  );
 	}
-
 	// console.log(decodeURI(GetQueryString("oneSinger")));
 	var oneSinger = decodeURI(GetQueryString("oneSinger"));
 	// alert(decodeURI(GetQueryString("oneSinger")));
-
 	//单曲列表播放
 	if (oneSinger !== "null") {
 	  $.get(
@@ -195,7 +163,6 @@ window.onload = function change() {
 			audio.setAttribute("src", url);
 			$("#song_info_name").html(data.result[0].song);
 			$("#song_info_singer").html(oneSinger);
-
 			audio.play();
 			pause.style.backgroundPosition = "-30px  0px";
 			for (var i = 0; i < data.result.length; i++) {
@@ -209,8 +176,6 @@ window.onload = function change() {
 			  // console.log(music[i]);
 			}
 			name.innerHTML = song_singer[0];
-
-
 			addLyric(lyric, music[0]);
 			wave();
 			albumPic();
@@ -516,24 +481,22 @@ window.onload = function change() {
 
     //双击播放
     $(".list_music").on("dblclick", function () {
-
-
 	var dbsong = $(this).find("li").eq(2).html();
 	var dbsinger = $(this).find("li").eq(3).html();
-
 	audio.src = "http://192.168.1.125:8080/music/song/music/" + dbsinger + "/" + dbsong + ".mp3";
 	btnDown.setAttribute('href', audio.src);
 	name.innerHTML = dbsong + "-" + dbsinger;
 	pause.style.backgroundPosition = "-30px 0px";
 	song_name.innerHTML = dbsong;
 	singer_name.innerHTML = dbsinger;
+    // 添加播放图标
 	wave();
 	audio.play();
+    // 添加专辑图片
 	albumPic();
 	// clearLyric(lyric);
 	var path = dbsinger + '/' + dbsong;
 	addLyric(lyric, path);
-
   });
 
   //上一曲
@@ -553,8 +516,6 @@ window.onload = function change() {
 	/*==== 添加歌词 ====*/
 	clearLyric(lyric);
 	addLyric(lyric, music[num]);
-
-
   };
 
   //下一曲
@@ -566,14 +527,14 @@ window.onload = function change() {
 	pause.style.backgroundPosition = "-30px 0px";
 	song_name.innerHTML = pic_song[num];
 	singer_name.innerHTML = pic_singer[num];
+    // 添加播放图标
 	wave();
+    // 添加专辑图片
 	albumPic();
 	audio.play();
 	/*==== 添加歌词 ====*/
 	clearLyric(lyric);
 	addLyric(lyric, music[num]);
-
-
   };
 
 
@@ -590,28 +551,12 @@ window.onload = function change() {
 
 
   //自动播放下一首
-
   audio.addEventListener('ended', function () {
 	// console.log("music.length: " + music.length);
 	if(music.length !== 0){
 	  right.onclick();
 	}
   }, false);
-
-//   var  listEdit = document.getElementsByClassName("list_edit");
-// //勾选歌曲
-//
-//     for (var j = 0; j <listEdit.length ; j++) {
-//         listEdit[j].onclick = function () {
-//             if (this.style.backgroundPosition !== "-60px -80px"){
-//                 this.style.backgroundPosition = "-60px -80px";
-//                 console.log(this.style.backgroundPosition);
-//             } else {
-//                 this.style.backgroundPosition = "-1000px";
-//                 // $(this).css("background-position", "-1000px");
-//             }
-//         };
-//     }
 
     //勾选歌曲
     $(".list_edit").click(function () {
@@ -644,7 +589,6 @@ window.onload = function change() {
         // $(".list_music").hide();
         $(".list_music").empty();
         audio.pause();
-
     });
 
     var songName;             //获取歌名

@@ -10,13 +10,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name ="exitAction" ,urlPatterns ="/loginAction/exit" )
-public class exit extends HttpServlet {
+public class Exit extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public exit() {
+    public Exit() {
         super();
         // TODO Auto-generated constructor stub
     }

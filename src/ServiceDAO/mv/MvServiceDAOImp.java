@@ -1,6 +1,6 @@
 package ServiceDAO.mv;
 
-import DAO.mv.mvDAOImp;
+import DAO.mv.MvDAOImp;
 import POJO.MV;
 import util.DBUtil;
 
@@ -11,11 +11,11 @@ import java.util.ArrayList;
 /**
  * Created by user on 2019/12/3.
  */
-public class mvServiceDAOImp implements mvServiceDAO {
+public class MvServiceDAOImp implements MvServiceDAO {
     @Override
     public ArrayList<MV> select(MV mv) {
         Connection conn = DBUtil.getConnection();
-        mvDAOImp mvDI = new mvDAOImp(conn);
+        MvDAOImp mvDI = new MvDAOImp(conn);
 
         try {
             ArrayList<MV> resultList = mvDI.select(mv);
@@ -41,7 +41,7 @@ public class mvServiceDAOImp implements mvServiceDAO {
     @Override
     public ArrayList<MV> selectRan(MV mv) {
         Connection conn = DBUtil.getConnection();
-        mvDAOImp mvDI = new mvDAOImp(conn);
+        MvDAOImp mvDI = new MvDAOImp(conn);
 
         try{
             ArrayList<MV> resultList = mvDI.selectRan(mv);
@@ -79,7 +79,7 @@ public class mvServiceDAOImp implements mvServiceDAO {
     @Override
     public int count(MV mv) {
         Connection conn = DBUtil.getConnection();
-        mvDAOImp singerDI = new mvDAOImp(conn);
+        MvDAOImp singerDI = new MvDAOImp(conn);
 
         try{
             int cnt = singerDI.count(mv);

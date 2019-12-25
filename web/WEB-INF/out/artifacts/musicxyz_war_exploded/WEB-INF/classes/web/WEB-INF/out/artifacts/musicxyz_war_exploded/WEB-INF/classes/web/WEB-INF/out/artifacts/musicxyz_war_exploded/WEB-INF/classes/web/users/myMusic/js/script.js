@@ -257,6 +257,20 @@ $(document).ready(function () {
   })
 
 
+    // 单曲播放
+    $(".single_song").click(function () {
+        // console.log("aaa");
+        var songs = $(this).parents("ul").find("li").eq(0).html();
+        var singers = $(this).parents("ul").find("li").eq(1).html();
+        var durations = $(this).parents("ul").find("li").eq(2).html();
+        console.log(songs);
+        console.log(singers);
+        var song = encodeURI(encodeURI(songs));
+        var singer = encodeURI(encodeURI(singers));
+        var duration = encodeURI(encodeURI(durations));
+        window.location.href = "../playMusic/playMusic.html?song=" + song + "&singer=" + singer+ "&duration="+duration;
+    });
+
 });
 
 

@@ -1,7 +1,7 @@
 package Controller.mv;
 
 import POJO.MV;
-import ServiceDAO.mv.mvServiceDAOImp;
+import ServiceDAO.mv.MvServiceDAOImp;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +36,7 @@ public class videoGet extends HttpServlet {
             return;
         }else {
 
-            mvServiceDAOImp mvSDI = new mvServiceDAOImp();
+            MvServiceDAOImp mvSDI = new MvServiceDAOImp();
             MV mv = new MV();
 
             // 设置条件

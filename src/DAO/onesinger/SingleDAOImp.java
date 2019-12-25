@@ -41,11 +41,9 @@ public class SingleDAOImp implements SingleDAO {
                     + " album "
                     + " on "
                     + " song.albumId = album.id "
-                    +" where 1=1 ";
+                    +" where 1=1 and song.status = 0 ";
 
 //            String sql = " select album.name from album where 1=1 ";
-
-
 
 
             // 添加条件

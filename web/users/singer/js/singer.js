@@ -195,12 +195,9 @@ function all() {
 //全部歌手获取
 $(document).ready(function () {
     all();
-
     $("#all_option").click(function () {
-
         all();
     })
-
 });
 
 
@@ -231,7 +228,6 @@ $(document).ready(function () {
                 }
             }
         )
-
     });
     
     //根据拼音选择风格类型选择歌手
@@ -248,7 +244,6 @@ $(document).ready(function () {
                 var data = JSON.parse(result);
                 console.log(data);
                 if (data.success) {
-
                     for (var i = 0; i < data.result.length; i++) {
                         $(".txt_singer_img")[i].src = data.result[i].img;
                         $(".txt_name")[i].innerHTML = data.result[i].name;
@@ -258,8 +253,6 @@ $(document).ready(function () {
             }
         )
     })
-
-
 });
 
 

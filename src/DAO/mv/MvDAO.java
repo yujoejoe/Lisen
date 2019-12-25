@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by user on 2019/12/3.
  */
-public interface mvDAO {
+public interface MvDAO {
     public ArrayList<MV> select(MV mv) throws SQLException;
     public ArrayList<MV> selectRan(MV mv) throws SQLException;
     public int insert(MV mv) throws SQLException;

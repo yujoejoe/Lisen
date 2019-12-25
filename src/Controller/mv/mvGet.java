@@ -2,7 +2,7 @@ package Controller.mv;
 
 import POJO.JsonData;
 import POJO.MV;
-import ServiceDAO.mv.mvServiceDAOImp;
+import ServiceDAO.mv.MvServiceDAOImp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,7 +40,7 @@ public class mvGet extends HttpServlet {
 
         // 获取mv表数据
         MV mv = new MV();
-        mvServiceDAOImp mvSDI = new mvServiceDAOImp();
+        MvServiceDAOImp mvSDI = new MvServiceDAOImp();
 
         // 添加条件
         String condition = "";

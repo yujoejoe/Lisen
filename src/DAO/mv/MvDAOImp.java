@@ -11,15 +11,15 @@ import java.util.ArrayList;
 /**
  * Created by user on 2019/12/3.
  */
-public class mvDAOImp implements mvDAO{
+public class MvDAOImp implements MvDAO {
     private Connection conn = null;
     private PreparedStatement pst = null;
 
-    public mvDAOImp(){
+    public MvDAOImp(){
         super();
     }
 
-    public mvDAOImp(Connection conn){
+    public MvDAOImp(Connection conn){
         super();
         this.conn = conn;
     }

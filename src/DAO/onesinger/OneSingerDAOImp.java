@@ -22,9 +22,6 @@ public class OneSingerDAOImp implements OneSingerDAO {
         this.conn = conn;
     }
 
-
-
-
         @Override
         public ArrayList<Singer> select(Singer singer) throws SQLException {
             try{

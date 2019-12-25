@@ -98,7 +98,6 @@ MV.prototype = {
 		"id": data.result[j].id
 	  });
 	}
-
   },
   addTag: function (area, version) {
 	var self = this;
@@ -235,7 +234,6 @@ MV.prototype = {
 	clearChild(pageBox);
 	var size = Math.ceil(this.counts / this.size);
 	// console.log("pages: " + size);
-
 	if (size > 1) {
 	  pageBox.style.display = "block";
 	  // 上一页
@@ -250,7 +248,6 @@ MV.prototype = {
 	  next.classList.add("page_index");
 	  next.innerHTML = ">";
 	  next.style.display = "none";
-
 	  if (size < 3) {
 		for (var i = 1; i <= size; ++i) {
 		  var page = document.createElement('a');
@@ -302,7 +299,6 @@ MV.prototype = {
 		index = this.index;
 	  }
 	}
-
   },
   bindClick: function(){
     var self = this;
@@ -311,7 +307,6 @@ MV.prototype = {
 
     click(areaTags, "area");
     click(versionTags, "version");
-
     function click(ele, type){
 		var index = 0;
 		if(typeof ele === "object"){
@@ -392,7 +387,6 @@ $(document).ready(function () {
 	  // 4、添加分页
 	  mv.addPage();
 	}
-
   }
 });
 

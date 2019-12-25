@@ -15,7 +15,7 @@ $(document).ready((function(){
 	success: function(result){
 	  // console.log(result);
 	  var data = JSON.parse(result);
-	  // console.log(data);
+	  console.log(data);
 
 	  if(data.success === false){
 		$(notLog).css('display', 'block');

@@ -21,14 +21,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 @WebServlet(name ="register" ,urlPatterns ="/loginAction/register" )
-public class register extends HttpServlet {
+public class Register extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public register() {
+    public Register() {
         super();
         // TODO Auto-generated constructor stub
     }

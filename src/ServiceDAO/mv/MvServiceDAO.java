@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by user on 2019/12/3.
  */
-public interface mvServiceDAO {
+public interface MvServiceDAO {
     public ArrayList<MV> select(MV mv);
     public ArrayList<MV> selectRan(MV mv);
     public int insert(MV mv);

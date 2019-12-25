@@ -15,7 +15,6 @@ public class SingerDAOImp implements SingerDAO {
     private Connection conn = null;
     private PreparedStatement pst = null;
 
-
     public SingerDAOImp(){
         super();
     }
@@ -23,9 +22,6 @@ public class SingerDAOImp implements SingerDAO {
         super();
         this.conn = conn;
     }
-
-
-
 
     @Override
     public ArrayList<Singer> select(Singer singer) throws SQLException {

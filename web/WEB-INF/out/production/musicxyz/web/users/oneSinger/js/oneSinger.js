@@ -24,7 +24,6 @@ onload = function change() {
 	special_show.style.display = "none";
 	mv_show.style.display = "block";
   };
-
 };
 
 $(document).ready(function () {
@@ -74,7 +73,6 @@ $(document).ready(function () {
 		  $(".txt_one_birthPlace")[0].append(data.result[0].birthPlace);
 		  $(".txt_one_birthday")[0].append(data.result[0].birthday);
 		}
-
 	  }
 	);
 //全部播放
@@ -83,7 +81,6 @@ $(document).ready(function () {
 	  console.log(search);
 	  var oneSinger = encodeURI(encodeURI(search));
 	  window.location.href = "../playMusic/playMusic.html?oneSinger=" + oneSinger;
-
 	});
 
 
@@ -113,7 +110,6 @@ $(document).ready(function () {
 		if (data.success) {
 		  $("#single_option").append(data.counts);   //单曲数目
 		  $("#singleNum").append(data.counts);       //单曲数目
-
 		  for (var i = 0; i < data.result.length; i++) {
 		    // console.log($(".single_name"));
 			$(".single_name")[i].append(data.result[i].song);
@@ -135,7 +131,6 @@ $(document).ready(function () {
 		if (data.success) {
 		  $("#special_option").append(data.counts);
 		  $("#txt_album_name").append(data.counts);
-
 		  for (var j = 0; j < data.result.length; j++) {
 			$(".txt_name_pic")[j].src = data.result[j].img;
 			$(".txt_name")[j].append(data.result[j].name);
@@ -160,7 +155,6 @@ $(document).ready(function () {
 			  $(".txt_mv_pic")[j].src = data.result[j].img;
 			  $(".txt_mv_name")[j].append(data.result[j].title);
 			  $($(".show_hide_mv")[j]).show();
-
 			}
 			// 绑定点击mv图片事件设置cookie
 			for (var i = 0; i < data.result.length; i++) {
@@ -179,12 +173,8 @@ $(document).ready(function () {
 			}
 		  }
 		}
-
-
 	  }
 	)
-
-
   }
 });
 

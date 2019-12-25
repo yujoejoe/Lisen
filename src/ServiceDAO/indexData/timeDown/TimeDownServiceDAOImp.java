@@ -1,22 +1,22 @@
 package ServiceDAO.indexData.timeDown;
 
 import DAO.indexData.timeDown.SongDAOImp;
-import POJO.indexData.timeDown;
+import POJO.indexData.TimeDown;
 import util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class timeDownServiceDAOImp implements timeDownServiceDAO {
+public class TimeDownServiceDAOImp implements TimeDownServiceDAO {
 
     @Override
-    public ArrayList<timeDown> select(timeDown song) {
+    public ArrayList<TimeDown> select(TimeDown song) {
         Connection conn = DBUtil.getConnection();
         SongDAOImp songDI = new SongDAOImp(conn);
 
         try {
-            ArrayList<timeDown> resultLists = new ArrayList<>();
+            ArrayList<TimeDown> resultLists = new ArrayList<>();
             resultLists = songDI.select(song);
             conn.commit();
 
@@ -39,7 +39,7 @@ public class timeDownServiceDAOImp implements timeDownServiceDAO {
     }
 
     @Override
-    public int count(timeDown song) {
+    public int count(TimeDown song) {
         Connection conn = DBUtil.getConnection();
         SongDAOImp songDI = new SongDAOImp(conn);
 
@@ -66,22 +66,22 @@ public class timeDownServiceDAOImp implements timeDownServiceDAO {
     }
 
     @Override
-    public ArrayList<timeDown> selectRan(timeDown song) {
+    public ArrayList<TimeDown> selectRan(TimeDown song) {
         return null;
     }
 
     @Override
-    public int insert(timeDown song) {
+    public int insert(TimeDown song) {
         return 0;
     }
 
     @Override
-    public int delete(timeDown song) {
+    public int delete(TimeDown song) {
         return 0;
     }
 
     @Override
-    public int update(timeDown song) {
+    public int update(TimeDown song) {
         return 0;
     }
 

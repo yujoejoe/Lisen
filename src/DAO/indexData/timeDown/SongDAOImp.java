@@ -1,6 +1,6 @@
 package DAO.indexData.timeDown;
 
-import POJO.indexData.timeDown;
+import POJO.indexData.TimeDown;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +17,7 @@ public class SongDAOImp implements SongDAO {
     }
 
         @Override
-        public ArrayList<timeDown> select (timeDown timeDown) throws SQLException {
+        public ArrayList<TimeDown> select (TimeDown timeDown) throws SQLException {
             try {
                 String sql = "select distinct"
                         + " song.name as song,"
@@ -69,10 +69,10 @@ public class SongDAOImp implements SongDAO {
                 ResultSet rs = pst.executeQuery();
 
                 // 创建ArrayList对象存储每条记录
-                ArrayList<timeDown> resultList = new ArrayList<timeDown>();
+                ArrayList<TimeDown> resultList = new ArrayList<TimeDown>();
 
                 while (rs.next()) {
-                    timeDown tmp = new timeDown();
+                    TimeDown tmp = new TimeDown();
                     tmp.setImg(rs.getString("img"));
                     tmp.setSong(rs.getString("song"));
                     tmp.setSinger(rs.getString("singer"));
@@ -89,7 +89,7 @@ public class SongDAOImp implements SongDAO {
         }
 
     @Override
-    public int count(timeDown timeDown) throws SQLException {
+    public int count(TimeDown timeDown) throws SQLException {
         try{
             // sql语句
             String sql = "select count(*) as counts from song  " +
