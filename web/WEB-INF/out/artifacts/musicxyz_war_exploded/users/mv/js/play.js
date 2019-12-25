@@ -59,10 +59,14 @@ MVP.prototype = {
 	return data;
   },
   addVideo: function () {
+    let self = this;
 	this.video.setAttribute('src', this.videoInfo[0].url);
 	this.video.addEventListener('canplay', function () {
 	  this.muted = false;
 	  this.play();
+	  self.playBtn.classList.remove("fa-play");
+	  self.playBtn.classList.add("fa-pause");
+	  self.isPlay = true;
 	})
   },
   addInfo: function () {

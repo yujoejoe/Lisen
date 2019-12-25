@@ -77,6 +77,7 @@ public class register extends HttpServlet {
                 user.setPswd(pswd);
                 user.setPhone(phone);
                 user.setEmail(email);
+                user.setType(0);
                 // 添加新用户
                 if(userSDI.insert(user) != -1){
                     // 注册成功

@@ -60,22 +60,28 @@ public class login extends HttpServlet {
         }else{
             // 添加条件
             String condition = "";
-            condition = " user.name = '" + username + "'" + " and user.pswd = '" + password + "'" + " and user.type = 0";
+            condition = " user.name = '" + username + "'" + " and user.pswd = '" + password + "'" + " and user.type = 0 and user.status = 0";
             user.setCondition(condition);
             // 查询记录
             result = userSDI.select(user);
             System.out.println(result);
+
             if(result == null || result.size() == 0){
-                success = false;
-                msg = "账号或密码错误！";
+                    success = false;
+                    msg = "账号或密码错误！";
             }else{
-                success = true;
-                msg = "登录成功！";
-                // 保存user信息
-                user = result.get(0);
-                user.setCondition(" user.name = '" + user.getName() + "'");
-                HttpSession session = request.getSession(true);
-                session.setAttribute("user", user);
+                if(result.get(0).getStatus() != 0){
+                    success = false;
+                    msg = "该账号已被冻结！";
+                }else {
+                    success = true;
+                    msg = "登录成功！";
+                    // 保存user信息
+                    user = result.get(0);
+                    user.setCondition(" user.name = '" + user.getName() + "'");
+                    HttpSession session = request.getSession(true);
+                    session.setAttribute("user", user);
+                }
             }
         }
 
